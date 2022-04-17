@@ -1,11 +1,13 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import App from './App';
+import CpTeams from './pages/CpTeams';
+import CpPlayer from './pages/CpPlayer';
 
 function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />} />;
+        <Route path="/teams" element={<CpTeams />} />;
+        <Route path="/player" element={<CpPlayer />} />;
       </Routes>
     </BrowserRouter>
   );
