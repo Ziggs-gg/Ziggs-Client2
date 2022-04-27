@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import Switch from '@mui/material/Switch';
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
 import axios from 'axios';
 import YearSelect from './components/YearSelect';
 import SeasonSelect from './components/SeasonSelect';
+
 const Nav = () => {
   const [year, setYear] = useState('');
   const [season, setSeason] = useState('');
@@ -37,7 +32,6 @@ const Nav = () => {
     <NavLayout>
       <Title>ZIGGS.GG</Title>
       <FilterContainer>
-        <Switch />
         <YearSelect year={year} handleYearChange={handleYearChange} />
         <SeasonSelect season={season} handleSeasonChange={handleSeasonChange} />
       </FilterContainer>
@@ -52,14 +46,14 @@ const NavLayout = styled.nav`
   display: flex;
   align-items: center;
   background-color: #363634;
-  height: 66px;
+  height: 60px;
   width: 100%;
 `;
 
 const Title = styled.span`
   position: absolute;
   left: 40px;
-  color: #fff;
+  color: ${props => props.theme.white.white100};
   font-size: 22px;
   font-weight: 900;
 `;
