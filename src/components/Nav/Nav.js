@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import ViewToggle from './components/ViewToggle';
 import YearSelect from './components/YearSelect';
 import SeasonSelect from './components/SeasonSelect';
-import ViewToggle from './components/ViewToggle';
+import LeagueSelect from './components/LeagueSelect';
+import RoleSelect from './components/RoleSelect';
 
 const Nav = () => {
   const [year, setYear] = useState('');
@@ -37,13 +39,15 @@ const Nav = () => {
       />
       <FilterContainer>
         <ViewToggle />
-        <div>
+        <SelectWrapper>
           <YearSelect year={year} handleYearChange={handleYearChange} />
           <SeasonSelect
             season={season}
             handleSeasonChange={handleSeasonChange}
           />
-        </div>
+          <LeagueSelect />
+          <RoleSelect />
+        </SelectWrapper>
       </FilterContainer>
     </NavLayout>
   );
@@ -74,4 +78,9 @@ const FilterContainer = styled.div`
   width: 1400px;
   margin: 0 auto;
   padding-left: 80px;
+`;
+
+const SelectWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
 `;

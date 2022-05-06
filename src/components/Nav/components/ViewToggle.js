@@ -18,6 +18,8 @@ const ToggleWrapper = styled.div`
   position: relative;
   width: 82px;
   height: 40px;
+
+  cursor: pointer;
 `;
 
 const ToggleTrack = styled.div`
