@@ -1,8 +1,7 @@
 import React from 'react';
-import List from './components/List';
 
 const CpPlayer = () => {
-  return <List>CpPlayer</List>;
+  return <div>CpPlayer</div>;
 };
 
 export default CpPlayer;
