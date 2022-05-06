@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 import YearSelect from './components/YearSelect';
 import SeasonSelect from './components/SeasonSelect';
+import ViewToggle from './components/ViewToggle';
 
 const Nav = () => {
   const [year, setYear] = useState('');
@@ -30,10 +31,19 @@ const Nav = () => {
 
   return (
     <NavLayout>
-      <Title>ZIGGS.GG</Title>
+      <Title
+        src="https://user-images.githubusercontent.com/73605822/167045469-91bdb04c-d98a-4981-9526-25381870a911.png"
+        alt="Logo"
+      />
       <FilterContainer>
-        <YearSelect year={year} handleYearChange={handleYearChange} />
-        <SeasonSelect season={season} handleSeasonChange={handleSeasonChange} />
+        <ViewToggle />
+        <div>
+          <YearSelect year={year} handleYearChange={handleYearChange} />
+          <SeasonSelect
+            season={season}
+            handleSeasonChange={handleSeasonChange}
+          />
+        </div>
       </FilterContainer>
     </NavLayout>
   );
@@ -44,24 +54,24 @@ export default Nav;
 const NavLayout = styled.nav`
   position: relative;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  background-color: #363634;
+  background-color: ${props => props.theme.black.black93};
   height: 60px;
   width: 100%;
 `;
 
-const Title = styled.span`
+const Title = styled.img`
   position: absolute;
-  left: 40px;
-  color: ${props => props.theme.white.white100};
-  font-size: 22px;
-  font-weight: 900;
+  height: 40px;
+  left: 48px;
 `;
 
 const FilterContainer = styled.div`
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  padding-left: 112px;
-  width: 1610px;
+  width: 1400px;
   margin: 0 auto;
+  padding-left: 80px;
 `;
