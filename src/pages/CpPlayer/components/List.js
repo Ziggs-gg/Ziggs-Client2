@@ -79,10 +79,19 @@ const ListLayout = styled.div`
   height: 432px;
   margin: 0 auto;
   margin-top: 20px;
-  padding: 16px 80px;
+  padding: 16px 78px;
   padding-bottom: 0px;
   overflow-y: scroll;
 
   border-top: 1px solid ${props => props.theme.black.black85};
   border-bottom: 3px solid ${props => props.theme.black.black85};
+
+  &::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background: ${props => props.theme.white.white80};
+  }
 `;
