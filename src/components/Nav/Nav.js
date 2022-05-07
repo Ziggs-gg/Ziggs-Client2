@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
 import ViewToggle from './components/ViewToggle';
 import YearSelect from './components/YearSelect';
 import SeasonSelect from './components/SeasonSelect';
@@ -10,26 +9,14 @@ import RoleSelect from './components/RoleSelect';
 const Nav = () => {
   const [year, setYear] = useState('');
   const [season, setSeason] = useState('');
+
   const handleYearChange = event => {
     setYear(event.target.value);
   };
 
   const handleSeasonChange = event => {
-    setYear(event.target.value);
+    setSeason(event.target.value);
   };
-
-  // useEffect(() => {
-  //   axios
-  //     .get(
-  //       'http://18.237.44.175:3000/api/compare/player?region=1&year=2021&splitSeason=Spring'
-  //     )
-  //     .then(Response => {
-  //       console.log(Response);
-  //     })
-  //     .catch(Error => {
-  //       console.error(Error);
-  //     });
-  // }, []);
 
   return (
     <NavLayout>
@@ -68,16 +55,16 @@ const NavLayout = styled.nav`
 const Title = styled.img`
   position: absolute;
   height: 40px;
-  left: 48px;
+  left: 32px;
 `;
 
 const FilterContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 1400px;
+  width: 1500px;
   margin: 0 auto;
-  padding-left: 80px;
+  padding-left: 70px;
 `;
 
 const SelectWrapper = styled.div`

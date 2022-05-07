@@ -1,7 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 import PlayerCard from './PlayerCard';
 const List = () => {
+  // useEffect(() => {
+  //   axios
+  //     .get(
+  //       'http://18.237.44.175:3000/api/compare/player?region=1&year=2021&splitSeason=Spring'
+  //     )
+  //     .then(Response => {
+  //       console.log('OK:', Response);
+  //     })
+  //     .catch(Error => {
+  //       console.error('err:', Error);
+  //     });
+  // }, []);
+
   return (
     <ListLayout>
       <PlayerCard />
