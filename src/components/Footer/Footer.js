@@ -25,8 +25,7 @@ const FooterLayout = styled.footer`
   position: absolute;
   width: 100%;
   height: 176px;
-  left: 0px;
-  bottom: -4px;
+
   background: linear-gradient(
     180deg,
     rgba(19, 19, 16, 0) 0%,

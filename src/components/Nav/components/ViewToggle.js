@@ -15,10 +15,10 @@ const ViewToggle = () => {
 export default ViewToggle;
 
 const ToggleWrapper = styled.div`
-  position: relative;
+  position: absolute;
   width: 82px;
   height: 40px;
-
+  left: 281px;
   cursor: pointer;
 `;
 

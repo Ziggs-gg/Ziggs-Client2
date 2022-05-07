@@ -24,8 +24,8 @@ const Nav = () => {
         src="https://user-images.githubusercontent.com/73605822/167045469-91bdb04c-d98a-4981-9526-25381870a911.png"
         alt="Logo"
       />
+      <ViewToggle />
       <FilterContainer>
-        <ViewToggle />
         <SelectWrapper>
           <YearSelect year={year} handleYearChange={handleYearChange} />
           <SeasonSelect
@@ -59,12 +59,11 @@ const Title = styled.img`
 `;
 
 const FilterContainer = styled.div`
+  position: absolute;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 1500px;
-  margin: 0 auto;
-  padding-left: 70px;
+  right: 228px;
 `;
 
 const SelectWrapper = styled.div`
