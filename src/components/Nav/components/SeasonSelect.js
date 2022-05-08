@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const SeasonSelect = ({ season, handleSeasonChange }) => {
+  console.log(season);
   return (
     <SeasonBox name="season">
       <option value="Spring">스프링 정규시즌</option>
