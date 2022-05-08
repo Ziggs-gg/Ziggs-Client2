@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import PlayerCard from './PlayerCard';
+
 const List = () => {
   const [playerList, setPlayerList] = useState([]);
 
@@ -9,7 +10,7 @@ const List = () => {
     axios
       .get('http://18.237.44.175:3000/api/compare/player/')
       .then(Response => {
-        setPlayerList(Response.data.PlayerList);
+        setPlayerList(Response.data);
       })
       .catch(Error => {
         console.error('err:', Error);
