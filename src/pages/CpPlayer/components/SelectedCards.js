@@ -7,7 +7,6 @@ const SelectedCards = () => {
     <CardsContainer>
       <SelectedPlayer />
       <SelectedPlayer />
-      <SelectedPlayer />
     </CardsContainer>
   );
 };

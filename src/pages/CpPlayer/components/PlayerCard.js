@@ -15,7 +15,7 @@ const PlayerCard = ({
     <CardLayout>
       <TeamLogo src="images/teams/AF.png" />
       <RoleLogo src={`images/role/role_${role}_W.png`} />
-      <PlayerImg src="" alt={phID} />
+      <PlayerImg src="images/player/21-LCK-SUM-T1-Keria.png" alt={phID} />
       <PlayerName>{playerName}</PlayerName>
     </CardLayout>
   );
@@ -61,6 +61,12 @@ const PlayerImg = styled.img`
   height: 64px;
   bottom: 0;
   color: white;
+  mask-image: linear-gradient(
+    to bottom,
+    #c4c4c4 52.71%,
+    rgba(196, 196, 196, 0.2) 86.46%,
+    rgba(196, 196, 196, 0) 100%
+  );
 `;
 
 const PlayerName = styled.div`
@@ -74,6 +80,4 @@ const PlayerName = styled.div`
   color: white;
   font-size: 12px;
   font-weight: 500;
-
-  background-color: rgba(0, 0, 0, 0.3);
 `;
