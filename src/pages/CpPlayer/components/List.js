@@ -40,7 +40,6 @@ const ListLayout = styled.div`
   padding: 16px 78px;
   padding-bottom: 0px;
   overflow-y: scroll;
-
   border-top: 1px solid ${props => props.theme.black.black85};
   border-bottom: 3px solid ${props => props.theme.black.black85};
 
