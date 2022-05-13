@@ -37,6 +37,7 @@ const CardLayout = styled.div`
   }
 
   cursor: pointer;
+  z-index: 1;
 `;
 
 const TeamLogo = styled.img`

@@ -29,6 +29,7 @@ const List = () => {
 export default List;
 
 const ListLayout = styled.div`
+  position: relative;
   display: flex;
   justify-content: flex-start;
   align-content: flex-start;
