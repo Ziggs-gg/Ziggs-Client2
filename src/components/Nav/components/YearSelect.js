@@ -1,19 +1,43 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { css } from 'styled-components';
+
+const YEAR_DATA = [
+  {
+    year: 2021,
+  },
+  {
+    year: 2022,
+  },
+];
+
 const YearSelect = ({ year, handleYearChange }) => {
   const [toggle, setToggle] = useState(false);
 
   return (
-    <YearSelectContainer>
-      <DropDownHeader onClick={() => setToggle(!toggle)} toggle={toggle}>
-        2022
+    <YearSelectContainer
+      onClick={() => {
+        setToggle(!toggle);
+      }}
+    >
+      <DropDownHeader toggle={toggle}>
+        <HeaderText>{year}</HeaderText>
+        <Arrow
+          src={
+            toggle ? `images/arrows/Up_W50.png` : `images/arrows/Down_W50.png`
+          }
+        />
       </DropDownHeader>
       {toggle && (
         <DropDownListContainer>
-          <DropDownList>
-            <ListItem value={2021}>2021</ListItem>
-            <ListItem value={2022}>2022</ListItem>
+          <DropDownList onClick={e => handleYearChange(e)}>
+            {YEAR_DATA.map((data, idx) => {
+              return (
+                <ListItem value={data.year} key={idx} year={year}>
+                  {data.year}
+                </ListItem>
+              );
+            })}
           </DropDownList>
         </DropDownListContainer>
       )}
@@ -32,7 +56,7 @@ const YearSelectContainer = styled.div`
 
 const DropDownHeader = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   height: 40px;
   color: white;
@@ -45,6 +69,23 @@ const DropDownHeader = styled.div`
     css`
       border: 1px solid ${props => props.theme.white.white60};
     `}
+`;
+
+const HeaderText = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 89px;
+  margin-top: 2px;
+  margin-left: 20px;
+  font-size: 12px;
+  font-weight: 500;
+`;
+
+const Arrow = styled.img`
+  width: 12px;
+  height: 12px;
+  margin-right: 8px;
 `;
 
 const DropDownListContainer = styled.div`
@@ -65,11 +106,23 @@ const DropDownList = styled.ul`
 `;
 
 const ListItem = styled.li`
+  display: flex;
+  align-items: center;
+  height: 24px;
   color: ${props => props.theme.black.black70};
   padding-top: 4px;
+  font-size: 12px;
+  font-weight: 500;
+
   cursor: pointer;
 
   :hover {
     color: ${props => props.theme.white.white80};
   }
+
+  ${props =>
+    props.year === props.value &&
+    css`
+      color: white;
+    `}
 `;

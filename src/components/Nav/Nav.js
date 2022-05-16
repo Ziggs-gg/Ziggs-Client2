@@ -7,15 +7,25 @@ import LeagueSelect from './components/LeagueSelect';
 import RoleSelect from './components/RoleSelect';
 
 const Nav = () => {
-  const [year, setYear] = useState('');
-  const [season, setSeason] = useState('');
+  const [year, setYear] = useState(2022);
+  const [season, setSeason] = useState('Spring');
 
   const handleYearChange = event => {
-    setYear(event.target.value);
+    const { value } = event.target;
+    value && setYear(value);
   };
 
   const handleSeasonChange = event => {
-    setSeason(event.target.value);
+    const { value } = event.target;
+    if (value === 0) {
+      setSeason('Spring');
+    } else if (value === 1) {
+      setSeason('Spring-playoff');
+    } else if (value === 2) {
+      setSeason('Summer');
+    } else if (value === 3) {
+      setSeason('Summer-playoff');
+    }
   };
 
   return (
