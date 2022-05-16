@@ -11,6 +11,7 @@ const GlobalStyle = createGlobalStyle`
 
   *{
         box-sizing: border-box;
+        font-family: 'Noto Sans KR', sans-serif !important; 
   }
 
   ul,dl,dt,dd,li{
@@ -18,8 +19,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body{
-    background-color: #131310 ;
-    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #131310;
   }
 `;
 

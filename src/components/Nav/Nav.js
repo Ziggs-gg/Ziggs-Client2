@@ -9,6 +9,8 @@ import RoleSelect from './components/RoleSelect';
 const Nav = () => {
   const [year, setYear] = useState(2022);
   const [season, setSeason] = useState('Spring');
+  const [league, setLeague] = useState([]);
+  const [role, setRole] = useState([]);
 
   const handleYearChange = event => {
     const { value } = event.target;
@@ -28,6 +30,13 @@ const Nav = () => {
     }
   };
 
+  const handleLeagueSelect = () ={
+
+  }
+
+  const handleRoleSelect = () ={
+    
+  }
   return (
     <NavLayout>
       <Title
