@@ -39,6 +39,7 @@ const SeasonSelect = ({ season, handleSeasonChange }) => {
       return '썸머 플레이오프';
     }
   };
+
   return (
     <SeasonSelectContainer
       onClick={() => {

@@ -11,7 +11,7 @@ const Nav = () => {
   const [season, setSeason] = useState('Spring');
   const [league, setLeague] = useState([]);
   const [role, setRole] = useState([]);
-
+  console.log(league);
   const handleYearChange = event => {
     const { value } = event.target;
     value && setYear(value);
@@ -30,13 +30,14 @@ const Nav = () => {
     }
   };
 
-  const handleLeagueSelect = () ={
+  const handleLeagueSelect = leagueData => {
+    setLeague(prev => [...prev, leagueData]);
+  };
 
-  }
+  const handleRoleSelect = roleData => {
+    setRole(prev => [...prev, roleData]);
+  };
 
-  const handleRoleSelect = () ={
-    
-  }
   return (
     <NavLayout>
       <Title
@@ -51,8 +52,12 @@ const Nav = () => {
             season={season}
             handleSeasonChange={handleSeasonChange}
           />
-          <LeagueSelect />
-          <RoleSelect />
+          <LeagueSelect
+            handleLeagueSelect={handleLeagueSelect}
+            league={league}
+            setLeague={setLeague}
+          />
+          <RoleSelect handleRoleSelect={handleRoleSelect} role={role} />
         </SelectWrapper>
       </FilterContainer>
     </NavLayout>
