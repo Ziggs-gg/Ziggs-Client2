@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import { API } from '../../../config';
 
 const SelectedPlayer = () => {
   const [playerData, setPlayerData] = useState();
@@ -37,9 +38,7 @@ const SelectedPlayer = () => {
 
   useEffect(() => {
     axios
-      .get(
-        'http://18.237.44.175:3000/api/compare/player/SelectedPlayerBox?phRole=21-LCK-SUM-HLE-Chovy-MID'
-      )
+      .get(`${API.SELECTED_PLAYER}phRole=21-LCK-SUM-HLE-Chovy-MID`)
       .then(Response => {
         setPlayerData(Response.data);
       })

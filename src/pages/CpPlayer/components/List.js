@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import PlayerCard from './PlayerCard';
+import { API } from '../../../config';
 
 const List = () => {
   const [playerList, setPlayerList] = useState([]);
 
   useEffect(() => {
     axios
-      .get('http://18.237.44.175:3000/api/compare/player/')
+      .get(`${API.PLAYER_LIST}`)
       .then(Response => {
         setPlayerList(Response.data);
       })

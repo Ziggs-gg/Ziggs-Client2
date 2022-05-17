@@ -11,6 +11,14 @@ const Nav = () => {
   const [season, setSeason] = useState('Spring');
   const [league, setLeague] = useState([]);
   const [role, setRole] = useState([]);
+
+  const [filterValues, setFilterValues] = useState({
+    year: 2022,
+    season: 'spring',
+    league: [],
+    role: [],
+  });
+
   const [viewToggle, setViewToggle] = useState(false);
 
   const handleYearChange = event => {

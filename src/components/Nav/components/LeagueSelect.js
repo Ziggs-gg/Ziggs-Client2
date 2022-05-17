@@ -5,7 +5,13 @@ import { css } from 'styled-components';
 const LeagueSelect = ({ handleLeagueSelect, league, setLeague }) => {
   return (
     <LeagueSelectBox>
-      <SelectAll onClick={() => setLeague(['LCK', 'LPL', 'LEC', 'LCS'])}>
+      <SelectAll
+        onClick={() => {
+          league.length === 4
+            ? setLeague([])
+            : setLeague(['LCK', 'LPL', 'LEC', 'LCS']);
+        }}
+      >
         ALL
       </SelectAll>
       <LeagueList>
@@ -49,6 +55,7 @@ const SelectAll = styled.span`
   height: 32px;
   margin-right: 16px;
   color: white;
+  font-weight: 500;
   text-decoration: underline;
 
   cursor: pointer;

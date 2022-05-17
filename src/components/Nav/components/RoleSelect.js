@@ -6,7 +6,11 @@ const RoleSelect = ({ handleRoleSelect, role, setRole }) => {
   return (
     <RoleSelectBox>
       <SelectAll
-        onClick={() => setRole(['TOP', 'JUNGLE', 'MID', 'ADC', 'SUPPORT'])}
+        onClick={() => {
+          role.length === 5
+            ? setRole([])
+            : setRole(['TOP', 'JUNGLE', 'MID', 'ADC', 'SUPPORT']);
+        }}
       >
         ALL
       </SelectAll>
@@ -49,6 +53,7 @@ const SelectAll = styled.span`
   height: 32px;
   margin-right: 16px;
   color: white;
+  font-weight: 500;
   text-decoration: underline;
 
   cursor: pointer;
@@ -92,13 +97,13 @@ const ROLE_DATA = [
       'https://user-images.githubusercontent.com/73605822/167045538-faee72e2-d6a8-4a96-95bb-5ef6fe1c6eff.png',
   },
   {
-    name: 'AD',
+    name: 'ADC',
     image:
       'https://user-images.githubusercontent.com/73605822/167045532-69b3db2f-e71a-461c-9744-8ef4780aa925.png',
   },
 
   {
-    name: 'SPT',
+    name: 'SUPPORT',
     image:
       'https://user-images.githubusercontent.com/73605822/167064659-955a1a43-4bd8-4649-8b52-4800719157b7.png',
   },
