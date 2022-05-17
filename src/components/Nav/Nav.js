@@ -11,6 +11,7 @@ const Nav = () => {
   const [season, setSeason] = useState('Spring');
   const [league, setLeague] = useState([]);
   const [role, setRole] = useState([]);
+  const [viewToggle, setViewToggle] = useState(false);
 
   const handleYearChange = event => {
     const { value } = event.target;
@@ -54,7 +55,7 @@ const Nav = () => {
         src="https://user-images.githubusercontent.com/73605822/167045469-91bdb04c-d98a-4981-9526-25381870a911.png"
         alt="Logo"
       />
-      <ViewToggle />
+      <ViewToggle viewToggle={viewToggle} setViewToggle={setViewToggle} />
       <FilterContainer>
         <SelectWrapper>
           <YearSelect year={year} handleYearChange={handleYearChange} />
@@ -67,11 +68,13 @@ const Nav = () => {
             league={league}
             setLeague={setLeague}
           />
-          <RoleSelect
-            handleRoleSelect={handleRoleSelect}
-            role={role}
-            setRole={setRole}
-          />
+          {!viewToggle && (
+            <RoleSelect
+              handleRoleSelect={handleRoleSelect}
+              role={role}
+              setRole={setRole}
+            />
+          )}
         </SelectWrapper>
       </FilterContainer>
     </NavLayout>

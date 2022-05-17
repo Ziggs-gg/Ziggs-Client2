@@ -3,27 +3,30 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { css } from 'styled-components';
 
-const ViewToggle = () => {
-  const [toggle, setToggle] = useState(false);
-
+const ViewToggle = ({ viewToggle, setViewToggle }) => {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    toggle ? navigate('/teams') : navigate('/player');
-  }, [navigate, toggle]);
-
   const handleToggle = () => {
-    setToggle(prev => !prev);
+    if (!viewToggle) {
+      navigate('/teams');
+    } else {
+      navigate('/player');
+    }
+    setViewToggle(prev => !prev);
   };
 
   return (
-    <ToggleWrapper onClick={handleToggle}>
+    <ToggleWrapper
+      onClick={() => {
+        handleToggle();
+      }}
+    >
       <ToggleTrack>
         <TrackImgPlayer src="images/Players_outline_B70.png" />
         <TrackImgTeam src="https://user-images.githubusercontent.com/73605822/167045591-d0444efe-1482-4b29-b1f9-3d97f38d8ad7.png" />
       </ToggleTrack>
-      <ToggleThumb toggle={toggle}>
-        {toggle ? (
+      <ToggleThumb toggle={viewToggle}>
+        {viewToggle ? (
           <ThumbImgTeam src="https://user-images.githubusercontent.com/73605822/167045598-80898783-e3c6-4abe-ad26-936759bf2239.png" />
         ) : (
           <ThumbImgPlayer src="https://user-images.githubusercontent.com/73605822/167048612-b03bd97d-5281-4558-a612-228883c38ffc.png" />
@@ -67,12 +70,12 @@ const ToggleThumb = styled.div`
   height: 40px;
   background-color: ${props => props.theme.red.redMain};
   border-radius: 15px;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.2s ease-in-out;
   ${props =>
     props.toggle &&
     css`
       transform: translate(44px, 0);
-      transition: all 0.3s ease-in-out;
+      transition: all 0.2s ease-in-out;
     `}
 `;
 
