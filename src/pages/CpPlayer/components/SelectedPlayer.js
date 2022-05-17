@@ -48,8 +48,6 @@ const SelectedPlayer = () => {
       });
   }, []);
 
-  console.log(playerData);
-
   return (
     <Card>
       <CardLegends />

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { css } from 'styled-components';
 
 const LeagueSelect = ({ handleLeagueSelect, league, setLeague }) => {
   return (
@@ -9,8 +10,14 @@ const LeagueSelect = ({ handleLeagueSelect, league, setLeague }) => {
       </SelectAll>
       <LeagueList>
         {LOGO_DATA.map((data, idx) => {
+          const isSelected = league.includes(data.league);
+
           return (
-            <ListItem key={idx} onClick={() => handleLeagueSelect(data.league)}>
+            <ListItem
+              key={idx}
+              onClick={() => handleLeagueSelect(data.league, isSelected)}
+              isSelected={isSelected}
+            >
               <LeagueLogo src={data.image} />
             </ListItem>
           );
@@ -53,6 +60,12 @@ const LeagueList = styled.ul`
 
 const ListItem = styled.li`
   cursor: pointer;
+  opacity: 0.4;
+  ${props =>
+    props.isSelected &&
+    css`
+      opacity: 1;
+    `}
 `;
 
 const LeagueLogo = styled.img`

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import ViewToggle from './components/ViewToggle';
 import YearSelect from './components/YearSelect';
@@ -11,7 +11,7 @@ const Nav = () => {
   const [season, setSeason] = useState('Spring');
   const [league, setLeague] = useState([]);
   const [role, setRole] = useState([]);
-  console.log(league);
+
   const handleYearChange = event => {
     const { value } = event.target;
     value && setYear(value);
@@ -30,12 +30,22 @@ const Nav = () => {
     }
   };
 
-  const handleLeagueSelect = leagueData => {
-    setLeague(prev => [...prev, leagueData]);
+  const handleLeagueSelect = (leagueData, isSelected) => {
+    if (!isSelected) {
+      setLeague(prev => [...prev, leagueData]);
+    } else {
+      const newList = league.filter(el => el !== leagueData);
+      setLeague(newList);
+    }
   };
 
-  const handleRoleSelect = roleData => {
-    setRole(prev => [...prev, roleData]);
+  const handleRoleSelect = (roleData, isSelected) => {
+    if (!isSelected) {
+      setRole(prev => [...prev, roleData]);
+    } else {
+      const newList = role.filter(el => el !== roleData);
+      setRole(newList);
+    }
   };
 
   return (
@@ -57,7 +67,11 @@ const Nav = () => {
             league={league}
             setLeague={setLeague}
           />
-          <RoleSelect handleRoleSelect={handleRoleSelect} role={role} />
+          <RoleSelect
+            handleRoleSelect={handleRoleSelect}
+            role={role}
+            setRole={setRole}
+          />
         </SelectWrapper>
       </FilterContainer>
     </NavLayout>

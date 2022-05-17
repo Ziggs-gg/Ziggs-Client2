@@ -1,13 +1,29 @@
 import React from 'react';
 import styled from 'styled-components';
+import { css } from 'styled-components';
 
-const RoleSelect = () => {
+const RoleSelect = ({ handleRoleSelect, role, setRole }) => {
   return (
     <RoleSelectBox>
-      <SelectAll>ALL</SelectAll>
-      {LOGO_DATA.map((data, idx) => {
-        return <RoleLogo src={data.image} key={idx} />;
-      })}
+      <SelectAll
+        onClick={() => setRole(['TOP', 'JUNGLE', 'MID', 'ADC', 'SUPPORT'])}
+      >
+        ALL
+      </SelectAll>
+      <RoleList>
+        {ROLE_DATA.map((data, idx) => {
+          const isSelected = role.includes(data.name);
+          return (
+            <ListItem
+              key={idx}
+              onClick={() => handleRoleSelect(data.name, isSelected)}
+              isSelected={isSelected}
+            >
+              <RoleLogo src={data.image} />
+            </ListItem>
+          );
+        })}
+      </RoleList>
     </RoleSelectBox>
   );
 };
@@ -38,6 +54,20 @@ const SelectAll = styled.span`
   cursor: pointer;
 `;
 
+const RoleList = styled.ul`
+  display: flex;
+`;
+
+const ListItem = styled.li`
+  cursor: pointer;
+  opacity: 0.4;
+  ${props =>
+    props.isSelected &&
+    css`
+      opacity: 1;
+    `}
+`;
+
 const RoleLogo = styled.img`
   width: 24px;
   margin-right: 16px;
@@ -45,7 +75,7 @@ const RoleLogo = styled.img`
   cursor: pointer;
 `;
 
-const LOGO_DATA = [
+const ROLE_DATA = [
   {
     name: 'TOP',
     image:
