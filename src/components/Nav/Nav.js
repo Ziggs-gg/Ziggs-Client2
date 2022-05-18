@@ -1,23 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import ViewToggle from './components/ViewToggle';
 import YearSelect from './components/YearSelect';
 import SeasonSelect from './components/SeasonSelect';
 import LeagueSelect from './components/LeagueSelect';
 import RoleSelect from './components/RoleSelect';
+import { useNavigate } from 'react-router-dom';
 
 const Nav = () => {
+  const navigate = useNavigate();
+
   const [year, setYear] = useState(2022);
   const [season, setSeason] = useState('Spring');
-  const [league, setLeague] = useState([]);
-  const [role, setRole] = useState([]);
-
-  const [filterValues, setFilterValues] = useState({
-    year: 2022,
-    season: 'spring',
-    league: [],
-    role: [],
-  });
+  const [league, setLeague] = useState(['LCK', 'LPL', 'LEC', 'LCS']);
+  const [role, setRole] = useState(['TOP', 'JUNGLE', 'MID', 'ADC', 'SUPPORT']);
 
   const [viewToggle, setViewToggle] = useState(false);
 
@@ -31,11 +27,11 @@ const Nav = () => {
     if (value === 0) {
       setSeason('Spring');
     } else if (value === 1) {
-      setSeason('Spring-playoff');
+      setSeason('Spring Playoffs');
     } else if (value === 2) {
       setSeason('Summer');
     } else if (value === 3) {
-      setSeason('Summer-playoff');
+      setSeason('Summer Playoffs');
     }
   };
 
@@ -56,6 +52,14 @@ const Nav = () => {
       setRole(newList);
     }
   };
+
+  useEffect(() => {
+    const queryString = `/compare/player/?region=${league.join(
+      '|'
+    )}&year=${year}&splitSeason=${season}&role=${role.join('|')}`;
+
+    navigate(queryString);
+  }, [league, navigate, role, season, year]);
 
   return (
     <NavLayout>

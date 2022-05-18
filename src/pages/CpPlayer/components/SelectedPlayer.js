@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { css } from 'styled-components';
 import axios from 'axios';
 import { API } from '../../../config';
 
-const SelectedPlayer = () => {
+const SelectedPlayer = ({ player, selectedPlayers }) => {
   const [playerData, setPlayerData] = useState();
   let playerStats = [];
+  const orderNumber = selectedPlayers.findIndex(
+    playerData => playerData === player
+  );
 
   if (playerData) {
     playerStats = [
@@ -38,22 +42,24 @@ const SelectedPlayer = () => {
 
   useEffect(() => {
     axios
-      .get(`${API.SELECTED_PLAYER}phRole=21-LCK-SUM-HLE-Chovy-MID`)
+      .get(`${API.SELECTED_PLAYER}phRole=${player}`)
       .then(Response => {
         setPlayerData(Response.data);
       })
       .catch(Error => {
         console.error('err:', Error);
       });
-  }, []);
+  }, [player]);
 
   return (
-    <Card>
-      <CardLegends />
+    <Card orderNumber={orderNumber}>
+      <CardLegends orderNumber={orderNumber} />
       <PlayerInfo>
-        <TeamLogo src="images/teams/AF.png" />
-        <RoleLogo src="images/role/role_TOP_W.png" />
-        <PlayerImg src="images/player/21-LCK-SUM-T1-Keria.png" alt="img" />
+        <TeamLogo
+          src={`/images/teams/${playerData?.region}/${playerData?.teamName}.png`}
+        />
+        <RoleLogo src={`/images/role/role_${playerData?.role}_W.png`} />
+        <PlayerImg src="/images/player/21-LCK-SUM-T1-Keria.png" alt="img" />
       </PlayerInfo>
       <PlayerDesc>
         <PlayerTeam>
@@ -72,11 +78,13 @@ const SelectedPlayer = () => {
         })}
         <MostChampions>
           <StatesText>선호 챔피언</StatesText>
-          <ChampionsImg src="http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Aatrox_0.jpg" />
-          <ChampionsImg src="http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Gnar_0.jpg" />
-          <ChampionsImg src="http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Gragas_0.jpg" />
-          <ChampionsImg src="http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Teemo_0.jpg" />
-          <ChampionsImg src="http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Jayce_0.jpg" />
+          <Champions>
+            <ChampionsImg src="http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Aatrox_0.jpg" />
+            <ChampionsImg src="http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Gnar_0.jpg" />
+            <ChampionsImg src="http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Gragas_0.jpg" />
+            <ChampionsImg src="http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Teemo_0.jpg" />
+            <ChampionsImg src="http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Jayce_0.jpg" />
+          </Champions>
         </MostChampions>
       </PlayerDataContainer>
     </Card>
@@ -91,11 +99,7 @@ const Card = styled.div`
   align-items: center;
   width: 664px;
   height: 88px;
-  background: linear-gradient(
-    180deg,
-    rgba(19, 19, 16, 0) 0%,
-    rgba(49, 115, 193, 0.05) 100%
-  );
+
   border: 1px solid ${props => props.theme.black.black85};
   border-radius: 10px;
   border-top-left-radius: 5px;
@@ -106,6 +110,47 @@ const Card = styled.div`
   &:nth-child(2n) {
     margin-right: 0;
   }
+
+  ${props =>
+    props.orderNumber === 0 &&
+    css`
+      background: linear-gradient(
+        180deg,
+        rgba(19, 19, 16, 0) 0%,
+        rgba(193, 54, 49, 0.05) 100%
+      );
+    `}
+
+  ${props =>
+    props.orderNumber === 1 &&
+    css`
+      background: linear-gradient(
+        180deg,
+        rgba(19, 19, 16, 0) 0%,
+        rgba(49, 115, 193, 0.05) 100%
+      );
+    `}
+
+    ${props =>
+    props.orderNumber === 2 &&
+    css`
+      background: linear-gradient(
+        180deg,
+        rgba(19, 19, 16, 0) 0%,
+        rgba(162, 212, 67, 0.05) 100%
+      );
+    `}
+
+    ${props =>
+    props.orderNumber === 3 &&
+    css`
+      background: linear-gradient(
+        180deg,
+        rgba(19, 19, 16, 0) 0%,
+        rgba(64, 40, 19, 0.15) 100%,
+        rgba(247, 125, 28, 0.05) 100%
+      );
+    `}
 `;
 
 const CardLegends = styled.div`
@@ -114,9 +159,31 @@ const CardLegends = styled.div`
   height: 88px;
   left: -1px;
   top: -1px;
-
-  background: ${props => props.theme.red.redMain};
   border-radius: 10px;
+
+  ${props =>
+    props.orderNumber === 0 &&
+    css`
+      background: ${props => props.theme.red.redMain};
+    `}
+
+  ${props =>
+    props.orderNumber === 1 &&
+    css`
+      background: ${props => props.theme.blue.blueMain};
+    `}
+
+    ${props =>
+    props.orderNumber === 2 &&
+    css`
+      background: ${props => props.theme.green.greenMain};
+    `}
+
+    ${props =>
+    props.orderNumber === 3 &&
+    css`
+      background: ${props => props.theme.orange.orangeMain};
+    `}
 `;
 
 const PlayerInfo = styled.div`
@@ -192,10 +259,10 @@ const PlayerData = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 0 4px;
-  margin-right: 16px;
+  margin-right: 12px;
 `;
 
-const StatesText = styled.p`
+const StatesText = styled.span`
   height: 16px;
   font-weight: 500;
   font-size: 14px;
@@ -207,10 +274,11 @@ const MostChampions = styled.div`
   height: 36px;
 `;
 
+const Champions = styled.div``;
+
 const ChampionsImg = styled.img`
   width: 18px;
   height: 18px;
-
   border: 1px solid ${props => props.theme.black.black85};
   border-radius: 3px;
 `;

@@ -10,7 +10,7 @@ const SEASON_DATA = [
   },
   {
     id: 1,
-    value: 'Spring-playoff',
+    value: 'Spring Playoffs',
     name: '스프링 플레이오프',
   },
   {
@@ -20,7 +20,7 @@ const SEASON_DATA = [
   },
   {
     id: 3,
-    value: 'Summer-playoff',
+    value: 'Summer Playoffs',
     name: '썸머 플레이오프',
   },
 ];
@@ -31,11 +31,11 @@ const SeasonSelect = ({ season, handleSeasonChange }) => {
   const HeaderValue = () => {
     if (season === 'Spring') {
       return '스프링 정규시즌';
-    } else if (season === 'Spring-playoff') {
+    } else if (season === 'Spring Playoffs') {
       return '스프링 플레이오프';
     } else if (season === 'Summer') {
       return '썸머 정규시즌';
-    } else if (season === 'Summer-playoff') {
+    } else if (season === 'Summer Playoffs') {
       return '썸머 플레이오프';
     }
   };
@@ -50,7 +50,9 @@ const SeasonSelect = ({ season, handleSeasonChange }) => {
         <HeaderText>{HeaderValue()}</HeaderText>
         <Arrow
           src={
-            toggle ? `images/arrows/Up_W50.png` : `images/arrows/Down_W50.png`
+            toggle
+              ? `https://user-images.githubusercontent.com/73605822/168941253-8a0a4918-78d6-4fb7-b924-d9b937a65c10.png`
+              : `https://user-images.githubusercontent.com/73605822/168941254-955b5666-ec2f-40a5-aab4-a3f88464059b.png`
           }
         />
       </DropDownHeader>

@@ -24,7 +24,9 @@ const YearSelect = ({ year, handleYearChange }) => {
         <HeaderText>{year}</HeaderText>
         <Arrow
           src={
-            toggle ? `images/arrows/Up_W50.png` : `images/arrows/Down_W50.png`
+            toggle
+              ? `https://user-images.githubusercontent.com/73605822/168941253-8a0a4918-78d6-4fb7-b924-d9b937a65c10.png`
+              : `https://user-images.githubusercontent.com/73605822/168941254-955b5666-ec2f-40a5-aab4-a3f88464059b.png`
           }
         />
       </DropDownHeader>

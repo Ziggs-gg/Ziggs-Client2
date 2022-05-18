@@ -1,21 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const PlayerCard = ({
-  player: year,
-  role,
-  splitSeason,
-  region,
-  phID,
-  phRole,
-}) => {
+const PlayerCard = ({ player: { phID, phRole, role }, handleSelectPlayer }) => {
   const playerName = phID.split('-')[4];
 
   return (
-    <CardLayout>
-      <TeamLogo src="images/teams/AF.png" />
-      <RoleLogo src={`images/role/role_${role}_W.png`} />
-      <PlayerImg src="images/player/21-LCK-SUM-T1-Keria.png" alt={phID} />
+    <CardLayout
+      onClick={() => {
+        handleSelectPlayer(phRole);
+      }}
+    >
+      <TeamLogo src="/images/teams/AF.png" />
+      <RoleLogo src={`/images/role/role_${role}_W.png`} />
+      <PlayerImg src="/images/player/21-LCK-SUM-T1-Keria.png" alt={phID} />
       <PlayerName>{playerName}</PlayerName>
     </CardLayout>
   );
