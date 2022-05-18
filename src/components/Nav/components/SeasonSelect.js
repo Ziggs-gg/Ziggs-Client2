@@ -2,29 +2,6 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { css } from 'styled-components';
 
-const SEASON_DATA = [
-  {
-    id: 0,
-    value: 'Spring',
-    name: '스프링 정규시즌',
-  },
-  {
-    id: 1,
-    value: 'Spring Playoffs',
-    name: '스프링 플레이오프',
-  },
-  {
-    id: 2,
-    value: 'Summer',
-    name: '썸머 정규시즌',
-  },
-  {
-    id: 3,
-    value: 'Summer Playoffs',
-    name: '썸머 플레이오프',
-  },
-];
-
 const SeasonSelect = ({ season, handleSeasonChange }) => {
   const [toggle, setToggle] = useState(false);
 
@@ -58,7 +35,7 @@ const SeasonSelect = ({ season, handleSeasonChange }) => {
       </DropDownHeader>
       {toggle && (
         <DropDownListContainer>
-          <DropDownList onClick={e => handleSeasonChange(e)}>
+          <DropDownList>
             {SEASON_DATA.map((data, idx) => {
               return (
                 <ListItem
@@ -66,6 +43,9 @@ const SeasonSelect = ({ season, handleSeasonChange }) => {
                   key={idx}
                   season={season}
                   currentValue={data.value}
+                  onClick={() => {
+                    handleSeasonChange(data.value);
+                  }}
                 >
                   {data.name}
                 </ListItem>
@@ -160,3 +140,26 @@ const ListItem = styled.li`
       color: white;
     `}
 `;
+
+const SEASON_DATA = [
+  {
+    id: 0,
+    value: 'Spring',
+    name: '스프링 정규시즌',
+  },
+  {
+    id: 1,
+    value: 'Spring Playoffs',
+    name: '스프링 플레이오프',
+  },
+  {
+    id: 2,
+    value: 'Summer',
+    name: '썸머 정규시즌',
+  },
+  {
+    id: 3,
+    value: 'Summer Playoffs',
+    name: '썸머 플레이오프',
+  },
+];

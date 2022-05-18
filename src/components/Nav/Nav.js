@@ -17,22 +17,24 @@ const Nav = () => {
 
   const [viewToggle, setViewToggle] = useState(false);
 
+  useEffect(() => {
+    const queryString = `/compare/player/?region=${league.join(
+      '|'
+    )}&year=${year}&splitSeason=${season}&role=${role.join('|')}`;
+
+    navigate(queryString);
+  }, [league, navigate, role, season, year]);
+
   const handleYearChange = event => {
     const { value } = event.target;
-    value && setYear(value);
+    value &&
+      setYear(() => {
+        return value;
+      });
   };
 
-  const handleSeasonChange = event => {
-    const { value } = event.target;
-    if (value === 0) {
-      setSeason('Spring');
-    } else if (value === 1) {
-      setSeason('Spring Playoffs');
-    } else if (value === 2) {
-      setSeason('Summer');
-    } else if (value === 3) {
-      setSeason('Summer Playoffs');
-    }
+  const handleSeasonChange = season => {
+    setSeason(season);
   };
 
   const handleLeagueSelect = (leagueData, isSelected) => {
@@ -53,13 +55,13 @@ const Nav = () => {
     }
   };
 
-  useEffect(() => {
-    const queryString = `/compare/player/?region=${league.join(
-      '|'
-    )}&year=${year}&splitSeason=${season}&role=${role.join('|')}`;
+  // useEffect(() => {
+  //   const queryString = `/compare/player/?region=${league.join(
+  //     '|'
+  //   )}&year=${year}&splitSeason=${season}&role=${role.join('|')}`;
 
-    navigate(queryString);
-  }, [league, navigate, role, season, year]);
+  //   navigate(queryString);
+  // }, [league, navigate, role, season, year]);
 
   return (
     <NavLayout>

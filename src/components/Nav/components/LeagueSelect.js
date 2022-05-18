@@ -21,7 +21,9 @@ const LeagueSelect = ({ handleLeagueSelect, league, setLeague }) => {
           return (
             <ListItem
               key={idx}
-              onClick={() => handleLeagueSelect(data.league, isSelected)}
+              onClick={() => {
+                handleLeagueSelect(data.league, isSelected);
+              }}
               isSelected={isSelected}
             >
               <LeagueLogo src={data.image} />
