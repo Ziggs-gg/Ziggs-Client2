@@ -6,6 +6,7 @@ import { API } from '../../../config';
 
 const SelectedPlayer = ({ player, selectedPlayers }) => {
   const [playerData, setPlayerData] = useState();
+  const [deleteButtonVisible, setDeleteButtonVisible] = useState(false);
   let playerStats = [];
   const orderNumber = selectedPlayers.findIndex(
     playerData => playerData === player
@@ -54,39 +55,44 @@ const SelectedPlayer = ({ player, selectedPlayers }) => {
   return (
     <Card orderNumber={orderNumber}>
       <CardLegends orderNumber={orderNumber} />
-      <PlayerInfo>
-        <TeamLogo
-          src={`/images/teams/${playerData?.region}/${playerData?.teamName}.png`}
-        />
-        <RoleLogo src={`/images/role/role_${playerData?.role}_W.png`} />
-        <PlayerImg src="/images/player/21-LCK-SUM-T1-Keria.png" alt="img" />
-      </PlayerInfo>
-      <PlayerDesc>
-        <PlayerTeam>
-          {playerData && `${playerData.region} - ${playerData.teamName}`}
-        </PlayerTeam>
-        <PlayerName>{playerData && playerData.playerIDinGame}</PlayerName>
-      </PlayerDesc>
-      <PlayerDataContainer>
-        {playerStats.map((stats, idx) => {
-          return (
-            <PlayerData key={idx}>
-              <StatesText>{stats.name}</StatesText>
-              <StatesText>{stats.data}</StatesText>
-            </PlayerData>
-          );
-        })}
-        <MostChampions>
-          <StatesText>선호 챔피언</StatesText>
-          <Champions>
-            <ChampionsImg src="http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Aatrox_0.jpg" />
-            <ChampionsImg src="http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Gnar_0.jpg" />
-            <ChampionsImg src="http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Gragas_0.jpg" />
-            <ChampionsImg src="http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Teemo_0.jpg" />
-            <ChampionsImg src="http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Jayce_0.jpg" />
-          </Champions>
-        </MostChampions>
-      </PlayerDataContainer>
+      <DeleteButton>
+        <DeleteIcon src="https://user-images.githubusercontent.com/73605822/169196397-e82fc567-7952-444a-b7f4-4614552a3e95.png" />
+      </DeleteButton>
+      <ContentsWrapper>
+        <PlayerInfo>
+          <TeamLogo
+            src={`/images/teams/${playerData?.region}/${playerData?.teamName}.png`}
+          />
+          <RoleLogo src={`/images/role/role_${playerData?.role}_W.png`} />
+          <PlayerImg src="/images/player/21-LCK-SUM-T1-Keria.png" alt="img" />
+        </PlayerInfo>
+        <PlayerDesc>
+          <PlayerTeam>
+            {playerData && `${playerData.region} - ${playerData.teamName}`}
+          </PlayerTeam>
+          <PlayerName>{playerData && playerData.playerIDinGame}</PlayerName>
+        </PlayerDesc>
+        <PlayerDataContainer>
+          {playerStats.map((stats, idx) => {
+            return (
+              <PlayerData key={idx}>
+                <StatesText>{stats.name}</StatesText>
+                <StatesText>{stats.data}</StatesText>
+              </PlayerData>
+            );
+          })}
+          <MostChampions>
+            <StatesText>선호 챔피언</StatesText>
+            <Champions>
+              <ChampionsImg src="http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Aatrox_0.jpg" />
+              <ChampionsImg src="http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Gnar_0.jpg" />
+              <ChampionsImg src="http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Gragas_0.jpg" />
+              <ChampionsImg src="http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Teemo_0.jpg" />
+              <ChampionsImg src="http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Jayce_0.jpg" />
+            </Champions>
+          </MostChampions>
+        </PlayerDataContainer>
+      </ContentsWrapper>
     </Card>
   );
 };
@@ -160,7 +166,7 @@ const CardLegends = styled.div`
   left: -1px;
   top: -1px;
   border-radius: 10px;
-
+  z-index: 1000;
   ${props =>
     props.orderNumber === 0 &&
     css`
@@ -184,6 +190,16 @@ const CardLegends = styled.div`
     css`
       background: ${props => props.theme.orange.orangeMain};
     `}
+`;
+
+const ContentsWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  :hover {
+    filter: blur(4px);
+  }
 `;
 
 const PlayerInfo = styled.div`
@@ -281,4 +297,26 @@ const ChampionsImg = styled.img`
   height: 18px;
   border: 1px solid ${props => props.theme.black.black85};
   border-radius: 3px;
+`;
+
+const DeleteButton = styled.button`
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 24px;
+  right: 312px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  background-image: url();
+  border: 1px solid ${props => props.theme.black.black85};
+  border-radius: 10px;
+  z-index: 10000;
+
+  cursor: pointer;
+`;
+
+const DeleteIcon = styled.img`
+  width: 24px;
 `;
