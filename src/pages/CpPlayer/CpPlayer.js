@@ -6,6 +6,7 @@ import SelectedCards from './components/SelectedCards';
 
 const CpPlayer = () => {
   const [selectedPlayers, setSelectedPlayers] = useState([]);
+
   return (
     <>
       <List
