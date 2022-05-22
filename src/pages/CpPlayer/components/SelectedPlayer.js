@@ -53,7 +53,6 @@ const SelectedPlayer = ({ player, selectedPlayers, deleteSelectedPlayer }) => {
         console.error('err:', Error);
       });
   }, [player]);
-  console.log(playerData);
 
   return (
     <Card
