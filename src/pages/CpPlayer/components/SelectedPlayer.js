@@ -7,7 +7,8 @@ import { API } from '../../../config';
 const SelectedPlayer = ({ player, selectedPlayers, deleteSelectedPlayer }) => {
   const [playerData, setPlayerData] = useState();
   const [buttonVisible, setButtonVisible] = useState(false);
-  console.log(playerData);
+  const playerInfoArr = playerData?.phRole?.split('-');
+
   let playerStats = [];
 
   const orderNumber = selectedPlayers.findIndex(
@@ -78,9 +79,12 @@ const SelectedPlayer = ({ player, selectedPlayers, deleteSelectedPlayer }) => {
         </PlayerInfo>
         <PlayerDesc>
           <PlayerTeam>
-            {playerData && `${playerData.region} - ${playerData.teamName}`}
+            {playerData?.phRole &&
+              ` ${playerInfoArr[0]} - ${playerInfoArr[1]} - ${playerInfoArr[2]}`}
           </PlayerTeam>
-          <PlayerName>{playerData && playerData.playerIDinGame}</PlayerName>
+          <PlayerName>
+            {playerData?.phRole && `${playerInfoArr[3]} ${playerInfoArr[4]}`}
+          </PlayerName>
         </PlayerDesc>
         <PlayerDataContainer>
           {playerStats.map((stats, idx) => {
@@ -238,7 +242,7 @@ const PlayerInfo = styled.div`
   position: relative;
   width: 84px;
   height: 88px;
-  margin-left: 24px;
+  margin-left: 16px;
 `;
 
 const TeamLogo = styled.img`
@@ -278,9 +282,7 @@ const PlayerDesc = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 85px;
-  height: 32px;
-  margin-left: 8px;
+  width: 105px;
 `;
 
 const PlayerName = styled.p`
@@ -301,7 +303,7 @@ const PlayerDataContainer = styled.div`
   align-items: center;
   width: 447px;
   height: 36px;
-  margin-left: 8px;
+  margin-left: 4px;
 `;
 
 const PlayerData = styled.div`
