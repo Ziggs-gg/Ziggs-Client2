@@ -1,23 +1,33 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState, useEffect } from 'react';
+import styled, { css } from 'styled-components';
 
 const PlayerCard = ({
   player: { phID, phRole, role, region, imgPath },
   handleSelectPlayer,
+  selectedPlayers,
 }) => {
-  const playerName = phID.split('-')[4];
-  const playerTeam = phID.split('-')[3];
+  const [isSelected, setSelected] = useState(false);
+  const orderNumber = selectedPlayers.findIndex(
+    playerData => playerData === phRole
+  );
+
+  useEffect(() => {
+    selectedPlayers.includes(phRole) ? setSelected(true) : setSelected(false);
+  }, [phRole, selectedPlayers]);
+
   return (
     <CardLayout
       onClick={() => {
         handleSelectPlayer(phRole);
       }}
+      isSelected={isSelected}
+      orderNumber={orderNumber}
     >
-      <TeamLogo src={`/images/teams/${region}/${playerTeam}.png`} />
+      <TeamLogo src={`/images/teams/${region}/${phID.split('-')[3]}.png`} />
       <RoleLogo src={`/images/role/role_${role}_W.png`} />
       <GradientMask imgPath={imgPath} />
 
-      <PlayerName>{playerName}</PlayerName>
+      <PlayerName>{phID.split('-')[4]}</PlayerName>
     </CardLayout>
   );
 };
@@ -39,6 +49,34 @@ const CardLayout = styled.div`
 
   cursor: pointer;
   z-index: 1;
+
+  ${props =>
+    props.isSelected &&
+    props.orderNumber === 0 &&
+    css`
+      border: 1px solid ${props => props.theme.red.redMain};
+    `}
+
+  ${props =>
+    props.isSelected &&
+    props.orderNumber === 1 &&
+    css`
+      border: 1px solid ${props => props.theme.blue.blueMain};
+    `}
+
+    ${props =>
+    props.isSelected &&
+    props.orderNumber === 2 &&
+    css`
+      border: 1px solid ${props => props.theme.green.greenMain};
+    `}
+
+    ${props =>
+    props.isSelected &&
+    props.orderNumber === 3 &&
+    css`
+      border: 1px solid ${props => props.theme.orange.orangeMain};
+    `}
 `;
 
 const GradientMask = styled.div`

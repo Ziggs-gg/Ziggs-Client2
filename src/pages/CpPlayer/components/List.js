@@ -5,7 +5,11 @@ import PlayerCard from './PlayerCard';
 import { useLocation } from 'react-router-dom';
 import { API } from '../../../config';
 
-const List = ({ setSelectedPlayers, selectedPlayers }) => {
+const List = ({
+  setSelectedPlayers,
+  selectedPlayers,
+  deleteSelectedPlayer,
+}) => {
   const location = useLocation();
 
   const [playerList, setPlayerList] = useState([]);
@@ -16,6 +20,8 @@ const List = ({ setSelectedPlayers, selectedPlayers }) => {
       selectedPlayers.includes(player) === false
     ) {
       setSelectedPlayers(prev => [...prev, player]);
+    } else {
+      deleteSelectedPlayer(player);
     }
   };
 
@@ -38,6 +44,7 @@ const List = ({ setSelectedPlayers, selectedPlayers }) => {
             key={idx}
             player={player}
             handleSelectPlayer={handleSelectPlayer}
+            selectedPlayers={selectedPlayers}
           />
         );
       })}

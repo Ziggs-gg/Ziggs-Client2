@@ -17,6 +17,7 @@ const CpPlayer = () => {
       <List
         setSelectedPlayers={setSelectedPlayers}
         selectedPlayers={selectedPlayers}
+        deleteSelectedPlayer={deleteSelectedPlayer}
       />
       <SelectedCards
         selectedPlayers={selectedPlayers}
