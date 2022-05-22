@@ -2,25 +2,39 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import PlayerCard from './PlayerCard';
+import { useLocation } from 'react-router-dom';
+import { API } from '../../../config';
 
-const List = () => {
+const List = ({ setSelectedPlayers, selectedPlayers }) => {
+  const location = useLocation();
+
   const [playerList, setPlayerList] = useState([]);
+
+  const handleSelectPlayer = player => {
+    selectedPlayers.length < 4 && setSelectedPlayers(prev => [...prev, player]);
+  };
 
   useEffect(() => {
     axios
-      .get('http://18.237.44.175:3000/api/compare/player/')
+      .get(`${API.PLAYER_LIST}${location.search}`)
       .then(Response => {
         setPlayerList(Response.data);
       })
       .catch(Error => {
         console.error('err:', Error);
       });
-  }, []);
+  }, [location.search]);
 
   return (
     <ListLayout>
       {playerList.map((player, idx) => {
-        return <PlayerCard key={idx} {...player} />;
+        return (
+          <PlayerCard
+            key={idx}
+            player={player}
+            handleSelectPlayer={handleSelectPlayer}
+          />
+        );
       })}
     </ListLayout>
   );
@@ -29,6 +43,7 @@ const List = () => {
 export default List;
 
 const ListLayout = styled.div`
+  position: relative;
   display: flex;
   justify-content: flex-start;
   align-content: flex-start;
@@ -40,7 +55,6 @@ const ListLayout = styled.div`
   padding: 16px 78px;
   padding-bottom: 0px;
   overflow-y: scroll;
-
   border-top: 1px solid ${props => props.theme.black.black85};
   border-bottom: 3px solid ${props => props.theme.black.black85};
 

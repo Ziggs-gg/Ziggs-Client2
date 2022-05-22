@@ -2,11 +2,19 @@ import React from 'react';
 import styled from 'styled-components';
 import SelectedPlayer from './SelectedPlayer';
 
-const SelectedCards = () => {
+const SelectedCards = ({ selectedPlayers, deleteSelectedPlayer }) => {
   return (
     <CardsContainer>
-      <SelectedPlayer />
-      <SelectedPlayer />
+      {selectedPlayers?.map((player, idx) => {
+        return (
+          <SelectedPlayer
+            player={player}
+            key={idx}
+            selectedPlayers={selectedPlayers}
+            deleteSelectedPlayer={deleteSelectedPlayer}
+          />
+        );
+      })}
     </CardsContainer>
   );
 };
