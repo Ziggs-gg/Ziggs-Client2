@@ -38,7 +38,7 @@ const SelectedPlayer = ({ player, selectedPlayers, deleteSelectedPlayer }) => {
         data: playerData.totalDeaths,
       },
       {
-        name: '총 어시스트',
+        name: '총 어시',
         data: playerData.totalAssists,
       },
     ];
@@ -282,12 +282,14 @@ const PlayerDesc = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  letter-spacing: -0.03em;
   width: 105px;
 `;
 
 const PlayerName = styled.p`
   font-size: 14px;
   font-weight: 500;
+  letter-spacing: -0.02em;
   color: ${props => props.theme.white.white100};
 `;
 
@@ -316,21 +318,24 @@ const PlayerData = styled.div`
 
 const StatesText = styled.span`
   height: 16px;
+  margin-top: 4px;
+  letter-spacing: -0.02em;
   font-weight: 500;
   font-size: 14px;
   color: #f3f3f3;
 `;
 
 const MostChampions = styled.div`
-  width: 90px;
+  /* width: 90px; */
   height: 36px;
 `;
 
 const Champions = styled.div``;
 
 const ChampionsImg = styled.img`
-  width: 18px;
-  height: 18px;
+  width: 24px;
+  height: 24px;
+  margin-right: 2px;
   border: 1px solid ${props => props.theme.black.black85};
   border-radius: 3px;
 `;
