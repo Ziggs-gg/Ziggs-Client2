@@ -11,7 +11,12 @@ const List = ({ setSelectedPlayers, selectedPlayers }) => {
   const [playerList, setPlayerList] = useState([]);
 
   const handleSelectPlayer = player => {
-    selectedPlayers.length < 4 && setSelectedPlayers(prev => [...prev, player]);
+    if (
+      selectedPlayers.length < 4 &&
+      selectedPlayers.includes(player) === false
+    ) {
+      setSelectedPlayers(prev => [...prev, player]);
+    }
   };
 
   useEffect(() => {

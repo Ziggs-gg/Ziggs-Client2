@@ -95,19 +95,34 @@ const SelectedPlayer = ({ player, selectedPlayers, deleteSelectedPlayer }) => {
             <StatesText>선호 챔피언</StatesText>
             <Champions>
               <ChampionsImg
-                src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData?.most1}_0.jpg`}
+                src={
+                  playerData?.most1 &&
+                  `http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most1}_0.jpg`
+                }
               />
               <ChampionsImg
-                src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData?.most2}_0.jpg`}
+                src={
+                  playerData?.most2 &&
+                  `http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most2}_0.jpg`
+                }
               />
               <ChampionsImg
-                src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData?.most3}_0.jpg`}
+                src={
+                  playerData?.most3 &&
+                  `http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most3}_0.jpg`
+                }
               />
               <ChampionsImg
-                src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData?.most4}_0.jpg`}
+                src={
+                  playerData?.most4 &&
+                  `http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most4}_0.jpg`
+                }
               />
               <ChampionsImg
-                src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData?.most5}_0.jpg`}
+                src={
+                  playerData?.most5 &&
+                  `http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most5}_0.jpg`
+                }
               />
             </Champions>
           </MostChampions>
