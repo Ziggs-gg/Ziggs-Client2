@@ -16,7 +16,6 @@ const PlayerCard = ({
       <TeamLogo src={`/images/teams/${region}/${playerTeam}.png`} />
       <RoleLogo src={`/images/role/role_${role}_W.png`} />
       <GradientMask imgPath={imgPath} />
-      {/* <PlayerImg src={`${imgPath}`} alt={phID} /> */}
 
       <PlayerName>{playerName}</PlayerName>
     </CardLayout>

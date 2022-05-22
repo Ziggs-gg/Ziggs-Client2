@@ -4,10 +4,12 @@ import { css } from 'styled-components';
 import axios from 'axios';
 import { API } from '../../../config';
 
-const SelectedPlayer = ({ player, selectedPlayers }) => {
+const SelectedPlayer = ({ player, selectedPlayers, deleteSelectedPlayer }) => {
   const [playerData, setPlayerData] = useState();
-  const [deleteButtonVisible, setDeleteButtonVisible] = useState(false);
+  const [buttonVisible, setButtonVisible] = useState(false);
+
   let playerStats = [];
+
   const orderNumber = selectedPlayers.findIndex(
     playerData => playerData === player
   );
@@ -52,13 +54,22 @@ const SelectedPlayer = ({ player, selectedPlayers }) => {
       });
   }, [player]);
   console.log(playerData);
+
   return (
-    <Card orderNumber={orderNumber}>
+    <Card
+      orderNumber={orderNumber}
+      buttonVisible={buttonVisible}
+      onMouseEnter={() => setButtonVisible(true)}
+      onMouseLeave={() => setButtonVisible(false)}
+    >
       <CardLegends orderNumber={orderNumber} />
-      <DeleteButton>
+      <DeleteButton
+        buttonVisible={buttonVisible}
+        onClick={() => deleteSelectedPlayer(player)}
+      >
         <DeleteIcon src="https://user-images.githubusercontent.com/73605822/169196397-e82fc567-7952-444a-b7f4-4614552a3e95.png" />
       </DeleteButton>
-      <ContentsWrapper>
+      <ContentsWrapper buttonVisible={buttonVisible}>
         <PlayerInfo>
           <TeamLogo
             src={`/images/teams/${playerData?.region}/${playerData?.teamName}.png`}
@@ -85,19 +96,19 @@ const SelectedPlayer = ({ player, selectedPlayers }) => {
             <StatesText>선호 챔피언</StatesText>
             <Champions>
               <ChampionsImg
-                src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most1}_0.jpg`}
+                src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData?.most1}_0.jpg`}
               />
               <ChampionsImg
-                src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most2}_0.jpg`}
+                src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData?.most2}_0.jpg`}
               />
               <ChampionsImg
-                src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most3}_0.jpg`}
+                src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData?.most3}_0.jpg`}
               />
               <ChampionsImg
-                src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most4}_0.jpg`}
+                src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData?.most4}_0.jpg`}
               />
               <ChampionsImg
-                src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most5}_0.jpg`}
+                src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData?.most5}_0.jpg`}
               />
             </Champions>
           </MostChampions>
@@ -207,9 +218,11 @@ const ContentsWrapper = styled.div`
   justify-content: center;
   align-items: center;
 
-  :hover {
-    filter: blur(4px);
-  }
+  ${props =>
+    props.buttonVisible &&
+    css`
+      filter: blur(4px);
+    `}
 `;
 
 const PlayerInfo = styled.div`
@@ -313,7 +326,7 @@ const ChampionsImg = styled.img`
 
 const DeleteButton = styled.button`
   position: absolute;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   top: 24px;
@@ -327,6 +340,12 @@ const DeleteButton = styled.button`
   z-index: 10000;
 
   cursor: pointer;
+
+  ${props =>
+    props.buttonVisible &&
+    css`
+      display: flex;
+    `}
 `;
 
 const DeleteIcon = styled.img`

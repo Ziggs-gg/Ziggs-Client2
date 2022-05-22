@@ -7,13 +7,21 @@ import SelectedCards from './components/SelectedCards';
 const CpPlayer = () => {
   const [selectedPlayers, setSelectedPlayers] = useState([]);
 
+  const deleteSelectedPlayer = choosenPlayer => {
+    const newList = selectedPlayers.filter(player => player !== choosenPlayer);
+    setSelectedPlayers(newList);
+  };
+
   return (
     <>
       <List
         setSelectedPlayers={setSelectedPlayers}
         selectedPlayers={selectedPlayers}
       />
-      <SelectedCards selectedPlayers={selectedPlayers} />
+      <SelectedCards
+        selectedPlayers={selectedPlayers}
+        deleteSelectedPlayer={deleteSelectedPlayer}
+      />
       <ChartContainer selectedPlayers={selectedPlayers} />
       <HeatMapContainer selectedPlayers={selectedPlayers} />
     </>

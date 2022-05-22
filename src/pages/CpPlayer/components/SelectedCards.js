@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import SelectedPlayer from './SelectedPlayer';
 
-const SelectedCards = ({ selectedPlayers }) => {
+const SelectedCards = ({ selectedPlayers, deleteSelectedPlayer }) => {
   return (
     <CardsContainer>
       {selectedPlayers?.map((player, idx) => {
@@ -11,6 +11,7 @@ const SelectedCards = ({ selectedPlayers }) => {
             player={player}
             key={idx}
             selectedPlayers={selectedPlayers}
+            deleteSelectedPlayer={deleteSelectedPlayer}
           />
         );
       })}
