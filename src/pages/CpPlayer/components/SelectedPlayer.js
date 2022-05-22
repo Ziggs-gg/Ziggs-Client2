@@ -7,7 +7,7 @@ import { API } from '../../../config';
 const SelectedPlayer = ({ player, selectedPlayers, deleteSelectedPlayer }) => {
   const [playerData, setPlayerData] = useState();
   const [buttonVisible, setButtonVisible] = useState(false);
-
+  console.log(playerData);
   let playerStats = [];
 
   const orderNumber = selectedPlayers.findIndex(
@@ -94,36 +94,31 @@ const SelectedPlayer = ({ player, selectedPlayers, deleteSelectedPlayer }) => {
           <MostChampions>
             <StatesText>선호 챔피언</StatesText>
             <Champions>
-              <ChampionsImg
-                src={
-                  playerData?.most1 &&
-                  `http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most1}_0.jpg`
-                }
-              />
-              <ChampionsImg
-                src={
-                  playerData?.most2 &&
-                  `http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most2}_0.jpg`
-                }
-              />
-              <ChampionsImg
-                src={
-                  playerData?.most3 &&
-                  `http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most3}_0.jpg`
-                }
-              />
-              <ChampionsImg
-                src={
-                  playerData?.most4 &&
-                  `http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most4}_0.jpg`
-                }
-              />
-              <ChampionsImg
-                src={
-                  playerData?.most5 &&
-                  `http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most5}_0.jpg`
-                }
-              />
+              {playerData?.most1 && (
+                <ChampionsImg
+                  src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most1}_0.jpg`}
+                />
+              )}
+              {playerData?.most2 && (
+                <ChampionsImg
+                  src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most2}_0.jpg`}
+                />
+              )}
+              {playerData?.most3 && (
+                <ChampionsImg
+                  src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most3}_0.jpg`}
+                />
+              )}
+              {playerData?.most4 && (
+                <ChampionsImg
+                  src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most4}_0.jpg`}
+                />
+              )}
+              {playerData?.most5 && (
+                <ChampionsImg
+                  src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most5}_0.jpg`}
+                />
+              )}
             </Champions>
           </MostChampions>
         </PlayerDataContainer>
