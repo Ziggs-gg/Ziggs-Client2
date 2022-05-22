@@ -28,7 +28,7 @@ const List = ({ setSelectedPlayers, selectedPlayers }) => {
   return (
     <ListLayout>
       {playerList.map((player, idx) => {
-        console.log(player);
+        console.log(player.imgPath);
         return (
           <PlayerCard
             key={idx}

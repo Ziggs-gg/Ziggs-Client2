@@ -51,7 +51,7 @@ const SelectedPlayer = ({ player, selectedPlayers }) => {
         console.error('err:', Error);
       });
   }, [player]);
-
+  console.log(playerData);
   return (
     <Card orderNumber={orderNumber}>
       <CardLegends orderNumber={orderNumber} />
@@ -64,7 +64,7 @@ const SelectedPlayer = ({ player, selectedPlayers }) => {
             src={`/images/teams/${playerData?.region}/${playerData?.teamName}.png`}
           />
           <RoleLogo src={`/images/role/role_${playerData?.role}_W.png`} />
-          <PlayerImg src="/images/player/21-LCK-SUM-T1-Keria.png" alt="img" />
+          <PlayerImg src={`${playerData?.imgPath}`} alt="img" />
         </PlayerInfo>
         <PlayerDesc>
           <PlayerTeam>
@@ -84,11 +84,21 @@ const SelectedPlayer = ({ player, selectedPlayers }) => {
           <MostChampions>
             <StatesText>선호 챔피언</StatesText>
             <Champions>
-              <ChampionsImg src="http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Aatrox_0.jpg" />
-              <ChampionsImg src="http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Gnar_0.jpg" />
-              <ChampionsImg src="http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Gragas_0.jpg" />
-              <ChampionsImg src="http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Teemo_0.jpg" />
-              <ChampionsImg src="http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Jayce_0.jpg" />
+              <ChampionsImg
+                src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most1}_0.jpg`}
+              />
+              <ChampionsImg
+                src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most2}_0.jpg`}
+              />
+              <ChampionsImg
+                src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most3}_0.jpg`}
+              />
+              <ChampionsImg
+                src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most4}_0.jpg`}
+              />
+              <ChampionsImg
+                src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most5}_0.jpg`}
+              />
             </Champions>
           </MostChampions>
         </PlayerDataContainer>
@@ -223,15 +233,17 @@ const RoleLogo = styled.img`
   height: 16px;
   right: 8px;
   top: 6px;
+  opacity: 0.5;
 `;
 
 const PlayerImg = styled.img`
   position: absolute;
   width: 84px;
-  height: 64px;
+  height: 70px;
   bottom: 0;
   color: white;
 
+  object-fit: contain;
   mask-image: linear-gradient(
     to bottom,
     #c4c4c4 52.71%,

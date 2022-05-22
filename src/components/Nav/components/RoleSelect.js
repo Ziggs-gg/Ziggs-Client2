@@ -53,6 +53,7 @@ const SelectAll = styled.span`
   height: 32px;
   margin-right: 16px;
   color: white;
+  font-size: 12px;
   font-weight: 500;
   text-decoration: underline;
 

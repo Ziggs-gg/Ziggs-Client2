@@ -93,6 +93,7 @@ const HeaderText = styled.span`
   margin-left: 20px;
   font-size: 12px;
   font-weight: 500;
+  letter-spacing: -0.03em;
 `;
 
 const Arrow = styled.img`

@@ -118,7 +118,7 @@ const FilterContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  right: 228px;
+  right: 80px;
 `;
 
 const SelectWrapper = styled.div`

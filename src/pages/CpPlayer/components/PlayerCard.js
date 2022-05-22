@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const PlayerCard = ({
-  player: { phID, phRole, role, region },
+  player: { phID, phRole, role, region, imgPath },
   handleSelectPlayer,
 }) => {
   const playerName = phID.split('-')[4];
@@ -15,7 +15,9 @@ const PlayerCard = ({
     >
       <TeamLogo src={`/images/teams/${region}/${playerTeam}.png`} />
       <RoleLogo src={`/images/role/role_${role}_W.png`} />
-      <PlayerImg src="/images/player/21-LCK-SUM-T1-Keria.png" alt={phID} />
+      <GradientMask imgPath={imgPath} />
+      {/* <PlayerImg src={`${imgPath}`} alt={phID} /> */}
+
       <PlayerName>{playerName}</PlayerName>
     </CardLayout>
   );
@@ -40,6 +42,29 @@ const CardLayout = styled.div`
   z-index: 1;
 `;
 
+const GradientMask = styled.div`
+  position: absolute;
+  bottom: 0;
+  width: 84px;
+  height: 78px;
+  /* position: absolute; */
+  /* border-radius: 10px; */
+  /* border: 1px solid ${props => props.theme.black.black85}; */
+
+  mask-image: linear-gradient(
+    to bottom,
+    #c4c4c4 52.71%,
+    rgba(196, 196, 196, 0.2) 86.46%,
+    rgba(196, 196, 196, 0) 100%
+  );
+
+  border-radius: 10px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-image: url(${props => props.imgPath});
+`;
+
 const TeamLogo = styled.img`
   position: absolute;
   width: 16px;
@@ -54,20 +79,7 @@ const RoleLogo = styled.img`
   height: 16px;
   right: 8px;
   top: 6px;
-`;
-
-const PlayerImg = styled.img`
-  position: absolute;
-  width: 84px;
-  height: 64px;
-  bottom: 0;
-  color: white;
-  mask-image: linear-gradient(
-    to bottom,
-    #c4c4c4 52.71%,
-    rgba(196, 196, 196, 0.2) 86.46%,
-    rgba(196, 196, 196, 0) 100%
-  );
+  opacity: 0.5;
 `;
 
 const PlayerName = styled.div`
