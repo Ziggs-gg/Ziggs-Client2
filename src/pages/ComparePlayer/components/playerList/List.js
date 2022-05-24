@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 import PlayerCard from './PlayerCard';
 import { useLocation } from 'react-router-dom';
-import { API } from '../../../config';
+import { API } from '../../../../config';
 
 const List = ({
   setSelectedPlayers,

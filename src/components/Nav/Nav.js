@@ -17,13 +17,13 @@ const Nav = () => {
 
   const [viewToggle, setViewToggle] = useState(false);
 
-  useEffect(() => {
-    const queryString = `/compare/player/?region=${league.join(
-      '|'
-    )}&year=${year}&splitSeason=${season}&role=${role.join('|')}`;
+  const queryString = `/compare/player/?region=${league.join(
+    '|'
+  )}&year=${year}&splitSeason=${season}&role=${role.join('|')}`;
 
+  useEffect(() => {
     navigate(queryString);
-  }, [league, navigate, role, season, year]);
+  }, [navigate, queryString]);
 
   const handleYearChange = event => {
     const { value } = event.target;

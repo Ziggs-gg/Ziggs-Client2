@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import ChartContainer from './components/ChartContainer';
-import HeatMapContainer from './components/HeatMapContainer';
-import List from './components/List';
-import SelectedCards from './components/SelectedCards';
-import Championful from './components/Championful';
+import HeatMapContainer from './components/statsDetail/HeatMapContainer';
+import List from './components/playerList/List';
+import SelectedCards from './components/selectedPlayer/SelectedCards';
+import Championful from './components/statsDetail/Championful';
 
 const CpPlayer = () => {
   const [selectedPlayers, setSelectedPlayers] = useState([]);

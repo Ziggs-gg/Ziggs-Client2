@@ -1,5 +1,5 @@
 import React from 'react';
-import List from './CpPlayer/components/List';
+import List from './ComparePlayer/components/playerList/List';
 
 const Landing = () => {
   return <List />;
