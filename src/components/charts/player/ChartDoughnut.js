@@ -3,14 +3,17 @@ import { Doughnut } from 'react-chartjs-2';
 import 'chartjs-plugin-doughnut-innertext';
 import styled from 'styled-components';
 
-const ChartDoughnut = () => {
+const ChartDoughnut = ({ chartData }) => {
   const data1 = {
-    labels: ['Kills', 'Assists', 'Deaths'],
+    labels: ['Kills', 'Deaths', 'Assists'],
     datasets: [
       {
         label: 'My First Dataset',
-        //data: [props.dpg.KDABox[0].AVGkills, props.dpg.KDABox[0].AVGdeaths, props.dpg.KDABox[0].AVGassists],
-        data: [3.07, 4.53, 1.88],
+        data: [
+          chartData[0]?.AVGkills,
+          chartData[0]?.AVGdeaths,
+          chartData[0]?.AVGassists,
+        ],
         backgroundColor: [
           'rgb(193, 54, 49)',
           'rgb(105, 36, 32)',
@@ -23,13 +26,12 @@ const ChartDoughnut = () => {
     ],
   };
 
-  const valuetext = 'PLAYER 4.04';
+  const valuetext1 = 'KDA: ' + chartData[0]?.KDA;
 
   const options1 = {
     centerText: {
       color: '#F3F3F3',
-      //value: "KDA : " + props.dpg.KDABox[0].KDA,
-      value: valuetext,
+      value: valuetext1,
       fontSizeAdjust: 0.1, // increase font size 20% based on default font size
     },
     plugins: {
@@ -45,8 +47,11 @@ const ChartDoughnut = () => {
     datasets: [
       {
         label: 'My First Dataset',
-        //data: [props.dpg.KDABox[1].AVGkills, props.dpg.KDABox[1].AVGdeaths, props.dpg.KDABox[1].AVGassists],
-        data: [3.07, 4.53, 1.88],
+        data: [
+          chartData[1]?.AVGkills,
+          chartData[1]?.AVGdeaths,
+          chartData[1]?.AVGassists,
+        ],
         backgroundColor: [
           'rgb(49, 115, 193)',
           'rgb(33, 67, 104)',
@@ -59,11 +64,12 @@ const ChartDoughnut = () => {
     ],
   };
 
+  const valuetext2 = 'KDA: ' + chartData[1]?.KDA;
+
   const options2 = {
     centerText: {
       color: '#F3F3F3',
-      //value: "KDA : " + props.dpg.KDABox[1].KDA,
-      value: 'KDA : ' + 4.04,
+      value: valuetext2,
       fontSizeAdjust: 0.1, // increase font size 20% based on default font size
     },
     plugins: {
@@ -73,14 +79,16 @@ const ChartDoughnut = () => {
       },
     },
   };
-
   const data3 = {
     labels: ['Red', 'Blue', 'Yellow'],
     datasets: [
       {
         label: 'My First Dataset',
-        //data: [props.dpg.KDABox[2].AVGkills, props.dpg.KDABox[2].AVGdeaths, props.dpg.KDABox[2].AVGassists],
-        data: [3.07, 4.53, 1.88],
+        data: [
+          chartData[2]?.AVGkills,
+          chartData[2]?.AVGdeaths,
+          chartData[2]?.AVGassists,
+        ],
         backgroundColor: [
           'rgb(247, 125, 28)',
           'rgb(133, 72, 22)',
@@ -93,11 +101,12 @@ const ChartDoughnut = () => {
     ],
   };
 
+  const valuetext3 = 'KDA: ' + chartData[2]?.KDA;
+
   const options3 = {
     centerText: {
-      color: '#000',
-      //value: "KDA : " + props.dpg.KDABox[2].KDA,
-      value: 'KDA : ' + 4.04,
+      color: '#F3F3F3',
+      value: valuetext3,
       fontSizeAdjust: 0.1, // increase font size 20% based on default font size
     },
     plugins: {
@@ -113,8 +122,11 @@ const ChartDoughnut = () => {
     datasets: [
       {
         label: 'My First Dataset',
-        //data: [props.dpg.KDABox[0].AVGkills, props.dpg.KDABox[0].AVGassists, props.dpg.KDABox[0].AVGdeaths],
-        data: [3.07, 4.53, 1.88],
+        data: [
+          chartData[3]?.AVGkills,
+          chartData[3]?.AVGdeaths,
+          chartData[3]?.AVGassists,
+        ],
         backgroundColor: [
           'rgb(162, 212, 67)',
           'rgb(90, 115, 41)',
@@ -127,11 +139,13 @@ const ChartDoughnut = () => {
     ],
   };
 
+  const valuetext4 = 'KDA: ' + chartData[3]?.KDA;
+
   const options4 = {
     centerText: {
       color: '#000',
       //value: "KDA : " + props.dpg.KDABox[0].KDA,
-      value: 'KDA : ' + 4.04,
+      value: valuetext4,
       fontSizeAdjust: 0.1, // increase font size 20% based on default font size
     },
     plugins: {
@@ -142,54 +156,62 @@ const ChartDoughnut = () => {
     },
   };
 
+  const firstChart = {
+    width: 142,
+    height: 142,
+    margin: '0 32px 20px 0',
+  };
+  const secondChart = {
+    width: '142px',
+    height: '142px',
+    margin: '0 0 20px 0',
+  };
+  const thirdChart = {
+    width: '142px',
+    height: '142px',
+    margin: '0 32px 0 0',
+  };
+  const fourthChart = {
+    width: '142px',
+    height: '142px',
+  };
+
   return (
     <DoughnutLayout>
-      <Doughnut
-        style={firstChart}
-        type={'doughnut'}
-        data={data1}
-        options={options1}
-      />
-      {/* <Doughnut
-        style={secondChart}
-        type={'doughnut'}
-        data={data2}
-        options={options2}
-      />
-      <Doughnut
-        style={thirdChart}
-        type={'doughnut'}
-        data={data3}
-        options={options3}
-      />
-      <Doughnut
-        style={fourthChart}
-        type={'doughnut'}
-        data={data4}
-        options={options4}
-      /> */}
+      {chartData[0] && (
+        <Doughnut
+          style={firstChart}
+          type={'doughnut'}
+          data={data1}
+          options={options1}
+        />
+      )}
+      {chartData[1] && (
+        <Doughnut
+          style={secondChart}
+          type={'doughnut'}
+          data={data2}
+          options={options2}
+        />
+      )}
+      {chartData[2] && (
+        <Doughnut
+          style={thirdChart}
+          type={'doughnut'}
+          data={data3}
+          options={options3}
+        />
+      )}
+      {chartData[3] && (
+        <Doughnut
+          style={fourthChart}
+          type={'doughnut'}
+          data={data4}
+          options={options4}
+        />
+      )}
     </DoughnutLayout>
   );
-};
-
-const firstChart = {
-  width: '142px',
-  height: '142px',
-  margin: '0 32px 20px 0',
-};
-const secondChart = {
-  width: '142px',
-  height: '142px',
-  margin: '0 0 20px 0',
-};
-const thirdChart = {
-  width: '142px',
-  height: '142px',
-  margin: '0 32px 0 0',
-};
-const fourthChart = {
-  width: '142px',
-  height: '142px',
 };
 
 const DoughnutLayout = styled.div`
