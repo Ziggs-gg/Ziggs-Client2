@@ -1,12 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import ChampionfulCard from './ChampionfulCard';
-const Championful = ({ selectedPlayers }) => {
+
+const Championful = () => {
   return (
     <ChampionfulLayout>
-      {selectedPlayers.map((player, idx) => {
-        return <ChampionfulCard player={player} key={idx} />;
-      })}
+      <ChampionfulCard />
     </ChampionfulLayout>
   );
 };

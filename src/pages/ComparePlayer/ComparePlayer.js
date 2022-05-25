@@ -4,6 +4,7 @@ import HeatMapContainer from './components/statsDetail/HeatMapContainer';
 import List from './components/playerList/List';
 import SelectedCards from './components/selectedPlayer/SelectedCards';
 import Championful from './components/statsDetail/Championful';
+import StatsDetail from './components/statsDetail/StatsDetail';
 
 const CpPlayer = () => {
   const [selectedPlayers, setSelectedPlayers] = useState([]);
@@ -25,8 +26,7 @@ const CpPlayer = () => {
         deleteSelectedPlayer={deleteSelectedPlayer}
       />
       <ChartContainer selectedPlayers={selectedPlayers} />
-      <HeatMapContainer selectedPlayers={selectedPlayers} />
-      <Championful selectedPlayers={selectedPlayers} />
+      <StatsDetail selectedPlayers={selectedPlayers} />
     </>
   );
 };
