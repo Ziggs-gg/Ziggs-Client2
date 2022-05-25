@@ -2,77 +2,74 @@ import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import styled from 'styled-components';
 
-const data4 = {
-  labels: [''],
-  datasets: [
-    {
-      label: 'player1',
-      data: [12],
-      backgroundColor: ['rgb(193, 53, 49)'],
-      borderWidth: 5,
-    },
-    {
-      label: 'player2',
-      data: [12],
-      backgroundColor: ['rgb(49, 115, 193)'],
-      borderWidth: 5,
-    },
-    {
-      label: 'player3',
-      data: [12],
-      backgroundColor: ['rgb(119, 154, 52)'],
-      borderWidth: 5,
-    },
-    {
-      label: 'player4',
-      data: [12],
-      backgroundColor: ['rgb(179, 93, 24)'],
-      borderWidth: 5,
-    },
-  ],
-};
-const options4 = {
-  plugins: {
-    legend: {
-      display: false,
-    },
-    title: {
-      display: true,
-      text: '분당 CS',
-      color: '#F3F3F3',
-      align: 'start',
-      padding: '15',
-    },
-  },
-  maintainAspectRatio: false,
-  scales: {
-    x: {
-      grid: {
-        color: '#363634',
-        borderColor: '#363634',
-        tickColor: '#363634',
-      },
-      ticks: {
-        fontColor: '#F3F3F3',
-      },
-    },
-    y: {
-      grid: {
-        color: '#363634',
-        borderColor: '#363634',
-        tickColor: '#363634',
-      },
-      ticks: {
-        fontColor: '#F3F3F3',
-      },
-    },
-  },
-};
+const ChartBar5 = ({ chartData }) => {
+  let bgc = [
+    'rgb(193, 53, 49)',
+    'rgb(49, 115, 193)',
+    'rgb(119, 154, 52)',
+    'rgb(179, 93, 24)',
+  ];
+  let data = {
+    labels: [''],
+    datasets: [],
+  };
+  for (let i = 0; i < chartData.length; i++) {
+    let playerName = chartData[i]?.phRole.split('-');
 
-const ChartBar5 = () => {
+    data.datasets.push({
+      label: playerName[3] + ' ' + playerName[4],
+      data: [chartData[i]?.CSM],
+      backgroundColor: bgc[i],
+      borderRadius: 4,
+      barPercentage: 0.8,
+      categoryPercentage: 0.4,
+    });
+  }
+
+  const options4 = {
+    interaction: {
+      mode: 'index',
+    },
+    plugins: {
+      legend: {
+        display: false,
+      },
+      title: {
+        display: true,
+        text: '분당 CS',
+        color: '#F3F3F3',
+        align: 'start',
+        padding: '15',
+      },
+    },
+    maintainAspectRatio: false,
+    scales: {
+      x: {
+        grid: {
+          color: '#363634',
+          borderColor: '#363634',
+          tickColor: '#363634',
+        },
+        ticks: {
+          color: '#C6C6C5',
+        },
+      },
+      y: {
+        grid: {
+          color: '#363634',
+          borderColor: '#363634',
+          tickColor: '#363634',
+        },
+        ticks: {
+          color: '#C6C6C5',
+        },
+      },
+    },
+  };
+
   return (
     <BarLayout>
-      <Bar data={data4} options={options4} />
+      <Bar data={data} options={options4} />
     </BarLayout>
   );
 };

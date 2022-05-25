@@ -2,13 +2,18 @@ import react from 'react';
 import { PolarArea } from 'react-chartjs-2';
 import styled from 'styled-components';
 
-const ChartPolar = () => {
+const ChartPolar = ({ chartData }) => {
   const data = {
     labels: ['player1', 'player2', 'player3', 'player4'],
     datasets: [
       {
         label: 'My First Dataset',
-        data: [11, 16, 7, 3],
+        data: [
+          chartData[0]?.KPPCT,
+          chartData[1]?.KPPCT,
+          chartData[2]?.KPPCT,
+          chartData[3]?.KPPCT,
+        ],
         backgroundColor: [
           'rgba(193, 53, 49, .3)',
           'rgba(49, 115, 193, .3)',
