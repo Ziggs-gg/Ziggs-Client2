@@ -26,6 +26,8 @@ const ChartBar4 = ({ chartData }) => {
     });
   }
   const options4 = {
+    suggestedMin: 0,
+    suggestedMax: 100,
     interaction: {
       mode: 'index',
     },

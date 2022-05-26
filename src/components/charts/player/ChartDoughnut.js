@@ -22,6 +22,7 @@ const ChartDoughnut = ({ chartData }) => {
         weight: 10,
         hoverOffset: 4,
         cutout: '90%',
+        borderColor: null,
       },
     ],
   };
@@ -29,13 +30,13 @@ const ChartDoughnut = ({ chartData }) => {
   const valuetext1 = 'KDA: ' + chartData[0]?.KDA;
 
   const options1 = {
+    responsive: false,
     centerText: {
       color: '#F3F3F3',
       value: valuetext1,
       fontSizeAdjust: 0.1, // increase font size 20% based on default font size
     },
     plugins: {
-      responsive: true,
       legend: {
         display: false,
       },
@@ -60,6 +61,7 @@ const ChartDoughnut = ({ chartData }) => {
         weight: 10,
         hoverOffset: 4,
         cutout: '90%',
+        borderColor: null,
       },
     ],
   };
@@ -67,20 +69,20 @@ const ChartDoughnut = ({ chartData }) => {
   const valuetext2 = 'KDA: ' + chartData[1]?.KDA;
 
   const options2 = {
+    responsive: false,
     centerText: {
       color: '#F3F3F3',
       value: valuetext2,
       fontSizeAdjust: 0.1, // increase font size 20% based on default font size
     },
     plugins: {
-      responsive: true,
       legend: {
         display: false,
       },
     },
   };
   const data3 = {
-    labels: ['Red', 'Blue', 'Yellow'],
+    labels: ['Kills', 'Deaths', 'Assists'],
     datasets: [
       {
         label: 'My First Dataset',
@@ -97,6 +99,7 @@ const ChartDoughnut = ({ chartData }) => {
         weight: 10,
         hoverOffset: 4,
         cutout: '90%',
+        borderColor: null,
       },
     ],
   };
@@ -104,13 +107,13 @@ const ChartDoughnut = ({ chartData }) => {
   const valuetext3 = 'KDA: ' + chartData[2]?.KDA;
 
   const options3 = {
+    responsive: false,
     centerText: {
       color: '#F3F3F3',
       value: valuetext3,
       fontSizeAdjust: 0.1, // increase font size 20% based on default font size
     },
     plugins: {
-      responsive: true,
       legend: {
         display: false,
       },
@@ -118,7 +121,7 @@ const ChartDoughnut = ({ chartData }) => {
   };
 
   const data4 = {
-    labels: ['Red', 'Blue', 'Yellow'],
+    labels: ['Kills', 'Deaths', 'Assists'],
     datasets: [
       {
         label: 'My First Dataset',
@@ -135,6 +138,7 @@ const ChartDoughnut = ({ chartData }) => {
         weight: 10,
         hoverOffset: 4,
         cutout: '90%',
+        borderColor: null,
       },
     ],
   };
@@ -142,45 +146,87 @@ const ChartDoughnut = ({ chartData }) => {
   const valuetext4 = 'KDA: ' + chartData[3]?.KDA;
 
   const options4 = {
+    responsive: false,
     centerText: {
-      color: '#000',
-      //value: "KDA : " + props.dpg.KDABox[0].KDA,
+      color: '#F3F3F3',
       value: valuetext4,
       fontSizeAdjust: 0.1, // increase font size 20% based on default font size
     },
     plugins: {
-      responsive: true,
       legend: {
         display: false,
       },
     },
   };
 
-  const firstChart = {
-    width: 142,
-    height: 142,
-    margin: '0 32px 20px 0',
-  };
-  const secondChart = {
-    width: '142px',
-    height: '142px',
-    margin: '0 0 20px 0',
-  };
-  const thirdChart = {
-    width: '142px',
-    height: '142px',
-    margin: '0 32px 0 0',
-  };
-  const fourthChart = {
-    width: '142px',
-    height: '142px',
-  };
+  // console.log(chartData.length);
+
+  // let firstChart;
+  // let secondChart;
+  // let thirdChart;
+  // let fourthChart;
+  // setTimeout(() => {
+  //   if (chartData.length == 1) {
+  //     firstChart = {
+  //       width: '316px',
+  //       height: '304px',
+  //     };
+  //   }
+  //   if (chartData.length == 2) {
+  //     firstChart = {
+  //       width: 150,
+  //       height: 150,
+  //     };
+  //     secondChart = {
+  //       width: 150,
+  //       height: 150,
+  //     };
+  //   }
+  //   if (chartData.length == 3) {
+  //     firstChart = {
+  //       width: '150px',
+  //       height: '150px',
+  //     };
+  //     secondChart = {
+  //       width: '150px',
+  //       height: '150px',
+  //     };
+  //     thirdChart = {
+  //       width: '150px',
+  //       height: '150px',
+  //     };
+  //   }
+  //   if (chartData.length == 4) {
+  //     firstChart = {
+  //       width: '142px',
+  //       height: '142px',
+  //       margin: '0 32px 20px 0',
+  //     };
+  //     secondChart = {
+  //       width: 142,
+  //       height: 142,
+  //       margin: '0 0 20px 0',
+  //     };
+  //     thirdChart = {
+  //       width: 142,
+  //       height: 142,
+  //       margin: '0 32px 0 0',
+  //     };
+  //     fourthChart = {
+  //       width: 142,
+  //       height: 142,
+  //     };
+  //   }
+  // }, 1000);
+
+  // console.log(firstChart);
 
   return (
     <DoughnutLayout>
       {chartData[0] && (
         <Doughnut
-          style={firstChart}
+          width="150"
+          height="150"
           type={'doughnut'}
           data={data1}
           options={options1}
@@ -188,7 +234,8 @@ const ChartDoughnut = ({ chartData }) => {
       )}
       {chartData[1] && (
         <Doughnut
-          style={secondChart}
+          width="150"
+          height="150"
           type={'doughnut'}
           data={data2}
           options={options2}
@@ -196,7 +243,8 @@ const ChartDoughnut = ({ chartData }) => {
       )}
       {chartData[2] && (
         <Doughnut
-          style={thirdChart}
+          width="150"
+          height="150"
           type={'doughnut'}
           data={data3}
           options={options3}
@@ -204,7 +252,8 @@ const ChartDoughnut = ({ chartData }) => {
       )}
       {chartData[3] && (
         <Doughnut
-          style={fourthChart}
+          width="150"
+          height="150"
           type={'doughnut'}
           data={data4}
           options={options4}
