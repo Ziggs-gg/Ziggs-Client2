@@ -66,6 +66,8 @@ const ChartBar2 = ({ chartData }) => {
         ticks: {
           color: '#C6C6C5',
         },
+        suggestedMin: 0,
+        suggestedMax: 100,
       },
     },
   };
