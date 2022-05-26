@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-
+import { css } from 'styled-components';
 const ChampionPoolCard = ({
   championData: {
     DDname,
@@ -15,9 +15,13 @@ const ChampionPoolCard = ({
     winRate,
   },
 }) => {
+  const imgPath = `http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${DDname}_0.jpg`;
   return (
     <CardLayout>
-      <ChampionName>{championName}</ChampionName>
+      <ImgMask imgPath={imgPath} />
+      <ChampionName DDname={DDname}>{championName}</ChampionName>
+      <BlurMask />
+      <GameCount>{games}</GameCount>
     </CardLayout>
   );
 };
@@ -25,19 +29,40 @@ const ChampionPoolCard = ({
 export default ChampionPoolCard;
 
 const CardLayout = styled.div`
+  position: relative;
   width: 104px;
   height: 160px;
   border: 1px solid ${props => props.theme.black.black85};
   border-radius: 10px;
-  background: linear-gradient(
-    180deg,
-    rgba(19, 19, 16, 0.6) 0%,
-    rgba(19, 19, 16, 0) 51.04%,
-    rgba(19, 19, 16, 0.9) 100%
-  );
-  background-image: url('');
 `;
 
+const ImgMask = styled.div`
+  position: absolute;
+  width: 104px;
+  height: 160px;
+  border-radius: 10px;
+  background-image: url(${props => props.imgPath});
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.6;
+  z-index: -1;
+`;
+
+const BlurMask = styled.div`
+  position: absolute;
+  width: 104px;
+  height: 88px;
+  left: 0px;
+  top: 72px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(19, 19, 16, 0.2) 0%,
+    rgba(19, 19, 16, 0.8) 100%
+  );
+
+  border-radius: 0px 0px 10px 10px;
+`;
 const ChampionName = styled.p`
   margin-top: 8px;
   margin-left: 4px;
@@ -45,4 +70,11 @@ const ChampionName = styled.p`
   font-weight: 700;
   font-size: 10px;
   letter-spacing: -0.05em;
+`;
+
+const GameCount = styled.p`
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: -0.05em;
+  color: white;
 `;
