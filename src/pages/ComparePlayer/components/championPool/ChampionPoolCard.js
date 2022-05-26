@@ -39,7 +39,8 @@ const CardLayout = styled.div`
 const ImgMask = styled.div`
   position: absolute;
   width: 104px;
-  height: 160px;
+  height: 159px;
+  bottom: 1px;
   border-radius: 10px;
   background-image: url(${props => props.imgPath});
   background-size: cover;
@@ -50,10 +51,10 @@ const ImgMask = styled.div`
 
 const BlurMask = styled.div`
   position: absolute;
-  width: 104px;
+  width: 102px;
   height: 88px;
-  left: 0px;
-  top: 72px;
+
+  bottom: 1px;
 
   background: linear-gradient(
     180deg,
@@ -63,6 +64,7 @@ const BlurMask = styled.div`
 
   border-radius: 0px 0px 10px 10px;
 `;
+
 const ChampionName = styled.p`
   margin-top: 8px;
   margin-left: 4px;
