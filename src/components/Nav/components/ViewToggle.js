@@ -22,7 +22,7 @@ const ViewToggle = ({ viewToggle, setViewToggle }) => {
       }}
     >
       <ToggleTrack>
-        <TrackImgPlayer src="images/Players_outline_B70.png" />
+        <TrackImgPlayer src="/images/Players_outline_B70.png" />
         <TrackImgTeam src="https://user-images.githubusercontent.com/73605822/167045591-d0444efe-1482-4b29-b1f9-3d97f38d8ad7.png" />
       </ToggleTrack>
       <ToggleThumb toggle={viewToggle}>

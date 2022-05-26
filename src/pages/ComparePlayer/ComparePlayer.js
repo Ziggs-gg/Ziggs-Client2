@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import ChartContainer from './components/ChartContainer';
-import HeatMapContainer from './components/statsDetail/HeatMapContainer';
 import List from './components/playerList/List';
 import SelectedCards from './components/selectedPlayer/SelectedCards';
-import Championful from './components/statsDetail/Championful';
-import StatsDetail from './components/statsDetail/StatsDetail';
+import ChartContainer from './components/ChartContainer';
+import HeatMapContainer from './components/heatMap/HeatMapContainer';
+import ChampionPool from './components/championPool/ChampionPool';
 
 const CpPlayer = () => {
   const [selectedPlayers, setSelectedPlayers] = useState([]);
@@ -26,7 +25,8 @@ const CpPlayer = () => {
         deleteSelectedPlayer={deleteSelectedPlayer}
       />
       <ChartContainer selectedPlayers={selectedPlayers} />
-      <StatsDetail selectedPlayers={selectedPlayers} />
+      <HeatMapContainer selectedPlayers={selectedPlayers} />
+      <ChampionPool selectedPlayers={selectedPlayers} />
     </>
   );
 };
