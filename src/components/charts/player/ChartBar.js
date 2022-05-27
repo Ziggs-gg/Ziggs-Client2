@@ -2,63 +2,43 @@ import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import styled from 'styled-components';
 
-const ChartBar = () => {
-  const data1 = {
+const ChartBar = ({ chartData }) => {
+  let bgc = [
+    'rgb(193, 53, 49)',
+    'rgb(49, 115, 193)',
+    'rgb(119, 154, 52)',
+    'rgb(179, 93, 24)',
+  ];
+  let data1 = {
     labels: [
-      '킬 관여율',
       '가한 피해량 비중',
       '받은 피해량 비중',
       '획득 골드 비중',
       '시야 점수 비중',
     ],
-    datasets: [
-      {
-        label: 'player1',
-        data: [12, 19, 3, 5, 2],
-        backgroundColor: [
-          'rgb(193, 53, 49)',
-          'rgb(193, 53, 49)',
-          'rgb(193, 53, 49)',
-          'rgb(193, 53, 49)',
-        ],
-        borderWidth: 3,
-      },
-      {
-        label: 'player2',
-        data: [12, 19, 3, 5, 2],
-        backgroundColor: [
-          'rgb(49, 115, 193)',
-          'rgb(49, 115, 193)',
-          'rgb(49, 115, 193)',
-          'rgb(49, 115, 193)',
-        ],
-        borderWidth: 3,
-      },
-      {
-        label: 'player3',
-        data: [12, 19, 3, 5, 2],
-        backgroundColor: [
-          'rgb(119, 154, 52)',
-          'rgb(119, 154, 52)',
-          'rgb(119, 154, 52)',
-          'rgb(119, 154, 52)',
-        ],
-        borderWidth: 3,
-      },
-      {
-        label: 'player4',
-        data: [12, 19, 3, 5, 2],
-        backgroundColor: [
-          'rgb(179, 93, 24)',
-          'rgb(179, 93, 24)',
-          'rgb(179, 93, 24)',
-          'rgb(179, 93, 24)',
-        ],
-        borderWidth: 3,
-      },
-    ],
+    datasets: [],
   };
+  for (let i = 0; i < chartData.length; i++) {
+    let playerName = chartData[i]?.phRole.split('-');
+    data1.datasets.push({
+      label: playerName[3] + ' ' + playerName[4],
+      data: [
+        chartData[i]?.DMGPCT,
+        chartData[i]?.DTPMPCT,
+        chartData[i]?.goldPCT,
+        chartData[i]?.VSPCT,
+      ],
+      backgroundColor: bgc[i],
+      borderRadius: 4,
+      barPercentage: 0.8,
+      categoryPercentage: 0.4,
+    });
+  }
+
   const options1 = {
+    interaction: {
+      mode: 'index',
+    },
     plugins: {
       legend: {
         display: false,
@@ -66,6 +46,7 @@ const ChartBar = () => {
       title: {
         display: true,
         text: '시즌 평균 팀 내 비중 데이터',
+        fontSize: '16',
         color: '#F3F3F3',
         align: 'start',
         padding: '15',
@@ -80,7 +61,7 @@ const ChartBar = () => {
           tickColor: '#363634',
         },
         ticks: {
-          fontColor: '#F3F3F3',
+          color: '#C6C6C5',
         },
       },
       y: {
@@ -90,7 +71,7 @@ const ChartBar = () => {
           tickColor: '#363634',
         },
         ticks: {
-          fontColor: '#F3F3F3',
+          color: '#C6C6C5',
         },
       },
     },

@@ -2,98 +2,75 @@ import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import styled from 'styled-components';
 
-const data2 = {
-  labels: ['가한 피해량', '받은 피해량', '획득골드', '시야 점수'],
-  datasets: [
-    {
-      label: 'player1',
-      data: [12, 19, 3, 5],
-      backgroundColor: [
-        'rgb(193, 53, 49)',
-        'rgb(193, 53, 49)',
-        'rgb(193, 53, 49)',
-        'rgb(193, 53, 49)',
+const ChartBar2 = ({ chartData }) => {
+  let bgc = [
+    'rgb(193, 53, 49)',
+    'rgb(49, 115, 193)',
+    'rgb(119, 154, 52)',
+    'rgb(179, 93, 24)',
+  ];
+  let data2 = {
+    labels: ['가한 피해량', '받은 피해량', '획득골드', '시야 점수'],
+    datasets: [],
+  };
+  for (let i = 0; i < chartData.length; i++) {
+    let playerName = chartData[i]?.phRole.split('-');
+    data2.datasets.push({
+      label: playerName[3] + ' ' + playerName[4],
+      data: [
+        chartData[i]?.DR,
+        chartData[i]?.DTR,
+        chartData[i]?.GR,
+        chartData[i]?.VSR,
       ],
-      borderRadius: 2,
-      borderWidth: 3,
+      backgroundColor: bgc[i],
+      borderRadius: 4,
+      barPercentage: 0.8,
+      categoryPercentage: 0.4,
+    });
+  }
+  const options2 = {
+    interaction: {
+      mode: 'index',
     },
-    {
-      label: 'player2',
-      data: [12, 19, 3, 5],
-      backgroundColor: [
-        'rgb(49, 115, 193)',
-        'rgb(49, 115, 193)',
-        'rgb(49, 115, 193)',
-        'rgb(49, 115, 193)',
-      ],
-      borderRadius: 2,
-      borderWidth: 3,
-    },
-    {
-      label: 'player3',
-      data: [12, 19, 3, 5],
-      backgroundColor: [
-        'rgb(119, 154, 52)',
-        'rgb(119, 154, 52)',
-        'rgb(119, 154, 52)',
-        'rgb(119, 154, 52)',
-      ],
-      borderRadius: 2,
-      borderWidth: 3,
-    },
-    {
-      label: 'player4',
-      data: [12, 19, 3, 5],
-      backgroundColor: [
-        'rgb(179, 93, 24)',
-        'rgb(179, 93, 24)',
-        'rgb(179, 93, 24)',
-        'rgb(179, 93, 24)',
-      ],
-      borderRadius: 2,
-      borderWidth: 3,
-    },
-  ],
-};
-const options2 = {
-  plugins: {
-    legend: {
-      display: false,
-    },
-    title: {
-      display: true,
-      text: '시즌 평균 동일 포지션 대비 데이터',
-      color: '#F3F3F3',
-      align: 'start',
-      padding: '15',
-    },
-  },
-  maintainAspectRatio: false,
-  scales: {
-    x: {
-      grid: {
-        color: '#363634',
-        borderColor: '#363634',
-        tickColor: '#363634',
+    plugins: {
+      legend: {
+        display: false,
       },
-      ticks: {
-        fontColor: '#F3F3F3',
+      title: {
+        display: true,
+        text: '시즌 평균 동일 포지션 대비 데이터',
+        color: '#F3F3F3',
+        align: 'start',
+        padding: '15',
       },
     },
-    y: {
-      grid: {
-        color: '#363634',
-        borderColor: '#363634',
-        tickColor: '#363634',
+    maintainAspectRatio: false,
+    scales: {
+      x: {
+        grid: {
+          color: '#363634',
+          borderColor: '#363634',
+          tickColor: '#363634',
+        },
+        ticks: {
+          color: '#C6C6C5',
+        },
       },
-      ticks: {
-        fontColor: '#F3F3F3',
+      y: {
+        grid: {
+          color: '#363634',
+          borderColor: '#363634',
+          tickColor: '#363634',
+        },
+        ticks: {
+          color: '#C6C6C5',
+        },
+        suggestedMin: 0,
+        suggestedMax: 100,
       },
     },
-  },
-};
-
-const ChartBar2 = () => {
+  };
   return (
     <BarLayout>
       <Bar data={data2} options={options2} />
