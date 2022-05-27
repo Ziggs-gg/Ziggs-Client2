@@ -1,7 +1,7 @@
 import React from 'react';
 
-const CpTeams = () => {
+const CompareTeam = () => {
   return <div>CpTeams</div>;
 };
 
-export default CpTeams;
+export default CompareTeam;

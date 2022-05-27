@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { css } from 'styled-components';
 import axios from 'axios';
-import { API } from '../../../config';
+import { API } from '../../../../config';
 
 const SelectedPlayer = ({ player, selectedPlayers, deleteSelectedPlayer }) => {
   const [playerData, setPlayerData] = useState();
