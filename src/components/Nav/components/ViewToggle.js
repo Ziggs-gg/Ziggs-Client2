@@ -3,14 +3,16 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { css } from 'styled-components';
 
-const ViewToggle = ({ viewToggle, setViewToggle }) => {
+const ViewToggle = ({ viewToggle, setViewToggle, initFilter }) => {
   const navigate = useNavigate();
 
   const handleToggle = () => {
     if (!viewToggle) {
-      navigate('/teams');
+      initFilter();
+      navigate('compare/teams');
     } else {
-      navigate('/player');
+      initFilter();
+      navigate('compare/player');
     }
     setViewToggle(prev => !prev);
   };

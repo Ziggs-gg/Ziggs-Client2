@@ -12,14 +12,17 @@ const Nav = () => {
 
   const [year, setYear] = useState(2022);
   const [season, setSeason] = useState('Spring');
-  const [league, setLeague] = useState(['LCK', 'LPL', 'LEC', 'LCS']);
-  const [role, setRole] = useState(['TOP', 'JUNGLE', 'MID', 'ADC', 'SUPPORT']);
+  const [league, setLeague] = useState([]);
+  const [role, setRole] = useState([]);
 
   const [viewToggle, setViewToggle] = useState(false);
 
-  const queryString = `/compare/player/?region=${league.join(
-    '|'
-  )}&year=${year}&splitSeason=${season}&role=${role.join('|')}`;
+  const queryString =
+    season.length !== 0 &&
+    role.length !== 0 &&
+    `/compare/player/?region=${league.join(
+      '|'
+    )}&year=${year}&splitSeason=${season}&role=${role.join('|')}`;
 
   useEffect(() => {
     navigate(queryString);
@@ -31,10 +34,12 @@ const Nav = () => {
       setYear(() => {
         return value;
       });
+    // goTo();
   };
 
   const handleSeasonChange = season => {
     setSeason(season);
+    // goTo();
   };
 
   const handleLeagueSelect = (leagueData, isSelected) => {
@@ -44,6 +49,7 @@ const Nav = () => {
       const newList = league.filter(el => el !== leagueData);
       setLeague(newList);
     }
+    // goTo();
   };
 
   const handleRoleSelect = (roleData, isSelected) => {
@@ -53,6 +59,12 @@ const Nav = () => {
       const newList = role.filter(el => el !== roleData);
       setRole(newList);
     }
+    // goTo();
+  };
+
+  const initFilter = () => {
+    setLeague([]);
+    setRole([]);
   };
 
   // useEffect(() => {
@@ -69,7 +81,11 @@ const Nav = () => {
         src="https://user-images.githubusercontent.com/73605822/167045469-91bdb04c-d98a-4981-9526-25381870a911.png"
         alt="Logo"
       />
-      <ViewToggle viewToggle={viewToggle} setViewToggle={setViewToggle} />
+      <ViewToggle
+        viewToggle={viewToggle}
+        setViewToggle={setViewToggle}
+        initFilter={initFilter}
+      />
       <FilterContainer>
         <SelectWrapper>
           <YearSelect year={year} handleYearChange={handleYearChange} />

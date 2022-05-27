@@ -10,9 +10,9 @@ function Router() {
     <BrowserRouter>
       <Nav />
       <Routes>
-        <Route path="/" element={<Landing />} />; ;
-        <Route path="/compare/player/" element={<ComparePlayer />} />;
-        <Route path="/teams" element={<CompareTeam />} />
+        <Route path="/" element={<ComparePlayer />} />
+        <Route path="/compare/player" element={<ComparePlayer />} />
+        <Route path="/compare/teams" element={<CompareTeam />} />
       </Routes>
       <Footer />
     </BrowserRouter>
