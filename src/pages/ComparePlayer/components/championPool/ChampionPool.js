@@ -8,7 +8,13 @@ const ChampionPool = ({ selectedPlayers }) => {
   return (
     <ChampionPoolLayout>
       {selectedPlayers.map((phRole, idx) => {
-        return <ChampionPoolSwiperContainer phRole={phRole} key={idx} />;
+        return (
+          <ChampionPoolSwiperContainer
+            phRole={phRole}
+            key={idx}
+            selectedPlayers={selectedPlayers}
+          />
+        );
       })}
     </ChampionPoolLayout>
   );

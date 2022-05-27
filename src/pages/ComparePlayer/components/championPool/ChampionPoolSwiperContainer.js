@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 import axios from 'axios';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Scrollbar } from 'swiper';
-import styled from 'styled-components';
 import { API } from '../../../../config';
+import { css } from 'styled-components';
 import ChampionPoolCard from './ChampionPoolCard';
 
 import 'swiper/css';
@@ -11,9 +12,13 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css/scrollbar';
 
-const ChampionPoolSwiperContainer = ({ phRole }) => {
+const ChampionPoolSwiperContainer = ({ phRole, selectedPlayers }) => {
   const [playerData, setPlayerData] = useState([]);
   const playerInfo = phRole.split('-');
+  const orderNumber = selectedPlayers.findIndex(
+    playerData => playerData === phRole
+  );
+
   useEffect(() => {
     axios
       .get(`${API.CHAMPION_POOL}phRole=${phRole}`)
@@ -28,7 +33,7 @@ const ChampionPoolSwiperContainer = ({ phRole }) => {
   return (
     <SwiperLayout>
       <PlayerTitle>
-        <CardLegend />
+        <CardLegend orderNumber={orderNumber} />
         <PlayerName>{`${playerInfo[4]} 시즌 챔피언풀`}</PlayerName>
       </PlayerTitle>
 
@@ -122,8 +127,31 @@ const CardLegend = styled.div`
   width: 4px;
   height: 26px;
   margin-right: 8px;
-  background: #c13631;
   border-radius: 10px;
+
+  ${props =>
+    props.orderNumber === 0 &&
+    css`
+      background: ${props => props.theme.red.redMain};
+    `}
+
+  ${props =>
+    props.orderNumber === 1 &&
+    css`
+      background: ${props => props.theme.blue.blueMain};
+    `}
+
+  ${props =>
+    props.orderNumber === 2 &&
+    css`
+      background: ${props => props.theme.green.greenMain};
+    `}
+
+  ${props =>
+    props.orderNumber === 3 &&
+    css`
+      background: ${props => props.theme.orange.orangeMain};
+    `}
 `;
 
 const PlayerName = styled.p`

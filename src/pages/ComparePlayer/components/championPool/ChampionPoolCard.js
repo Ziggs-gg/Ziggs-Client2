@@ -16,6 +16,7 @@ const ChampionPoolCard = ({
   },
 }) => {
   const imgPath = `http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${DDname}_0.jpg`;
+
   return (
     <CardLayout>
       <ImgMask imgPath={imgPath} />
