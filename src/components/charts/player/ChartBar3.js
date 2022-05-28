@@ -1,13 +1,14 @@
 import React, { useRef } from 'react';
 import { Bar } from 'react-chartjs-2';
 import styled from 'styled-components';
+import theme from '../../../styles/theme.js';
 
 const ChartBar3 = ({ chartData }) => {
   let bgc = [
-    'rgb(193, 53, 49)',
-    'rgb(49, 115, 193)',
-    'rgb(119, 154, 52)',
-    'rgb(179, 93, 24)',
+    theme.red.redB70,
+    theme.blue.blueB70,
+    theme.green.greenB70,
+    theme.orange.orangeB70,
   ];
   let data3 = {
     labels: ['시야 점수', '와드 설치', '와드 구매', '와드 제거'],
@@ -48,21 +49,21 @@ const ChartBar3 = ({ chartData }) => {
       title: {
         display: true,
         text: '시즌 평균 분당 시야 데이터',
-        color: '#F3F3F3',
+        color: theme.white.white100,
         align: 'start',
-        padding: '15',
+        padding: '16',
       },
     },
     maintainAspectRatio: false,
     scales: {
       x: {
         grid: {
-          color: '#363634',
-          borderColor: '#363634',
-          tickColor: '#363634',
+          color: theme.black.black90,
+          borderColor: theme.black.black90,
+          tickColor: theme.black.black90,
         },
         ticks: {
-          color: '#C6C6C5',
+          color: theme.white.white80,
         },
         xAxes: [
           {
@@ -73,15 +74,15 @@ const ChartBar3 = ({ chartData }) => {
       },
       y: {
         pointLabels: {
-          color: '#F3F3F3',
+          color: theme.white.white100,
         },
         grid: {
-          color: '#363634',
-          borderColor: '#363634',
-          tickColor: '#363634',
+          color: theme.black.black90,
+          borderColor: theme.black.black90,
+          tickColor: theme.black.black90,
         },
         ticks: {
-          color: '#C6C6C5',
+          color: theme.white.white80,
         },
       },
     },
