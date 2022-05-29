@@ -7,9 +7,9 @@ const List = () => {
 
   useEffect(() => {
     axios
-      .get('http://18.237.44.175:3000/api/compare/player/')
+      .get('http://18.237.44.175:3000/compare/player/')
       .then(Response => {
-        setPlayerList(Response.data.PlayerList);
+        setPlayerList(Response.data);
       })
       .catch(Error => {
         console.error('err:', Error);
