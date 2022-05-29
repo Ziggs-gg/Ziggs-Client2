@@ -119,6 +119,8 @@ const Title = styled.img`
   position: absolute;
   height: 40px;
   left: 32px;
+
+  cursor: pointer;
 `;
 
 const FilterContainer = styled.div`
