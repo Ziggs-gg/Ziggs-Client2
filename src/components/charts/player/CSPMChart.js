@@ -3,8 +3,8 @@ import { Bar } from 'react-chartjs-2';
 import styled from 'styled-components';
 import theme from '../../../styles/theme.js';
 
-const ChartBar4 = ({ chartData }) => {
-  let data4 = {
+const CSPMChart = ({ chartData }) => {
+  let data = {
     labels: [],
     datasets: [
       {
@@ -23,12 +23,11 @@ const ChartBar4 = ({ chartData }) => {
   };
   for (let i = 0; i < chartData.length; i++) {
     let playerName = chartData[i]?.phRole.split('-');
-    data4.labels.push(playerName[3] + ' ' + playerName[4]);
-    data4.datasets[0].data.push(chartData[i]?.EGPM);
+    data.labels.push(playerName[3] + ' ' + playerName[4]);
+    data.datasets[0].data.push(chartData[i]?.CSM);
   }
+
   const options4 = {
-    suggestedMin: 0,
-    suggestedMax: 100,
     interaction: {
       mode: 'index',
     },
@@ -38,7 +37,7 @@ const ChartBar4 = ({ chartData }) => {
       },
       title: {
         display: true,
-        text: '분당 순수 획득 골드',
+        text: '분당 CS',
         color: theme.white.white100,
         align: 'start',
         padding: '16',
@@ -69,9 +68,10 @@ const ChartBar4 = ({ chartData }) => {
       },
     },
   };
+
   return (
     <BarLayout>
-      <Bar data={data4} options={options4} />
+      <Bar data={data} options={options4} />
     </BarLayout>
   );
 };
@@ -81,4 +81,4 @@ const BarLayout = styled.div`
   height: 304px;
 `;
 
-export default ChartBar4;
+export default CSPMChart;
