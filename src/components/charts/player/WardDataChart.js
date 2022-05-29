@@ -1,33 +1,29 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Bar } from 'react-chartjs-2';
 import styled from 'styled-components';
 import theme from '../../../styles/theme.js';
 
-const ChartBar = ({ chartData }) => {
+const WardDataChart = ({ chartData }) => {
   let bgc = [
     theme.red.redB70,
     theme.blue.blueB70,
     theme.green.greenB70,
     theme.orange.orangeB70,
   ];
-  let data1 = {
-    labels: [
-      '가한 피해량 비중',
-      '받은 피해량 비중',
-      '획득 골드 비중',
-      '시야 점수 비중',
-    ],
+  let data3 = {
+    labels: ['시야 점수', '와드 설치', '와드 구매', '와드 제거'],
     datasets: [],
   };
   for (let i = 0; i < chartData.length; i++) {
     let playerName = chartData[i]?.phRole.split('-');
-    data1.datasets.push({
+
+    data3.datasets.push({
       label: playerName[3] + ' ' + playerName[4],
       data: [
-        chartData[i]?.DMGPCT,
-        chartData[i]?.DTPMPCT,
-        chartData[i]?.goldPCT,
-        chartData[i]?.VSPCT,
+        chartData[i]?.visionScore,
+        chartData[i]?.wardsPlaced,
+        chartData[i]?.controlWardsPurchased,
+        chartData[i]?.wardsDestroyed,
       ],
       backgroundColor: bgc[i],
       borderRadius: 4,
@@ -35,19 +31,24 @@ const ChartBar = ({ chartData }) => {
       categoryPercentage: 0.4,
     });
   }
-
-  const options1 = {
+  const options3 = {
     interaction: {
       mode: 'index',
     },
     plugins: {
+      tooltips: {
+        callbacks: {
+          labelTextColor(tooltipItem, chart) {
+            return 'rgb(179, 93, 24)';
+          },
+        },
+      },
       legend: {
         display: false,
       },
       title: {
         display: true,
-        text: '시즌 평균 팀 내 비중 데이터',
-        fontSize: '16',
+        text: '시즌 평균 분당 시야 데이터',
         color: theme.white.white100,
         align: 'start',
         padding: '16',
@@ -64,8 +65,17 @@ const ChartBar = ({ chartData }) => {
         ticks: {
           color: theme.white.white80,
         },
+        xAxes: [
+          {
+            barThickness: 'flex',
+            maxBarThickness: 8,
+          },
+        ],
       },
       y: {
+        pointLabels: {
+          color: theme.white.white100,
+        },
         grid: {
           color: theme.black.black90,
           borderColor: theme.black.black90,
@@ -77,18 +87,16 @@ const ChartBar = ({ chartData }) => {
       },
     },
   };
-
   return (
     <BarLayout>
-      <Bar data={data1} options={options1} />
+      <Bar data={data3} options={options3} />
     </BarLayout>
   );
 };
 
 const BarLayout = styled.div`
-  width: 548px;
+  width: 432px;
   height: 304px;
-  margin: 0 32px 0 32px;
 `;
 
-export default ChartBar;
+export default WardDataChart;

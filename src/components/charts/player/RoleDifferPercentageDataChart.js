@@ -3,31 +3,34 @@ import { Bar } from 'react-chartjs-2';
 import styled from 'styled-components';
 import theme from '../../../styles/theme.js';
 
-const ChartBar5 = ({ chartData }) => {
-  let data = {
-    labels: [],
-    datasets: [
-      {
-        data: [],
-        backgroundColor: [
-          theme.red.redB70,
-          theme.blue.blueB70,
-          theme.green.greenB70,
-          theme.orange.orangeB70,
-        ],
-        borderRadius: 4,
-        barPercentage: 0.8,
-        categoryPercentage: 0.4,
-      },
-    ],
+const RoleDifferPercentageDataChart = ({ chartData }) => {
+  let bgc = [
+    theme.red.redB70,
+    theme.blue.blueB70,
+    theme.green.greenB70,
+    theme.orange.orangeB70,
+  ];
+  let data2 = {
+    labels: ['가한 피해량', '받은 피해량', '획득골드', '시야 점수'],
+    datasets: [],
   };
   for (let i = 0; i < chartData.length; i++) {
     let playerName = chartData[i]?.phRole.split('-');
-    data.labels.push(playerName[3] + ' ' + playerName[4]);
-    data.datasets[0].data.push(chartData[i]?.CSM);
+    data2.datasets.push({
+      label: playerName[3] + ' ' + playerName[4],
+      data: [
+        chartData[i]?.DR,
+        chartData[i]?.DTR,
+        chartData[i]?.GR,
+        chartData[i]?.VSR,
+      ],
+      backgroundColor: bgc[i],
+      borderRadius: 4,
+      barPercentage: 0.8,
+      categoryPercentage: 0.4,
+    });
   }
-
-  const options4 = {
+  const options2 = {
     interaction: {
       mode: 'index',
     },
@@ -37,7 +40,7 @@ const ChartBar5 = ({ chartData }) => {
       },
       title: {
         display: true,
-        text: '분당 CS',
+        text: '시즌 평균 동일 포지션 대비 데이터',
         color: theme.white.white100,
         align: 'start',
         padding: '16',
@@ -53,7 +56,6 @@ const ChartBar5 = ({ chartData }) => {
         },
         ticks: {
           color: theme.white.white80,
-          display: false,
         },
       },
       y: {
@@ -68,17 +70,17 @@ const ChartBar5 = ({ chartData }) => {
       },
     },
   };
-
   return (
     <BarLayout>
-      <Bar data={data} options={options4} />
+      <Bar data={data2} options={options2} />
     </BarLayout>
   );
 };
 
 const BarLayout = styled.div`
-  width: 200px;
+  width: 548px;
   height: 304px;
+  margin: 0 32px 0 32px;
 `;
 
-export default ChartBar5;
+export default RoleDifferPercentageDataChart;
