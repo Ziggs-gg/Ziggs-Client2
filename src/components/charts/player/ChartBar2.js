@@ -1,13 +1,14 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import styled from 'styled-components';
+import theme from '../../../styles/theme.js';
 
 const ChartBar2 = ({ chartData }) => {
   let bgc = [
-    'rgb(193, 53, 49)',
-    'rgb(49, 115, 193)',
-    'rgb(119, 154, 52)',
-    'rgb(179, 93, 24)',
+    theme.red.redB70,
+    theme.blue.blueB70,
+    theme.green.greenB70,
+    theme.orange.orangeB70,
   ];
   let data2 = {
     labels: ['가한 피해량', '받은 피해량', '획득골드', '시야 점수'],
@@ -40,31 +41,31 @@ const ChartBar2 = ({ chartData }) => {
       title: {
         display: true,
         text: '시즌 평균 동일 포지션 대비 데이터',
-        color: '#F3F3F3',
+        color: theme.white.white100,
         align: 'start',
-        padding: '15',
+        padding: '16',
       },
     },
     maintainAspectRatio: false,
     scales: {
       x: {
         grid: {
-          color: '#363634',
-          borderColor: '#363634',
-          tickColor: '#363634',
+          color: theme.black.black90,
+          borderColor: theme.black.black90,
+          tickColor: theme.black.black90,
         },
         ticks: {
-          color: '#C6C6C5',
+          color: theme.white.white80,
         },
       },
       y: {
         grid: {
-          color: '#363634',
-          borderColor: '#363634',
-          tickColor: '#363634',
+          color: theme.black.black90,
+          borderColor: theme.black.black90,
+          tickColor: theme.black.black90,
         },
         ticks: {
-          color: '#C6C6C5',
+          color: theme.white.white80,
         },
         suggestedMin: 0,
         suggestedMax: 100,

@@ -1,6 +1,7 @@
 import react from 'react';
 import { PolarArea } from 'react-chartjs-2';
 import styled from 'styled-components';
+import theme from '../../../styles/theme.js';
 
 const ChartPolar = ({ chartData }) => {
   // to Get PlayerID from phRole
@@ -11,16 +12,16 @@ const ChartPolar = ({ chartData }) => {
   }
   //
   var bgc = [
-    'rgba(193, 53, 49, .3)', // 0: red
-    'rgba(49, 115, 193, .3)', // 1: blue
-    'rgba(119, 154, 52, .3)', // 2: green
-    'rgba(179, 93, 24, .3)', // 3: orange
+    theme.red.redOPA40, // 0: red
+    theme.blue.blueOPA40, // 1: blue
+    theme.green.greenOPA40, // 2: green
+    theme.orange.orangeOPA40, // 3: orange
   ]; // backgroundColor Array
   var bdc = [
-    'rgba(141, 44, 39, 1)', // 0: red
-    'rgba(40, 87, 140, 1)', // 1: blue
-    'rgba(119, 154, 52, 1)', // 2: green
-    'rgba(179, 94, 25, 1)', // 3: oragne
+    theme.red.redB70, // 0: red
+    theme.blue.blueB70, // 1: blue
+    theme.green.greenB70, // 2: green
+    theme.orange.orangeB70, // 3: oragne
   ]; // borderColor Array
   // insert function
   Array.prototype.insert = function (index, item) {
@@ -58,7 +59,6 @@ const ChartPolar = ({ chartData }) => {
     labels: labelsArr,
     datasets: [
       {
-        label: 'My First Dataset',
         data: chartDataArr,
         backgroundColor: backgroundColorArr,
         borderColor: borderColorArr,
@@ -76,27 +76,27 @@ const ChartPolar = ({ chartData }) => {
       title: {
         display: true,
         text: '시즌 평균 킬 관여율',
-        color: '#F3F3F3',
+        color: theme.white.white100,
         align: 'start',
-        padding: '15',
+        padding: '16',
       },
     },
     scales: {
       r: {
         angleLines: {
-          color: '#363634',
+          color: theme.black.black90,
           lineWidth: 1,
         },
         grid: {
-          color: '#363634',
+          color: theme.black.black90,
         },
         ticks: {
           z: 3,
-          color: 'rgba(198, 198, 197, 1)',
+          color: theme.white.white80,
           backdropColor: 'rgba(0, 0, 0, 0)',
           // major: true,
         },
-        backgroundColor: 'rgba(131, 131, 129, 0.1)',
+        backgroundColor: theme.black.blackB90OPA25,
         suggestedMin: 0,
         suggestedMax: 100,
       },

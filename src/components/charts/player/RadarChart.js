@@ -1,6 +1,7 @@
 import React from 'react';
 import { Radar } from 'react-chartjs-2';
 import styled from 'styled-components';
+import theme from '../../../styles/theme.js';
 
 const RadarChart = ({ chartData }) => {
   let playerName1, playerName2, playerName3, playerName4;
@@ -26,13 +27,13 @@ const RadarChart = ({ chartData }) => {
     datasets: [
       {
         label: playerName1[3] + ' ' + playerName1[4],
-        color: '#F3F3F3',
-        backgroundColor: 'rgba(193, 53, 49, .3)',
-        borderColor: '#C13631',
-        pointBackgroundColor: '#C13631',
-        poingBorderColor: '#fff',
-        pointHoverBackgroundColor: '#fff',
-        pointHoverBorderColor: '#C13631',
+        color: theme.white.white100,
+        backgroundColor: theme.red.redOPA40,
+        borderColor: theme.red.redMain,
+        pointBackgroundColor: theme.red.redMain,
+        poingBorderColor: theme.white.white100,
+        pointHoverBackgroundColor: theme.white.white100,
+        pointHoverBorderColor: theme.red.redMain,
         data: [
           chartData[0]?.AVG_EP,
           chartData[0]?.AVG_SA,
@@ -42,12 +43,12 @@ const RadarChart = ({ chartData }) => {
       },
       {
         label: playerName2[3] + ' ' + playerName2[4],
-        backgroundColor: 'rgba(49, 115, 193, .3)',
-        borderColor: '#3173C1',
-        pointBackgroundColor: '#3173C1',
-        poingBorderColor: '#fff',
-        pointHoverBackgroundColor: '#fff',
-        pointHoverBorderColor: '#3173C1',
+        backgroundColor: theme.blue.blueOPA40,
+        borderColor: theme.blue.blueMain,
+        pointBackgroundColor: theme.blue.blueMain,
+        poingBorderColor: theme.white.white100,
+        pointHoverBackgroundColor: theme.white.white100,
+        pointHoverBorderColor: theme.blue.blueMain,
         data: [
           chartData[1]?.AVG_EP,
           chartData[1]?.AVG_SA,
@@ -57,12 +58,12 @@ const RadarChart = ({ chartData }) => {
       },
       {
         label: playerName3[3] + ' ' + playerName3[4],
-        backgroundColor: 'rgba(119, 154, 52, .3)',
-        borderColor: '#779A34',
-        pointBackgroundColor: '#779A34',
-        poingBorderColor: '#fff',
-        pointHoverBackgroundColor: '#fff',
-        pointHoverBorderColor: '#779A34',
+        backgroundColor: theme.green.greenOPA40,
+        borderColor: theme.green.greenB70,
+        pointBackgroundColor: theme.green.greenB70,
+        poingBorderColor: theme.white.white100,
+        pointHoverBackgroundColor: theme.white.white100,
+        pointHoverBorderColor: theme.green.greenB70,
         data: [
           chartData[2]?.AVG_EP,
           chartData[2]?.AVG_SA,
@@ -72,12 +73,12 @@ const RadarChart = ({ chartData }) => {
       },
       {
         label: playerName4[3] + ' ' + playerName4[4],
-        backgroundColor: 'rgba(179, 93, 24, .3)',
-        borderColor: '#B35D18',
-        pointBackgroundColor: '#B35D18',
-        poingBorderColor: '#fff',
-        pointHoverBackgroundColor: '#fff',
-        pointHoverBorderColor: '#B35D18',
+        backgroundColor: theme.orange.orangeOPA40,
+        borderColor: theme.orange.orangeB70,
+        pointBackgroundColor: theme.orange.orangeB70,
+        poingBorderColor: theme.white.white100,
+        pointHoverBackgroundColor: theme.white.white100,
+        pointHoverBorderColor: theme.orange.orangeB70,
         data: [
           chartData[3]?.AVG_EP,
           chartData[3]?.AVG_SA,
@@ -98,24 +99,24 @@ const RadarChart = ({ chartData }) => {
       },
     },
     labels: {
-      color: '#F3F3F3',
+      color: theme.white.white100,
     },
     scales: {
       r: {
         pointLabels: {
-          color: '#C6C6C5',
+          color: theme.white.white80,
         },
         angleLines: {
-          color: '#363634',
+          color: theme.black.black90,
           lineWidth: 1,
         },
         grid: {
-          color: '#363634',
+          color: theme.black.black90,
         },
         ticks: {
           display: false,
         },
-        backgroundColor: 'rgba(131, 131, 129, 0.1)',
+        backgroundColor: theme.black.blackB90OPA25,
         suggestedMin: 0,
         suggestedMax: 10,
       },
