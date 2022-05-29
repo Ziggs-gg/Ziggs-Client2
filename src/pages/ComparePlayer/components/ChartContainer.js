@@ -2,40 +2,43 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import RadarChart from '../../../components/charts/player/RadarChart';
 import ChartBoxplot from '../../../components/charts/player/ChartBoxplot';
-import ChartBar3 from '../../../components/charts/player/ChartBar3';
+import WardDataChart from '../../../components/charts/player/WardDataChart';
 import ChartDoughnut from '../../../components/charts/player/ChartDoughnut';
-import ChartBar from '../../../components/charts/player/ChartBar';
+import TeamPercentageDataChart from '../../../components/charts/player/TeamPercentageDataChart';
 import ChartBubble from '../../../components/charts/player/ChartBubble';
 import ChartPolar from '../../../components/charts/player/ChartPolar';
-import ChartBar2 from '../../../components/charts/player/ChartBar2';
-import ChartBar4 from '../../../components/charts/player/ChartBar4';
-import ChartBar5 from '../../../components/charts/player/ChartBar5';
+import RoleDifferPercentageDataChart from '../../../components/charts/player/RoleDifferPercentageDataChart';
+import EGPMChart from '../../../components/charts/player/EGPMChart';
+import CSPMChart from '../../../components/charts/player/CSPMChart';
 import Chart from 'chart.js/auto';
 import axios from 'axios';
+import { API } from '../../../config';
 
-const ChartContainer = () => {
+const ChartContainer = ({ selectedPlayers }) => {
   const [chartData, setChartData] = useState([]);
-
-  let phRole = [
-    '21-LCK-SUM-HLE-Chovy-MID',
-    '21-LCK-SUM-T1-Faker-MID',
-    '21-LCK-SUM-DK-Showmaker-MID',
-    '21-LCK-SUM-DK-Canyon-JUNGLE',
-  ];
+  let chartUrl;
+  if (selectedPlayers.length == 0) {
+    chartUrl = `${API.PLAYER_LIST}Chart?phRole=`;
+  } else if (selectedPlayers.length == 1) {
+    chartUrl = `${API.PLAYER_LIST}Chart?phRole=${selectedPlayers[0]}`;
+  } else if (selectedPlayers.length == 2) {
+    chartUrl = `${API.PLAYER_LIST}Chart?phRole=${selectedPlayers[0]}&phRole=${selectedPlayers[1]}`;
+  } else if (selectedPlayers.length == 3) {
+    chartUrl = `${API.PLAYER_LIST}Chart?phRole=${selectedPlayers[0]}&phRole=${selectedPlayers[1]}&phRole=${selectedPlayers[2]}`;
+  } else if (selectedPlayers.length == 4) {
+    chartUrl = `${API.PLAYER_LIST}Chart?phRole=${selectedPlayers[0]}&phRole=${selectedPlayers[1]}&phRole=${selectedPlayers[2]}&phRole=${selectedPlayers[3]}`;
+  }
 
   useEffect(() => {
     axios
-      .get(
-        'http://13.209.5.6:3000/compare/player/Chart?phRole=21-LCK-SUM-HLE-Chovy-MID&phRole=21-LCK-SUM-T1-Faker-MID&phRole=22-LCK-SPR-T1-Faker-MID&phRole=21-LCK-SUM-DK-Showmaker-MID'
-      )
+      .get(chartUrl)
       .then(Response => {
         setChartData(Response.data);
-        console.log(Response.data);
       })
       .catch(Error => {
         console.error(Error);
       });
-  }, []);
+  }, [chartUrl]);
 
   return (
     <ChartsLayout>
@@ -46,21 +49,25 @@ const ChartContainer = () => {
         <ChartBoxplot chartData={chartData?.PerMinChart} />
       )}
       {chartData.WardDataChart && (
-        <ChartBar3 chartData={chartData?.WardDataChart} />
+        <WardDataChart chartData={chartData?.WardDataChart} />
       )}
       {chartData.KDABox && <ChartDoughnut chartData={chartData?.KDABox} />}
       {chartData.TeamPercentageDataChart && (
-        <ChartBar chartData={chartData?.TeamPercentageDataChart} />
+        <TeamPercentageDataChart
+          chartData={chartData?.TeamPercentageDataChart}
+        />
       )}
       {chartData.DPGChart && <ChartBubble chartData={chartData?.DPGChart} />}
       {chartData.KPPercentageChart && (
         <ChartPolar chartData={chartData?.KPPercentageChart} />
       )}
       {chartData.RoleDifferPercentageDataChart && (
-        <ChartBar2 chartData={chartData?.RoleDifferPercentageDataChart} />
+        <RoleDifferPercentageDataChart
+          chartData={chartData?.RoleDifferPercentageDataChart}
+        />
       )}
-      {chartData.EGPMChart && <ChartBar4 chartData={chartData?.EGPMChart} />}
-      {chartData.CSPMChart && <ChartBar5 chartData={chartData?.CSPMChart} />}
+      {chartData.EGPMChart && <EGPMChart chartData={chartData?.EGPMChart} />}
+      {chartData.CSPMChart && <CSPMChart chartData={chartData?.CSPMChart} />}
     </ChartsLayout>
   );
 };

@@ -1,29 +1,33 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import styled from 'styled-components';
 import theme from '../../../styles/theme.js';
 
-const ChartBar3 = ({ chartData }) => {
+const TeamPercentageDataChart = ({ chartData }) => {
   let bgc = [
     theme.red.redB70,
     theme.blue.blueB70,
     theme.green.greenB70,
     theme.orange.orangeB70,
   ];
-  let data3 = {
-    labels: ['시야 점수', '와드 설치', '와드 구매', '와드 제거'],
+  let data1 = {
+    labels: [
+      '가한 피해량 비중',
+      '받은 피해량 비중',
+      '획득 골드 비중',
+      '시야 점수 비중',
+    ],
     datasets: [],
   };
   for (let i = 0; i < chartData.length; i++) {
     let playerName = chartData[i]?.phRole.split('-');
-
-    data3.datasets.push({
+    data1.datasets.push({
       label: playerName[3] + ' ' + playerName[4],
       data: [
-        chartData[i]?.visionScore,
-        chartData[i]?.wardsPlaced,
-        chartData[i]?.controlWardsPurchased,
-        chartData[i]?.wardsDestroyed,
+        chartData[i]?.DMGPCT,
+        chartData[i]?.DTPMPCT,
+        chartData[i]?.goldPCT,
+        chartData[i]?.VSPCT,
       ],
       backgroundColor: bgc[i],
       borderRadius: 4,
@@ -31,24 +35,19 @@ const ChartBar3 = ({ chartData }) => {
       categoryPercentage: 0.4,
     });
   }
-  const options3 = {
+
+  const options1 = {
     interaction: {
       mode: 'index',
     },
     plugins: {
-      tooltips: {
-        callbacks: {
-          labelTextColor(tooltipItem, chart) {
-            return 'rgb(179, 93, 24)';
-          },
-        },
-      },
       legend: {
         display: false,
       },
       title: {
         display: true,
-        text: '시즌 평균 분당 시야 데이터',
+        text: '시즌 평균 팀 내 비중 데이터',
+        fontSize: '16',
         color: theme.white.white100,
         align: 'start',
         padding: '16',
@@ -65,17 +64,8 @@ const ChartBar3 = ({ chartData }) => {
         ticks: {
           color: theme.white.white80,
         },
-        xAxes: [
-          {
-            barThickness: 'flex',
-            maxBarThickness: 8,
-          },
-        ],
       },
       y: {
-        pointLabels: {
-          color: theme.white.white100,
-        },
         grid: {
           color: theme.black.black90,
           borderColor: theme.black.black90,
@@ -87,17 +77,18 @@ const ChartBar3 = ({ chartData }) => {
       },
     },
   };
-  console.log(data3);
+
   return (
     <BarLayout>
-      <Bar data={data3} options={options3} />
+      <Bar data={data1} options={options1} />
     </BarLayout>
   );
 };
 
 const BarLayout = styled.div`
-  width: 432px;
+  width: 548px;
   height: 304px;
+  margin: 0 32px 0 32px;
 `;
 
-export default ChartBar3;
+export default TeamPercentageDataChart;
