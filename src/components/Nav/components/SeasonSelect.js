@@ -22,6 +22,9 @@ const SeasonSelect = ({ season, handleSeasonChange }) => {
       onClick={() => {
         setToggle(!toggle);
       }}
+      onMouseLeave={() => {
+        setToggle(false);
+      }}
     >
       <DropDownHeader toggle={toggle}>
         <HeaderText>{HeaderValue()}</HeaderText>

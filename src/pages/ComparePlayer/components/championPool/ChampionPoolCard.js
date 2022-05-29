@@ -83,8 +83,7 @@ const BlurMask = styled.div`
     rgba(19, 19, 16, 0.8) 100%
   );
   border-radius: 0px 0px 10px 10px;
-  /* filter: blur(25px); */
-  backdrop-filter: blur(1px);
+  filter: blur(4px);
 `;
 
 const ChampionName = styled.p`
@@ -103,7 +102,7 @@ const TotalData = styled.div`
   position: absolute;
   height: 24px;
   right: 4px;
-  top: 62px;
+  top: 64px;
 `;
 
 const GameCount = styled.p`

@@ -157,4 +157,6 @@ const CardLegend = styled.div`
 
 const PlayerName = styled.p`
   color: white;
+  font-size: 15px;
+  font-weight: 700;
 `;

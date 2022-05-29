@@ -105,6 +105,7 @@ const ChartBoxplot = ({ chartData }) => {
     </BoxplotLayout>
   );
 };
+
 const BoxplotLayout = styled.div`
   width: 548px;
   height: 304px;

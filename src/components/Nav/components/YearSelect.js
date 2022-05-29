@@ -19,6 +19,9 @@ const YearSelect = ({ year, handleYearChange }) => {
       onClick={() => {
         setToggle(!toggle);
       }}
+      onMouseLeave={() => {
+        setToggle(false);
+      }}
     >
       <DropDownHeader toggle={toggle}>
         <HeaderText>{year}</HeaderText>
