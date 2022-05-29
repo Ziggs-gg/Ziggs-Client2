@@ -67,14 +67,6 @@ const Nav = () => {
     setRole([]);
   };
 
-  // useEffect(() => {
-  //   const queryString = `/compare/player/?region=${league.join(
-  //     '|'
-  //   )}&year=${year}&splitSeason=${season}&role=${role.join('|')}`;
-
-  //   navigate(queryString);
-  // }, [league, navigate, role, season, year]);
-
   return (
     <NavLayout>
       <Title

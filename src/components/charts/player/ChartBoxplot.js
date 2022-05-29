@@ -99,11 +99,25 @@ const ChartBoxplot = ({ chartData }) => {
       },
     },
   };
-  return (
-    <BoxplotLayout>
-      {/* <Chart type="boxplot" data={boxplotData} options={boxplotOptions} /> */}
-    </BoxplotLayout>
-  );
+  try {
+    throw new Error();
+  } catch {
+    return (
+      <BoxplotLayout>
+        <BoxPlotChart
+          type="boxplot"
+          data={boxplotData}
+          options={boxplotOptions}
+        />
+      </BoxplotLayout>
+    );
+  } finally {
+    return (
+      <BoxplotLayout>
+        <Chart type="boxplot" data={boxplotData} options={boxplotOptions} />
+      </BoxplotLayout>
+    );
+  }
 };
 
 const BoxplotLayout = styled.div`
