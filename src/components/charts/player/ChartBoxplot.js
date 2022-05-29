@@ -101,7 +101,7 @@ const ChartBoxplot = ({ chartData }) => {
   };
   return (
     <BoxplotLayout>
-      <Chart type="boxplot" data={boxplotData} options={boxplotOptions} />
+      {/* <Chart type="boxplot" data={boxplotData} options={boxplotOptions} /> */}
     </BoxplotLayout>
   );
 };

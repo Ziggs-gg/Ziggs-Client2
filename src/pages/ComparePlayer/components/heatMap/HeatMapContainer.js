@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import Chartheatmap from '../../../components/charts/player/Chartheatmap';
+// import Chartheatmap from '../../../components/charts/player/Chartheatmap';
 
 const HeatMapContainer = () => {
   const [heatMapData, setHeatMapData] = useState([]);
@@ -20,13 +20,11 @@ const HeatMapContainer = () => {
       });
   }, []);
 
-  console.log(heatMapData.Heatmap);
-
   return (
     <HeatMapLayout>
-      {heatMapData.Heatmap && (
+      {/* {heatMapData.Heatmap && (
         <Chartheatmap heatMapData={heatMapData.Heatmap} />
-      )}
+      )} */}
     </HeatMapLayout>
   );
 };

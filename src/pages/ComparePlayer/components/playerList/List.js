@@ -27,11 +27,7 @@ const List = ({
 
   useEffect(() => {
     axios
-<<<<<<< HEAD:src/pages/CpPlayer/components/List.js
-      .get('http://18.237.44.175:3000/compare/player/')
-=======
       .get(`${API.PLAYER_LIST}${location.search}`)
->>>>>>> main:src/pages/ComparePlayer/components/playerList/List.js
       .then(Response => {
         setPlayerList(Response.data);
       })
