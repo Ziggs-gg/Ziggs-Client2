@@ -17,6 +17,7 @@ const theme = {
     black85: '#353532',
     black80: '#40403D',
     black70: '#565654',
+    blackB90OPA25: 'rgba(41, 41, 39, 0.25)',
   },
 
   red: {
@@ -30,6 +31,10 @@ const theme = {
     redW80: '#CB5C58',
     redW70: '#D06F6B',
     redW60: '#D5827F',
+    redOPA20: 'rgba(193, 54, 49, 0.2)',
+    redOPA40: 'rgba(193, 54, 49, 0.4)',
+    redOPA60: 'rgba(193, 54, 49, 0.6)',
+    redOPA80: 'rgba(193, 54, 49, 0.8)',
   },
 
   blue: {
@@ -43,6 +48,10 @@ const theme = {
     blueW80: '#588DCB',
     blueW70: '#6B99D0',
     blueW60: '#7FA6D5',
+    blueOPA20: 'rgba(49, 115, 193, 0.2)',
+    blueOPA40: 'rgba(49, 115, 193, 0.4)',
+    blueOPA60: 'rgba(49, 115, 193, 0.6)',
+    blueOPA80: 'rgba(49, 115, 193, 0.8)',
   },
 
   green: {
@@ -56,6 +65,10 @@ const theme = {
     greenW60: '#C2E089',
     greenW40: '#D3E7AD',
     greenW20: '#E3EDD0',
+    greenOPA20: 'rgba(162, 212, 67, 0.2)',
+    greenOPA40: 'rgba(162, 212, 67, 0.4)',
+    greenOPA60: 'rgba(162, 212, 67, 0.6)',
+    greenOPA80: 'rgba(162, 212, 67, 0.8)',
   },
 
   orange: {
@@ -69,6 +82,10 @@ const theme = {
     orangeW80: '#F69547',
     orangeW70: '#F6A05C',
     orangeW60: '#F5AC72',
+    orangeOPA20: 'rgba(247, 125, 28, 0.2)',
+    orangeOPA40: 'rgba(247, 125, 28, 0.4)',
+    orangeOPA60: 'rgba(247, 125, 28, 0.6)',
+    orangeOPA80: 'rgba(247, 125, 28, 0.8)',
   },
 
   purple: {
@@ -82,6 +99,10 @@ const theme = {
     purpleW80: '#B666DA',
     purpleW70: '#BD78DD',
     purpleW60: '#D5827F',
+    purpleOPA20: 'rgba(166, 67, 212, 0.2)',
+    purpleOPA40: 'rgba(166, 67, 212, 0.4)',
+    purpleOPA60: 'rgba(166, 67, 212, 0.6)',
+    purpleOPA80: 'rgba(166, 67, 212, 0.8)',
   },
 };
 

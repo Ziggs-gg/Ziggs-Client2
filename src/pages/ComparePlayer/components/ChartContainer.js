@@ -26,7 +26,7 @@ const ChartContainer = () => {
   useEffect(() => {
     axios
       .get(
-        'http://13.209.5.6:3000/compare/player/Chart?phRole=21-LCK-SUM-HLE-Chovy-MID&phRole=21-LCK-SUM-T1-Faker-MID&phRole=21-LCK-SUM-DK-Showmaker-MID&phRole=21-LCK-SUM-DK-Canyon-JUNGLE'
+        'http://13.209.5.6:3000/compare/player/Chart?phRole=21-LCK-SUM-HLE-Chovy-MID&phRole=21-LCK-SUM-T1-Faker-MID&phRole=22-LCK-SPR-T1-Faker-MID&phRole=21-LCK-SUM-DK-Showmaker-MID'
       )
       .then(Response => {
         setChartData(Response.data);
@@ -42,7 +42,9 @@ const ChartContainer = () => {
       {chartData.IndexRadarChart && (
         <RadarChart chartData={chartData?.IndexRadarChart} />
       )}
-      <ChartBoxplot />
+      {chartData.PerMinChart && (
+        <ChartBoxplot chartData={chartData?.PerMinChart} />
+      )}
       {chartData.WardDataChart && (
         <ChartBar3 chartData={chartData?.WardDataChart} />
       )}

@@ -2,22 +2,22 @@ import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import 'chartjs-plugin-doughnut-innertext';
 import styled from 'styled-components';
+import theme from '../../../styles/theme.js';
 
 const ChartDoughnut = ({ chartData }) => {
   const data1 = {
     labels: ['Kills', 'Deaths', 'Assists'],
     datasets: [
       {
-        label: 'My First Dataset',
         data: [
           chartData[0]?.AVGkills,
           chartData[0]?.AVGdeaths,
           chartData[0]?.AVGassists,
         ],
         backgroundColor: [
-          'rgb(193, 54, 49)',
-          'rgb(105, 36, 32)',
-          'rgb(203, 92, 88)',
+          theme.red.redMain,
+          theme.red.redB50,
+          theme.red.redW80,
         ],
         weight: 10,
         hoverOffset: 4,
@@ -32,7 +32,7 @@ const ChartDoughnut = ({ chartData }) => {
   const options1 = {
     responsive: false,
     centerText: {
-      color: '#F3F3F3',
+      color: theme.white.white100,
       value: valuetext1,
       fontSizeAdjust: 0.1, // increase font size 20% based on default font size
     },
@@ -44,19 +44,18 @@ const ChartDoughnut = ({ chartData }) => {
   };
 
   const data2 = {
-    labels: ['Red', 'Blue', 'Yellow'],
+    labels: ['Kills', 'Deaths', 'Assists'],
     datasets: [
       {
-        label: 'My First Dataset',
         data: [
           chartData[1]?.AVGkills,
           chartData[1]?.AVGdeaths,
           chartData[1]?.AVGassists,
         ],
         backgroundColor: [
-          'rgb(49, 115, 193)',
-          'rgb(33, 67, 104)',
-          'rgb(88, 141, 203)',
+          theme.blue.blueMain,
+          theme.blue.blueB50,
+          theme.blue.blueW80,
         ],
         weight: 10,
         hoverOffset: 4,
@@ -71,7 +70,7 @@ const ChartDoughnut = ({ chartData }) => {
   const options2 = {
     responsive: false,
     centerText: {
-      color: '#F3F3F3',
+      color: theme.white.white100,
       value: valuetext2,
       fontSizeAdjust: 0.1, // increase font size 20% based on default font size
     },
@@ -85,16 +84,15 @@ const ChartDoughnut = ({ chartData }) => {
     labels: ['Kills', 'Deaths', 'Assists'],
     datasets: [
       {
-        label: 'My First Dataset',
         data: [
           chartData[2]?.AVGkills,
           chartData[2]?.AVGdeaths,
           chartData[2]?.AVGassists,
         ],
         backgroundColor: [
-          'rgb(247, 125, 28)',
-          'rgb(133, 72, 22)',
-          'rgb(246, 149, 71)',
+          theme.green.greenMain,
+          theme.green.greenB50,
+          theme.green.greenW80,
         ],
         weight: 10,
         hoverOffset: 4,
@@ -109,7 +107,7 @@ const ChartDoughnut = ({ chartData }) => {
   const options3 = {
     responsive: false,
     centerText: {
-      color: '#F3F3F3',
+      color: theme.white.white100,
       value: valuetext3,
       fontSizeAdjust: 0.1, // increase font size 20% based on default font size
     },
@@ -124,16 +122,15 @@ const ChartDoughnut = ({ chartData }) => {
     labels: ['Kills', 'Deaths', 'Assists'],
     datasets: [
       {
-        label: 'My First Dataset',
         data: [
           chartData[3]?.AVGkills,
           chartData[3]?.AVGdeaths,
           chartData[3]?.AVGassists,
         ],
         backgroundColor: [
-          'rgb(162, 212, 67)',
-          'rgb(90, 115, 41)',
-          'rgb(178, 218, 102)',
+          theme.orange.orangeMain,
+          theme.orange.orangeB50,
+          theme.orange.orangeW80,
         ],
         weight: 10,
         hoverOffset: 4,
@@ -148,7 +145,7 @@ const ChartDoughnut = ({ chartData }) => {
   const options4 = {
     responsive: false,
     centerText: {
-      color: '#F3F3F3',
+      color: theme.white.white100,
       value: valuetext4,
       fontSizeAdjust: 0.1, // increase font size 20% based on default font size
     },
