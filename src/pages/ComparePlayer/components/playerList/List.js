@@ -38,16 +38,20 @@ const List = ({
 
   return (
     <ListLayout>
-      {playerList.map((player, idx) => {
-        return (
-          <PlayerCard
-            key={idx}
-            player={player}
-            handleSelectPlayer={handleSelectPlayer}
-            selectedPlayers={selectedPlayers}
-          />
-        );
-      })}
+      {location.search ? (
+        playerList.map((player, idx) => {
+          return (
+            <PlayerCard
+              key={idx}
+              player={player}
+              handleSelectPlayer={handleSelectPlayer}
+              selectedPlayers={selectedPlayers}
+            />
+          );
+        })
+      ) : (
+        <NotFound>4040404040</NotFound>
+      )}
     </ListLayout>
   );
 };
@@ -78,4 +82,13 @@ const ListLayout = styled.div`
     border-radius: 2px;
     background: ${props => props.theme.white.white80};
   }
+`;
+
+const NotFound = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  width: 100%;
+  height: 100%;
 `;

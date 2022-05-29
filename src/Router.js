@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Nav from './components/Nav/Nav';
-import Landing from './pages/Landing';
+
 import CompareTeam from './pages/CompareTeam/CompareTeam';
 import ComparePlayer from './pages/ComparePlayer/ComparePlayer';
 import Footer from './components/Footer/Footer';
