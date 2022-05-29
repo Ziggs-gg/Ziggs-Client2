@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Nav from './components/Nav/Nav';
-import CpTeams from './pages/CpPTeams/CpTeams';
-import CpPlayer from './pages/CpPlayer/CpPlayer';
+import Landing from './pages/Landing';
+import CompareTeam from './pages/CompareTeam/CompareTeam';
+import ComparePlayer from './pages/ComparePlayer/ComparePlayer';
 import Footer from './components/Footer/Footer';
 
 function Router() {
@@ -9,8 +10,9 @@ function Router() {
     <BrowserRouter>
       <Nav />
       <Routes>
-        <Route path="/teams" element={<CpTeams />} />;
-        <Route path="/player" element={<CpPlayer />} />;
+        <Route path="/" element={<Landing />} />; ;
+        <Route path="/compare/player/" element={<ComparePlayer />} />;
+        <Route path="/teams" element={<CompareTeam />} />
       </Routes>
       <Footer />
     </BrowserRouter>

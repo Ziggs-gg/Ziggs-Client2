@@ -1,22 +1,67 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import ViewToggle from './components/ViewToggle';
 import YearSelect from './components/YearSelect';
 import SeasonSelect from './components/SeasonSelect';
 import LeagueSelect from './components/LeagueSelect';
 import RoleSelect from './components/RoleSelect';
+import { useNavigate } from 'react-router-dom';
 
 const Nav = () => {
-  const [year, setYear] = useState('');
-  const [season, setSeason] = useState('');
+  const navigate = useNavigate();
+
+  const [year, setYear] = useState(2022);
+  const [season, setSeason] = useState('Spring');
+  const [league, setLeague] = useState(['LCK', 'LPL', 'LEC', 'LCS']);
+  const [role, setRole] = useState(['TOP', 'JUNGLE', 'MID', 'ADC', 'SUPPORT']);
+
+  const [viewToggle, setViewToggle] = useState(false);
+
+  const queryString = `/compare/player/?region=${league.join(
+    '|'
+  )}&year=${year}&splitSeason=${season}&role=${role.join('|')}`;
+
+  useEffect(() => {
+    navigate(queryString);
+  }, [navigate, queryString]);
 
   const handleYearChange = event => {
-    setYear(event.target.value);
+    const { value } = event.target;
+    value &&
+      setYear(() => {
+        return value;
+      });
   };
 
-  const handleSeasonChange = event => {
-    setSeason(event.target.value);
+  const handleSeasonChange = season => {
+    setSeason(season);
   };
+
+  const handleLeagueSelect = (leagueData, isSelected) => {
+    if (!isSelected) {
+      setLeague(prev => [...prev, leagueData]);
+    } else {
+      const newList = league.filter(el => el !== leagueData);
+      setLeague(newList);
+    }
+  };
+
+  const handleRoleSelect = (roleData, isSelected) => {
+    if (!isSelected) {
+      setRole(prev => [...prev, roleData]);
+    } else {
+      const newList = role.filter(el => el !== roleData);
+      setRole(newList);
+    }
+  };
+
+  // useEffect(() => {
+  //   const queryString = `/compare/player/?region=${league.join(
+  //     '|'
+  //   )}&year=${year}&splitSeason=${season}&role=${role.join('|')}`;
+
+  //   navigate(queryString);
+  // }, [league, navigate, role, season, year]);
 
   return (
     <NavLayout>
@@ -24,7 +69,7 @@ const Nav = () => {
         src="https://user-images.githubusercontent.com/73605822/167045469-91bdb04c-d98a-4981-9526-25381870a911.png"
         alt="Logo"
       />
-      <ViewToggle />
+      <ViewToggle viewToggle={viewToggle} setViewToggle={setViewToggle} />
       <FilterContainer>
         <SelectWrapper>
           <YearSelect year={year} handleYearChange={handleYearChange} />
@@ -32,8 +77,18 @@ const Nav = () => {
             season={season}
             handleSeasonChange={handleSeasonChange}
           />
-          <LeagueSelect />
-          <RoleSelect />
+          <LeagueSelect
+            handleLeagueSelect={handleLeagueSelect}
+            league={league}
+            setLeague={setLeague}
+          />
+          {!viewToggle && (
+            <RoleSelect
+              handleRoleSelect={handleRoleSelect}
+              role={role}
+              setRole={setRole}
+            />
+          )}
         </SelectWrapper>
       </FilterContainer>
     </NavLayout>
@@ -63,7 +118,7 @@ const FilterContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  right: 228px;
+  right: 80px;
 `;
 
 const SelectWrapper = styled.div`
