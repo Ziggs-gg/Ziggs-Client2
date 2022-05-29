@@ -115,7 +115,7 @@ const ChartBubble = ({ chartData }) => {
   };
   return (
     <BubbleLayout>
-      <Bubble type={'bubble'} data={data} options={options} />
+      <Bubble type="bubble" data={data} options={options} />
     </BubbleLayout>
   );
 };
