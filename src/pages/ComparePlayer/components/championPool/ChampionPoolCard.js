@@ -41,7 +41,7 @@ const ChampionPoolCard = ({
         </Stats>
         <Stats>
           <StatsTitle>VSPM</StatsTitle>
-          <StatsText>{`${VSPM}`}</StatsText>
+          <StatsText>{VSPM ? `${VSPM}` : `-`}</StatsText>
         </Stats>
       </DetailData>
     </CardLayout>
@@ -114,7 +114,7 @@ const GameCount = styled.p`
 `;
 
 const WinRate = styled.p`
-  width: 50px;
+  width: 60px;
   text-align: right;
   font-weight: 400;
   font-size: 10px;

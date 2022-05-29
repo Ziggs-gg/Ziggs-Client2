@@ -25,8 +25,9 @@ const Nav = () => {
     )}&year=${year}&splitSeason=${season}&role=${role.join('|')}`;
 
   useEffect(() => {
+    // viewToggle ? navigate('compare/teams') : navigate('compare/player');
     navigate(queryString);
-  }, [navigate, queryString]);
+  }, [navigate, viewToggle, queryString]);
 
   const handleYearChange = event => {
     const { value } = event.target;
@@ -72,6 +73,7 @@ const Nav = () => {
       <Title
         src="https://user-images.githubusercontent.com/73605822/167045469-91bdb04c-d98a-4981-9526-25381870a911.png"
         alt="Logo"
+        onClick={() => navigate('compare/player')}
       />
       <ViewToggle
         viewToggle={viewToggle}

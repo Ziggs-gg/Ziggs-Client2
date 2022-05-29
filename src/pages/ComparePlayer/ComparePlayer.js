@@ -25,7 +25,7 @@ const CpPlayer = () => {
         deleteSelectedPlayer={deleteSelectedPlayer}
       />
       <ChartContainer selectedPlayers={selectedPlayers} />
-      <HeatMapContainer selectedPlayers={selectedPlayers} />
+      {/* <HeatMapContainer selectedPlayers={selectedPlayers} /> */}
       <ChampionPool selectedPlayers={selectedPlayers} />
     </>
   );

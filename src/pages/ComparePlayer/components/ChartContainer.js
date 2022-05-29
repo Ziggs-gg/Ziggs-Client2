@@ -80,6 +80,6 @@ const ChartsLayout = styled.div`
   width: 1360px;
   height: 944px;
   margin: 0 auto;
-
+  margin-bottom: 16px;
   background-color: #131310;
 `;

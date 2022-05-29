@@ -1,8 +1,7 @@
 import React from 'react';
-import List from './ComparePlayer/components/playerList/List';
 
 const Landing = () => {
-  return <List />;
+  return <div>랜딩</div>;
 };
 
 export default Landing;
