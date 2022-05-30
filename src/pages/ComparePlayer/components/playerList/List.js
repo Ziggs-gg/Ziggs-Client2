@@ -13,6 +13,7 @@ const List = ({
   const location = useLocation();
 
   const [playerList, setPlayerList] = useState([]);
+  const [teamList, setTeamList] = useState([]);
 
   const handleSelectPlayer = player => {
     if (
@@ -23,6 +24,30 @@ const List = ({
     } else {
       deleteSelectedPlayer(player);
     }
+  };
+
+  console.log(location);
+
+  const fetchPlayerData = () => {
+    axios
+      .get(`${API.PLAYER_LIST}${location.search}`)
+      .then(Response => {
+        setPlayerList(Response.data);
+      })
+      .catch(Error => {
+        console.error('err:', Error);
+      });
+  };
+
+  const fetchTeamData = () => {
+    axios
+      .get(`${API.PLAYER_LIST}${location.search}`)
+      .then(Response => {
+        setTeamList(Response.data);
+      })
+      .catch(Error => {
+        console.error('err:', Error);
+      });
   };
 
   useEffect(() => {
@@ -40,6 +65,7 @@ const List = ({
     <ListLayout>
       {location.search ? (
         playerList.map((player, idx) => {
+          console.log(player);
           return (
             <PlayerCard
               key={idx}
@@ -50,7 +76,7 @@ const List = ({
           );
         })
       ) : (
-        <NotFound>4040404040</NotFound>
+        <NotFound>필터를 모두 선택해 주세요</NotFound>
       )}
     </ListLayout>
   );
