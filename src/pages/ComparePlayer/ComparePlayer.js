@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import List from './components/playerList/List';
+import List from '../../components/List';
 import SelectedCards from './components/selectedPlayer/SelectedCards';
 import ChartContainer from './components/ChartContainer';
 import HeatMapContainer from './components/heatMap/HeatMapContainer';

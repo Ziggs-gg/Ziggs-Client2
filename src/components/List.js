@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import PlayerCard from './PlayerCard';
+import PlayerCard from '../pages/ComparePlayer/components/playerList/PlayerCard';
 import { useLocation } from 'react-router-dom';
-import { API } from '../../../../config';
+import { API } from '../config';
 
 const List = ({
   setSelectedPlayers,
@@ -26,46 +26,37 @@ const List = ({
     }
   };
 
-  console.log(location);
-
-  const fetchPlayerData = () => {
-    axios
-      .get(`${API.PLAYER_LIST}${location.search}`)
-      .then(Response => {
-        setPlayerList(Response.data);
-      })
-      .catch(Error => {
-        console.error('err:', Error);
-      });
-  };
-
-  const fetchTeamData = () => {
-    axios
-      .get(`${API.PLAYER_LIST}${location.search}`)
-      .then(Response => {
-        setTeamList(Response.data);
-      })
-      .catch(Error => {
-        console.error('err:', Error);
-      });
-  };
-
   useEffect(() => {
-    axios
-      .get(`${API.PLAYER_LIST}${location.search}`)
-      .then(Response => {
-        setPlayerList(Response.data);
-      })
-      .catch(Error => {
-        console.error('err:', Error);
-      });
-  }, [location.search]);
+    const fetchPlayerData = () => {
+      axios
+        .get(`${API.PLAYER_LIST}${location.search}`)
+        .then(Response => {
+          setPlayerList(Response.data);
+        })
+        .catch(Error => {
+          console.error('err:', Error);
+        });
+    };
+
+    const fetchTeamData = () => {
+      axios
+        .get(`${API.TEAM_LIST}${location.search}`)
+        .then(Response => {
+          setTeamList(Response.data);
+        })
+        .catch(Error => {
+          console.error('err:', Error);
+        });
+    };
+
+    location.pathname === '/compare/player' && fetchPlayerData();
+    location.pathname === '/compare/team' && fetchTeamData();
+  }, [location.search, location.pathname]);
 
   return (
     <ListLayout>
-      {location.search ? (
+      {location.search && location.pathname === '/compare/player' ? (
         playerList.map((player, idx) => {
-          console.log(player);
           return (
             <PlayerCard
               key={idx}

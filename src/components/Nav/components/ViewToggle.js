@@ -9,7 +9,7 @@ const ViewToggle = ({ viewToggle, setViewToggle, initFilter }) => {
   const handleToggle = () => {
     if (!viewToggle) {
       initFilter();
-      navigate('compare/teams');
+      navigate('compare/team');
     } else {
       initFilter();
       navigate('compare/player');

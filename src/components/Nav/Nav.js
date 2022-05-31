@@ -18,13 +18,13 @@ const Nav = () => {
   const [viewToggle, setViewToggle] = useState(false);
 
   const queryString = viewToggle
-    ? season.length !== 0 &&
-      `/compare/teams/?region=${league.join(
+    ? league.length !== 0 &&
+      `/compare/team?region=${league.join(
         '|'
       )}&year=${year}&splitSeason=${season}`
-    : season.length !== 0 &&
+    : league.length !== 0 &&
       role.length !== 0 &&
-      `/compare/player/?region=${league.join(
+      `/compare/player?region=${league.join(
         '|'
       )}&year=${year}&splitSeason=${season}&role=${role.join('|')}`;
 
