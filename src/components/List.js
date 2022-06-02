@@ -67,7 +67,13 @@ const List = ({
           );
         })
       ) : (
-        <NotFound>필터를 모두 선택해 주세요</NotFound>
+        <NotFoundLayout>
+          <NotFound>
+            <NotFoundIcon src="/images/landing/InfoIcon.png" />
+            <NotFoundDescLarge>데이터가 없습니다.</NotFoundDescLarge>
+            <NotFoundDescSmall>상단 필터를 확인해주세요!</NotFoundDescSmall>
+          </NotFound>
+        </NotFoundLayout>
       )}
     </ListLayout>
   );
@@ -101,11 +107,38 @@ const ListLayout = styled.div`
   }
 `;
 
-const NotFound = styled.div`
+const NotFoundLayout = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
   width: 100%;
   height: 100%;
+`;
+
+const NotFound = styled.div`
+  width: 175px;
+  height: 124px;
+  text-align: center;
+`;
+
+const NotFoundIcon = styled.img`
+  width: 64px;
+  height: 64px;
+  margin-bottom: 8px;
+`;
+
+const NotFoundDescLarge = styled.p`
+  font-weight: 900;
+  font-size: 22px;
+  line-height: 32px;
+  text-align: center;
+  color: ${props => props.theme.white.white100};
+`;
+const NotFoundDescSmall = styled.p`
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  letter-spacing: -0.02em;
+  color: ${props => props.theme.white.white100};
 `;

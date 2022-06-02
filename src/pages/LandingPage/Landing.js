@@ -1,7 +1,9 @@
 import React from 'react';
+import styled from 'styled-components';
+import List from '../../components/List';
 
 const Landing = () => {
-  return <div>랜딩</div>;
+  return <List />;
 };
 
 export default Landing;
