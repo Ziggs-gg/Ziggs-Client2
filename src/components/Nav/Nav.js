@@ -76,7 +76,10 @@ const Nav = () => {
       <Title
         src="https://user-images.githubusercontent.com/73605822/167045469-91bdb04c-d98a-4981-9526-25381870a911.png"
         alt="Logo"
-        onClick={() => navigate('compare/player')}
+        onClick={() => {
+          initFilter();
+          navigate('');
+        }}
       />
       <ViewToggle
         viewToggle={viewToggle}
