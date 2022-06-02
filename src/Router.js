@@ -10,7 +10,7 @@ function Router() {
     <BrowserRouter>
       <Nav />
       <Routes>
-        <Route path="/" element={<Landing />} />
+        <Route path="" element={<Landing />} />
         <Route path="/compare/player" element={<ComparePlayer />} />
         <Route path="/compare/team" element={<CompareTeam />} />
       </Routes>
