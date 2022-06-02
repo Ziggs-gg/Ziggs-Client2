@@ -2,7 +2,13 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 const TeamCard = () => {
-  return <CardLayout></CardLayout>;
+  return (
+    <CardLayout>
+      <LeagueLogo />
+      <TeamLogo />
+      <TeamName />
+    </CardLayout>
+  );
 };
 
 export default TeamCard;
@@ -36,46 +42,14 @@ const CardLayout = styled.div`
     css`
       border: 1px solid ${props => props.theme.blue.blueMain};
     `}
-
-    ${props =>
-    props.isSelected &&
-    props.orderNumber === 2 &&
-    css`
-      border: 1px solid ${props => props.theme.green.greenMain};
-    `}
-
-    ${props =>
-    props.isSelected &&
-    props.orderNumber === 3 &&
-    css`
-      border: 1px solid ${props => props.theme.orange.orangeMain};
-    `}
-`;
-
-const GradientMask = styled.div`
-  position: absolute;
-  bottom: 0;
-  width: 84px;
-  height: 78px;
-  /* position: absolute; */
-  /* border-radius: 10px; */
-  /* border: 1px solid ${props => props.theme.black.black85}; */
-
-  mask-image: linear-gradient(
-    to bottom,
-    #c4c4c4 52.71%,
-    rgba(196, 196, 196, 0.2) 86.46%,
-    rgba(196, 196, 196, 0) 100%
-  );
-
-  border-radius: 10px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: bottom;
-  background-image: url(${props => props.imgPath});
 `;
 
 const TeamLogo = styled.img`
+  width: 48px;
+  height: 48px;
+`;
+
+const LeagueLogo = styled.img`
   position: absolute;
   width: 16px;
   height: 16px;
@@ -83,16 +57,7 @@ const TeamLogo = styled.img`
   top: 6px;
 `;
 
-const RoleLogo = styled.img`
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  right: 8px;
-  top: 6px;
-  opacity: 0.5;
-`;
-
-const PlayerName = styled.div`
+const TeamName = styled.div`
   position: absolute;
   display: flex;
   justify-content: center;
