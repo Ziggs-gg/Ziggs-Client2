@@ -5,7 +5,7 @@ import ChartContainer from './components/ChartContainer';
 import HeatMapContainer from './components/heatMap/HeatMapContainer';
 import ChampionPool from './components/championPool/ChampionPool';
 
-const CpPlayer = () => {
+const ComparePlayer = () => {
   const [selectedPlayers, setSelectedPlayers] = useState([]);
 
   const deleteSelectedPlayer = choosenPlayer => {
@@ -31,4 +31,4 @@ const CpPlayer = () => {
   );
 };
 
-export default CpPlayer;
+export default ComparePlayer;
