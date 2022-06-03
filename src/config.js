@@ -4,4 +4,5 @@ export const API = {
   PLAYER_LIST: `${BASE_URL}/compare/player/`,
   SELECTED_PLAYER: `${BASE_URL}/compare/player/SelectedPlayerBox?`,
   CHAMPION_POOL: `${BASE_URL}/compare/player/ChampionPool?`,
+  HEATMAP_PLAYER: `${BASE_URL}/compare/player/HeatMap?`,
 };

@@ -34,7 +34,7 @@ const ChartDoughnut = ({ chartData }) => {
     centerText: {
       color: theme.white.white100,
       value: valuetext1,
-      fontSizeAdjust: 0.1, // increase font size 20% based on default font size
+      fontSizeAdjust: 0.2, // increase font size 20% based on default font size
     },
     plugins: {
       legend: {
@@ -156,71 +156,34 @@ const ChartDoughnut = ({ chartData }) => {
     },
   };
 
-  // console.log(chartData.length);
-
-  // let firstChart;
-  // let secondChart;
-  // let thirdChart;
-  // let fourthChart;
-  // setTimeout(() => {
-  //   if (chartData.length == 1) {
-  //     firstChart = {
-  //       width: '316px',
-  //       height: '304px',
-  //     };
-  //   }
-  //   if (chartData.length == 2) {
-  //     firstChart = {
-  //       width: 150,
-  //       height: 150,
-  //     };
-  //     secondChart = {
-  //       width: 150,
-  //       height: 150,
-  //     };
-  //   }
-  //   if (chartData.length == 3) {
-  //     firstChart = {
-  //       width: '150px',
-  //       height: '150px',
-  //     };
-  //     secondChart = {
-  //       width: '150px',
-  //       height: '150px',
-  //     };
-  //     thirdChart = {
-  //       width: '150px',
-  //       height: '150px',
-  //     };
-  //   }
-  //   if (chartData.length == 4) {
-  //     firstChart = {
-  //       width: '142px',
-  //       height: '142px',
-  //       margin: '0 32px 20px 0',
-  //     };
-  //     secondChart = {
-  //       width: 142,
-  //       height: 142,
-  //       margin: '0 0 20px 0',
-  //     };
-  //     thirdChart = {
-  //       width: 142,
-  //       height: 142,
-  //       margin: '0 32px 0 0',
-  //     };
-  //     fourthChart = {
-  //       width: 142,
-  //       height: 142,
-  //     };
-  //   }
-  // }, 1000);
-
-  // console.log(firstChart);
+  const noneData = {
+    labels: ['Kills', 'Deaths', 'Assists'],
+    datasets: [
+      {
+        data: [100],
+        backgroundColor: [theme.black.black90],
+        weight: 10,
+        hoverOffset: 4,
+        cutout: '90%',
+        borderColor: null,
+      },
+    ],
+  };
+  const noneOption = {
+    responsive: false,
+    plugins: {
+      tooltip: {
+        enabled: false,
+      },
+      legend: {
+        display: false,
+      },
+    },
+  };
 
   return (
     <DoughnutLayout>
-      {chartData[0] && (
+      {chartData[0] ? (
         <Doughnut
           width="150"
           height="150"
@@ -228,8 +191,16 @@ const ChartDoughnut = ({ chartData }) => {
           data={data1}
           options={options1}
         />
+      ) : (
+        <Doughnut
+          width="150"
+          height="150"
+          type={'doughnut'}
+          data={noneData}
+          options={noneOption}
+        />
       )}
-      {chartData[1] && (
+      {chartData[1] ? (
         <Doughnut
           width="150"
           height="150"
@@ -237,8 +208,16 @@ const ChartDoughnut = ({ chartData }) => {
           data={data2}
           options={options2}
         />
+      ) : (
+        <Doughnut
+          width="150"
+          height="150"
+          type={'doughnut'}
+          data={noneData}
+          options={noneOption}
+        />
       )}
-      {chartData[2] && (
+      {chartData[2] ? (
         <Doughnut
           width="150"
           height="150"
@@ -246,14 +225,30 @@ const ChartDoughnut = ({ chartData }) => {
           data={data3}
           options={options3}
         />
+      ) : (
+        <Doughnut
+          width="150"
+          height="150"
+          type={'doughnut'}
+          data={noneData}
+          options={noneOption}
+        />
       )}
-      {chartData[3] && (
+      {chartData[3] ? (
         <Doughnut
           width="150"
           height="150"
           type={'doughnut'}
           data={data4}
           options={options4}
+        />
+      ) : (
+        <Doughnut
+          width="150"
+          height="150"
+          type={'doughnut'}
+          data={noneData}
+          options={noneOption}
         />
       )}
     </DoughnutLayout>
