@@ -27,15 +27,15 @@ const ChartDoughnut = ({ chartData }) => {
     ],
   };
 
-  const valuetext1 = 'KDA: ' + chartData[0]?.KDA;
+  // const valuetext1 = 'KDA: ' + chartData[0]?.KDA;
 
   const options1 = {
     responsive: false,
-    centerText: {
-      color: theme.white.white100,
-      value: valuetext1,
-      fontSizeAdjust: 0.2, // increase font size 20% based on default font size
-    },
+    // centerText: {
+    //   color: theme.white.white100,
+    //   value: valuetext1,
+    //   fontSizeAdjust: 0.2, // increase font size 20% based on default font size
+    // },
     plugins: {
       legend: {
         display: false,
@@ -65,15 +65,15 @@ const ChartDoughnut = ({ chartData }) => {
     ],
   };
 
-  const valuetext2 = 'KDA: ' + chartData[1]?.KDA;
+  // const valuetext2 = 'KDA: ' + chartData[1]?.KDA;
 
   const options2 = {
     responsive: false,
-    centerText: {
-      color: theme.white.white100,
-      value: valuetext2,
-      fontSizeAdjust: 0.1, // increase font size 20% based on default font size
-    },
+    // centerText: {
+    //   color: theme.white.white100,
+    //   // value: valuetext2,
+    //   fontSizeAdjust: 0.1, // increase font size 20% based on default font size
+    // },
     plugins: {
       legend: {
         display: false,
@@ -102,15 +102,15 @@ const ChartDoughnut = ({ chartData }) => {
     ],
   };
 
-  const valuetext3 = 'KDA: ' + chartData[2]?.KDA;
+  // const valuetext3 = 'KDA: ' + chartData[2]?.KDA;
 
   const options3 = {
     responsive: false,
-    centerText: {
-      color: theme.white.white100,
-      value: valuetext3,
-      fontSizeAdjust: 0.1, // increase font size 20% based on default font size
-    },
+    // centerText: {
+    //   color: theme.white.white100,
+    //   // value: valuetext3,
+    //   fontSizeAdjust: 0.1, // increase font size 20% based on default font size
+    // },
     plugins: {
       legend: {
         display: false,
@@ -140,15 +140,15 @@ const ChartDoughnut = ({ chartData }) => {
     ],
   };
 
-  const valuetext4 = 'KDA: ' + chartData[3]?.KDA;
+  // const valuetext4 = 'KDA: ' + chartData[3]?.KDA;
 
   const options4 = {
     responsive: false,
-    centerText: {
-      color: theme.white.white100,
-      value: valuetext4,
-      fontSizeAdjust: 0.1, // increase font size 20% based on default font size
-    },
+    // centerText: {
+    //   color: theme.white.white100,
+    //   value: valuetext4,
+    //   fontSizeAdjust: 0.1, // increase font size 20% based on default font size
+    // },
     plugins: {
       legend: {
         display: false,
@@ -180,9 +180,23 @@ const ChartDoughnut = ({ chartData }) => {
       },
     },
   };
+  let playerName = [];
+  for (let i = 0; i < chartData.length; i++) {
+    let name = chartData[i]?.phRole.split('-');
+    playerName.push(name[3] + ' ' + name[4]);
+  }
+
+  console.log(playerName);
 
   return (
     <DoughnutLayout>
+      {playerName[0] && (
+        <FirstInnerText>
+          <PlayerName>{playerName[0]}</PlayerName>
+          <PlayerKDA>{chartData[0].KDA}</PlayerKDA>
+        </FirstInnerText>
+      )}
+
       {chartData[0] ? (
         <Doughnut
           width="150"
@@ -190,6 +204,7 @@ const ChartDoughnut = ({ chartData }) => {
           type={'doughnut'}
           data={data1}
           options={options1}
+          z-index="2"
         />
       ) : (
         <Doughnut
@@ -199,6 +214,12 @@ const ChartDoughnut = ({ chartData }) => {
           data={noneData}
           options={noneOption}
         />
+      )}
+      {playerName[1] && (
+        <SecondInnerText>
+          <PlayerName>{playerName[1]}</PlayerName>
+          <PlayerKDA>{chartData[1].KDA}</PlayerKDA>
+        </SecondInnerText>
       )}
       {chartData[1] ? (
         <Doughnut
@@ -217,6 +238,12 @@ const ChartDoughnut = ({ chartData }) => {
           options={noneOption}
         />
       )}
+      {playerName[2] && (
+        <ThirdInnerText>
+          <PlayerName>{playerName[2]}</PlayerName>
+          <PlayerKDA>{chartData[2].KDA}</PlayerKDA>
+        </ThirdInnerText>
+      )}
       {chartData[2] ? (
         <Doughnut
           width="150"
@@ -233,6 +260,12 @@ const ChartDoughnut = ({ chartData }) => {
           data={noneData}
           options={noneOption}
         />
+      )}
+      {playerName[3] && (
+        <FourthInnerText>
+          <PlayerName>{playerName[3]}</PlayerName>
+          <PlayerKDA>{chartData[3].KDA}</PlayerKDA>
+        </FourthInnerText>
       )}
       {chartData[3] ? (
         <Doughnut
@@ -262,4 +295,62 @@ const DoughnutLayout = styled.div`
   height: 304px;
 `;
 
+const FirstInnerText = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  text-align: center;
+  z-index: 1;
+`;
+
+const SecondInnerText = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  text-align: center;
+  z-index: 1;
+`;
+
+const ThirdInnerText = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  /* top: 150px; */
+  width: 150px;
+  height: 150px;
+  text-align: center;
+  z-index: 1;
+`;
+
+const FourthInnerText = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  /* bottom: 150px;
+  left: 150px; */
+  width: 150px;
+  height: 150px;
+  text-align: center;
+  z-index: 1;
+`;
+
+const PlayerName = styled.p`
+  color: #fff;
+`;
+
+const PlayerKDA = styled.p`
+  color: #fff;
+`;
 export default ChartDoughnut;
