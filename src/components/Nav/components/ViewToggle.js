@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { css } from 'styled-components';
@@ -9,7 +9,7 @@ const ViewToggle = ({ viewToggle, setViewToggle, initFilter }) => {
   const handleToggle = () => {
     if (!viewToggle) {
       initFilter();
-      navigate('compare/teams');
+      navigate('compare/team');
     } else {
       initFilter();
       navigate('compare/player');

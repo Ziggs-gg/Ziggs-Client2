@@ -19,8 +19,10 @@ const ChartBubble = ({ chartData }) => {
   let data = {
     datasets: [],
   };
+  let matchesArr = [];
   for (let i = 0; i < chartData.length; i++) {
     let playerName = chartData[i]?.phRole.split('-');
+    matchesArr.push(chartData[i]?.matches.split(','));
     let DPM = JSON.parse('[' + chartData[i].DPM + ']');
     let GPM = JSON.parse('[' + chartData[i].GPM + ']');
     let DPG = JSON.parse('[' + chartData[i].DPG + ']');
@@ -92,17 +94,19 @@ const ChartBubble = ({ chartData }) => {
       tooltip: {
         callbacks: {
           label: function (context) {
-            let value = context.dataset.label || ' ';
+            let value = [context.dataset.label];
+            // let value2 = context.dataset.label || ' ';
+
             // 소수점 2번째 자리에서 반올림하는 함수
             function roundToTwo(num) {
               return +(Math.round(num + 'e+2') + 'e-2');
             }
-            if (value) {
-              value +=
-                `  GPM: ${context.parsed.x}` +
-                `  DPM: ${context.parsed.y}` +
-                `  DPG: ${roundToTwo(context.parsed._custom / 8)}`;
-            }
+            let value2 =
+              `${matchesArr[context.datasetIndex][context.dataIndex]}` +
+              `  GPM: ${context.parsed.x}` +
+              `  DPM: ${context.parsed.y}` +
+              `  DPG: ${roundToTwo(context.parsed._custom / 8)}`;
+            value.push(value2);
             return value;
           },
         },
@@ -111,7 +115,7 @@ const ChartBubble = ({ chartData }) => {
   };
   return (
     <BubbleLayout>
-      <Bubble type={'bubble'} data={data} options={options} />
+      <Bubble type="bubble" data={data} options={options} />
     </BubbleLayout>
   );
 };

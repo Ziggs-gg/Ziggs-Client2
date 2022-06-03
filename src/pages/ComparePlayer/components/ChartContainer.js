@@ -18,15 +18,15 @@ const ChartContainer = ({ selectedPlayers }) => {
   const [chartData, setChartData] = useState([]);
   let chartUrl;
   if (selectedPlayers.length == 0) {
-    chartUrl = `${API.PLAYER_LIST}Chart?phRole=`;
+    chartUrl = `${API.PLAYER_CHART}phRole=`;
   } else if (selectedPlayers.length == 1) {
-    chartUrl = `${API.PLAYER_LIST}Chart?phRole=${selectedPlayers[0]}`;
+    chartUrl = `${API.PLAYER_CHART}phRole=${selectedPlayers[0]}`;
   } else if (selectedPlayers.length == 2) {
-    chartUrl = `${API.PLAYER_LIST}Chart?phRole=${selectedPlayers[0]}&phRole=${selectedPlayers[1]}`;
+    chartUrl = `${API.PLAYER_CHART}phRole=${selectedPlayers[0]}&phRole=${selectedPlayers[1]}`;
   } else if (selectedPlayers.length == 3) {
-    chartUrl = `${API.PLAYER_LIST}Chart?phRole=${selectedPlayers[0]}&phRole=${selectedPlayers[1]}&phRole=${selectedPlayers[2]}`;
+    chartUrl = `${API.PLAYER_CHART}phRole=${selectedPlayers[0]}&phRole=${selectedPlayers[1]}&phRole=${selectedPlayers[2]}`;
   } else if (selectedPlayers.length == 4) {
-    chartUrl = `${API.PLAYER_LIST}Chart?phRole=${selectedPlayers[0]}&phRole=${selectedPlayers[1]}&phRole=${selectedPlayers[2]}&phRole=${selectedPlayers[3]}`;
+    chartUrl = `${API.PLAYER_CHART}phRole=${selectedPlayers[0]}&phRole=${selectedPlayers[1]}&phRole=${selectedPlayers[2]}&phRole=${selectedPlayers[3]}`;
   }
 
   useEffect(() => {
@@ -80,6 +80,6 @@ const ChartsLayout = styled.div`
   width: 1360px;
   height: 944px;
   margin: 0 auto;
-
+  margin-bottom: 16px;
   background-color: #131310;
 `;
