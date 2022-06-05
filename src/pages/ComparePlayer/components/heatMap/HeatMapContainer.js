@@ -47,6 +47,6 @@ export default HeatMapContainer;
 
 const HeatMapLayout = styled.div`
   width: 1360px;
-  height: 624px;
+  height: 670x;
   margin: 16px auto;
 `;

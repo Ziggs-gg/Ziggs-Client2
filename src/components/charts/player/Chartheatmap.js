@@ -105,7 +105,7 @@ const LabelTd = styled.td`
 `;
 
 const SpaceTd = styled.td`
-  width: 88px;
+  width: 93px;
   height: 24px;
   margin-right: 6px;
 `;
@@ -120,7 +120,7 @@ const ColumnLabel = styled.td`
   align-items: flex-end;
   flex-direction: column;
   color: ${theme.white.white100};
-  width: 90px;
+  width: 95px;
   height: 47px;
   margin-right: 2px;
   padding-right: 2px;

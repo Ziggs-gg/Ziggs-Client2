@@ -71,8 +71,8 @@ const ChartDoughnut = ({ chartData }) => {
     responsive: false,
     // centerText: {
     //   color: theme.white.white100,
-    //   // value: valuetext2,
-    //   fontSizeAdjust: 0.1, // increase font size 20% based on default font size
+    //   value: valuetext2,
+    //   fontSizeAdjust: 0.01, // increase font size 20% based on default font size
     // },
     plugins: {
       legend: {
@@ -186,104 +186,124 @@ const ChartDoughnut = ({ chartData }) => {
     playerName.push(name[3] + ' ' + name[4]);
   }
 
-  console.log(playerName);
-
   return (
     <DoughnutLayout>
-      {playerName[0] && (
-        <FirstInnerText>
-          <PlayerName>{playerName[0]}</PlayerName>
-          <PlayerKDA>{chartData[0].KDA}</PlayerKDA>
-        </FirstInnerText>
-      )}
-
-      {chartData[0] ? (
-        <Doughnut
-          width="150"
-          height="150"
-          type={'doughnut'}
-          data={data1}
-          options={options1}
-          z-index="2"
-        />
-      ) : (
-        <Doughnut
-          width="150"
-          height="150"
-          type={'doughnut'}
-          data={noneData}
-          options={noneOption}
-        />
-      )}
-      {playerName[1] && (
-        <SecondInnerText>
-          <PlayerName>{playerName[1]}</PlayerName>
-          <PlayerKDA>{chartData[1].KDA}</PlayerKDA>
-        </SecondInnerText>
-      )}
-      {chartData[1] ? (
-        <Doughnut
-          width="150"
-          height="150"
-          type={'doughnut'}
-          data={data2}
-          options={options2}
-        />
-      ) : (
-        <Doughnut
-          width="150"
-          height="150"
-          type={'doughnut'}
-          data={noneData}
-          options={noneOption}
-        />
-      )}
-      {playerName[2] && (
-        <ThirdInnerText>
-          <PlayerName>{playerName[2]}</PlayerName>
-          <PlayerKDA>{chartData[2].KDA}</PlayerKDA>
-        </ThirdInnerText>
-      )}
-      {chartData[2] ? (
-        <Doughnut
-          width="150"
-          height="150"
-          type={'doughnut'}
-          data={data3}
-          options={options3}
-        />
-      ) : (
-        <Doughnut
-          width="150"
-          height="150"
-          type={'doughnut'}
-          data={noneData}
-          options={noneOption}
-        />
-      )}
-      {playerName[3] && (
-        <FourthInnerText>
-          <PlayerName>{playerName[3]}</PlayerName>
-          <PlayerKDA>{chartData[3].KDA}</PlayerKDA>
-        </FourthInnerText>
-      )}
-      {chartData[3] ? (
-        <Doughnut
-          width="150"
-          height="150"
-          type={'doughnut'}
-          data={data4}
-          options={options4}
-        />
-      ) : (
-        <Doughnut
-          width="150"
-          height="150"
-          type={'doughnut'}
-          data={noneData}
-          options={noneOption}
-        />
-      )}
+      <div>
+        {chartData[0] ? (
+          <Doughnut
+            width="150"
+            height="150"
+            type={'doughnut'}
+            data={data1}
+            options={options1}
+            style={{ position: 'absolute' }}
+          />
+        ) : (
+          <Doughnut
+            width="150"
+            height="150"
+            type={'doughnut'}
+            data={noneData}
+            options={noneOption}
+          />
+        )}
+        {playerName[0] && (
+          <FirstInnerText style={{ zIndex: '0' }}>
+            <PlayerName>{playerName[0]}</PlayerName>
+            <TextContain>
+              <PlayerKDA>{chartData[0].KDA}</PlayerKDA>
+              <GameText>/경기</GameText>
+            </TextContain>
+          </FirstInnerText>
+        )}
+      </div>
+      <div>
+        {chartData[1] ? (
+          <Doughnut
+            width="150"
+            height="150"
+            type={'doughnut'}
+            data={data2}
+            options={options2}
+            style={{ position: 'absolute' }}
+          />
+        ) : (
+          <Doughnut
+            width="150"
+            height="150"
+            type={'doughnut'}
+            data={noneData}
+            options={noneOption}
+          />
+        )}
+        {playerName[1] && (
+          <SecondInnerText>
+            <PlayerName>{playerName[1]}</PlayerName>
+            <TextContain>
+              <PlayerKDA>{chartData[1].KDA}</PlayerKDA>
+              <GameText>/경기</GameText>
+            </TextContain>
+          </SecondInnerText>
+        )}
+      </div>
+      <div>
+        {chartData[2] ? (
+          <Doughnut
+            width="150"
+            height="150"
+            type={'doughnut'}
+            data={data3}
+            options={options3}
+            style={{ position: 'absolute' }}
+          />
+        ) : (
+          <Doughnut
+            width="150"
+            height="150"
+            type={'doughnut'}
+            data={noneData}
+            options={noneOption}
+          />
+        )}
+        {playerName[2] && (
+          <ThirdInnerText>
+            <PlayerName>{playerName[2]}</PlayerName>
+            <TextContain>
+              <PlayerKDA>{chartData[2].KDA}</PlayerKDA>
+              <GameText>/경기</GameText>
+            </TextContain>
+          </ThirdInnerText>
+        )}
+      </div>
+      <div>
+        {chartData[3] ? (
+          <Doughnut
+            width="150"
+            height="150"
+            type={'doughnut'}
+            data={data4}
+            options={options4}
+            style={{ position: 'absolute' }}
+          />
+        ) : (
+          <Doughnut
+            width="150"
+            height="150"
+            type={'doughnut'}
+            data={noneData}
+            options={noneOption}
+          />
+        )}
+        {playerName[3] && (
+          <FourthInnerText>
+            <PlayerName>PLAYER {playerName[3]}</PlayerName>
+            <TextContain>
+              <PlayerKDA>{chartData[3].KDA}</PlayerKDA>
+              <GameText>/경기</GameText>
+            </TextContain>
+          </FourthInnerText>
+        )}
+      </div>
     </DoughnutLayout>
   );
 };
@@ -300,11 +320,10 @@ const FirstInnerText = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  position: absolute;
+
   width: 150px;
   height: 150px;
   text-align: center;
-  z-index: 1;
 `;
 
 const SecondInnerText = styled.div`
@@ -312,7 +331,6 @@ const SecondInnerText = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  position: absolute;
   width: 150px;
   height: 150px;
   text-align: center;
@@ -324,8 +342,6 @@ const ThirdInnerText = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  position: absolute;
-  /* top: 150px; */
   width: 150px;
   height: 150px;
   text-align: center;
@@ -337,9 +353,6 @@ const FourthInnerText = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  position: absolute;
-  /* bottom: 150px;
-  left: 150px; */
   width: 150px;
   height: 150px;
   text-align: center;
@@ -347,10 +360,25 @@ const FourthInnerText = styled.div`
 `;
 
 const PlayerName = styled.p`
-  color: #fff;
+  color: #f3f3f3;
+  font-weight: 500;
+  font-size: 14px;
+`;
+
+const TextContain = styled.div`
+  display: flex;
+  margin-top: 4px;
 `;
 
 const PlayerKDA = styled.p`
-  color: #fff;
+  color: #f3f3f3;
+  font-weight: 500;
+  font-size: 12px;
+`;
+
+const GameText = styled.p`
+  color: #838382;
+  font-weight: 500;
+  font-size: 10px;
 `;
 export default ChartDoughnut;
