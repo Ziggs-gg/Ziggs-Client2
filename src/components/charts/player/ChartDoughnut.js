@@ -360,7 +360,7 @@ const FourthInnerText = styled.div`
 `;
 
 const PlayerName = styled.p`
-  color: #f3f3f3;
+  color: ${theme.white.white100};
   font-weight: 500;
   font-size: 14px;
 `;
@@ -371,13 +371,13 @@ const TextContain = styled.div`
 `;
 
 const PlayerKDA = styled.p`
-  color: #f3f3f3;
+  color: ${theme.white.white100};
   font-weight: 500;
   font-size: 12px;
 `;
 
 const GameText = styled.p`
-  color: #838382;
+  color: ${theme.white.white50};
   font-weight: 500;
   font-size: 10px;
 `;
