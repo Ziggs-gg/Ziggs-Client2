@@ -88,12 +88,16 @@ const YearAndSeasonLabel = styled.p`
   font-size: 10px;
   font-weight: 300;
   color: ${theme.white.white50};
+  letter-spacing: -0.05em;
+  margin-bottom: 3px;
 `;
 
 const RoleLabel = styled.p`
   color: ${theme.white.white50};
   font-weight: 300;
   font-size: 12px;
+  letter-spacing: -0.03em;
+  margin-top: 3px;
 `;
 
 const LabelTd = styled.td`
@@ -102,10 +106,13 @@ const LabelTd = styled.td`
   height: 24px;
   text-align: center;
   margin-right: 2px;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: -0.03em;
 `;
 
 const SpaceTd = styled.td`
-  width: 93px;
+  width: 71px;
   height: 24px;
   margin-right: 6px;
 `;
@@ -120,10 +127,13 @@ const ColumnLabel = styled.td`
   align-items: flex-end;
   flex-direction: column;
   color: ${theme.white.white100};
-  width: 95px;
+  width: 73px;
   height: 47px;
   margin-right: 2px;
   padding-right: 2px;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: -0.03em;
 `;
 
 const DataTd = styled.td`
