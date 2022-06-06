@@ -6,7 +6,7 @@ import theme from '../../../styles/theme.js';
 
 const ChartDoughnut = ({ chartData }) => {
   const data1 = {
-    labels: ['Kills', 'Deaths', 'Assists'],
+    labels: ['킬', '데스', '어시스트'],
     datasets: [
       {
         data: [
@@ -22,7 +22,7 @@ const ChartDoughnut = ({ chartData }) => {
         weight: 10,
         hoverOffset: 4,
         cutout: '90%',
-        borderColor: null,
+        borderColor: theme.black.black100,
       },
     ],
   };
@@ -44,7 +44,7 @@ const ChartDoughnut = ({ chartData }) => {
   };
 
   const data2 = {
-    labels: ['Kills', 'Deaths', 'Assists'],
+    labels: ['킬', '데스', '어시스트'],
     datasets: [
       {
         data: [
@@ -60,7 +60,7 @@ const ChartDoughnut = ({ chartData }) => {
         weight: 10,
         hoverOffset: 4,
         cutout: '90%',
-        borderColor: null,
+        borderColor: theme.black.black100,
       },
     ],
   };
@@ -81,7 +81,7 @@ const ChartDoughnut = ({ chartData }) => {
     },
   };
   const data3 = {
-    labels: ['Kills', 'Deaths', 'Assists'],
+    labels: ['킬', '데스', '어시스트'],
     datasets: [
       {
         data: [
@@ -97,7 +97,7 @@ const ChartDoughnut = ({ chartData }) => {
         weight: 10,
         hoverOffset: 4,
         cutout: '90%',
-        borderColor: null,
+        borderColor: theme.black.black100,
       },
     ],
   };
@@ -119,7 +119,7 @@ const ChartDoughnut = ({ chartData }) => {
   };
 
   const data4 = {
-    labels: ['Kills', 'Deaths', 'Assists'],
+    labels: ['킬', '데스', '어시스트'],
     datasets: [
       {
         data: [
@@ -135,7 +135,7 @@ const ChartDoughnut = ({ chartData }) => {
         weight: 10,
         hoverOffset: 4,
         cutout: '90%',
-        borderColor: null,
+        borderColor: theme.black.black100,
       },
     ],
   };
@@ -157,7 +157,7 @@ const ChartDoughnut = ({ chartData }) => {
   };
 
   const noneData = {
-    labels: ['Kills', 'Deaths', 'Assists'],
+    labels: ['킬', '데스', '어시스트'],
     datasets: [
       {
         data: [100],
@@ -165,7 +165,7 @@ const ChartDoughnut = ({ chartData }) => {
         weight: 10,
         hoverOffset: 4,
         cutout: '90%',
-        borderColor: null,
+        borderColor: theme.black.black100,
       },
     ],
   };
@@ -212,7 +212,7 @@ const ChartDoughnut = ({ chartData }) => {
             <PlayerName>{playerName[0]}</PlayerName>
             <TextContain>
               <PlayerKDA>{chartData[0].KDA}</PlayerKDA>
-              <GameText>/경기</GameText>
+              <GameText>&nbsp;/ 경기</GameText>
             </TextContain>
           </FirstInnerText>
         )}
@@ -241,7 +241,7 @@ const ChartDoughnut = ({ chartData }) => {
             <PlayerName>{playerName[1]}</PlayerName>
             <TextContain>
               <PlayerKDA>{chartData[1].KDA}</PlayerKDA>
-              <GameText>/경기</GameText>
+              <GameText>&nbsp;/ 경기</GameText>
             </TextContain>
           </SecondInnerText>
         )}
@@ -270,7 +270,7 @@ const ChartDoughnut = ({ chartData }) => {
             <PlayerName>{playerName[2]}</PlayerName>
             <TextContain>
               <PlayerKDA>{chartData[2].KDA}</PlayerKDA>
-              <GameText>/경기</GameText>
+              <GameText>&nbsp;/ 경기</GameText>
             </TextContain>
           </ThirdInnerText>
         )}
@@ -299,7 +299,7 @@ const ChartDoughnut = ({ chartData }) => {
             <PlayerName>PLAYER {playerName[3]}</PlayerName>
             <TextContain>
               <PlayerKDA>{chartData[3].KDA}</PlayerKDA>
-              <GameText>/경기</GameText>
+              <GameText>&nbsp;/ 경기</GameText>
             </TextContain>
           </FourthInnerText>
         )}
