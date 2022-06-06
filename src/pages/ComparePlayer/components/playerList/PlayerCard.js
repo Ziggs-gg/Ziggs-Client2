@@ -26,7 +26,6 @@ const PlayerCard = ({
       <TeamLogo src={`/images/teams/${region}/${phID.split('-')[3]}.png`} />
       <RoleLogo src={`/images/role/role_${role}_W.png`} />
       <GradientMask imgPath={imgPath} />
-
       <PlayerName>{phID.split('-')[4]}</PlayerName>
     </CardLayout>
   );
