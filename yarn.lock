@@ -3193,10 +3193,15 @@
   "resolved" "https://registry.npmjs.org/charcodes/-/charcodes-0.2.0.tgz"
   "version" "0.2.0"
 
-"chart.js@^3.2.0", "chart.js@^3.5.0", "chart.js@^3.7.1":
+"chart.js@^3.0.0", "chart.js@^3.2.0", "chart.js@^3.5.0", "chart.js@^3.7.1":
   "integrity" "sha512-8knRegQLFnPQAheZV8MjxIXc5gQEfDFD897BJgv/klO/vtIyFFmgMXrNfgrXpbTr/XbTturxRgxIXx/Y+ASJBA=="
   "resolved" "https://registry.npmjs.org/chart.js/-/chart.js-3.7.1.tgz"
   "version" "3.7.1"
+
+"chartjs-plugin-datalabels@^2.0.0":
+  "integrity" "sha512-WBsWihphzM0Y8fmQVm89+iy99mmgejmj5/jcsYqwxSioLRL/zqJ4Scv/eXq5ZqvG3TpojlGzZLeaOaSvDm7fwA=="
+  "resolved" "https://registry.npmjs.org/chartjs-plugin-datalabels/-/chartjs-plugin-datalabels-2.0.0.tgz"
+  "version" "2.0.0"
 
 "chartjs-plugin-doughnut-innertext@^3.1.0":
   "integrity" "sha512-uK6r/kgTTv6KxteQ8dFjcsFmah+E7sShB3kMI3zMpfiS+jksNvLtkZkE4Bm+0PwZ3ON4Ybq5CaqVTyOwOWt98g=="

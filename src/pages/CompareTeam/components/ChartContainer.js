@@ -32,5 +32,4 @@ const ChartsLayout = styled.div`
   margin: 0 auto;
   margin-top: 16px;
   margin-bottom: 16px;
-  background-color: gray;
 `;
