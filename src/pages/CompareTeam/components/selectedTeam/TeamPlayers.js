@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import axios from 'axios';
 import { API } from '../../../../config';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -18,6 +18,7 @@ const TeamPlayers = ({ team }) => {
   };
 
   const roasterKeys = Object.keys(roaster);
+
   roasterData?.forEach(data => {
     roaster[data?.role].push(data);
   });
@@ -32,6 +33,7 @@ const TeamPlayers = ({ team }) => {
         console.error('err:', Error);
       });
   }, [team]);
+
   return (
     <TeamPlayersLayout>
       {roasterKeys.map((role, idx) => {

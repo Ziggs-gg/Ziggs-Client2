@@ -8,4 +8,5 @@ export const API = {
   TEAM_LIST: `${BASE_URL}/compare/team`,
   SELECTED_TEAMBOX: `${BASE_URL}/compare/team/selectedTeamBox?`,
   SELECTED_TEAMROASTER: `${BASE_URL}/compare/team/SelectedTeamRoasterCarousel?`,
+  TEAM_CHAMPION_POOL: `${BASE_URL}/compare/team/ChampionPool?`,
 };

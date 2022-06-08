@@ -1,18 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+
 const PlayerRoasterCard = ({
-  player: {
-    phID,
-    player,
-    ptID,
-    role,
-    KDA,
-    DPM,
-    GPM,
-    VSPM,
-    playerIMGPath,
-    teamIMGpath,
-  },
+  player: { player, role, KDA, DPM, GPM, VSPM, playerIMGPath, teamIMGpath },
 }) => {
   return (
     <CardLayout>
