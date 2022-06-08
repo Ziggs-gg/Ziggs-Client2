@@ -18,9 +18,12 @@ const CompareTeam = () => {
         setSelectedTeams={setSelectedTeams}
         deleteSelectedTeam={deleteSelectedTeam}
       />
-      <SelectedCards />
-      <ChartContainer />
-      <ChampionPool />
+      <SelectedCards
+        selectedTeams={selectedTeams}
+        deleteSelectedTeam={deleteSelectedTeam}
+      />
+      <ChartContainer selectedTeams={selectedTeams} />
+      <ChampionPool selectedTeams={selectedTeams} />
     </>
   );
 };
