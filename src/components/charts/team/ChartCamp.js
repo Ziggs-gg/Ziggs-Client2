@@ -134,7 +134,7 @@ const ChartCamp = ({}) => {
       },
       // 진영 축 표시
       xAxis: {
-        labels: ['', '블루 진영', '', '', '', '', '레드 진영', ''],
+        labels: ['블루 진영', '레드 진영'],
         type: 'category',
         stacked: true,
         position: 'top',
@@ -145,6 +145,7 @@ const ChartCamp = ({}) => {
         ticks: {
           color: theme.white.white50,
         },
+        offset: true,
       },
       y: {
         grid: {
