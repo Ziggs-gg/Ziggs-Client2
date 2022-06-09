@@ -46,13 +46,17 @@ const ChartLine = ({}) => {
   // };
 
   const data = {
-    labels: ['W1', 'W2', 'W3', 'W4', 'W5', 'W6', 'W7', 'W8', 'W9', 'W10'],
+    labels: [],
     datasets: [
       {
         label: 'player1',
-        data: [33, 53, 32, 24, 44, 65, 53, 64, 45, 51],
-        fill: true,
-        backgroundColor: theme.green.greenOPA80,
+        data: [33, 53, 32, 24, 44, 95, 53, 64, 45, 51],
+        fill: {
+          target: 'origin',
+          above: theme.orange.orangeOPA40, // Area will be red above the origin
+          below: theme.orange.orangeOPA20,
+        },
+        backgroundColor: theme.green.greenB70,
         borderColor: theme.green.greenB70,
         pointStyle: 'circle',
         pointRadius: 3,
@@ -60,9 +64,13 @@ const ChartLine = ({}) => {
       },
       {
         label: 'player2',
-        data: [33, 53, 32, 24, 44, 65, 86, 57, 48, 39],
-        fill: true,
-        backgroundColor: theme.orange.orangeOPA80,
+        data: [33, 53, 32, 24, 44, 65, 98, 57, 48, 39],
+        fill: {
+          target: 'origin',
+          above: theme.green.greenOPA40, // Area will be red above the origin
+          below: theme.green.greenOPA20,
+        },
+        backgroundColor: theme.orange.orangeB70,
         borderColor: theme.orange.orangeB70,
         pointStyle: 'circle',
         pointRadius: 3,
@@ -70,23 +78,40 @@ const ChartLine = ({}) => {
       },
     ],
   };
-
+  for (let i = 1; i < 51; i++) {
+    data.labels.push(i);
+  }
+  let max = 0;
+  for (let i = 0; i < data.datasets.length; i++) {
+    for (let j = 0; j < data.datasets[0].data.length; j++) {
+      if (data.datasets[i].data[j] > max) {
+        max = data.datasets[i].data[j];
+      }
+    }
+  }
   const options = {
+    responsive: false,
     scales: {
       x: {
         grid: {
           color: '#363634',
           borderColor: '#363634',
           tickColor: '#363634',
-          max: 100,
-          min: -100,
         },
+        min: 0,
+        max: 50,
+        ticks: { stepSize: 1 },
       },
       y: {
         grid: {
           color: '#363634',
           borderColor: '#363634',
           tickColor: '#363634',
+        },
+        min: max * -1,
+        max: max,
+        ticks: {
+          stepSize: 20,
         },
       },
     },
@@ -106,7 +131,7 @@ const ChartLine = ({}) => {
 
   return (
     <ChartLayout>
-      <Line data={data} options={options} />
+      <Line width="894" height="304" data={data} options={options} />
     </ChartLayout>
   );
 };
