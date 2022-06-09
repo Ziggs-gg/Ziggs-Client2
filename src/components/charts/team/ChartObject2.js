@@ -128,6 +128,7 @@ const ChartObject2 = ({}) => {
         padding: '16',
       },
       tooltip: {
+        intersect: false,
         callbacks: {
           label: ctx => {
             let min = Math.trunc(ctx.raw);
