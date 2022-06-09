@@ -296,7 +296,7 @@ const ChartDoughnut = ({ chartData }) => {
         )}
         {playerName[3] && (
           <FourthInnerText>
-            <PlayerName>PLAYER {playerName[3]}</PlayerName>
+            <PlayerName>{playerName[3]}</PlayerName>
             <TextContain>
               <PlayerKDA>{chartData[3].KDA}</PlayerKDA>
               <GameText>&nbsp;/ 경기</GameText>
