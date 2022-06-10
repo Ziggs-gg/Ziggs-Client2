@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import axios from 'axios';
 import { API } from '../../../../config';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper';
+import { Navigation, Pagination } from 'swiper';
+
 import PlayerRoasterCard from './PlayerRoasterCard';
 
 const TeamPlayers = ({ team }) => {
@@ -38,11 +39,20 @@ const TeamPlayers = ({ team }) => {
     <TeamPlayersLayout>
       {roasterKeys.map((role, idx) => {
         return (
-          <Swiper key={idx} modules={[Navigation]} navigation slidesPerView={1}>
+          <Swiper
+            key={idx}
+            modules={[Navigation, Pagination]}
+            navigation
+            slidesPerView={1}
+            pagination={true}
+          >
             {roaster[role].map((player, idx) => {
+              const playerDataLen = roaster[role].length;
+
               return (
                 <SwiperSlide key={idx}>
                   <PlayerRoasterCard player={player} />
+                  <SinglePagePagenation playerDataLen={playerDataLen} />
                 </SwiperSlide>
               );
             })}
@@ -99,5 +109,37 @@ const TeamPlayersLayout = styled.div`
       background-size: 50% auto;
       background-position: center;
     }
+
+    .swiper-pagination {
+      bottom: 2px;
+
+      .swiper-pagination-bullet {
+        background: #838382;
+        border-radius: 0;
+        width: 12px;
+        height: 2px;
+        margin: 0 2px;
+      }
+
+      .swiper-pagination-bullet-active {
+        background: #f3f3f3;
+      }
+    }
   }
+`;
+
+const SinglePagePagenation = styled.span`
+  position: absolute;
+  display: none;
+  bottom: 2px;
+  left: 50px;
+  width: 12px;
+  height: 2px;
+  background: #f3f3f3;
+
+  ${props =>
+    props.playerDataLen === 1 &&
+    css`
+      display: inline-block;
+    `}
 `;

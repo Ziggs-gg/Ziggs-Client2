@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { API } from '../../../../config';
-
+import ChampionCard from './ChampionCard';
 const TeamChampionPool = ({ ptID }) => {
   const [championPoolData, setChampionPoolData] = useState();
+  const TeamName = ptID.split('-')[3];
+  const TeamRegion = ptID.split('-')[1];
 
   let championPool = {
     TOP: [],
@@ -34,8 +36,8 @@ const TeamChampionPool = ({ ptID }) => {
   return (
     <TeamChampionPoolLayout>
       <Title>
-        <TeamLogo />
-        <TitleText>포지션별 시즌 챔피언풀 요약</TitleText>
+        <TeamLogo src={`/images/teams/${TeamRegion}/${TeamName}.png`} />
+        <TitleText>{`${TeamName} 포지션별 시즌 챔피언풀 요약`}</TitleText>
       </Title>
       <ChampionPoolCardContainer>
         {championPoolKeys.map((role, idx) => {
@@ -43,7 +45,7 @@ const TeamChampionPool = ({ ptID }) => {
             <RoleChapionPool key={idx}>
               <RoleLogo src={`/images/role/role_${role}_B70.png`} />
               {championPool[role].map((championData, idx) => {
-                return <ChampionData key={idx}></ChampionData>;
+                return <ChampionCard championData={championData} key={idx} />;
               })}
             </RoleChapionPool>
           );
@@ -104,14 +106,6 @@ const RoleChapionPool = styled.div`
   &:nth-child(5) {
     margin-left: 16px;
   }
-`;
-
-const ChampionData = styled.div`
-  width: 195px;
-  height: 72px;
-  border: 1px solid #353532;
-  border-radius: 10px;
-  margin-top: 16px;
 `;
 
 const RoleLogo = styled.img`
