@@ -1,16 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-// import Chartheatmap from '../../../components/charts/player/Chartheatmap';
+import { API } from '../../../../config';
+import Chartheatmap from '../../../../components/charts/player/Chartheatmap';
 
-const HeatMapContainer = () => {
+const HeatMapContainer = ({ selectedPlayers }) => {
   const [heatMapData, setHeatMapData] = useState([]);
 
+  let heatMapUrl;
+  if (selectedPlayers.length == 0) {
+    heatMapUrl = `${API.HEATMAP_PLAYER}phRole=`;
+  } else if (selectedPlayers.length == 1) {
+    heatMapUrl = `${API.HEATMAP_PLAYER}phRole=${selectedPlayers[0]}`;
+  } else if (selectedPlayers.length == 2) {
+    heatMapUrl = `${API.HEATMAP_PLAYER}phRole=${selectedPlayers[0]}&phRole=${selectedPlayers[1]}`;
+  } else if (selectedPlayers.length == 3) {
+    heatMapUrl = `${API.HEATMAP_PLAYER}phRole=${selectedPlayers[0]}&phRole=${selectedPlayers[1]}&phRole=${selectedPlayers[2]}`;
+  } else if (selectedPlayers.length == 4) {
+    heatMapUrl = `${API.HEATMAP_PLAYER}phRole=${selectedPlayers[0]}&phRole=${selectedPlayers[1]}&phRole=${selectedPlayers[2]}&phRole=${selectedPlayers[3]}`;
+  }
+  console.log(heatMapUrl);
   useEffect(() => {
     axios
-      .get(
-        'http://13.209.5.6:3000/compare/player/HeatMap?phRole=21-LCK-SUM-HLE-Chovy-MID&phRole=21-LCK-SUM-T1-Faker-MID&phRole=22-LCK-SPR-T1-Faker-MID&phRole=21-LCK-SUM-DK-Showmaker-MID'
-      )
+      .get(heatMapUrl)
       .then(Response => {
         setHeatMapData(Response.data);
         console.log(Response.data);
@@ -18,13 +30,15 @@ const HeatMapContainer = () => {
       .catch(Error => {
         console.error(Error);
       });
-  }, []);
+  }, [heatMapUrl]);
+
+  console.log(heatMapUrl);
 
   return (
     <HeatMapLayout>
-      {/* {heatMapData.Heatmap && (
+      {heatMapData.Heatmap && (
         <Chartheatmap heatMapData={heatMapData.Heatmap} />
-      )} */}
+      )}
     </HeatMapLayout>
   );
 };
@@ -33,8 +47,6 @@ export default HeatMapContainer;
 
 const HeatMapLayout = styled.div`
   width: 1360px;
-  height: 624px;
+  height: 670x;
   margin: 16px auto;
-
-  background-color: gray;
 `;

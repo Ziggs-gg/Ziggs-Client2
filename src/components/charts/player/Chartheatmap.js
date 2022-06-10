@@ -3,66 +3,149 @@ import styled from 'styled-components';
 import theme from '../../../styles/theme.js';
 
 const Chartheatmap = ({ heatMapData }) => {
+  console.log(heatMapData);
   return (
     <div>
       <table>
         <thead>
-          <tr>
-            <td></td>
-            <td>게임</td>
-            <td>킬</td>
-            <td>데스</td>
-            <td>어시스트</td>
-            <td>KDA</td>
-            <td>KP%</td>
-            <td>DTH%</td>
-            <td>CSM</td>
-            <td>GPM</td>
-            <td>GOLD%</td>
-            <td>VSPM</td>
-            <td>WPM</td>
-            <td>WCPM</td>
-            <td>VS%</td>
-            <td>DPM</td>
-            <td>DMG%</td>
-            <td>DPG</td>
-            <td>DTPM</td>
-            <td>DT%</td>
-            <td>GD@15</td>
-            <td>CSD@15</td>
-            <td>XPD@15</td>
-          </tr>
+          <HeatTr>
+            <SpaceTd></SpaceTd>
+            <LabelTd>게임</LabelTd>
+            <LabelTd>킬</LabelTd>
+            <LabelTd>데스</LabelTd>
+            <LabelTd>어시스트</LabelTd>
+            <LabelTd>KDA</LabelTd>
+            <LabelTd>KP%</LabelTd>
+            <LabelTd>DTH%</LabelTd>
+            <LabelTd>CSM</LabelTd>
+            <LabelTd>GPM</LabelTd>
+            <LabelTd>GOLD%</LabelTd>
+            <LabelTd>VSPM</LabelTd>
+            <LabelTd>WPM</LabelTd>
+            <LabelTd>WCPM</LabelTd>
+            <LabelTd>VS%</LabelTd>
+            <LabelTd>DPM</LabelTd>
+            <LabelTd>DMG%</LabelTd>
+            <LabelTd>DPG</LabelTd>
+            <LabelTd>DTPM</LabelTd>
+            <LabelTd>DT%</LabelTd>
+            <LabelTd>GD@15</LabelTd>
+            <LabelTd>CSD@15</LabelTd>
+            <LabelTd>XPD@15</LabelTd>
+          </HeatTr>
         </thead>
         <tbody>
-          <tr>
-            <td>phid</td>
-            <td>gameCount</td>
-            <td>AVG_kills</td>
-            <td>AVG_deaths</td>
-            <td>AVG_assists</td>
-            <td>AVG_KDA</td>
-            <td>AVG_KPPCT</td>
-            <td>AVG_DTHPCT</td>
-            <td>AVG_CSM</td>
-            <td>AVG_GPM</td>
-            <td>AVG_goldPCT</td>
-            <td>AVG_VSPM</td>
-            <td>AVG_WPM</td>
-            <td>AVG_WCPM</td>
-            <td>AVG_VSPCT</td>
-            <td>AVG_DPM</td>
-            <td>AVG_DMGPCT</td>
-            <td>AVG_DPG</td>
-            <td>AVG_DTPM</td>
-            <td>AVG_DTPCT</td>
-            <td>AVG_GDat15</td>
-            <td>AVG_CSDat15</td>
-            <td>AVG_XPDat15</td>
-          </tr>
+          {heatMapData.map((player, idx) => {
+            return (
+              <HeatTr>
+                <ColumnLabel>
+                  <YearAndSeasonLabel>
+                    {player.yy}-{player.splitSeason}
+                  </YearAndSeasonLabel>
+                  {player.phID.includes('-')
+                    ? player.phID.split('-')[4]
+                    : player.phID}
+                  <RoleLabel>{player.role}</RoleLabel>
+                </ColumnLabel>
+                <DataTd>{player.gameCount}</DataTd>
+                <DataTd>{player.AVG_kills}</DataTd>
+                <DataTd>{player.AVG_deaths}</DataTd>
+                <DataTd>{player.AVG_assists}</DataTd>
+                <DataTd>{player.AVG_KDA}</DataTd>
+                <DataTd>{player.AVG_KPPCT}</DataTd>
+                <DataTd>{player.AVG_DTHPCT}</DataTd>
+                <DataTd>{player.AVG_CSM}</DataTd>
+                <DataTd>{player.AVG_GPM}</DataTd>
+                <DataTd>{player.AVG_goldPCT}</DataTd>
+                <DataTd>{player.AVG_VSPM ? player.AVG_VSPM : '-'}</DataTd>
+                <DataTd>{player.AVG_WPM ? player.AVG_WPM : '-'}</DataTd>
+                <DataTd>{player.AVG_WCPM ? player.AVG_WCPM : '-'}</DataTd>
+                <DataTd>{player.AVG_VSPCT ? player.AVG_VSPCT : '-'}</DataTd>
+                <DataTd>{player.AVG_DPM}</DataTd>
+                <DataTd>{player.AVG_DMGPCT}</DataTd>
+                <DataTd>{player.AVG_DPG}</DataTd>
+                <DataTd>{player.AVG_DTPM}</DataTd>
+                <DataTd>{player.AVG_DTPCT}</DataTd>
+                <DataTd>
+                  {player.AVG_GDat15 !== null ? player.AVG_GDat15 : '-'}
+                </DataTd>
+                <DataTd>
+                  {player.AVG_CSDat15 !== null ? player.AVG_CSDat15 : '-'}
+                </DataTd>
+                <DataTd>
+                  {player.AVG_XPDat15 !== null ? player.AVG_XPDat15 : '-'}
+                </DataTd>
+              </HeatTr>
+            );
+          })}
         </tbody>
       </table>
     </div>
   );
 };
 
+const YearAndSeasonLabel = styled.p`
+  font-size: 10px;
+  font-weight: 300;
+  color: ${theme.white.white50};
+  letter-spacing: -0.05em;
+  margin-bottom: 3px;
+`;
+
+const RoleLabel = styled.p`
+  color: ${theme.white.white50};
+  font-weight: 300;
+  font-size: 12px;
+  letter-spacing: -0.03em;
+  margin-top: 3px;
+`;
+
+const LabelTd = styled.td`
+  color: ${theme.white.white100};
+  width: 56px;
+  height: 24px;
+  text-align: center;
+  margin-right: 2px;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: -0.03em;
+`;
+
+const SpaceTd = styled.td`
+  width: 71px;
+  height: 24px;
+  margin-right: 6px;
+`;
+
+const HeatTr = styled.tr`
+  display: flex;
+`;
+
+const ColumnLabel = styled.td`
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  flex-direction: column;
+  color: ${theme.white.white100};
+  width: 73px;
+  height: 47px;
+  margin-right: 2px;
+  padding-right: 2px;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: -0.03em;
+`;
+
+const DataTd = styled.td`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: ${theme.white.white100};
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  background: ${theme.black.black90};
+  text-align: center;
+  margin: 0 2px 2px 0;
+`;
 export default Chartheatmap;
