@@ -1,13 +1,42 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 
-const TeamCard = () => {
-  return <CardLayout></CardLayout>;
+const TeamCard = ({
+  team: { imgPath, ptID, region, splitSeason, teamFullName },
+  selectedTeams,
+  handleSelectTeam,
+}) => {
+  const [isSelected, setSelected] = useState(false);
+
+  const orderNumber = selectedTeams.findIndex(
+    playerData => playerData === ptID
+  );
+
+  useEffect(() => {
+    selectedTeams.includes(ptID) ? setSelected(true) : setSelected(false);
+  }, [ptID, selectedTeams]);
+
+  return (
+    <CardLayout
+      onClick={() => {
+        handleSelectTeam(ptID);
+      }}
+      isSelected={isSelected}
+      orderNumber={orderNumber}
+    >
+      <LeagueLogo src={`/images/League_Logo/${region}_logo_B70.png`} />
+      <TeamLogo src={imgPath} />
+      <TeamName>{teamFullName}</TeamName>
+    </CardLayout>
+  );
 };
 
 export default TeamCard;
 
 const CardLayout = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
   width: 84px;
   height: 100px;
@@ -27,55 +56,23 @@ const CardLayout = styled.div`
     props.isSelected &&
     props.orderNumber === 0 &&
     css`
-      border: 1px solid ${props => props.theme.red.redMain};
+      border: 1px solid ${props => props.theme.green.greenMain};
     `}
 
   ${props =>
     props.isSelected &&
     props.orderNumber === 1 &&
     css`
-      border: 1px solid ${props => props.theme.blue.blueMain};
-    `}
-
-    ${props =>
-    props.isSelected &&
-    props.orderNumber === 2 &&
-    css`
-      border: 1px solid ${props => props.theme.green.greenMain};
-    `}
-
-    ${props =>
-    props.isSelected &&
-    props.orderNumber === 3 &&
-    css`
       border: 1px solid ${props => props.theme.orange.orangeMain};
     `}
 `;
 
-const GradientMask = styled.div`
-  position: absolute;
-  bottom: 0;
-  width: 84px;
-  height: 78px;
-  /* position: absolute; */
-  /* border-radius: 10px; */
-  /* border: 1px solid ${props => props.theme.black.black85}; */
-
-  mask-image: linear-gradient(
-    to bottom,
-    #c4c4c4 52.71%,
-    rgba(196, 196, 196, 0.2) 86.46%,
-    rgba(196, 196, 196, 0) 100%
-  );
-
-  border-radius: 10px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: bottom;
-  background-image: url(${props => props.imgPath});
+const TeamLogo = styled.img`
+  width: 48px;
+  height: 48px;
 `;
 
-const TeamLogo = styled.img`
+const LeagueLogo = styled.img`
   position: absolute;
   width: 16px;
   height: 16px;
@@ -83,24 +80,12 @@ const TeamLogo = styled.img`
   top: 6px;
 `;
 
-const RoleLogo = styled.img`
+const TeamName = styled.div`
   position: absolute;
-  width: 16px;
-  height: 16px;
-  right: 8px;
-  top: 6px;
-  opacity: 0.5;
-`;
-
-const PlayerName = styled.div`
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 24px;
-  bottom: 0;
+  text-align: center;
+  bottom: 2px;
   color: white;
-  font-size: 12px;
-  font-weight: 500;
+  font-size: 10px;
+  line-height: 14px;
+  letter-spacing: -0.05em;
 `;
