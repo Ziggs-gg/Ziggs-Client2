@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Bar } from 'react-chartjs-2';
 import theme from '../../../styles/theme.js';
+import { imageListItemBarClasses } from '@mui/material';
 
 const dummyData = [
   {
@@ -149,6 +150,9 @@ const Chartimportance = ({}) => {
   }
 
   const options = {
+    interaction: {
+      mode: 'x',
+    },
     borderRadius: 4,
     barPercentage: 0.8,
     categoryPercentage: 0.4,
@@ -162,6 +166,11 @@ const Chartimportance = ({}) => {
         padding: '0',
       },
       tooltip: {
+        intersect: false,
+        yAlign: 'center',
+        itemSort: ctx => {
+          return ctx.datasetIndex * -1;
+        },
         callbacks: {
           label: ctx => {
             // 소수점 2번째 자리에서 반올림하는 함수
@@ -173,19 +182,39 @@ const Chartimportance = ({}) => {
         },
       },
       legend: {
-        // onClick: ctx => {
-        //   console.log(ctx);
+        fullSize: false,
+        // onClick: (event, legendItem, legend) => {
+        //   console.log(
+        //     'event: ',
+        //     event,
+        //     '\nlegendItem: ',
+        //     legendItem,
+        //     '\nlegend :',
+        //     legend
+        //   );
         // },
-        fullSize: true,
         labels: {
           boxWidth: 10,
           boxHeight: 10,
           color: theme.white.white100,
+          filter: (item, data) => {
+            console.log('item : ', item, '\ndata : ', data);
+            Object.keys(item).forEach(key => {
+              item['lineCap'] = 'butt';
+            });
+            return item;
+            // console.log(data.datasets);
+            // if (data.datasets >= 0 && data.datasets)
+            // let team = item.text.split(' ')[0];
+            // // console.log(ctx);
+            // return `${team} test`;
+          },
         },
       },
     },
     scales: {
       x: {
+        stacked: true,
         ticks: {
           color: theme.white.white80,
         },
@@ -198,6 +227,13 @@ const Chartimportance = ({}) => {
         },
         ticks: {
           color: theme.white.white80,
+          callback: function (value, index, values) {
+            if (value === 0) {
+              return value;
+            } else {
+              return `${value}%`;
+            }
+          },
         },
         max: 100,
         beginAtZero: true,
