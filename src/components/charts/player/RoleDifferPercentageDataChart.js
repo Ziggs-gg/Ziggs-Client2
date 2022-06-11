@@ -74,6 +74,13 @@ const RoleDifferPercentageDataChart = ({ chartData }) => {
         },
         ticks: {
           color: theme.white.white80,
+          callback: function (value, index, values) {
+            if (value === 0) {
+              return value;
+            } else {
+              return `${value}%`;
+            }
+          },
         },
       },
     },

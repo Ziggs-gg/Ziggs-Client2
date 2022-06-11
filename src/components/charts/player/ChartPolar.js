@@ -102,6 +102,13 @@ const ChartPolar = ({ chartData }) => {
           z: 3,
           color: theme.white.white80,
           backdropColor: 'rgba(0, 0, 0, 0)',
+          callback: function (value, index, values) {
+            if (value === 0) {
+              return value;
+            } else {
+              return `${value}%`;
+            }
+          },
           // major: true,
         },
         backgroundColor: theme.black.blackB90OPA25,
