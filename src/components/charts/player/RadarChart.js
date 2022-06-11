@@ -92,8 +92,13 @@ const RadarChart = ({ chartData }) => {
   const options = {
     interaction: {
       mode: 'index',
+      axis: 'r',
     },
     plugins: {
+      tooltip: {
+        // intersect: false,
+        // xAlign: 'right',
+      },
       legend: {
         display: false,
       },
@@ -119,6 +124,11 @@ const RadarChart = ({ chartData }) => {
         backgroundColor: theme.black.blackB90OPA25,
         suggestedMin: 0,
         suggestedMax: 10,
+      },
+    },
+    elements: {
+      point: {
+        hitRadius: 5,
       },
     },
   };

@@ -31,6 +31,9 @@ const ChartDoughnut = ({ chartData }) => {
 
   const options1 = {
     responsive: false,
+    interaction: {
+      mode: 'dataset',
+    },
     // centerText: {
     //   color: theme.white.white100,
     //   value: valuetext1,
@@ -39,6 +42,17 @@ const ChartDoughnut = ({ chartData }) => {
     plugins: {
       legend: {
         display: false,
+      },
+      tooltip: {
+        callbacks: {
+          title: ctx => {
+            const phRoleSplit = chartData[0].phRole.split('-');
+            const season =
+              phRoleSplit[0] + ' - ' + phRoleSplit[1] + ' - ' + phRoleSplit[2];
+            const playerInfo = phRoleSplit[3] + ' ' + phRoleSplit[4];
+            return [season, playerInfo];
+          },
+        },
       },
     },
   };
@@ -69,6 +83,9 @@ const ChartDoughnut = ({ chartData }) => {
 
   const options2 = {
     responsive: false,
+    interaction: {
+      mode: 'dataset',
+    },
     // centerText: {
     //   color: theme.white.white100,
     //   value: valuetext2,
@@ -77,6 +94,17 @@ const ChartDoughnut = ({ chartData }) => {
     plugins: {
       legend: {
         display: false,
+      },
+      tooltip: {
+        callbacks: {
+          title: ctx => {
+            const phRoleSplit = chartData[1].phRole.split('-');
+            const season =
+              phRoleSplit[0] + ' - ' + phRoleSplit[1] + ' - ' + phRoleSplit[2];
+            const playerInfo = phRoleSplit[3] + ' ' + phRoleSplit[4];
+            return [season, playerInfo];
+          },
+        },
       },
     },
   };
@@ -106,6 +134,9 @@ const ChartDoughnut = ({ chartData }) => {
 
   const options3 = {
     responsive: false,
+    interaction: {
+      mode: 'dataset',
+    },
     // centerText: {
     //   color: theme.white.white100,
     //   // value: valuetext3,
@@ -114,6 +145,17 @@ const ChartDoughnut = ({ chartData }) => {
     plugins: {
       legend: {
         display: false,
+      },
+      tooltip: {
+        callbacks: {
+          title: ctx => {
+            const phRoleSplit = chartData[2].phRole.split('-');
+            const season =
+              phRoleSplit[0] + ' - ' + phRoleSplit[1] + ' - ' + phRoleSplit[2];
+            const playerInfo = phRoleSplit[3] + ' ' + phRoleSplit[4];
+            return [season, playerInfo];
+          },
+        },
       },
     },
   };
@@ -144,6 +186,9 @@ const ChartDoughnut = ({ chartData }) => {
 
   const options4 = {
     responsive: false,
+    interaction: {
+      mode: 'dataset',
+    },
     // centerText: {
     //   color: theme.white.white100,
     //   value: valuetext4,
@@ -152,6 +197,17 @@ const ChartDoughnut = ({ chartData }) => {
     plugins: {
       legend: {
         display: false,
+      },
+      tooltip: {
+        callbacks: {
+          title: ctx => {
+            const phRoleSplit = chartData[3].phRole.split('-');
+            const season =
+              phRoleSplit[0] + ' - ' + phRoleSplit[1] + ' - ' + phRoleSplit[2];
+            const playerInfo = phRoleSplit[3] + ' ' + phRoleSplit[4];
+            return [season, playerInfo];
+          },
+        },
       },
     },
   };
