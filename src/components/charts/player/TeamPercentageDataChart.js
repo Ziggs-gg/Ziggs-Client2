@@ -50,7 +50,15 @@ const TeamPercentageDataChart = ({ chartData }) => {
         fontSize: '16',
         color: theme.white.white100,
         align: 'start',
-        padding: '16',
+        padding: {
+          top: 0,
+          bottom: 16,
+        },
+        font: {
+          size: 14,
+          weight: 500,
+          lineHeight: '16px',
+        },
       },
     },
     maintainAspectRatio: false,
@@ -77,10 +85,13 @@ const TeamPercentageDataChart = ({ chartData }) => {
       },
     },
   };
-
+  const fontFamily = {
+    family: 'Noto Sans KR',
+    weight: 400,
+  };
   return (
     <BarLayout>
-      <Bar data={data1} options={options1} />
+      <Bar data={data1} options={options1} font={fontFamily} />
     </BarLayout>
   );
 };

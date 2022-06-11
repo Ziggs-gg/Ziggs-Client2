@@ -78,7 +78,15 @@ const ChartPolar = ({ chartData }) => {
         text: '시즌 평균 킬 관여율',
         color: theme.white.white100,
         align: 'start',
-        padding: '16',
+        padding: {
+          top: 0,
+          bottom: 16,
+        },
+        font: {
+          size: 14,
+          weight: 500,
+          lineHeight: '16px',
+        },
       },
     },
     scales: {
@@ -102,9 +110,13 @@ const ChartPolar = ({ chartData }) => {
       },
     },
   };
+  const fontFamily = {
+    family: 'Noto Sans KR',
+    weight: 400,
+  };
   return (
     <PolarLayout>
-      <PolarArea data={data} options={options} />
+      <PolarArea data={data} options={options} font={fontFamily} />
     </PolarLayout>
   );
 };

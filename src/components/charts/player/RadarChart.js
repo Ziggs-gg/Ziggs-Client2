@@ -122,15 +122,19 @@ const RadarChart = ({ chartData }) => {
       },
     },
   };
+  const fontFamily = {
+    family: 'Noto Sans KR',
+    weight: 400,
+  };
   return (
     <RadarLayout>
-      <Radar data={data} options={options} />
+      <Radar data={data} options={options} font={fontFamily} />
     </RadarLayout>
   );
 };
 
 const RadarLayout = styled.div`
-  width: 280px;
+  width: 316px;
   height: 304px;
   padding: 12px 2px 12px 2px;
 `;

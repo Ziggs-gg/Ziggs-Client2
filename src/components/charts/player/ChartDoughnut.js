@@ -185,7 +185,10 @@ const ChartDoughnut = ({ chartData }) => {
     let name = chartData[i]?.phRole.split('-');
     playerName.push(name[3] + ' ' + name[4]);
   }
-
+  const fontFamily = {
+    family: 'Noto Sans KR',
+    weight: 400,
+  };
   return (
     <DoughnutLayout>
       <div>
@@ -226,6 +229,7 @@ const ChartDoughnut = ({ chartData }) => {
             data={data2}
             options={options2}
             style={{ position: 'absolute' }}
+            font={fontFamily}
           />
         ) : (
           <Doughnut
@@ -234,6 +238,7 @@ const ChartDoughnut = ({ chartData }) => {
             type={'doughnut'}
             data={noneData}
             options={noneOption}
+            font={fontFamily}
           />
         )}
         {playerName[1] && (
@@ -255,6 +260,7 @@ const ChartDoughnut = ({ chartData }) => {
             data={data3}
             options={options3}
             style={{ position: 'absolute' }}
+            font={fontFamily}
           />
         ) : (
           <Doughnut
@@ -263,6 +269,7 @@ const ChartDoughnut = ({ chartData }) => {
             type={'doughnut'}
             data={noneData}
             options={noneOption}
+            font={fontFamily}
           />
         )}
         {playerName[2] && (
@@ -284,6 +291,7 @@ const ChartDoughnut = ({ chartData }) => {
             data={data4}
             options={options4}
             style={{ position: 'absolute' }}
+            font={fontFamily}
           />
         ) : (
           <Doughnut
@@ -292,6 +300,7 @@ const ChartDoughnut = ({ chartData }) => {
             type={'doughnut'}
             data={noneData}
             options={noneOption}
+            font={fontFamily}
           />
         )}
         {playerName[3] && (
