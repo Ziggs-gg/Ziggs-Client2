@@ -13,7 +13,7 @@ const ChampionCard = ({
     winRate,
   },
 }) => {
-  const imgPath = `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${DDname}_0.jpg`;
+  const imgPath = `http://ddragon.leagueoflegends.com/cdn/img/champion/centered/${DDname}_0.jpg`;
 
   return (
     <ChampionCardLayout>
@@ -38,7 +38,7 @@ const ChampionCard = ({
         </StatBox>
         <StatBox>
           <StatTitle>VSPM</StatTitle>
-          <StatText>{AVG_VSPM}</StatText>
+          <StatText>{AVG_VSPM ? AVG_VSPM : '-'}</StatText>
         </StatBox>
       </StatsContainer>
     </ChampionCardLayout>

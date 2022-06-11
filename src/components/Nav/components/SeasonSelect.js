@@ -67,7 +67,7 @@ const SeasonSelectContainer = styled.div`
   position: relative;
   width: 141px;
   margin-right: 16px;
-  z-index: 1000;
+  z-index: 1;
 `;
 
 const DropDownHeader = styled.div`
@@ -108,6 +108,7 @@ const Arrow = styled.img`
 const DropDownListContainer = styled.div`
   position: absolute;
   padding-top: 2px;
+  z-index: 100000;
 `;
 
 const DropDownList = styled.ul`

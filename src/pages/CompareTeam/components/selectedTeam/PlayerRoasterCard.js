@@ -85,7 +85,7 @@ const PlayerName = styled.p`
   left: 8px;
   top: 23px;
   font-weight: 700;
-  font-size: 10px;
+  font-size: 12px;
   line-height: 14px;
   letter-spacing: -0.05em;
   color: ${props => props.theme.white.white100};

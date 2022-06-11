@@ -78,43 +78,43 @@ const TeamPlayersLayout = styled.div`
     .swiper-button-next::after {
       display: none;
     }
+    &:hover {
+      .swiper-button-prev,
+      .swiper-button-next {
+        top: 50%;
+        transform: translate(0, 35%);
+        width: 28px;
+        height: 28px;
+        background: rgba(53, 53, 50, 0.6);
+        border: 1px;
+        border: 1px solid #f3f3f3;
+        box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+      }
 
-    .swiper-button-prev,
-    .swiper-button-next {
-      top: 50%;
-      transform: translate(0, 35%);
-      width: 28px;
-      height: 28px;
-      background: rgba(53, 53, 50, 0.6);
-      border: 1px;
-      border: 1px solid #f3f3f3;
-      box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.5);
-      border-radius: 10px;
+      .swiper-button-prev {
+        position: absolute;
+        left: 2px;
+        background-image: url('/images/arrows/Left_W.png');
+        background-repeat: no-repeat;
+        background-size: 50% auto;
+        background-position: center;
+      }
+
+      .swiper-button-next {
+        position: absolute;
+        right: 2px;
+        background-image: url('/images/arrows/Right_W.png');
+        background-repeat: no-repeat;
+        background-size: 50% auto;
+        background-position: center;
+      }
     }
-
-    .swiper-button-prev {
-      position: absolute;
-      left: 2px;
-      background-image: url('/images/arrows/Left_W.png');
-      background-repeat: no-repeat;
-      background-size: 50% auto;
-      background-position: center;
-    }
-
-    .swiper-button-next {
-      position: absolute;
-      right: 2px;
-      background-image: url('/images/arrows/Right_W.png');
-      background-repeat: no-repeat;
-      background-size: 50% auto;
-      background-position: center;
-    }
-
     .swiper-pagination {
       bottom: 2px;
 
       .swiper-pagination-bullet {
-        background: #838382;
+        background: ${props => props.theme.white.white80};
         border-radius: 0;
         width: 12px;
         height: 2px;

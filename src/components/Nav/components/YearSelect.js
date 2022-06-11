@@ -96,6 +96,7 @@ const Arrow = styled.img`
 const DropDownListContainer = styled.div`
   position: absolute;
   padding-top: 2px;
+  z-index: 1000000000;
 `;
 
 const DropDownList = styled.ul`
