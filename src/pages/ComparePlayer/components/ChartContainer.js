@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import RadarChart from '../../../components/charts/player/RadarChart';
 import ChartBoxplot from '../../../components/charts/player/ChartBoxplot';
 import WardDataChart from '../../../components/charts/player/WardDataChart';
@@ -13,9 +13,11 @@ import CSPMChart from '../../../components/charts/player/CSPMChart';
 import Chart from 'chart.js/auto';
 import axios from 'axios';
 import { API } from '../../../config';
+import { Loading } from 'react-loading-dot';
 
 const ChartContainer = ({ selectedPlayers }) => {
   const [chartData, setChartData] = useState([]);
+  const [loading, setLoading] = useState(false);
   let chartUrl;
   if (selectedPlayers.length == 0) {
     chartUrl = `${API.PLAYER_CHART}phRole=`;
@@ -30,10 +32,12 @@ const ChartContainer = ({ selectedPlayers }) => {
   }
 
   useEffect(() => {
+    setLoading(true);
     axios
       .get(chartUrl)
       .then(Response => {
         setChartData(Response.data);
+        setLoading(false);
       })
       .catch(Error => {
         console.error(Error);
@@ -42,6 +46,11 @@ const ChartContainer = ({ selectedPlayers }) => {
 
   return (
     <ChartsLayout>
+      {loading && (
+        <LoadingComponents loading={loading}>
+          <Loading size="1rem" />
+        </LoadingComponents>
+      )}
       {chartData.IndexRadarChart && (
         <RadarChart chartData={chartData?.IndexRadarChart} />
       )}
@@ -82,4 +91,18 @@ const ChartsLayout = styled.div`
   margin: 0 auto;
   margin-bottom: 16px;
   background-color: #131310;
+`;
+
+const LoadingComponents = styled.div`
+  position: absolute;
+  width: 1360px;
+  height: 944px;
+
+  ${props =>
+    props.loading &&
+    css`
+      backdrop-filter: blur(10px);
+    `}
+
+  z-index:10000;
 `;
