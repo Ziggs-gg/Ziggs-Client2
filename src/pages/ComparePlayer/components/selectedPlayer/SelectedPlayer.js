@@ -7,6 +7,7 @@ import { API } from '../../../../config';
 const SelectedPlayer = ({ player, selectedPlayers, deleteSelectedPlayer }) => {
   const [playerData, setPlayerData] = useState();
   const [buttonVisible, setButtonVisible] = useState(false);
+
   const playerInfoArr = playerData?.phRole?.split('-');
 
   let playerStats = [];
@@ -71,11 +72,27 @@ const SelectedPlayer = ({ player, selectedPlayers, deleteSelectedPlayer }) => {
       </DeleteButton>
       <ContentsWrapper buttonVisible={buttonVisible}>
         <PlayerInfo>
-          <TeamLogo
-            src={`/images/teams/${playerData?.region}/${playerData?.teamName}.png`}
+          {playerData ? (
+            <TeamLogo
+              src={`/images/teams/${playerData?.region}/${playerData?.teamName}.png`}
+              alt="teamLogo"
+            />
+          ) : (
+            <TeamLogoLoading />
+          )}
+          {playerData ? (
+            <RoleLogo src={`/images/role/role_${playerData?.role}_W.png`} />
+          ) : (
+            <RoleLogoLoading />
+          )}
+          <PlayerImg
+            src={
+              playerData
+                ? `${playerData?.imgPath}`
+                : '/images/Players_fill_B70.png'
+            }
+            alt="img"
           />
-          <RoleLogo src={`/images/role/role_${playerData?.role}_W.png`} />
-          <PlayerImg src={`${playerData?.imgPath}`} alt="img" />
         </PlayerInfo>
         <PlayerDesc>
           <PlayerTeam>
@@ -86,6 +103,7 @@ const SelectedPlayer = ({ player, selectedPlayers, deleteSelectedPlayer }) => {
             {playerData?.phRole && `${playerInfoArr[3]} ${playerInfoArr[4]}`}
           </PlayerName>
         </PlayerDesc>
+
         <PlayerDataContainer>
           {playerStats.map((stats, idx) => {
             return (
@@ -253,6 +271,17 @@ const TeamLogo = styled.img`
   top: 6px;
 `;
 
+const TeamLogoLoading = styled.span`
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: 8px;
+  top: 6px;
+  background: #565654;
+  border: 1px solid #353532;
+  border-radius: 3px;
+`;
+
 const RoleLogo = styled.img`
   position: absolute;
   width: 16px;
@@ -260,6 +289,17 @@ const RoleLogo = styled.img`
   right: 8px;
   top: 6px;
   opacity: 0.5;
+`;
+
+const RoleLogoLoading = styled.span`
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  right: 8px;
+  top: 6px;
+  background: #565654;
+  border: 1px solid #353532;
+  border-radius: 3px;
 `;
 
 const PlayerImg = styled.img`

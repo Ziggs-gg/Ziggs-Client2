@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
 
   *{
         box-sizing: border-box;
-        font-family: 'Noto Sans KR', sans-serif !important; 
+        font-family: 'Noto Sans Korean', sans-serif !important; 
   }
 
   ul,dl,dt,dd,li{

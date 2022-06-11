@@ -67,7 +67,7 @@ const SeasonSelectContainer = styled.div`
   position: relative;
   width: 141px;
   margin-right: 16px;
-  z-index: 1;
+  z-index: 1000;
 `;
 
 const DropDownHeader = styled.div`
