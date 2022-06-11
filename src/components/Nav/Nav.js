@@ -12,10 +12,15 @@ const Nav = () => {
 
   const [year, setYear] = useState(2022);
   const [season, setSeason] = useState('Spring');
-  const [league, setLeague] = useState([]);
-  const [role, setRole] = useState([]);
+  // const [league, setLeague] = useState([]);
+  // const [role, setRole] = useState([]);
+
+  //GIF RECODING
+  const [league, setLeague] = useState(['LCK', 'LPL', 'LEC', 'LCS']);
+  const [role, setRole] = useState(['TOP', 'JUNGLE', 'MID', 'ADC', 'SUPPORT']);
 
   const [viewToggle, setViewToggle] = useState(false);
+  const [filterToggle, setFilterToggle] = useState(false);
 
   const queryString = viewToggle
     ? league.length !== 0 &&
@@ -38,12 +43,10 @@ const Nav = () => {
       setYear(() => {
         return value;
       });
-    // goTo();
   };
 
   const handleSeasonChange = season => {
     setSeason(season);
-    // goTo();
   };
 
   const handleLeagueSelect = (leagueData, isSelected) => {
@@ -53,7 +56,6 @@ const Nav = () => {
       const newList = league.filter(el => el !== leagueData);
       setLeague(newList);
     }
-    // goTo();
   };
 
   const handleRoleSelect = (roleData, isSelected) => {
@@ -63,12 +65,21 @@ const Nav = () => {
       const newList = role.filter(el => el !== roleData);
       setRole(newList);
     }
-    // goTo();
   };
 
+  const handleFilterToggle = () => {
+    setFilterToggle(!filterToggle);
+  };
+
+  // const initFilter = () => {
+  // setLeague([]);
+  // setRole([]);
+  // };
+
+  //GIF RECODING
   const initFilter = () => {
-    setLeague([]);
-    setRole([]);
+    // setLeague([]);
+    // setRole([]);
   };
 
   return (
@@ -86,7 +97,7 @@ const Nav = () => {
         setViewToggle={setViewToggle}
         initFilter={initFilter}
       />
-      <FilterContainer>
+      <FilterContainer filterToggle={filterToggle}>
         <SelectWrapper>
           <YearSelect year={year} handleYearChange={handleYearChange} />
           <SeasonSelect
@@ -107,6 +118,7 @@ const Nav = () => {
           )}
         </SelectWrapper>
       </FilterContainer>
+      <FilterToggle src={`/images/Filter_W.png`} onClick={handleFilterToggle} />
     </NavLayout>
   );
 };
@@ -137,9 +149,54 @@ const FilterContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   right: 80px;
+
+  @media screen and (max-width: 1360px) {
+    display: ${props => (props.filterToggle ? 'flex' : 'none')};
+    justify-content: flex-end;
+    background-color: ${props => props.theme.black.black90};
+    top: 60px;
+    right: 0;
+    width: 100%;
+    padding: 8px 0;
+    padding-right: 40px;
+    border-top: 1px solid ${props => props.theme.black.black85};
+    border-bottom: 1px solid ${props => props.theme.black.black85};
+    z-index: 10000;
+  }
+
+  @media screen and (max-width: 900px) {
+    justify-content: center;
+    padding-right: 0;
+  }
 `;
 
 const SelectWrapper = styled.div`
   display: flex;
   flex-direction: row;
+
+  @media screen and (max-width: 900px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    div {
+      margin: 0;
+    }
+  }
+`;
+
+const FilterToggle = styled.img`
+  position: absolute;
+  display: none;
+  right: 40px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+
+  @media screen and (max-width: 1360px) {
+    position: absolute;
+    display: inline-block;
+    right: 40px;
+    width: 24px;
+    height: 24px;
+  }
 `;

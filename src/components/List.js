@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import PlayerCard from '../pages/ComparePlayer/components/playerList/PlayerCard';
+import TeamCard from '../pages/CompareTeam/components/teamList/TeamCard';
 import { useLocation } from 'react-router-dom';
 import { API } from '../config';
 
@@ -9,6 +10,9 @@ const List = ({
   setSelectedPlayers,
   selectedPlayers,
   deleteSelectedPlayer,
+  selectedTeams,
+  setSelectedTeams,
+  deleteSelectedTeam,
 }) => {
   const location = useLocation();
 
@@ -23,6 +27,14 @@ const List = ({
       setSelectedPlayers(prev => [...prev, player]);
     } else {
       deleteSelectedPlayer(player);
+    }
+  };
+
+  const handleSelectTeam = Team => {
+    if (selectedTeams.length < 2 && selectedTeams.includes(Team) === false) {
+      setSelectedTeams(prev => [...prev, Team]);
+    } else {
+      deleteSelectedTeam(Team);
     }
   };
 
@@ -53,10 +65,14 @@ const List = ({
     location.pathname === '/compare/team' && fetchTeamData();
   }, [location.search, location.pathname]);
 
-  return (
-    <ListLayout>
-      {location.search && location.pathname === '/compare/player' ? (
-        playerList.map((player, idx) => {
+  if (
+    location.search &&
+    location.pathname === '/compare/player' &&
+    playerList.length !== 0
+  ) {
+    return (
+      <ListLayout>
+        {playerList.map((player, idx) => {
           return (
             <PlayerCard
               key={idx}
@@ -65,8 +81,31 @@ const List = ({
               selectedPlayers={selectedPlayers}
             />
           );
-        })
-      ) : (
+        })}
+      </ListLayout>
+    );
+  } else if (
+    location.search &&
+    location.pathname === '/compare/team' &&
+    teamList.length !== 0
+  ) {
+    return (
+      <ListLayout>
+        {teamList.map((team, idx) => {
+          return (
+            <TeamCard
+              key={idx}
+              team={team}
+              handleSelectTeam={handleSelectTeam}
+              selectedTeams={selectedTeams}
+            />
+          );
+        })}
+      </ListLayout>
+    );
+  } else {
+    return (
+      <ListLayout>
         <NotFoundLayout>
           <NotFound>
             <NotFoundIcon src="/images/landing/InfoIcon.png" />
@@ -74,9 +113,9 @@ const List = ({
             <NotFoundDescSmall>상단 필터를 확인해주세요!</NotFoundDescSmall>
           </NotFound>
         </NotFoundLayout>
-      )}
-    </ListLayout>
-  );
+      </ListLayout>
+    );
+  }
 };
 
 export default List;

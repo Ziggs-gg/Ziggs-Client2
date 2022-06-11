@@ -13,12 +13,10 @@ const Landing = () => {
             <MainLargeDesc textColor="white">
               리그오브레전드 이스포츠
             </MainLargeDesc>
-            <MainLargeDesc textColor="white">
-              데이터를 한눈에{' '}
-              <MainLargeDesc textColor="red">비교하세요!</MainLargeDesc>
-            </MainLargeDesc>
+            <MainLargeDesc textColor="white">데이터를 한눈에</MainLargeDesc>
+            <MainLargeDesc textColor="red">&nbsp;비교하세요!</MainLargeDesc>
             <MainSmallDesc>
-              VERSUS.PS는 리그오브레전드 데이터가 시각화된 차트를 제공하고
+              VERSUS.PS는 리그오브레전드 데이터를 시각화한 차트를 제공하고
               있습니다.{'\n'}응원하는 선수 혹은 구단의 데이터를 한 눈에
               살펴보세요.{'\n'}라이벌 선수 혹은 구단의 지표를 함께 비교해보실 수
               있습니다.
