@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { Bar } from 'react-chartjs-2';
 import theme from '../../../styles/theme.js';
-import { imageListItemBarClasses } from '@mui/material';
 
 const dummyData = [
   {
@@ -182,33 +181,11 @@ const Chartimportance = ({}) => {
         },
       },
       legend: {
-        fullSize: false,
-        // onClick: (event, legendItem, legend) => {
-        //   console.log(
-        //     'event: ',
-        //     event,
-        //     '\nlegendItem: ',
-        //     legendItem,
-        //     '\nlegend :',
-        //     legend
-        //   );
-        // },
+        fullSize: true,
         labels: {
           boxWidth: 10,
           boxHeight: 10,
           color: theme.white.white100,
-          filter: (item, data) => {
-            console.log('item : ', item, '\ndata : ', data);
-            Object.keys(item).forEach(key => {
-              item['lineCap'] = 'butt';
-            });
-            return item;
-            // console.log(data.datasets);
-            // if (data.datasets >= 0 && data.datasets)
-            // let team = item.text.split(' ')[0];
-            // // console.log(ctx);
-            // return `${team} test`;
-          },
         },
       },
     },
