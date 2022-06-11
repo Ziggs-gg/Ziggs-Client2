@@ -162,7 +162,12 @@ const Chartimportance = ({}) => {
         text: '포지션별 평균 팀 내 비중 데이터',
         color: theme.white.white100,
         align: 'start',
-        padding: '0',
+        padding: 0,
+        font: {
+          size: 14,
+          weight: 500,
+          lineHeight: '16px',
+        },
       },
       tooltip: {
         intersect: false,
@@ -218,9 +223,13 @@ const Chartimportance = ({}) => {
       },
     },
   };
+  const fontFamily = {
+    family: 'Noto Sans KR',
+    weight: 400,
+  };
   return (
     <ChartLayout>
-      <Bar data={data} options={options} />
+      <Bar data={data} options={options} font={fontFamily} />
     </ChartLayout>
   );
 };

@@ -79,7 +79,15 @@ const ChartCamp = ({}) => {
         text: '진영별 승률',
         color: theme.white.white100,
         align: 'start',
-        padding: '16',
+        padding: {
+          top: 0,
+          bottom: 16,
+        },
+        font: {
+          size: 14,
+          weight: 500,
+          lineHeight: '16px',
+        },
       },
       // 플러그인 해당 차트 전역에 적용시키기
       datalabels: {
@@ -161,9 +169,18 @@ const ChartCamp = ({}) => {
       },
     },
   };
+  const fontFamily = {
+    family: 'Noto Sans KR',
+    weight: 400,
+  };
   return (
     <ChartLayout>
-      <Bar data={data} plugins={[ChartDataLabels]} options={options} />
+      <Bar
+        data={data}
+        plugins={[ChartDataLabels]}
+        options={options}
+        font={fontFamily}
+      />
     </ChartLayout>
   );
 };

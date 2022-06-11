@@ -176,7 +176,15 @@ const ChartLine = ({}) => {
         text: '시간대별 평균 골드 격차',
         color: theme.white.white100,
         align: 'start',
-        padding: '16',
+        padding: {
+          top: 0,
+          bottom: 16,
+        },
+        font: {
+          size: 14,
+          weight: 500,
+          lineHeight: '16px',
+        },
       },
       tooltip: {
         yAlign: 'top',
@@ -197,10 +205,18 @@ const ChartLine = ({}) => {
       },
     },
   };
-
+  const fontFamily = {
+    family: 'Noto Sans KR',
+    weight: 400,
+  };
   return (
     <ChartLayout>
-      <Line data={data} plugins={[gradient]} options={options} />
+      <Line
+        data={data}
+        plugins={[gradient]}
+        options={options}
+        font={fontFamily}
+      />
     </ChartLayout>
   );
 };
