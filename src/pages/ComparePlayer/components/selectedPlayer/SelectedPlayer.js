@@ -3,11 +3,13 @@ import styled from 'styled-components';
 import { css } from 'styled-components';
 import axios from 'axios';
 import { API } from '../../../../config';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 const SelectedPlayer = ({ player, selectedPlayers, deleteSelectedPlayer }) => {
   const [playerData, setPlayerData] = useState();
   const [buttonVisible, setButtonVisible] = useState(false);
-
+  const [loading, setLoading] = useState(false);
   const playerInfoArr = playerData?.phRole?.split('-');
 
   let playerStats = [];
@@ -46,10 +48,12 @@ const SelectedPlayer = ({ player, selectedPlayers, deleteSelectedPlayer }) => {
   }
 
   useEffect(() => {
+    setLoading(true);
     axios
       .get(`${API.SELECTED_PLAYER}phRole=${player}`)
       .then(Response => {
         setPlayerData(Response.data);
+        setLoading(false);
       })
       .catch(Error => {
         console.error('err:', Error);
@@ -72,49 +76,95 @@ const SelectedPlayer = ({ player, selectedPlayers, deleteSelectedPlayer }) => {
       </DeleteButton>
       <ContentsWrapper buttonVisible={buttonVisible}>
         <PlayerInfo>
-          {playerData ? (
+          {loading ? (
+            <TeamLogoLoading />
+          ) : (
             <TeamLogo
               src={`/images/teams/${playerData?.region}/${playerData?.teamName}.png`}
               alt="teamLogo"
             />
-          ) : (
-            <TeamLogoLoading />
           )}
-          {playerData ? (
-            <RoleLogo src={`/images/role/role_${playerData?.role}_W.png`} />
-          ) : (
+          {loading ? (
             <RoleLogoLoading />
+          ) : (
+            <RoleLogo src={`/images/role/role_${playerData?.role}_W.png`} />
           )}
           <PlayerImg
             src={
-              playerData
-                ? `${playerData?.imgPath}`
-                : '/images/Players_fill_B70.png'
+              loading
+                ? '/images/Players_fill_B70.png'
+                : `${playerData?.imgPath}`
             }
             alt="img"
           />
         </PlayerInfo>
         <PlayerDesc>
-          <PlayerTeam>
-            {playerData?.phRole &&
-              ` ${playerInfoArr[0]} - ${playerInfoArr[1]} - ${playerInfoArr[2]}`}
-          </PlayerTeam>
-          <PlayerName>
-            {playerData?.phRole && `${playerInfoArr[3]} ${playerInfoArr[4]}`}
-          </PlayerName>
+          {loading ? (
+            <PlayerTeamLoading />
+          ) : (
+            <PlayerTeam>
+              {playerData?.phRole &&
+                ` ${playerInfoArr[0]} - ${playerInfoArr[1]} - ${playerInfoArr[2]}`}
+            </PlayerTeam>
+          )}
+          {loading ? (
+            <PlayerNameLoading />
+          ) : (
+            <PlayerName>
+              {playerData?.phRole && `${playerInfoArr[3]} ${playerInfoArr[4]}`}
+            </PlayerName>
+          )}
         </PlayerDesc>
 
         <PlayerDataContainer>
-          {playerStats.map((stats, idx) => {
-            return (
-              <PlayerData key={idx}>
-                <StatesText>{stats.name}</StatesText>
-                <StatesText>{stats.data}</StatesText>
+          {playerStats.length === 0 ? (
+            <>
+              <PlayerData>
+                <StatesTextLoading />
+                <StatesTextLoading />
               </PlayerData>
-            );
-          })}
+              <PlayerData>
+                <StatesTextLoading />
+                <StatesTextLoading />
+              </PlayerData>
+              <PlayerData>
+                <StatesTextLoading />
+                <StatesTextLoading />
+              </PlayerData>
+              <PlayerData>
+                <StatesTextLoading />
+                <StatesTextLoading />
+              </PlayerData>
+              <PlayerData>
+                <StatesTextLoading />
+                <StatesTextLoading />
+              </PlayerData>
+              <PlayerData>
+                <StatesTextLoading />
+                <StatesTextLoading />
+              </PlayerData>
+            </>
+          ) : (
+            playerStats.map((stats, idx) => {
+              return (
+                <PlayerData key={idx}>
+                  <StatesText>{stats.name}</StatesText>
+                  <StatesText>{stats.data}</StatesText>
+                </PlayerData>
+              );
+            })
+          )}
+
           <MostChampions>
-            <StatesText>선호 챔피언</StatesText>
+            {loading ? (
+              <>
+                <StatesTextLoading />
+                <StatesTextLoading />
+              </>
+            ) : (
+              <StatesText>선호 챔피언</StatesText>
+            )}
+
             <Champions>
               {playerData?.most1 && (
                 <ChampionsImg
@@ -333,10 +383,25 @@ const PlayerName = styled.p`
   color: ${props => props.theme.white.white100};
 `;
 
+const PlayerNameLoading = styled.div`
+  height: 14px;
+  width: 89px;
+  background-color: ${props => props.theme.black.black70};
+  border-radius: 3px;
+`;
+
 const PlayerTeam = styled.p`
   font-size: 12px;
   font-weight: 300;
   color: ${props => props.theme.white.white50};
+`;
+
+const PlayerTeamLoading = styled.div`
+  height: 14px;
+  width: 105px;
+  margin-bottom: 2px;
+  background-color: ${props => props.theme.black.black70};
+  border-radius: 3px;
 `;
 
 const PlayerDataContainer = styled.div`
@@ -363,6 +428,14 @@ const StatesText = styled.span`
   font-weight: 500;
   font-size: 14px;
   color: #f3f3f3;
+`;
+
+const StatesTextLoading = styled.div`
+  height: 16px;
+  width: 30px;
+  margin-top: 4px;
+  background-color: ${props => props.theme.black.black70};
+  border-radius: 3px;
 `;
 
 const MostChampions = styled.div`
