@@ -65,7 +65,11 @@ const List = ({
     location.pathname === '/compare/team' && fetchTeamData();
   }, [location.search, location.pathname]);
 
-  if (location.search && location.pathname === '/compare/player') {
+  if (
+    location.search &&
+    location.pathname === '/compare/player' &&
+    playerList.length !== 0
+  ) {
     return (
       <ListLayout>
         {playerList.map((player, idx) => {
@@ -80,7 +84,11 @@ const List = ({
         })}
       </ListLayout>
     );
-  } else if (location.search && location.pathname === '/compare/team') {
+  } else if (
+    location.search &&
+    location.pathname === '/compare/team' &&
+    teamList.length !== 0
+  ) {
     return (
       <ListLayout>
         {teamList.map((team, idx) => {

@@ -62,6 +62,7 @@ const SwiperLayout = styled.div`
   width: 664px;
   height: 240px;
   margin-right: 32px;
+
   &:nth-child(2n) {
     margin-right: 0;
   }
