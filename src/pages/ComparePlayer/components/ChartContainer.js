@@ -47,7 +47,7 @@ const ChartContainer = ({ selectedPlayers }) => {
   return (
     <ChartsLayout>
       {loading && (
-        <LoadingComponents loading={loading}>
+        <LoadingComponents loading={loading.toString()}>
           <Loading size="1rem" />
         </LoadingComponents>
       )}
