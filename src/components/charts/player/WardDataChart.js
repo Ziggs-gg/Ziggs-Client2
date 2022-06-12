@@ -96,7 +96,6 @@ const WardDataChart = ({ chartData }) => {
     },
   };
   const fontFamily = {
-    family: 'Noto Sans KR',
     weight: 400,
   };
   return (

@@ -242,7 +242,6 @@ const ChartDoughnut = ({ chartData }) => {
     playerName.push(name[3] + ' ' + name[4]);
   }
   const fontFamily = {
-    family: 'Noto Sans KR',
     weight: 400,
   };
   return (

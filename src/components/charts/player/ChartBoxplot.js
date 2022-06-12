@@ -108,7 +108,6 @@ const ChartBoxplot = ({ chartData }) => {
     },
   };
   const fontFamily = {
-    family: 'Noto Sans KR',
     weight: 400,
   };
   try {
