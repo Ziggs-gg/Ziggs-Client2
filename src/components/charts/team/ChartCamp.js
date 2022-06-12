@@ -80,9 +80,14 @@ const ChartCamp = ({}) => {
         text: '진영별 승률',
         color: theme.white.white100,
         align: 'start',
-        padding: '16',
+        padding: {
+          top: 0,
+          bottom: 16,
+        },
         font: {
           size: 14,
+          weight: 500,
+          lineHeight: '16px',
         },
       },
       // 플러그인 해당 차트 전역에 적용시키기
@@ -165,13 +170,16 @@ const ChartCamp = ({}) => {
       },
     },
   };
+  const fontFamily = {
+    weight: 400,
+  };
   return (
     <ChartLayout>
       <Bar
         data={data}
         plugins={[ChartDataLabels]}
         options={options}
-        font={chartStyle.font}
+        font={fontFamily}
       />
     </ChartLayout>
   );

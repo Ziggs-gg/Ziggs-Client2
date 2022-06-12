@@ -150,6 +150,9 @@ const Chartimportance = ({}) => {
   }
 
   const options = {
+    interaction: {
+      mode: 'x',
+    },
     borderRadius: 4,
     barPercentage: 0.8,
     categoryPercentage: 0.4,
@@ -160,14 +163,19 @@ const Chartimportance = ({}) => {
         text: '포지션별 평균 팀 내 비중 데이터',
         color: theme.white.white100,
         align: 'start',
-        padding: '0',
+        padding: 0,
         font: {
-          family: 'Noto Sans KR',
           size: 14,
-          weight: '500',
+          weight: 500,
+          lineHeight: '16px',
         },
       },
       tooltip: {
+        intersect: false,
+        yAlign: 'center',
+        itemSort: ctx => {
+          return ctx.datasetIndex * -1;
+        },
         callbacks: {
           label: ctx => {
             // 소수점 2번째 자리에서 반올림하는 함수
@@ -179,9 +187,6 @@ const Chartimportance = ({}) => {
         },
       },
       legend: {
-        // onClick: ctx => {
-        //   console.log(ctx);
-        // },
         fullSize: true,
         labels: {
           boxWidth: 10,
@@ -192,6 +197,7 @@ const Chartimportance = ({}) => {
     },
     scales: {
       x: {
+        stacked: true,
         ticks: {
           color: theme.white.white80,
         },
@@ -204,6 +210,13 @@ const Chartimportance = ({}) => {
         },
         ticks: {
           color: theme.white.white80,
+          callback: function (value, index, values) {
+            if (value === 0) {
+              return value;
+            } else {
+              return `${value}%`;
+            }
+          },
         },
         max: 100,
         beginAtZero: true,
@@ -211,9 +224,12 @@ const Chartimportance = ({}) => {
       },
     },
   };
+  const fontFamily = {
+    weight: 400,
+  };
   return (
     <ChartLayout>
-      <Bar data={data} options={options} font={chartStyle} />
+      <Bar data={data} options={options} font={fontFamily} />
     </ChartLayout>
   );
 };

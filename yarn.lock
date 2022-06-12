@@ -3193,7 +3193,7 @@
   "resolved" "https://registry.npmjs.org/charcodes/-/charcodes-0.2.0.tgz"
   "version" "0.2.0"
 
-"chart.js@^3.0.0", "chart.js@^3.2.0", "chart.js@^3.5.0", "chart.js@^3.7.1":
+"chart.js@^3.0.0", "chart.js@^3.2.0", "chart.js@^3.5.0", "chart.js@^3.7.1", "chart.js@>=2.6.0":
   "integrity" "sha512-8knRegQLFnPQAheZV8MjxIXc5gQEfDFD897BJgv/klO/vtIyFFmgMXrNfgrXpbTr/XbTturxRgxIXx/Y+ASJBA=="
   "resolved" "https://registry.npmjs.org/chart.js/-/chart.js-3.7.1.tgz"
   "version" "3.7.1"
@@ -3209,6 +3209,11 @@
   "version" "3.1.0"
   dependencies:
     "chart.js" "^3.2.0"
+
+"chartjs-plugin-gradient@^0.5.0":
+  "integrity" "sha512-VHys58pMPNYRXngCrN5kvQZb1EiAvl/BhU3G9wNXxf2hETWiPYgN63Ud6RK1hyST+nZdZ61x4us546djZX2rYQ=="
+  "resolved" "https://registry.npmjs.org/chartjs-plugin-gradient/-/chartjs-plugin-gradient-0.5.0.tgz"
+  "version" "0.5.0"
 
 "check-types@^11.1.1":
   "integrity" "sha512-tzWzvgePgLORb9/3a0YenggReLKAIb2owL03H2Xdoe5pKcUyWRSEQ8xfCar8t2SIAuEDwtmx2da1YB52YuHQMQ=="

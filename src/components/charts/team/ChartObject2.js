@@ -126,13 +126,18 @@ const ChartObject2 = ({}) => {
         text: '첫 오브젝트 평균 획득 시간',
         color: theme.white.white100,
         align: 'start',
-        padding: '16',
+        padding: {
+          top: 0,
+          bottom: 16,
+        },
         font: {
-          family: 'Noto Sans KR',
           size: 14,
+          weight: 500,
+          lineHeight: '16px',
         },
       },
       tooltip: {
+        intersect: false,
         callbacks: {
           label: ctx => {
             let min = Math.trunc(ctx.raw);
@@ -182,14 +187,16 @@ const ChartObject2 = ({}) => {
       },
     },
   };
-
+  const fontFamily = {
+    weight: 400,
+  };
   return (
     <ChartLayout>
       <Bar
         data={data}
         plugins={[lollipopChart]}
         options={options}
-        font={chartStyle.font}
+        font={fontFamily}
       />
     </ChartLayout>
   );
