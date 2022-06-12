@@ -25,20 +25,20 @@ const Landing = () => {
         </MainContents>
         <HowToUse>
           <GifDesc>
-            <GifImg src="/images/Filter.gif" />
+            <GifImg src="/images/teamToggle.gif" />
             <GifDescText>
               왼쪽 상단 토글을 통해 선수와 구단을{'\n'}넘나드며 확인해보세요!
             </GifDescText>
           </GifDesc>
           <GifDesc>
-            <GifImg />
+            <GifImg src="/images/Filter.gif" />
             <GifDescText>
               오른쪽 상단 필터를 이용해보세요.{'\n'}지난 기록도 확인하실 수
               있습니다!
             </GifDescText>
           </GifDesc>
           <GifDesc>
-            <GifImg />
+            <GifImg src="/images/Select.gif" />
             <GifDescText>
               여러 선수 혹은 구단을 선택하여{'\n'}쉽게 정보를 확인하세요!
             </GifDescText>
@@ -53,6 +53,7 @@ export default Landing;
 
 const ContentsLayout = styled.div`
   width: 1360px;
+  height: auto;
   margin: 0 auto;
   margin-top: 16px;
 `;
@@ -104,7 +105,7 @@ const HowToUse = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: 64px;
-  margin-bottom: 44px;
+  margin-bottom: 144px;
 `;
 
 const GifDesc = styled.div`
@@ -114,8 +115,8 @@ const GifDesc = styled.div`
 `;
 
 const GifImg = styled.img`
-  width: 176px;
-  height: 176px;
+  width: 250px;
+  height: 250px;
   margin-bottom: 16px;
   background: #d9d9d9;
 `;

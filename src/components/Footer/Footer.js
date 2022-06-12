@@ -22,7 +22,8 @@ const Footer = () => {
 export default Footer;
 
 const FooterLayout = styled.footer`
-  position: absolute;
+  position: relative;
+
   width: 100%;
   height: 176px;
 
