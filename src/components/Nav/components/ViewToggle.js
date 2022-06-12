@@ -1,18 +1,26 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { css } from 'styled-components';
 
 const ViewToggle = ({ viewToggle, setViewToggle, initFilter }) => {
   const navigate = useNavigate();
+  const location = useLocation();
+  useEffect(() => {
+    if (location.pathname === '/compare/team') {
+      setViewToggle(true);
+    } else if (location.pathname === '/compare/player') {
+      setViewToggle(false);
+    }
+  }, [location.pathname, setViewToggle]);
 
   const handleToggle = () => {
     if (!viewToggle) {
       initFilter();
-      navigate('compare/team');
+      navigate('/compare/team');
     } else {
       initFilter();
-      navigate('compare/player');
+      navigate('/compare/player');
     }
     setViewToggle(prev => !prev);
   };

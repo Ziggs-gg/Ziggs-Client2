@@ -57,8 +57,7 @@ const EmptyCard = styled.div`
 
   border: 1px solid ${props => props.theme.black.black85};
   border-radius: 10px;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+
   margin-right: 32px;
   margin-bottom: 16px;
 
