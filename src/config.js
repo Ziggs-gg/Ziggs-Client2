@@ -10,4 +10,5 @@ export const API = {
   SELECTED_TEAMBOX: `${BASE_URL}/compare/team/selectedTeamBox?`,
   SELECTED_TEAMROASTER: `${BASE_URL}/compare/team/SelectedTeamRoasterCarousel?`,
   TEAM_CHAMPION_POOL: `${BASE_URL}/compare/team/ChampionPool?`,
+  TEAM_CHART: `${BASE_URL}/compare/team/Chart?`,
 };
