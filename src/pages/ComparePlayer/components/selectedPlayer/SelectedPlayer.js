@@ -7,6 +7,7 @@ import { API } from '../../../../config';
 const SelectedPlayer = ({ player, selectedPlayers, deleteSelectedPlayer }) => {
   const [playerData, setPlayerData] = useState();
   const [buttonVisible, setButtonVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
   const playerInfoArr = playerData?.phRole?.split('-');
 
   let playerStats = [];
@@ -45,10 +46,12 @@ const SelectedPlayer = ({ player, selectedPlayers, deleteSelectedPlayer }) => {
   }
 
   useEffect(() => {
+    setLoading(true);
     axios
       .get(`${API.SELECTED_PLAYER}phRole=${player}`)
       .then(Response => {
         setPlayerData(Response.data);
+        setLoading(false);
       })
       .catch(Error => {
         console.error('err:', Error);
@@ -71,59 +74,123 @@ const SelectedPlayer = ({ player, selectedPlayers, deleteSelectedPlayer }) => {
       </DeleteButton>
       <ContentsWrapper buttonVisible={buttonVisible}>
         <PlayerInfo>
-          <TeamLogo
-            src={`/images/teams/${playerData?.region}/${playerData?.teamName}.png`}
+          {loading ? (
+            <TeamLogoLoading />
+          ) : (
+            <TeamLogo
+              src={`/images/teams/${playerData?.region}/${playerData?.teamName}.png`}
+              alt="teamLogo"
+            />
+          )}
+          {loading ? (
+            <RoleLogoLoading />
+          ) : (
+            <RoleLogo src={`/images/role/role_${playerData?.role}_W.png`} />
+          )}
+          <PlayerImg
+            src={
+              loading
+                ? '/images/Players_fill_B70.png'
+                : `${playerData?.imgPath}`
+            }
+            alt="img"
           />
-          <RoleLogo src={`/images/role/role_${playerData?.role}_W.png`} />
-          <PlayerImg src={`${playerData?.imgPath}`} alt="img" />
         </PlayerInfo>
         <PlayerDesc>
-          <PlayerTeam>
-            {playerData?.phRole &&
-              ` ${playerInfoArr[0]} - ${playerInfoArr[1]} - ${playerInfoArr[2]}`}
-          </PlayerTeam>
-          <PlayerName>
-            {playerData?.phRole && `${playerInfoArr[3]} ${playerInfoArr[4]}`}
-          </PlayerName>
+          {loading ? (
+            <PlayerTeamLoading />
+          ) : (
+            <PlayerTeam>
+              {playerData?.phRole &&
+                ` ${playerInfoArr[0]} - ${playerInfoArr[1]} - ${playerInfoArr[2]}`}
+            </PlayerTeam>
+          )}
+          {loading ? (
+            <PlayerNameLoading />
+          ) : (
+            <PlayerName>
+              {playerData?.phRole && `${playerInfoArr[3]} ${playerInfoArr[4]}`}
+            </PlayerName>
+          )}
         </PlayerDesc>
+
         <PlayerDataContainer>
-          {playerStats.map((stats, idx) => {
-            return (
-              <PlayerData key={idx}>
-                <StatesText>{stats.name}</StatesText>
-                <StatesText>{stats.data}</StatesText>
+          {playerStats.length === 0 ? (
+            <>
+              <PlayerData>
+                <StatesTextLoading />
+                <StatesTextLoading />
               </PlayerData>
-            );
-          })}
+              <PlayerData>
+                <StatesTextLoading />
+                <StatesTextLoading />
+              </PlayerData>
+              <PlayerData>
+                <StatesTextLoading />
+                <StatesTextLoading />
+              </PlayerData>
+              <PlayerData>
+                <StatesTextLoading />
+                <StatesTextLoading />
+              </PlayerData>
+              <PlayerData>
+                <StatesTextLoading />
+                <StatesTextLoading />
+              </PlayerData>
+              <PlayerData>
+                <StatesTextLoading />
+                <StatesTextLoading />
+              </PlayerData>
+            </>
+          ) : (
+            playerStats.map((stats, idx) => {
+              return (
+                <PlayerData key={idx}>
+                  <StatesText>{stats.name}</StatesText>
+                  <StatesText>{stats.data}</StatesText>
+                </PlayerData>
+              );
+            })
+          )}
+
           <MostChampions>
-            <StatesText>선호 챔피언</StatesText>
-            <Champions>
-              {playerData?.most1 && (
-                <ChampionsImg
-                  src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most1}_0.jpg`}
-                />
-              )}
-              {playerData?.most2 && (
-                <ChampionsImg
-                  src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most2}_0.jpg`}
-                />
-              )}
-              {playerData?.most3 && (
-                <ChampionsImg
-                  src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most3}_0.jpg`}
-                />
-              )}
-              {playerData?.most4 && (
-                <ChampionsImg
-                  src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most4}_0.jpg`}
-                />
-              )}
-              {playerData?.most5 && (
-                <ChampionsImg
-                  src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most5}_0.jpg`}
-                />
-              )}
-            </Champions>
+            {loading ? (
+              <MostChampionsTitleLoading />
+            ) : (
+              <StatesText>선호 챔피언</StatesText>
+            )}
+
+            {loading ? (
+              <MostChampionsLoading />
+            ) : (
+              <Champions>
+                {playerData?.most1 && (
+                  <ChampionsImg
+                    src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most1}_0.jpg`}
+                  />
+                )}
+                {playerData?.most2 && (
+                  <ChampionsImg
+                    src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most2}_0.jpg`}
+                  />
+                )}
+                {playerData?.most3 && (
+                  <ChampionsImg
+                    src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most3}_0.jpg`}
+                  />
+                )}
+                {playerData?.most4 && (
+                  <ChampionsImg
+                    src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most4}_0.jpg`}
+                  />
+                )}
+                {playerData?.most5 && (
+                  <ChampionsImg
+                    src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most5}_0.jpg`}
+                  />
+                )}
+              </Champions>
+            )}
           </MostChampions>
         </PlayerDataContainer>
       </ContentsWrapper>
@@ -253,6 +320,17 @@ const TeamLogo = styled.img`
   top: 6px;
 `;
 
+const TeamLogoLoading = styled.span`
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: 8px;
+  top: 6px;
+  background: #565654;
+  border: 1px solid #353532;
+  border-radius: 3px;
+`;
+
 const RoleLogo = styled.img`
   position: absolute;
   width: 16px;
@@ -260,6 +338,17 @@ const RoleLogo = styled.img`
   right: 8px;
   top: 6px;
   opacity: 0.5;
+`;
+
+const RoleLogoLoading = styled.span`
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  right: 8px;
+  top: 6px;
+  background: #565654;
+  border: 1px solid #353532;
+  border-radius: 3px;
 `;
 
 const PlayerImg = styled.img`
@@ -293,10 +382,25 @@ const PlayerName = styled.p`
   color: ${props => props.theme.white.white100};
 `;
 
+const PlayerNameLoading = styled.div`
+  height: 14px;
+  width: 89px;
+  background-color: ${props => props.theme.black.black70};
+  border-radius: 3px;
+`;
+
 const PlayerTeam = styled.p`
   font-size: 12px;
   font-weight: 300;
   color: ${props => props.theme.white.white50};
+`;
+
+const PlayerTeamLoading = styled.div`
+  height: 14px;
+  width: 105px;
+  margin-bottom: 2px;
+  background-color: ${props => props.theme.black.black70};
+  border-radius: 3px;
 `;
 
 const PlayerDataContainer = styled.div`
@@ -325,11 +429,32 @@ const StatesText = styled.span`
   color: #f3f3f3;
 `;
 
-const MostChampions = styled.div`
-  /* width: 90px; */
-  height: 36px;
+const StatesTextLoading = styled.div`
+  height: 16px;
+  width: 30px;
+  margin-top: 4px;
+  background-color: ${props => props.theme.black.black70};
+  border-radius: 3px;
 `;
 
+const MostChampions = styled.div`
+  height: 36px;
+`;
+const MostChampionsTitleLoading = styled.div`
+  height: 16px;
+  width: 30px;
+  margin-top: 2px;
+  background-color: ${props => props.theme.black.black70};
+  border-radius: 3px;
+`;
+const MostChampionsLoading = styled.div`
+  width: 128px;
+  height: 16px;
+  margin-top: 4px;
+
+  background-color: ${props => props.theme.black.black70};
+  border-radius: 3px;
+`;
 const Champions = styled.div``;
 
 const ChampionsImg = styled.img`

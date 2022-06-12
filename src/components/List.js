@@ -110,7 +110,9 @@ const List = ({
           <NotFound>
             <NotFoundIcon src="/images/landing/InfoIcon.png" />
             <NotFoundDescLarge>데이터가 없습니다.</NotFoundDescLarge>
-            <NotFoundDescSmall>상단 필터를 확인해주세요!</NotFoundDescSmall>
+            <NotFoundDescSmall>
+              우측 상단 필터를 확인해주세요!
+            </NotFoundDescSmall>
           </NotFound>
         </NotFoundLayout>
       </ListLayout>

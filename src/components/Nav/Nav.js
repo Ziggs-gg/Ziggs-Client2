@@ -12,12 +12,8 @@ const Nav = () => {
 
   const [year, setYear] = useState(2022);
   const [season, setSeason] = useState('Spring');
-  // const [league, setLeague] = useState([]);
-  // const [role, setRole] = useState([]);
-
-  //GIF RECODING
-  const [league, setLeague] = useState(['LCK', 'LPL', 'LEC', 'LCS']);
-  const [role, setRole] = useState(['TOP', 'JUNGLE', 'MID', 'ADC', 'SUPPORT']);
+  const [league, setLeague] = useState([]);
+  const [role, setRole] = useState([]);
 
   const [viewToggle, setViewToggle] = useState(false);
   const [filterToggle, setFilterToggle] = useState(false);
@@ -71,15 +67,9 @@ const Nav = () => {
     setFilterToggle(!filterToggle);
   };
 
-  // const initFilter = () => {
-  // setLeague([]);
-  // setRole([]);
-  // };
-
-  //GIF RECODING
   const initFilter = () => {
-    // setLeague([]);
-    // setRole([]);
+    setLeague([]);
+    setRole([]);
   };
 
   return (
@@ -118,7 +108,10 @@ const Nav = () => {
           )}
         </SelectWrapper>
       </FilterContainer>
-      <FilterToggle src={`/images/Filter_W.png`} onClick={handleFilterToggle} />
+      <FilterToggle
+        src={filterToggle ? `/images/Filter_R.png` : `/images/Filter_W.png`}
+        onClick={handleFilterToggle}
+      />
     </NavLayout>
   );
 };

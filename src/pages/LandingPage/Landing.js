@@ -25,7 +25,7 @@ const Landing = () => {
         </MainContents>
         <HowToUse>
           <GifDesc>
-            <GifImg />
+            <GifImg src="/images/Filter.gif" />
             <GifDescText>
               왼쪽 상단 토글을 통해 선수와 구단을{'\n'}넘나드며 확인해보세요!
             </GifDescText>
