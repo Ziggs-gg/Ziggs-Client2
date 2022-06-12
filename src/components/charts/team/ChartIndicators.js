@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import theme from '../../../styles/theme.js';
 
-const ChartIndicators = ({}) => {
+const ChartIndicators = ({ chartData }) => {
   const [textColor, setTextColor] = useState([
     theme.white.white100,
     theme.red.redW80,
@@ -15,72 +15,232 @@ const ChartIndicators = ({}) => {
   if (data1 > data2) {
     leftColor = textColor[1];
     rightColor = textColor[0];
+  } else {
+    leftColor = textColor[0];
+    rightColor = textColor[1];
   }
+
+  const winColor = {
+    color: textColor[1],
+  };
+  const defeatColor = {
+    color: textColor[0],
+  };
   return (
     <ChartLayout>
       <Label>게임별 지표</Label>
       <TableLayout>
         <table>
           <tr>
-            <TeamNameAndImage>
-              <LeftTeamName>T1</LeftTeamName>
-              <TeamLogo src="/images/teams/DK.png" />
-            </TeamNameAndImage>
+            <FisrtTeamNameAndImage>
+              <LeftTeamName>{chartData[0]?.team}</LeftTeamName>
+              {chartData[0]?.team && (
+                <TeamLogo src={`/images/teams/${chartData[0]?.team}.png`} />
+              )}
+            </FisrtTeamNameAndImage>
             <CenterTd></CenterTd>
-            <TeamNameAndImage>
-              <TeamLogo src="/images/teams/DK.png" />
-              <RightTeamName>DK</RightTeamName>
-            </TeamNameAndImage>
+            <SecondTeamNameAndImage>
+              {chartData[1]?.team && (
+                <TeamLogo src={`/images/teams/${chartData[1]?.team}.png`} />
+              )}
+              <RightTeamName>{chartData[1]?.team}</RightTeamName>
+            </SecondTeamNameAndImage>
           </tr>
           <tr>
-            <LeftTeamTd>00:00</LeftTeamTd>
+            {chartData[0]?.gameTime < chartData[1]?.gameTime ? (
+              <LeftTeamTd style={winColor}>{chartData[0]?.gameTime}</LeftTeamTd>
+            ) : (
+              <LeftTeamTd style={defeatColor}>
+                {chartData[0]?.gameTime}
+              </LeftTeamTd>
+            )}
             <CenterTd>게임 시간</CenterTd>
-            <RightTeamTd>00:00</RightTeamTd>
+            {chartData[0]?.gameTime > chartData[1]?.gameTime ? (
+              <RightTeamTd style={winColor}>
+                {chartData[1]?.gameTime}
+              </RightTeamTd>
+            ) : (
+              <RightTeamTd style={defeatColor}>
+                {chartData[1]?.gameTime}
+              </RightTeamTd>
+            )}
           </tr>
           <tr>
-            <LeftTeamTd>00</LeftTeamTd>
+            {chartData[0]?.kills > chartData[1]?.kills ? (
+              <LeftTeamTd style={winColor}>{chartData[0]?.kills}</LeftTeamTd>
+            ) : (
+              <LeftTeamTd style={defeatColor}>{chartData[0]?.kills}</LeftTeamTd>
+            )}
             <CenterTd>킬</CenterTd>
-            <RightTeamTd>00</RightTeamTd>
+            {chartData[0]?.kills < chartData[1]?.kills ? (
+              <RightTeamTd style={winColor}>{chartData[1]?.kills}</RightTeamTd>
+            ) : (
+              <RightTeamTd style={defeatColor}>
+                {chartData[1]?.kills}
+              </RightTeamTd>
+            )}
           </tr>
           <tr>
-            <LeftTeamTd>00</LeftTeamTd>
+            {chartData[0]?.deaths < chartData[1]?.deaths ? (
+              <LeftTeamTd style={winColor}>{chartData[0]?.deaths}</LeftTeamTd>
+            ) : (
+              <LeftTeamTd style={defeatColor}>
+                {chartData[0]?.deaths}
+              </LeftTeamTd>
+            )}
             <CenterTd>데스</CenterTd>
-            <RightTeamTd>00</RightTeamTd>
+            {chartData[0]?.deaths > chartData[1]?.deaths ? (
+              <RightTeamTd style={winColor}>{chartData[1]?.deaths}</RightTeamTd>
+            ) : (
+              <RightTeamTd style={defeatColor}>
+                {chartData[1]?.deaths}
+              </RightTeamTd>
+            )}
           </tr>
           <tr>
-            <LeftTeamTd>00</LeftTeamTd>
+            {chartData[0]?.countTurretDestroy >
+            chartData[1]?.countTurretDestroy ? (
+              <LeftTeamTd style={winColor}>
+                {chartData[0]?.countTurretDestroy}
+              </LeftTeamTd>
+            ) : (
+              <LeftTeamTd style={defeatColor}>
+                {chartData[0]?.countTurretDestroy}
+              </LeftTeamTd>
+            )}
             <CenterTd>포탑 파괴</CenterTd>
-            <RightTeamTd>00</RightTeamTd>
+            {chartData[0]?.countTurretDestroy <
+            chartData[1]?.countTurretDestroy ? (
+              <RightTeamTd style={winColor}>
+                {chartData[1]?.countTurretDestroy}
+              </RightTeamTd>
+            ) : (
+              <RightTeamTd style={defeatColor}>
+                {chartData[1]?.countTurretDestroy}
+              </RightTeamTd>
+            )}
           </tr>
           <tr>
-            <LeftTeamTd>00</LeftTeamTd>
+            {chartData[0]?.golds > chartData[1]?.golds ? (
+              <LeftTeamTd style={winColor}>{chartData[0]?.golds}</LeftTeamTd>
+            ) : (
+              <LeftTeamTd style={defeatColor}>{chartData[0]?.golds}</LeftTeamTd>
+            )}
             <CenterTd>획득 골드</CenterTd>
-            <RightTeamTd>00</RightTeamTd>
+            {chartData[0]?.golds < chartData[1]?.golds ? (
+              <RightTeamTd style={winColor}>{chartData[1]?.golds}</RightTeamTd>
+            ) : (
+              <RightTeamTd style={defeatColor}>
+                {chartData[1]?.golds}
+              </RightTeamTd>
+            )}
           </tr>
           <tr>
-            <LeftTeamTd>00</LeftTeamTd>
+            {chartData[0]?.visionScore > chartData[1]?.visionScore ? (
+              <LeftTeamTd style={winColor}>
+                {chartData[0]?.visionScore}
+              </LeftTeamTd>
+            ) : (
+              <LeftTeamTd style={defeatColor}>
+                {chartData[0]?.visionScore}
+              </LeftTeamTd>
+            )}
             <CenterTd>시야 점수 합계</CenterTd>
-            <RightTeamTd>00</RightTeamTd>
+            {chartData[0]?.visionScore < chartData[1]?.visionScore ? (
+              <RightTeamTd style={winColor}>
+                {chartData[1]?.visionScore}
+              </RightTeamTd>
+            ) : (
+              <RightTeamTd style={defeatColor}>
+                {chartData[1]?.visionScore}
+              </RightTeamTd>
+            )}
           </tr>
           <tr>
-            <LeftTeamTd>00</LeftTeamTd>
+            {chartData[0]?.countDrake > chartData[1]?.countDrake ? (
+              <LeftTeamTd style={winColor}>
+                {chartData[0]?.countDrake}
+              </LeftTeamTd>
+            ) : (
+              <LeftTeamTd style={defeatColor}>
+                {chartData[0]?.countDrake}
+              </LeftTeamTd>
+            )}
             <CenterTd>드래곤 획득</CenterTd>
-            <RightTeamTd>00</RightTeamTd>
+            {chartData[0]?.countDrake < chartData[1]?.countDrake ? (
+              <RightTeamTd style={winColor}>
+                {chartData[1]?.countDrake}
+              </RightTeamTd>
+            ) : (
+              <RightTeamTd style={defeatColor}>
+                {chartData[1]?.countDrake}
+              </RightTeamTd>
+            )}
           </tr>
           <tr>
-            <LeftTeamTd>00</LeftTeamTd>
+            {chartData[0]?.countHerald > chartData[1]?.countHerald ? (
+              <LeftTeamTd style={winColor}>
+                {chartData[0]?.countHerald}
+              </LeftTeamTd>
+            ) : (
+              <LeftTeamTd style={defeatColor}>
+                {chartData[0]?.countHerald}
+              </LeftTeamTd>
+            )}
             <CenterTd>협곡의 정령 획득</CenterTd>
-            <RightTeamTd>00</RightTeamTd>
+            {chartData[0]?.countHerald < chartData[1]?.countHerald ? (
+              <RightTeamTd style={winColor}>
+                {chartData[1]?.countHerald}
+              </RightTeamTd>
+            ) : (
+              <RightTeamTd style={defeatColor}>
+                {chartData[1]?.countHerald}
+              </RightTeamTd>
+            )}
           </tr>
           <tr>
-            <LeftTeamTd>00</LeftTeamTd>
+            {chartData[0]?.countNashor > chartData[1]?.countNashor ? (
+              <LeftTeamTd style={winColor}>
+                {chartData[0]?.countNashor}
+              </LeftTeamTd>
+            ) : (
+              <LeftTeamTd style={defeatColor}>
+                {chartData[0]?.countNashor}
+              </LeftTeamTd>
+            )}
             <CenterTd>내셔 남작 획득</CenterTd>
-            <RightTeamTd>00</RightTeamTd>
+            {chartData[0]?.countNashor < chartData[1]?.countNashor ? (
+              <RightTeamTd style={winColor}>
+                {chartData[1]?.countNashor}
+              </RightTeamTd>
+            ) : (
+              <RightTeamTd style={defeatColor}>
+                {chartData[1]?.countNashor}
+              </RightTeamTd>
+            )}
           </tr>
           <tr>
-            <LeftTeamTd>00</LeftTeamTd>
+            {chartData[0]?.countInhibitDestroy >
+            chartData[1]?.countInhibitDestroy ? (
+              <LeftTeamTd style={winColor}>
+                {chartData[0]?.countInhibitDestroy}
+              </LeftTeamTd>
+            ) : (
+              <LeftTeamTd style={defeatColor}>
+                {chartData[0]?.countInhibitDestroy}
+              </LeftTeamTd>
+            )}
             <CenterTd>장로 드래곤 획득</CenterTd>
-            <RightTeamTd>00</RightTeamTd>
+            {chartData[0]?.countInhibitDestroy <
+            chartData[1]?.countInhibitDestroy ? (
+              <RightTeamTd style={winColor}>
+                {chartData[1]?.countInhibitDestroy}
+              </RightTeamTd>
+            ) : (
+              <RightTeamTd style={defeatColor}>
+                {chartData[1]?.countInhibitDestroy}
+              </RightTeamTd>
+            )}
           </tr>
         </table>
       </TableLayout>
@@ -109,8 +269,14 @@ const Label = styled.div`
   margin-bottom: 16px;
 `;
 
-const TeamNameAndImage = styled.td`
+const FisrtTeamNameAndImage = styled.td`
   display: flex;
+  justify-content: end;
+`;
+
+const SecondTeamNameAndImage = styled.td`
+  display: flex;
+  justify-content: start;
 `;
 
 const CenterTd = styled.td`

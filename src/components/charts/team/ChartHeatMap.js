@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import theme from '../../../styles/theme.js';
 
-const ChartHeatmap = ({}) => {
+const ChartHeatmap = ({ chartData }) => {
   return (
     <ChartLayout>
       <Label>포지션별 VERSUS 인덱스 비교</Label>
@@ -19,32 +19,32 @@ const ChartHeatmap = ({}) => {
           </thead>
           <tbody>
             <HeatTr>
-              <FirstTeamTd>00.00</FirstTeamTd>
-              <FirstTeamTd>00.00</FirstTeamTd>
-              <FirstTeamTd>00.00</FirstTeamTd>
-              <FirstTeamTd>00.00</FirstTeamTd>
-              <FirstTeamTd>00.00</FirstTeamTd>
+              <FirstTeamTd>{chartData[0]?.AVG_CP}</FirstTeamTd>
+              <FirstTeamTd>{chartData[1]?.AVG_CP}</FirstTeamTd>
+              <FirstTeamTd>{chartData[2]?.AVG_CP}</FirstTeamTd>
+              <FirstTeamTd>{chartData[3]?.AVG_CP}</FirstTeamTd>
+              <FirstTeamTd>{chartData[4]?.AVG_CP}</FirstTeamTd>
             </HeatTr>
             <HeatTr>
-              <FirstTeamTd>00.00</FirstTeamTd>
-              <FirstTeamTd>00.00</FirstTeamTd>
-              <FirstTeamTd>00.00</FirstTeamTd>
-              <FirstTeamTd>00.00</FirstTeamTd>
-              <FirstTeamTd>00.00</FirstTeamTd>
+              <FirstTeamTd>{chartData[0]?.AVG_SA}</FirstTeamTd>
+              <FirstTeamTd>{chartData[1]?.AVG_SA}</FirstTeamTd>
+              <FirstTeamTd>{chartData[2]?.AVG_SA}</FirstTeamTd>
+              <FirstTeamTd>{chartData[3]?.AVG_SA}</FirstTeamTd>
+              <FirstTeamTd>{chartData[4]?.AVG_SA}</FirstTeamTd>
             </HeatTr>
             <HeatTr>
-              <FirstTeamTd>00.00</FirstTeamTd>
-              <FirstTeamTd>00.00</FirstTeamTd>
-              <FirstTeamTd>00.00</FirstTeamTd>
-              <FirstTeamTd>00.00</FirstTeamTd>
-              <FirstTeamTd>00.00</FirstTeamTd>
+              <FirstTeamTd>{chartData[0]?.AVG_EP}</FirstTeamTd>
+              <FirstTeamTd>{chartData[1]?.AVG_EP}</FirstTeamTd>
+              <FirstTeamTd>{chartData[2]?.AVG_EP}</FirstTeamTd>
+              <FirstTeamTd>{chartData[3]?.AVG_EP}</FirstTeamTd>
+              <FirstTeamTd>{chartData[4]?.AVG_EP}</FirstTeamTd>
             </HeatTr>
             <HeatTr>
-              <FirstTeamTd>00.00</FirstTeamTd>
-              <FirstTeamTd>00.00</FirstTeamTd>
-              <FirstTeamTd>00.00</FirstTeamTd>
-              <FirstTeamTd>00.00</FirstTeamTd>
-              <FirstTeamTd>00.00</FirstTeamTd>
+              <FirstTeamTd>{chartData[0]?.AVG_VC}</FirstTeamTd>
+              <FirstTeamTd>{chartData[1]?.AVG_VC}</FirstTeamTd>
+              <FirstTeamTd>{chartData[2]?.AVG_VC}</FirstTeamTd>
+              <FirstTeamTd>{chartData[3]?.AVG_VC}</FirstTeamTd>
+              <FirstTeamTd>{chartData[4]?.AVG_VC}</FirstTeamTd>
             </HeatTr>
           </tbody>
         </table>
@@ -62,35 +62,35 @@ const ChartHeatmap = ({}) => {
           <tbody>
             <HeatTr>
               <ColumnLabel>전투력</ColumnLabel>
-              <SecondTeamTd>00.00</SecondTeamTd>
-              <SecondTeamTd>00.00</SecondTeamTd>
-              <SecondTeamTd>00.00</SecondTeamTd>
-              <SecondTeamTd>00.00</SecondTeamTd>
-              <SecondTeamTd>00.00</SecondTeamTd>
+              <SecondTeamTd>{chartData[5]?.AVG_CP}</SecondTeamTd>
+              <SecondTeamTd>{chartData[6]?.AVG_CP}</SecondTeamTd>
+              <SecondTeamTd>{chartData[7]?.AVG_CP}</SecondTeamTd>
+              <SecondTeamTd>{chartData[8]?.AVG_CP}</SecondTeamTd>
+              <SecondTeamTd>{chartData[9]?.AVG_CP}</SecondTeamTd>
             </HeatTr>
             <HeatTr>
               <ColumnLabel>생존력</ColumnLabel>
-              <SecondTeamTd>00.00</SecondTeamTd>
-              <SecondTeamTd>00.00</SecondTeamTd>
-              <SecondTeamTd>00.00</SecondTeamTd>
-              <SecondTeamTd>00.00</SecondTeamTd>
-              <SecondTeamTd>00.00</SecondTeamTd>
+              <SecondTeamTd>{chartData[5]?.AVG_SA}</SecondTeamTd>
+              <SecondTeamTd>{chartData[6]?.AVG_SA}</SecondTeamTd>
+              <SecondTeamTd>{chartData[7]?.AVG_SA}</SecondTeamTd>
+              <SecondTeamTd>{chartData[8]?.AVG_SA}</SecondTeamTd>
+              <SecondTeamTd>{chartData[9]?.AVG_SA}</SecondTeamTd>
             </HeatTr>
             <HeatTr>
               <ColumnLabel>골드수급력</ColumnLabel>
-              <SecondTeamTd>00.00</SecondTeamTd>
-              <SecondTeamTd>00.00</SecondTeamTd>
-              <SecondTeamTd>00.00</SecondTeamTd>
-              <SecondTeamTd>00.00</SecondTeamTd>
-              <SecondTeamTd>00.00</SecondTeamTd>
+              <SecondTeamTd>{chartData[5]?.AVG_EP}</SecondTeamTd>
+              <SecondTeamTd>{chartData[6]?.AVG_EP}</SecondTeamTd>
+              <SecondTeamTd>{chartData[7]?.AVG_EP}</SecondTeamTd>
+              <SecondTeamTd>{chartData[8]?.AVG_EP}</SecondTeamTd>
+              <SecondTeamTd>{chartData[9]?.AVG_EP}</SecondTeamTd>
             </HeatTr>
             <HeatTr>
               <ColumnLabel>시야장악력</ColumnLabel>
-              <SecondTeamTd>00.00</SecondTeamTd>
-              <SecondTeamTd>00.00</SecondTeamTd>
-              <SecondTeamTd>00.00</SecondTeamTd>
-              <SecondTeamTd>00.00</SecondTeamTd>
-              <SecondTeamTd>00.00</SecondTeamTd>
+              <SecondTeamTd>{chartData[5]?.AVG_VC}</SecondTeamTd>
+              <SecondTeamTd>{chartData[6]?.AVG_VC}</SecondTeamTd>
+              <SecondTeamTd>{chartData[7]?.AVG_VC}</SecondTeamTd>
+              <SecondTeamTd>{chartData[8]?.AVG_VC}</SecondTeamTd>
+              <SecondTeamTd>{chartData[9]?.AVG_VC}</SecondTeamTd>
             </HeatTr>
           </tbody>
         </table>

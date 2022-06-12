@@ -57,7 +57,7 @@ const dummyData = [
 //   },
 // ];
 
-const ChartLine = ({}) => {
+const ChartLine = ({ chartData }) => {
   const gradientBGC = [
     [
       'rgba(162, 212, 67, 0.05)', // team1 : green
@@ -76,10 +76,10 @@ const ChartLine = ({}) => {
   let ticksMinMax = [];
   let gameCountArr = [];
 
-  for (let i = 0; i < dummyData.length; i++) {
-    let minutesArr = JSON.parse('[' + dummyData[i].minutes + ']');
-    let GDArr = JSON.parse('[' + dummyData[i].AVG_GD + ']');
-    gameCountArr.push(JSON.parse('[' + dummyData[i].gameCount + ']'));
+  for (let i = 0; i < chartData.length; i++) {
+    let minutesArr = JSON.parse('[' + chartData[i].minutes + ']');
+    let GDArr = JSON.parse('[' + chartData[i].AVG_GD + ']');
+    gameCountArr.push(JSON.parse('[' + chartData[i].gameCount + ']'));
 
     let dataArr = [];
     for (let n = 0; n < minutesArr.length; n++) {
@@ -90,7 +90,7 @@ const ChartLine = ({}) => {
     }
 
     data.datasets.push({
-      label: dummyData[i].teamABBR,
+      label: chartData[i].teamABBR,
       data: dataArr,
       gradient: {
         backgroundColor: {

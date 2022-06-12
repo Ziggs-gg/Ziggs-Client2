@@ -32,41 +32,41 @@ const dummyData = [
   },
 ];
 
-const ChartCamp = ({}) => {
+const ChartCamp = ({ chartData }) => {
   const yLabels = ['GL@15', 'GL@20', 'GL@25', '전체'];
   let data = {
     labels: yLabels,
     datasets: [],
   };
   // data.datasets에 데이터 삽입
-  for (let i = 0; i < dummyData.length; i++) {
+  for (let i = 0; i < chartData.length; i++) {
     // 블루 진영 값 음수로 변환 작업
     const dataNegative = n => n * -1;
-    let blueData = JSON.parse('[' + dummyData[i].WR_Blue + ']');
+    let blueData = JSON.parse('[' + chartData[i].WR_Blue + ']');
     // 블루진영 데이터 푸쉬
     data.datasets.push({
-      label: `${dummyData[i].teamABBR} 블루`,
+      label: `${chartData[i].teamABBR} 블루`,
       data: blueData.map(dataNegative),
       backgroundColor: theme.blue.blueB70,
       borderWidth: 1,
-      stack: dummyData[i].teamABBR,
+      stack: chartData[i].teamABBR,
       borderRadius: 4,
       datalabels: {
         display: true,
         anchor: 'end',
         color: theme.white.white100,
         formatter: function (value, ctx) {
-          return dummyData[i].teamABBR;
+          return chartData[i].teamABBR;
         },
       },
     });
     // 레드진영 데이터 푸쉬
     data.datasets.push({
-      label: `${dummyData[i].teamABBR} 레드`,
-      data: JSON.parse('[' + dummyData[i].WR_Red + ']'),
+      label: `${chartData[i].teamABBR} 레드`,
+      data: JSON.parse('[' + chartData[i].WR_Red + ']'),
       backgroundColor: theme.red.redB70,
       borderWidth: 1,
-      stack: dummyData[i].teamABBR,
+      stack: chartData[i].teamABBR,
       borderRadius: 4,
     });
   }

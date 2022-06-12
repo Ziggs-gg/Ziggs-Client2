@@ -4,7 +4,7 @@ import { Bar, Chart } from 'react-chartjs-2';
 import theme from '../../../styles/theme.js';
 import chartStyle from '../../../styles/chartStyle';
 
-const dummyData = [
+const chartData = [
   {
     ptID: '22-LCK-SPR-HLE',
     teamABBR: 'HLE',
@@ -107,7 +107,7 @@ const dummyData = [
   },
 ];
 
-const Chartimportance = ({}) => {
+const Chartimportance = ({ chartData }) => {
   const chartColor = [
     // team1
     theme.green.greenB70, // 탑
@@ -134,18 +134,18 @@ const Chartimportance = ({}) => {
     datasets: [],
   };
   // data.datasets에 데이터 삽입
-  for (let i = 0; i < dummyData.length; i++) {
+  for (let i = 0; i < chartData?.length; i++) {
     data.datasets.push({
-      label: `${dummyData[i].teamABBR} ${dummyData[i].role}`,
+      label: `${chartData[i].teamABBR} ${chartData[i]?.role}`,
       data: [
-        dummyData[i].DMGPCT,
-        dummyData[i].DTPCT,
-        dummyData[i].CS,
-        dummyData[i].golds,
-        dummyData[i].visionScore,
+        chartData[i]?.DMGPCT,
+        chartData[i]?.DTPCT,
+        chartData[i]?.CS,
+        chartData[i]?.golds,
+        chartData[i]?.visionScore,
       ],
       backgroundColor: chartColor[i],
-      stack: dummyData[i].teamABBR,
+      stack: chartData[i]?.teamABBR,
     });
   }
 

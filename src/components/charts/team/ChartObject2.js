@@ -22,7 +22,7 @@ const dummyData = [
     AVG_FDsec: 8.91166667,
   },
 ];
-const ChartObject2 = ({}) => {
+const ChartObject2 = ({ chartData }) => {
   const yLabels = ['선취점', '포탑 선취', '첫 전령', '첫 드래곤'];
   const bgc = [theme.green.greenB70, theme.orange.orangeB70];
 
@@ -31,14 +31,14 @@ const ChartObject2 = ({}) => {
     datasets: [],
   };
 
-  for (let i = 0; i < dummyData.length; i++) {
+  for (let i = 0; i < chartData?.length; i++) {
     data.datasets.push({
-      label: dummyData[i].teamABBR,
+      label: chartData[i].teamABBR,
       data: [
-        dummyData[i].AVG_FKsec,
-        dummyData[i].AVG_FTsec,
-        dummyData[i].AVG_FHsec,
-        dummyData[i].AVG_FDsec,
+        chartData[i]?.AVG_FKsec,
+        chartData[i]?.AVG_FTsec,
+        chartData[i]?.AVG_FHsec,
+        chartData[i]?.AVG_FDsec,
       ],
       backgroundColor: bgc[i],
     });
