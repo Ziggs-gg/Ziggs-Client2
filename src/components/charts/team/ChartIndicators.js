@@ -8,18 +8,6 @@ const ChartIndicators = ({ chartData }) => {
     theme.red.redW80,
   ]);
 
-  const data1 = 13;
-  const data2 = 11;
-  let leftColor;
-  let rightColor;
-  if (data1 > data2) {
-    leftColor = textColor[1];
-    rightColor = textColor[0];
-  } else {
-    leftColor = textColor[0];
-    rightColor = textColor[1];
-  }
-
   const winColor = {
     color: textColor[1],
   };

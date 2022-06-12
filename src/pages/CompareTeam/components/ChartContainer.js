@@ -14,11 +14,11 @@ const ChartContainer = ({ selectedTeams }) => {
   const [chartData, setChartData] = useState([]);
   let chartUrl = `${API.TEAM_CHART}ptID=22-LCK-SPR-NS&ptID=22-LCK-SPR-T1`;
   // if (selectedTeams.length == 0) {
-  //   chartUrl = `${API.TEAM_CHART}phID=`;
+  //   chartUrl = `${API.TEAM_CHART}ptID=`;
   // } else if (selectedTeams.length == 1) {
-  //   chartUrl = `${API.TEAM_CHART}phID=${selectedTeams[0]}`;
+  //   chartUrl = `${API.TEAM_CHART}ptID=${selectedTeams[0]}`;
   // } else if (selectedTeams.length == 2) {
-  //   chartUrl = `${API.TEAM_CHART}phID=${selectedTeams[0]}&phID=${selectedTeams[1]}`;
+  //   chartUrl = `${API.TEAM_CHART}ptID=${selectedTeams[0]}&ptID=${selectedTeams[1]}`;
   // }
 
   useEffect(() => {

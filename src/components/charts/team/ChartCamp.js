@@ -6,32 +6,6 @@ import theme from '../../../styles/theme.js';
 import { borderRadius } from '@mui/system';
 import chartStyle from '../../../styles/chartStyle';
 
-// 테스트용 더미데이터 JSON.
-const dummyData = [
-  {
-    ptID: '21-LCK-SPR-DK',
-    teamABBR: 'DK',
-    yAxis: '15,20,25,end',
-    gameCount_Blue: '12,14,12,21',
-    winCount_Blue: '10,12,10,16',
-    WR_Blue: '83.3,85.7,83.3,76.2',
-    gameCount_Red: '14,13,15,22',
-    winCount_Red: '14,13,14,17',
-    WR_Red: '100.0,100.0,93.3,77.3',
-  },
-  {
-    ptID: '22-LCK-SPR-T1',
-    teamABBR: 'T1',
-    yAxis: '15,20,25,end',
-    gameCount_Blue: '15,16,12,17',
-    winCount_Blue: '13,14,11,15',
-    WR_Blue: '86.7,87.5,91.7,88.2',
-    gameCount_Red: '20,19,17,26',
-    winCount_Red: '18,15,14,21',
-    WR_Red: '90.0,78.9,82.4,80.8',
-  },
-];
-
 const ChartCamp = ({ chartData }) => {
   const yLabels = ['GL@15', 'GL@20', 'GL@25', '전체'];
   let data = {

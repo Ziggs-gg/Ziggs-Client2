@@ -2,26 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Bar } from 'react-chartjs-2';
 import theme from '../../../styles/theme.js';
-import chartStyle from '../../../styles/chartStyle';
 
-const dummyData = [
-  {
-    ptID: '22-LCK-SPR-T1',
-    teamABBR: 'T1',
-    AVG_FKsec: 6.26923077,
-    AVG_FTsec: 12.91898148,
-    AVG_FHsec: 9.03765432,
-    AVG_FDsec: 10.35964912,
-  },
-  {
-    ptID: '22-LCK-SPR-DK',
-    teamABBR: 'DK',
-    AVG_FKsec: 5.48043478,
-    AVG_FTsec: 13.0384058,
-    AVG_FHsec: 8.85075758,
-    AVG_FDsec: 8.91166667,
-  },
-];
 const ChartObject2 = ({ chartData }) => {
   const yLabels = ['선취점', '포탑 선취', '첫 전령', '첫 드래곤'];
   const bgc = [theme.green.greenB70, theme.orange.orangeB70];
