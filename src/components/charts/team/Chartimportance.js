@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Bar } from 'react-chartjs-2';
+import { Bar, Chart } from 'react-chartjs-2';
 import theme from '../../../styles/theme.js';
+import chartStyle from '../../../styles/chartStyle';
 
 const dummyData = [
   {
@@ -160,6 +161,11 @@ const Chartimportance = ({}) => {
         color: theme.white.white100,
         align: 'start',
         padding: '0',
+        font: {
+          family: 'Noto Sans KR',
+          size: 14,
+          weight: '500',
+        },
       },
       tooltip: {
         callbacks: {
@@ -207,7 +213,7 @@ const Chartimportance = ({}) => {
   };
   return (
     <ChartLayout>
-      <Bar data={data} options={options} />
+      <Bar data={data} options={options} font={chartStyle} />
     </ChartLayout>
   );
 };

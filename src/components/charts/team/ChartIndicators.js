@@ -101,7 +101,7 @@ const TableLayout = styled.div`
 
 const Label = styled.div`
   font-weight: bold;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 16px;
   align-items: center;
   letter-spacing: -0.02em;

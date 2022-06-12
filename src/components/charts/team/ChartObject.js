@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import theme from '../../../styles/theme.js';
+import chartStyle from '../../../styles/chartStyle';
 
 const ChartObject = ({}) => {
   return <ChartLayout></ChartLayout>;

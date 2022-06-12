@@ -7,7 +7,6 @@ import ChartObject from '../../../components/charts/team/ChartObject';
 import ChartObject2 from '../../../components/charts/team/ChartObject2';
 import ChartHeatmap from '../../../components/charts/team/ChartHeatMap';
 import Chartimportance from '../../../components/charts/team/Chartimportance';
-
 const ChartContainer = () => {
   return (
     <ChartsLayout>

@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Bar } from 'react-chartjs-2';
+import { Bar, Chart } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import theme from '../../../styles/theme.js';
 import { borderRadius } from '@mui/system';
+import chartStyle from '../../../styles/chartStyle';
 
 // 테스트용 더미데이터 JSON.
 const dummyData = [
@@ -80,6 +81,9 @@ const ChartCamp = ({}) => {
         color: theme.white.white100,
         align: 'start',
         padding: '16',
+        font: {
+          size: 14,
+        },
       },
       // 플러그인 해당 차트 전역에 적용시키기
       datalabels: {
@@ -163,7 +167,12 @@ const ChartCamp = ({}) => {
   };
   return (
     <ChartLayout>
-      <Bar data={data} plugins={[ChartDataLabels]} options={options} />
+      <Bar
+        data={data}
+        plugins={[ChartDataLabels]}
+        options={options}
+        font={chartStyle.font}
+      />
     </ChartLayout>
   );
 };

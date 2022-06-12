@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Line } from 'react-chartjs-2';
+import { Line, Chart } from 'react-chartjs-2';
 import theme from '../../../styles/theme.js';
+import chartStyle from '../../../styles/chartStyle';
 
 const ChartLine = ({}) => {
   // const { width, height } = props;
@@ -125,13 +126,22 @@ const ChartLine = ({}) => {
         color: theme.white.white100,
         align: 'start',
         padding: '15',
+        font: {
+          size: 14,
+        },
       },
     },
   };
 
   return (
     <ChartLayout>
-      <Line width="894" height="304" data={data} options={options} />
+      <Line
+        width="894"
+        height="304"
+        data={data}
+        options={options}
+        font={chartStyle.font}
+      />
     </ChartLayout>
   );
 };

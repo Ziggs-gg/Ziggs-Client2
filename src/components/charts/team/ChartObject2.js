@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Bar } from 'react-chartjs-2';
 import theme from '../../../styles/theme.js';
+import chartStyle from '../../../styles/chartStyle';
 
 const dummyData = [
   {
@@ -126,6 +127,10 @@ const ChartObject2 = ({}) => {
         color: theme.white.white100,
         align: 'start',
         padding: '16',
+        font: {
+          family: 'Noto Sans KR',
+          size: 14,
+        },
       },
       tooltip: {
         callbacks: {
@@ -180,7 +185,12 @@ const ChartObject2 = ({}) => {
 
   return (
     <ChartLayout>
-      <Bar data={data} plugins={[lollipopChart]} options={options} />
+      <Bar
+        data={data}
+        plugins={[lollipopChart]}
+        options={options}
+        font={chartStyle.font}
+      />
     </ChartLayout>
   );
 };
