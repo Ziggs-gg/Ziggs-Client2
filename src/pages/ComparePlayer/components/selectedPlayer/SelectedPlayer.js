@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import { css } from 'styled-components';
 import axios from 'axios';
 import { API } from '../../../../config';
-import Skeleton from 'react-loading-skeleton';
-import 'react-loading-skeleton/dist/skeleton.css';
 
 const SelectedPlayer = ({ player, selectedPlayers, deleteSelectedPlayer }) => {
   const [playerData, setPlayerData] = useState();
@@ -157,41 +155,42 @@ const SelectedPlayer = ({ player, selectedPlayers, deleteSelectedPlayer }) => {
 
           <MostChampions>
             {loading ? (
-              <>
-                <StatesTextLoading />
-                <StatesTextLoading />
-              </>
+              <MostChampionsTitleLoading />
             ) : (
               <StatesText>선호 챔피언</StatesText>
             )}
 
-            <Champions>
-              {playerData?.most1 && (
-                <ChampionsImg
-                  src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most1}_0.jpg`}
-                />
-              )}
-              {playerData?.most2 && (
-                <ChampionsImg
-                  src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most2}_0.jpg`}
-                />
-              )}
-              {playerData?.most3 && (
-                <ChampionsImg
-                  src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most3}_0.jpg`}
-                />
-              )}
-              {playerData?.most4 && (
-                <ChampionsImg
-                  src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most4}_0.jpg`}
-                />
-              )}
-              {playerData?.most5 && (
-                <ChampionsImg
-                  src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most5}_0.jpg`}
-                />
-              )}
-            </Champions>
+            {loading ? (
+              <MostChampionsLoading />
+            ) : (
+              <Champions>
+                {playerData?.most1 && (
+                  <ChampionsImg
+                    src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most1}_0.jpg`}
+                  />
+                )}
+                {playerData?.most2 && (
+                  <ChampionsImg
+                    src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most2}_0.jpg`}
+                  />
+                )}
+                {playerData?.most3 && (
+                  <ChampionsImg
+                    src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most3}_0.jpg`}
+                  />
+                )}
+                {playerData?.most4 && (
+                  <ChampionsImg
+                    src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most4}_0.jpg`}
+                  />
+                )}
+                {playerData?.most5 && (
+                  <ChampionsImg
+                    src={`http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${playerData.most5}_0.jpg`}
+                  />
+                )}
+              </Champions>
+            )}
           </MostChampions>
         </PlayerDataContainer>
       </ContentsWrapper>
@@ -439,10 +438,23 @@ const StatesTextLoading = styled.div`
 `;
 
 const MostChampions = styled.div`
-  /* width: 90px; */
   height: 36px;
 `;
+const MostChampionsTitleLoading = styled.div`
+  height: 16px;
+  width: 30px;
+  margin-top: 2px;
+  background-color: ${props => props.theme.black.black70};
+  border-radius: 3px;
+`;
+const MostChampionsLoading = styled.div`
+  width: 128px;
+  height: 16px;
+  margin-top: 4px;
 
+  background-color: ${props => props.theme.black.black70};
+  border-radius: 3px;
+`;
 const Champions = styled.div``;
 
 const ChampionsImg = styled.img`
