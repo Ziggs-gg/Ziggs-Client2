@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { Bar, Chart } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import theme from '../../../styles/theme.js';
-import { borderRadius } from '@mui/system';
 import chartStyle from '../../../styles/chartStyle';
 
 const ChartCamp = ({ chartData }) => {
