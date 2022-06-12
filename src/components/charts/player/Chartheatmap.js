@@ -18,7 +18,7 @@ const Chartheatmap = ({ heatMapData }) => {
       <table>
         <thead>
           <HeatTr>
-            <SpaceTd></SpaceTd>
+            <SpaceTd />
             <LabelTd>게임</LabelTd>
             <LabelTd>킬</LabelTd>
             <LabelTd>데스</LabelTd>
