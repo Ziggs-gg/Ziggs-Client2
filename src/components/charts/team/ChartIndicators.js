@@ -11,9 +11,11 @@ const ChartIndicators = ({ chartData }) => {
   const winColor = {
     color: textColor[1],
   };
+
   const defeatColor = {
     color: textColor[0],
   };
+
   return (
     <ChartLayout>
       <Label>게임별 지표</Label>
@@ -330,7 +332,6 @@ const LeftTeamTd = styled.td`
   color: ${theme.white.white100};
   text-align: right;
   padding-bottom: 8px;
-  font-weight: 300;
   font-size: 14px;
   line-height: 16px;
   letter-spacing: -0.02em;
