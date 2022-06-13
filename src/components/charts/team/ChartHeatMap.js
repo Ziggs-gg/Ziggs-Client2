@@ -40,11 +40,21 @@ const ChartHeatmap = ({ chartData }) => {
               <FirstTeamTd>{chartData[4]?.AVG_EP}</FirstTeamTd>
             </HeatTr>
             <HeatTr>
-              <FirstTeamTd>{chartData[0]?.AVG_VC}</FirstTeamTd>
-              <FirstTeamTd>{chartData[1]?.AVG_VC}</FirstTeamTd>
-              <FirstTeamTd>{chartData[2]?.AVG_VC}</FirstTeamTd>
-              <FirstTeamTd>{chartData[3]?.AVG_VC}</FirstTeamTd>
-              <FirstTeamTd>{chartData[4]?.AVG_VC}</FirstTeamTd>
+              <FirstTeamTd>
+                {chartData[0]?.AVG_VC ? chartData[0]?.AVG_VC : '-'}
+              </FirstTeamTd>
+              <FirstTeamTd>
+                {chartData[1]?.AVG_VC ? chartData[1]?.AVG_VC : '-'}
+              </FirstTeamTd>
+              <FirstTeamTd>
+                {chartData[2]?.AVG_VC ? chartData[2]?.AVG_VC : '-'}
+              </FirstTeamTd>
+              <FirstTeamTd>
+                {chartData[3]?.AVG_VC ? chartData[3]?.AVG_VC : '-'}
+              </FirstTeamTd>
+              <FirstTeamTd>
+                {chartData[4]?.AVG_VC ? chartData[4]?.AVG_VC : '-'}
+              </FirstTeamTd>
             </HeatTr>
           </tbody>
         </table>
@@ -86,11 +96,21 @@ const ChartHeatmap = ({ chartData }) => {
             </HeatTr>
             <HeatTr>
               <ColumnLabel>시야장악력</ColumnLabel>
-              <SecondTeamTd>{chartData[5]?.AVG_VC}</SecondTeamTd>
-              <SecondTeamTd>{chartData[6]?.AVG_VC}</SecondTeamTd>
-              <SecondTeamTd>{chartData[7]?.AVG_VC}</SecondTeamTd>
-              <SecondTeamTd>{chartData[8]?.AVG_VC}</SecondTeamTd>
-              <SecondTeamTd>{chartData[9]?.AVG_VC}</SecondTeamTd>
+              <SecondTeamTd>
+                {chartData[5]?.AVG_VC ? chartData[5]?.AVG_VC : '-'}
+              </SecondTeamTd>
+              <SecondTeamTd>
+                {chartData[6]?.AVG_VC ? chartData[6]?.AVG_VC : '-'}
+              </SecondTeamTd>
+              <SecondTeamTd>
+                {chartData[7]?.AVG_VC ? chartData[7]?.AVG_VC : '-'}
+              </SecondTeamTd>
+              <SecondTeamTd>
+                {chartData[8]?.AVG_VC ? chartData[8]?.AVG_VC : '-'}
+              </SecondTeamTd>
+              <SecondTeamTd>
+                {chartData[9]?.AVG_VC ? chartData[9]?.AVG_VC : '-'}
+              </SecondTeamTd>
             </HeatTr>
           </tbody>
         </table>
