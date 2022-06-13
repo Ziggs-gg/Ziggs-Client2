@@ -72,7 +72,7 @@ const ChartIndicators = ({ chartData }) => {
               </RightTeamTd>
             ) : (
               <RightTeamTd style={defeatColor}>
-                {chartData[1]?.killsPerMins}
+                {chartData[1]?.killsPerMin}
               </RightTeamTd>
             )}
           </tr>
@@ -145,22 +145,30 @@ const ChartIndicators = ({ chartData }) => {
             {chartData[0]?.visionScorePerMin >
             chartData[1]?.visionScorePerMin ? (
               <LeftTeamTd style={winColor}>
-                {chartData[0]?.visionScorePerMin}
+                {chartData[0]?.visionScorePerMin
+                  ? chartData[0]?.visionScorePerMin
+                  : '-'}
               </LeftTeamTd>
             ) : (
               <LeftTeamTd style={defeatColor}>
-                {chartData[0]?.visionScorePerMin}
+                {chartData[0]?.visionScorePerMin
+                  ? chartData[0]?.visionScorePerMin
+                  : '-'}
               </LeftTeamTd>
             )}
             <CenterTd>분당 시야 점수</CenterTd>
             {chartData[0]?.visionScorePerMin <
             chartData[1]?.visionScorePerMin ? (
               <RightTeamTd style={winColor}>
-                {chartData[1]?.visionScorePerMin}
+                {chartData[1]?.visionScorePerMin
+                  ? chartData[1]?.visionScorePerMin
+                  : '-'}
               </RightTeamTd>
             ) : (
               <RightTeamTd style={defeatColor}>
-                {chartData[1]?.visionScorePerMin}
+                {chartData[1]?.visionScorePerMin
+                  ? chartData[1]?.visionScorePerMin
+                  : '-'}
               </RightTeamTd>
             )}
           </tr>
@@ -188,21 +196,21 @@ const ChartIndicators = ({ chartData }) => {
           <tr>
             {chartData[0]?.countHerald > chartData[1]?.countHerald ? (
               <LeftTeamTd style={winColor}>
-                {chartData[0]?.countHerald}
+                {chartData[0]?.countHerald ? chartData[0]?.countHerald : '-'}
               </LeftTeamTd>
             ) : (
               <LeftTeamTd style={defeatColor}>
-                {chartData[0]?.countHerald}
+                {chartData[0]?.countHerald ? chartData[0]?.countHerald : '-'}
               </LeftTeamTd>
             )}
             <CenterTd>협곡의 전령 획득</CenterTd>
             {chartData[0]?.countHerald < chartData[1]?.countHerald ? (
               <RightTeamTd style={winColor}>
-                {chartData[1]?.countHerald}
+                {chartData[1]?.countHerald ? chartData[1]?.countHerald : '-'}
               </RightTeamTd>
             ) : (
               <RightTeamTd style={defeatColor}>
-                {chartData[1]?.countHerald}
+                {chartData[1]?.countHerald ? chartData[1]?.countHerald : '-'}
               </RightTeamTd>
             )}
           </tr>
@@ -231,22 +239,30 @@ const ChartIndicators = ({ chartData }) => {
             {chartData[0]?.countInhibitDestroy >
             chartData[1]?.countInhibitDestroy ? (
               <LeftTeamTd style={winColor}>
-                {chartData[0]?.countInhibitDestroy}
+                {chartData[0]?.countInhibitDestroy
+                  ? chartData[0]?.countInhibitDestroy
+                  : '-'}
               </LeftTeamTd>
             ) : (
               <LeftTeamTd style={defeatColor}>
-                {chartData[0]?.countInhibitDestroy}
+                {chartData[0]?.countInhibitDestroy
+                  ? chartData[0]?.countInhibitDestroy
+                  : '-'}
               </LeftTeamTd>
             )}
-            <CenterTd>장로 드래곤 획득</CenterTd>
+            <CenterTd>억제기 파괴</CenterTd>
             {chartData[0]?.countInhibitDestroy <
             chartData[1]?.countInhibitDestroy ? (
               <RightTeamTd style={winColor}>
-                {chartData[1]?.countInhibitDestroy}
+                {chartData[1]?.countInhibitDestroy
+                  ? chartData[1]?.countInhibitDestroy
+                  : '-'}
               </RightTeamTd>
             ) : (
               <RightTeamTd style={defeatColor}>
-                {chartData[1]?.countInhibitDestroy}
+                {chartData[1]?.countInhibitDestroy
+                  ? chartData[1]?.countInhibitDestroy
+                  : '-'}
               </RightTeamTd>
             )}
           </tr>
