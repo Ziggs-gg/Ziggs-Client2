@@ -5,10 +5,13 @@ import TeamChampionPool from './TeamChampionPool';
 const ChampionPool = ({ selectedTeams }) => {
   return (
     <ChampionPoolLayout>
+      {selectedTeams.length === 0 && (
+        <ChampionPoolEmpty> TEAM 시즌 챔피언풀</ChampionPoolEmpty>
+      )}
       {selectedTeams.map((ptID, idx) => {
         return <TeamChampionPool ptID={ptID} key={idx} />;
       })}
-      <Divider />
+      {selectedTeams.length !== 0 && <Divider />}
     </ChampionPoolLayout>
   );
 };
@@ -35,4 +38,18 @@ const Divider = styled.div`
   top: 16px;
 
   background: #353532;
+`;
+
+const ChampionPoolEmpty = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1360px;
+  height: 688px;
+  margin: 0 auto;
+  margin-bottom: 16px;
+  border-top: 3px solid ${props => props.theme.black.black85};
+  border-bottom: 3px solid ${props => props.theme.black.black85};
+  color: ${props => props.theme.white.white80};
+  font-size: 24px;
 `;

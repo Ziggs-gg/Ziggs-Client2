@@ -13,19 +13,19 @@ const PlayerRoasterCard = ({
       <StatsContainer>
         <StatsDesc>
           <StatsTitle>KDA</StatsTitle>
-          <StatsText>{KDA}</StatsText>
+          <StatsText>{KDA ?? '-'}</StatsText>
         </StatsDesc>
         <StatsDesc>
           <StatsTitle>DPM</StatsTitle>
-          <StatsText>{DPM}</StatsText>
+          <StatsText>{DPM ?? '-'}</StatsText>
         </StatsDesc>
         <StatsDesc>
           <StatsTitle>GPM</StatsTitle>
-          <StatsText>{GPM}</StatsText>
+          <StatsText>{GPM ?? '-'}</StatsText>
         </StatsDesc>
         <StatsDesc>
           <StatsTitle>VSPM</StatsTitle>
-          <StatsText>{VSPM}</StatsText>
+          <StatsText>{VSPM ?? '-'}</StatsText>
         </StatsDesc>
       </StatsContainer>
     </CardLayout>

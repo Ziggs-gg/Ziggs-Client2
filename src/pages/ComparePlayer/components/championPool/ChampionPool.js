@@ -7,6 +7,9 @@ import ChampionPoolSwiperContainer from './ChampionPoolSwiperContainer';
 const ChampionPool = ({ selectedPlayers }) => {
   return (
     <ChampionPoolLayout>
+      {selectedPlayers.length === 0 && (
+        <ChampionPoolEmpty>PLAYER 시즌 챔피언풀</ChampionPoolEmpty>
+      )}
       {selectedPlayers.map((phRole, idx) => {
         return (
           <ChampionPoolSwiperContainer
@@ -30,4 +33,15 @@ const ChampionPoolLayout = styled.div`
   width: 1360px;
   height: 496px;
   margin: 0 auto;
+`;
+
+const ChampionPoolEmpty = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1360px;
+  height: 496px;
+  margin: 0 auto;
+  color: ${props => props.theme.white.white80};
+  font-size: 24px;
 `;

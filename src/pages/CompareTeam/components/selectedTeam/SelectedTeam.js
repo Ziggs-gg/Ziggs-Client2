@@ -6,7 +6,7 @@ import { API } from '../../../../config';
 const SelectedTeam = ({ team, selectedTeams, deleteSelectedTeam }) => {
   const [teamData, setTeamData] = useState();
   const [buttonVisible, setButtonVisible] = useState(false);
-
+  const [loading, setLoading] = useState(false);
   let teamStats = [];
 
   const orderNumber = selectedTeams.findIndex(ptID => ptID === team);
@@ -41,10 +41,12 @@ const SelectedTeam = ({ team, selectedTeams, deleteSelectedTeam }) => {
   }
 
   useEffect(() => {
+    setLoading(true);
     axios
       .get(`${API.SELECTED_TEAMBOX}ptID=${team}`)
       .then(Response => {
         setTeamData(Response.data);
+        setLoading(false);
       })
       .catch(Error => {
         console.error('err:', Error);
@@ -66,20 +68,62 @@ const SelectedTeam = ({ team, selectedTeams, deleteSelectedTeam }) => {
         <DeleteIcon src="https://user-images.githubusercontent.com/73605822/169196397-e82fc567-7952-444a-b7f4-4614552a3e95.png" />
       </DeleteButton>
       <ContentsWrapper buttonVisible={buttonVisible}>
-        <TeamLogo src={`${teamData && teamData[0].imgPath}`} />
+        {loading ? (
+          <TeamLogoLoading />
+        ) : (
+          <TeamLogo src={`${teamData && teamData[0].imgPath}`} />
+        )}
+
         <TeamDesc>
-          <TeamInfo>{`${teamData && teamData[0].leagueID}`}</TeamInfo>
-          <TeamName>{`${teamData && teamData[0].teamFullName}`}</TeamName>
+          {loading ? (
+            <TeamInfoLoading />
+          ) : (
+            <TeamInfo>{`${teamData && teamData[0].leagueID}`}</TeamInfo>
+          )}
+          {loading ? (
+            <TeamNameLoading />
+          ) : (
+            <TeamName>{`${teamData && teamData[0].teamFullName}`}</TeamName>
+          )}
         </TeamDesc>
         <TeamDataContainer>
-          {teamStats.map((stat, idx) => {
-            return (
-              <TeamStats key={idx}>
-                <StatesText>{stat.name}</StatesText>
-                <StatesText>{stat.data}</StatesText>
+          {teamStats.length === 0 ? (
+            <>
+              <TeamStats>
+                <StatesTextLoading />
+                <StatesTextLoading />
               </TeamStats>
-            );
-          })}
+              <TeamStats>
+                <StatesTextLoading />
+                <StatesTextLoading />
+              </TeamStats>
+              <TeamStats>
+                <StatesTextLoading />
+                <StatesTextLoading />
+              </TeamStats>
+              <TeamStats>
+                <StatesTextLoading />
+                <StatesTextLoading />
+              </TeamStats>
+              <TeamStats>
+                <StatesTextLoading />
+                <StatesTextLoading />
+              </TeamStats>
+              <TeamStats>
+                <StatesTextLoading />
+                <StatesTextLoading />
+              </TeamStats>
+            </>
+          ) : (
+            teamStats.map((stat, idx) => {
+              return (
+                <TeamStats key={idx}>
+                  <StatesText>{stat.name}</StatesText>
+                  <StatesText>{stat.data}</StatesText>
+                </TeamStats>
+              );
+            })
+          )}
         </TeamDataContainer>
       </ContentsWrapper>
     </CardLayout>
@@ -168,6 +212,14 @@ const TeamLogo = styled.img`
   margin-left: 24px;
 `;
 
+const TeamLogoLoading = styled.span`
+  width: 72px;
+  height: 72px;
+  margin-left: 24px;
+  background: #565654;
+  border-radius: 8px;
+`;
+
 const TeamDesc = styled.div`
   position: relative;
   display: flex;
@@ -178,6 +230,21 @@ const TeamDesc = styled.div`
   margin-left: 8px;
 `;
 
+const TeamInfo = styled.p`
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  color: ${props => props.theme.white.white50};
+`;
+
+const TeamInfoLoading = styled.span`
+  width: 60px;
+  height: 12px;
+  background: #565654;
+  margin-bottom: 1px;
+  border-radius: 3px;
+`;
+
 const TeamName = styled.p`
   font-size: 14px;
   font-weight: 500;
@@ -185,11 +252,11 @@ const TeamName = styled.p`
   color: ${props => props.theme.white.white100};
 `;
 
-const TeamInfo = styled.p`
-  font-size: 12px;
-  font-weight: 300;
-  letter-spacing: -0.03em;
-  color: ${props => props.theme.white.white50};
+const TeamNameLoading = styled.span`
+  width: 80px;
+  height: 14px;
+  background: #565654;
+  border-radius: 3px;
 `;
 
 const TeamDataContainer = styled.div`
@@ -245,4 +312,12 @@ const DeleteButton = styled.button`
 
 const DeleteIcon = styled.img`
   width: 24px;
+`;
+
+const StatesTextLoading = styled.div`
+  height: 16px;
+  width: 30px;
+  margin-top: 4px;
+  background-color: ${props => props.theme.black.black70};
+  border-radius: 3px;
 `;
