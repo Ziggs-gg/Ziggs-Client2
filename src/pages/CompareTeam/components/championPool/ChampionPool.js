@@ -51,5 +51,6 @@ const ChampionPoolEmpty = styled.div`
   border-top: 3px solid ${props => props.theme.black.black85};
   border-bottom: 3px solid ${props => props.theme.black.black85};
   color: ${props => props.theme.white.white80};
-  font-size: 24px;
+  font-size: 22px;
+  font-weight: 900;
 `;

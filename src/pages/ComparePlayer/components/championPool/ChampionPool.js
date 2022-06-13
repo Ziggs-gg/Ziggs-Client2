@@ -43,5 +43,6 @@ const ChampionPoolEmpty = styled.div`
   height: 496px;
   margin: 0 auto;
   color: ${props => props.theme.white.white80};
-  font-size: 24px;
+  font-size: 22px;
+  font-weight: 900;
 `;
