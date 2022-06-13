@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
+import '../font/font.css';
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -11,7 +12,7 @@ const GlobalStyle = createGlobalStyle`
 
   *{
         box-sizing: border-box;
-        font-family: 'Noto Sans Korean', sans-serif !important; 
+        font-family: 'NotoSansKR', sans-serif !important; 
   }
 
   ul,dl,dt,dd,li{

@@ -110,7 +110,7 @@ const TableContain = styled.div`
 `;
 
 const Label = styled.div`
-  font-weight: bold;
+  font-weight: 500;
   font-size: 14px;
   line-height: 16px;
   align-items: center;

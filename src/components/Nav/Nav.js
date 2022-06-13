@@ -15,7 +15,7 @@ const Nav = () => {
   const [league, setLeague] = useState([]);
   const [role, setRole] = useState([]);
 
-  const [viewToggle, setViewToggle] = useState(false);
+  const [viewToggle, setViewToggle] = useState(true);
   const [filterToggle, setFilterToggle] = useState(false);
 
   const queryString = viewToggle
