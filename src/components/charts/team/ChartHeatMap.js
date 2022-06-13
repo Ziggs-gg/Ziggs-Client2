@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import theme from '../../../styles/theme.js';
 
 const ChartHeatmap = ({ chartData }) => {
+  let firstName = chartData[0]?.ptID.split('-');
+  let secondName = chartData[5]?.ptID.split('-');
+
   return (
     <ChartLayout>
       <Label>포지션별 VERSUS 인덱스 비교</Label>
@@ -10,11 +13,11 @@ const ChartHeatmap = ({ chartData }) => {
         <table>
           <thead>
             <HeatTr>
-              <LabelTd>team탑</LabelTd>
-              <LabelTd>team정글</LabelTd>
-              <LabelTd>team미드</LabelTd>
-              <LabelTd>team원딜</LabelTd>
-              <LabelTd>team서폿</LabelTd>
+              <LabelTd>{firstName[3]} 탑</LabelTd>
+              <LabelTd>{firstName[3]} 정글</LabelTd>
+              <LabelTd>{firstName[3]} 미드</LabelTd>
+              <LabelTd>{firstName[3]} 원딜</LabelTd>
+              <LabelTd>{firstName[3]} 서폿</LabelTd>
             </HeatTr>
           </thead>
           <tbody>
@@ -52,11 +55,11 @@ const ChartHeatmap = ({ chartData }) => {
           <thead>
             <HeatTr>
               <SpaceTd />
-              <LabelTd>team탑</LabelTd>
-              <LabelTd>team정글</LabelTd>
-              <LabelTd>team미드</LabelTd>
-              <LabelTd>team원딜</LabelTd>
-              <LabelTd>team서폿</LabelTd>
+              <LabelTd>{secondName[3]} 탑</LabelTd>
+              <LabelTd>{secondName[3]} 정글</LabelTd>
+              <LabelTd>{secondName[3]} 미드</LabelTd>
+              <LabelTd>{secondName[3]} 원딜</LabelTd>
+              <LabelTd>{secondName[3]} 서폿</LabelTd>
             </HeatTr>
           </thead>
           <tbody>
