@@ -72,7 +72,15 @@ const ChartBoxplot = ({ chartData }) => {
         text: '주요 분당 데이터',
         color: theme.white.white100,
         align: 'start',
-        padding: '15',
+        padding: {
+          top: 0,
+          bottom: 16,
+        },
+        font: {
+          size: 14,
+          weight: 500,
+          lineHeight: '16px',
+        },
       },
     },
     maintainAspectRatio: false,
@@ -99,6 +107,9 @@ const ChartBoxplot = ({ chartData }) => {
       },
     },
   };
+  const fontFamily = {
+    weight: 400,
+  };
   try {
     throw new Error();
   } catch {
@@ -114,7 +125,12 @@ const ChartBoxplot = ({ chartData }) => {
   } finally {
     return (
       <BoxplotLayout>
-        <Chart type="boxplot" data={boxplotData} options={boxplotOptions} />
+        <Chart
+          type="boxplot"
+          data={boxplotData}
+          options={boxplotOptions}
+          font={fontFamily}
+        />
       </BoxplotLayout>
     );
   }

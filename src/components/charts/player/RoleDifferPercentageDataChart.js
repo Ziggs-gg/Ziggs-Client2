@@ -43,7 +43,15 @@ const RoleDifferPercentageDataChart = ({ chartData }) => {
         text: '시즌 평균 동일 포지션 대비 데이터',
         color: theme.white.white100,
         align: 'start',
-        padding: '16',
+        padding: {
+          top: 0,
+          bottom: 16,
+        },
+        font: {
+          size: 14,
+          weight: 500,
+          lineHeight: '16px',
+        },
       },
     },
     maintainAspectRatio: false,
@@ -66,13 +74,23 @@ const RoleDifferPercentageDataChart = ({ chartData }) => {
         },
         ticks: {
           color: theme.white.white80,
+          callback: function (value, index, values) {
+            if (value === 0) {
+              return value;
+            } else {
+              return `${value}%`;
+            }
+          },
         },
       },
     },
   };
+  const fontFamily = {
+    weight: 400,
+  };
   return (
     <BarLayout>
-      <Bar data={data2} options={options2} />
+      <Bar data={data2} options={options2} font={fontFamily} />
     </BarLayout>
   );
 };

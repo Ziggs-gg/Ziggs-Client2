@@ -40,7 +40,15 @@ const CSPMChart = ({ chartData }) => {
         text: '분당 CS',
         color: theme.white.white100,
         align: 'start',
-        padding: '16',
+        padding: {
+          top: 0,
+          bottom: 16,
+        },
+        font: {
+          size: 14,
+          weight: 500,
+          lineHeight: '16px',
+        },
       },
     },
     maintainAspectRatio: false,
@@ -68,10 +76,13 @@ const CSPMChart = ({ chartData }) => {
       },
     },
   };
+  const fontFamily = {
+    weight: 400,
+  };
 
   return (
     <BarLayout>
-      <Bar data={data} options={options4} />
+      <Bar data={data} options={options4} font={fontFamily} />
     </BarLayout>
   );
 };

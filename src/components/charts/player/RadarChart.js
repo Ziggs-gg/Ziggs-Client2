@@ -92,8 +92,13 @@ const RadarChart = ({ chartData }) => {
   const options = {
     interaction: {
       mode: 'index',
+      axis: 'r',
     },
     plugins: {
+      tooltip: {
+        // intersect: false,
+        // xAlign: 'right',
+      },
       legend: {
         display: false,
       },
@@ -121,16 +126,24 @@ const RadarChart = ({ chartData }) => {
         suggestedMax: 10,
       },
     },
+    elements: {
+      point: {
+        hitRadius: 5,
+      },
+    },
+  };
+  const fontFamily = {
+    weight: 400,
   };
   return (
     <RadarLayout>
-      <Radar data={data} options={options} />
+      <Radar data={data} options={options} font={fontFamily} />
     </RadarLayout>
   );
 };
 
 const RadarLayout = styled.div`
-  width: 280px;
+  width: 316px;
   height: 304px;
   padding: 12px 2px 12px 2px;
 `;

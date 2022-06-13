@@ -41,7 +41,15 @@ const EGPMChart = ({ chartData }) => {
         text: '분당 순수 획득 골드',
         color: theme.white.white100,
         align: 'start',
-        padding: '16',
+        padding: {
+          top: 0,
+          bottom: 16,
+        },
+        font: {
+          size: 14,
+          weight: 500,
+          lineHeight: '16px',
+        },
       },
     },
     maintainAspectRatio: false,
@@ -69,9 +77,12 @@ const EGPMChart = ({ chartData }) => {
       },
     },
   };
+  const fontFamily = {
+    weight: 400,
+  };
   return (
     <BarLayout>
-      <Bar data={data4} options={options4} />
+      <Bar data={data4} options={options4} font={fontFamily} />
     </BarLayout>
   );
 };
@@ -79,6 +90,7 @@ const EGPMChart = ({ chartData }) => {
 const BarLayout = styled.div`
   width: 200px;
   height: 304px;
+  margin: 0 32px 0 0;
 `;
 
 export default EGPMChart;

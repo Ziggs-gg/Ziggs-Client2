@@ -89,7 +89,15 @@ const ChartBubble = ({ chartData }) => {
         text: '매치별 골드당 가한 피해량',
         color: theme.white.white100,
         align: 'start',
-        padding: '16',
+        padding: {
+          top: 0,
+          bottom: 16,
+        },
+        font: {
+          size: 14,
+          weight: 500,
+          lineHeight: '16px',
+        },
       },
       tooltip: {
         callbacks: {
@@ -113,9 +121,12 @@ const ChartBubble = ({ chartData }) => {
       },
     },
   };
+  const fontFamily = {
+    weight: 400,
+  };
   return (
     <BubbleLayout>
-      <Bubble type="bubble" data={data} options={options} />
+      <Bubble type="bubble" data={data} options={options} font={fontFamily} />
     </BubbleLayout>
   );
 };

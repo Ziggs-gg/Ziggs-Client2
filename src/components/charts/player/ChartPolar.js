@@ -78,7 +78,15 @@ const ChartPolar = ({ chartData }) => {
         text: '시즌 평균 킬 관여율',
         color: theme.white.white100,
         align: 'start',
-        padding: '16',
+        padding: {
+          top: 0,
+          bottom: 16,
+        },
+        font: {
+          size: 14,
+          weight: 500,
+          lineHeight: '16px',
+        },
       },
     },
     scales: {
@@ -94,6 +102,13 @@ const ChartPolar = ({ chartData }) => {
           z: 3,
           color: theme.white.white80,
           backdropColor: 'rgba(0, 0, 0, 0)',
+          callback: function (value, index, values) {
+            if (value === 0) {
+              return value;
+            } else {
+              return `${value}%`;
+            }
+          },
           // major: true,
         },
         backgroundColor: theme.black.blackB90OPA25,
@@ -102,9 +117,12 @@ const ChartPolar = ({ chartData }) => {
       },
     },
   };
+  const fontFamily = {
+    weight: 400,
+  };
   return (
     <PolarLayout>
-      <PolarArea data={data} options={options} />
+      <PolarArea data={data} options={options} font={fontFamily} />
     </PolarLayout>
   );
 };
