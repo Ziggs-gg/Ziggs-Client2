@@ -50,14 +50,10 @@ const EmptyCards = styled.div`
 `;
 
 const EmptyCard = styled.div`
-  display: flex;
-  align-items: center;
   width: 664px;
   height: 88px;
-
   border: 1px solid ${props => props.theme.black.black85};
   border-radius: 10px;
-
   margin-right: 32px;
   margin-bottom: 16px;
 

@@ -19,20 +19,17 @@ const HeatMapContainer = ({ selectedPlayers }) => {
   } else if (selectedPlayers.length == 4) {
     heatMapUrl = `${API.HEATMAP_PLAYER}phRole=${selectedPlayers[0]}&phRole=${selectedPlayers[1]}&phRole=${selectedPlayers[2]}&phRole=${selectedPlayers[3]}`;
   }
-  console.log(heatMapUrl);
+
   useEffect(() => {
     axios
       .get(heatMapUrl)
       .then(Response => {
         setHeatMapData(Response.data);
-        console.log(Response.data);
       })
       .catch(Error => {
         console.error(Error);
       });
   }, [heatMapUrl]);
-
-  console.log(heatMapUrl);
 
   return (
     <HeatMapLayout>
@@ -49,4 +46,7 @@ const HeatMapLayout = styled.div`
   width: 1360px;
   height: 670x;
   margin: 16px auto;
+  padding: 16px 0;
+  border-top: 3px solid ${props => props.theme.black.black85};
+  border-bottom: 3px solid ${props => props.theme.black.black85};
 `;

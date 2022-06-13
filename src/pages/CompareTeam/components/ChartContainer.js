@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import ChartCamp from '../../../components/charts/team/ChartCamp';
 import ChartLine from '../../../components/charts/team/ChartLine';
 import ChartIndicators from '../../../components/charts/team/ChartIndicators';
@@ -9,9 +9,12 @@ import ChartHeatmap from '../../../components/charts/team/ChartHeatMap';
 import Chartimportance from '../../../components/charts/team/Chartimportance';
 import axios from 'axios';
 import { API } from '../../../config';
+import { Loading } from 'react-loading-dot';
 
 const ChartContainer = ({ selectedTeams }) => {
   const [chartData, setChartData] = useState([]);
+  const [loading, setLoading] = useState(false);
+
   let chartUrl = '';
   if (selectedTeams.length == 0) {
     chartUrl = `${API.TEAM_CHART}ptID=`;
@@ -22,10 +25,12 @@ const ChartContainer = ({ selectedTeams }) => {
   }
 
   useEffect(() => {
+    setLoading(true);
     axios
       .get(chartUrl)
       .then(Response => {
         setChartData(Response.data);
+        setLoading(false);
       })
       .catch(Error => {
         console.error(Error);
@@ -34,6 +39,11 @@ const ChartContainer = ({ selectedTeams }) => {
 
   return (
     <ChartsLayout>
+      {loading && (
+        <LoadingComponents loading={loading.toString()}>
+          <Loading size="1rem" />
+        </LoadingComponents>
+      )}
       {chartData.WinRatebySide && (
         <ChartCamp chartData={chartData?.WinRatebySide} />
       )}
@@ -69,4 +79,18 @@ const ChartsLayout = styled.div`
   margin: 0 auto;
   margin-top: 16px;
   margin-bottom: 16px;
+`;
+
+const LoadingComponents = styled.div`
+  position: absolute;
+  width: 1360px;
+  height: 944px;
+
+  ${props =>
+    props.loading &&
+    css`
+      backdrop-filter: blur(10px);
+    `}
+
+  z-index:10000;
 `;

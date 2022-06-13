@@ -18,6 +18,7 @@ import { Loading } from 'react-loading-dot';
 const ChartContainer = ({ selectedPlayers }) => {
   const [chartData, setChartData] = useState([]);
   const [loading, setLoading] = useState(false);
+
   let chartUrl;
   if (selectedPlayers.length == 0) {
     chartUrl = `${API.PLAYER_CHART}phRole=`;

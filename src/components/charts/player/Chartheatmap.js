@@ -8,10 +8,9 @@ const Chartheatmap = ({ heatMapData }) => {
   for (let i = 0; i < heatMapData.length; i++) {
     hasMap.set(i, heatMapData[i].gameCount);
   }
-
+  console.log(hasMap);
   const mapSort = new Map([...hasMap.entries()].sort((a, b) => a[1] - b[1]));
-  console.log(mapSort);
-  console.log(mapSort.get());
+  console.log('1', mapSort);
 
   return (
     <div>
@@ -165,7 +164,7 @@ const Chartheatmap = ({ heatMapData }) => {
         <tbody>
           {heatMapData.map((player, idx) => {
             return (
-              <HeatTr>
+              <HeatTr key={idx}>
                 <ColumnLabel>
                   <YearAndSeasonLabel>
                     {player.yy}-{player.splitSeason}
