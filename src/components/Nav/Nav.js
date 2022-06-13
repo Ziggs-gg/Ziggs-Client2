@@ -75,8 +75,6 @@ const Nav = () => {
   return (
     <NavLayout>
       <Title
-        src="https://user-images.githubusercontent.com/73605822/167045469-91bdb04c-d98a-4981-9526-25381870a911.png"
-        alt="Logo"
         onClick={() => {
           initFilter();
           navigate('');
@@ -128,12 +126,25 @@ const NavLayout = styled.nav`
   width: 100%;
 `;
 
-const Title = styled.img`
+const Title = styled.div`
   position: absolute;
+  width: 180px;
   height: 40px;
   left: 32px;
-
+  background-image: url('https://user-images.githubusercontent.com/73605822/167045469-91bdb04c-d98a-4981-9526-25381870a911.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
   cursor: pointer;
+
+  @media screen and (max-width: 1360px) {
+    width: 40px;
+    height: 40px;
+    background-image: url('/images/VERSUSPS_Symbol.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
 `;
 
 const FilterContainer = styled.div`
