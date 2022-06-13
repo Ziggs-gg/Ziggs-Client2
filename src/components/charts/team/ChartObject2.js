@@ -23,34 +23,7 @@ const ChartObject2 = ({ chartData }) => {
       ],
       backgroundColor: bgc[i],
     });
-    console.log('i: ', i, 'data: ', data);
   }
-
-  // const data = {
-  //   labels: yLabels,
-  //   datasets: [
-  //     {
-  //       label: 'team1',
-  //       data: [
-  //         dummyData[0].AVG_FKsec,
-  //         dummyData[0].AVG_FTsec,
-  //         dummyData[0].AVG_FHsec,
-  //         dummyData[0].AVG_FDsec,
-  //       ],
-  //       backgroundColor: theme.green.greenB70,
-  //     },
-  //     {
-  //       label: 'team2',
-  //       data: [
-  //         dummyData[1].AVG_FKsec,
-  //         dummyData[1].AVG_FTsec,
-  //         dummyData[1].AVG_FHsec,
-  //         dummyData[1].AVG_FDsec,
-  //       ],
-  //       backgroundColor: theme.orange.orangeB70,
-  //     },
-  //   ],
-  // };
 
   // lollipop chart plugin
   const lollipopChart = {
@@ -88,12 +61,12 @@ const ChartObject2 = ({ chartData }) => {
   };
 
   const options = {
+    barPercentage: chartData.length === 1 ? 0.15 : 0.3,
+    categoryPercentage: 0.5,
     interaction: {
       mode: 'index',
       axis: 'y',
     },
-    barPercentage: 0.3,
-    categoryPercentage: 0.5,
     maintainAspectRatio: false,
     plugins: {
       // tooltip: {
@@ -168,6 +141,7 @@ const ChartObject2 = ({ chartData }) => {
       },
     },
   };
+
   const fontFamily = {
     weight: 400,
   };

@@ -44,6 +44,8 @@ const ChartCamp = ({ chartData }) => {
     });
   }
   const options = {
+    barPercentage: chartData.length === 1 ? 0.4 : 0.8,
+    // categoryPercentage: 0.4,
     plugins: {
       legend: {
         display: false,
