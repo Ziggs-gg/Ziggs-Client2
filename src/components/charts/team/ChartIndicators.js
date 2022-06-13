@@ -21,17 +21,17 @@ const ChartIndicators = ({ chartData }) => {
         <table>
           <tr>
             <FisrtTeamNameAndImage>
-              <LeftTeamName>{chartData[0]?.team}</LeftTeamName>
-              {chartData[0]?.team && (
-                <TeamLogo src={`/images/teams/${chartData[0]?.team}.png`} />
+              <LeftTeamName>{chartData[0]?.teamABBR}</LeftTeamName>
+              {chartData[0]?.teamABBR && (
+                <TeamLogo src={chartData[0]?.imgPath} />
               )}
             </FisrtTeamNameAndImage>
             <CenterTd></CenterTd>
             <SecondTeamNameAndImage>
-              {chartData[1]?.team && (
-                <TeamLogo src={`/images/teams/${chartData[1]?.team}.png`} />
+              {chartData[1]?.teamABBR && (
+                <TeamLogo src={chartData[1]?.imgPath} />
               )}
-              <RightTeamName>{chartData[1]?.team}</RightTeamName>
+              <RightTeamName>{chartData[1]?.teamABBR}</RightTeamName>
             </SecondTeamNameAndImage>
           </tr>
           <tr>
@@ -54,93 +54,111 @@ const ChartIndicators = ({ chartData }) => {
             )}
           </tr>
           <tr>
-            {chartData[0]?.kills > chartData[1]?.kills ? (
-              <LeftTeamTd style={winColor}>{chartData[0]?.kills}</LeftTeamTd>
-            ) : (
-              <LeftTeamTd style={defeatColor}>{chartData[0]?.kills}</LeftTeamTd>
-            )}
-            <CenterTd>킬</CenterTd>
-            {chartData[0]?.kills < chartData[1]?.kills ? (
-              <RightTeamTd style={winColor}>{chartData[1]?.kills}</RightTeamTd>
-            ) : (
-              <RightTeamTd style={defeatColor}>
-                {chartData[1]?.kills}
-              </RightTeamTd>
-            )}
-          </tr>
-          <tr>
-            {chartData[0]?.deaths < chartData[1]?.deaths ? (
-              <LeftTeamTd style={winColor}>{chartData[0]?.deaths}</LeftTeamTd>
-            ) : (
-              <LeftTeamTd style={defeatColor}>
-                {chartData[0]?.deaths}
-              </LeftTeamTd>
-            )}
-            <CenterTd>데스</CenterTd>
-            {chartData[0]?.deaths > chartData[1]?.deaths ? (
-              <RightTeamTd style={winColor}>{chartData[1]?.deaths}</RightTeamTd>
-            ) : (
-              <RightTeamTd style={defeatColor}>
-                {chartData[1]?.deaths}
-              </RightTeamTd>
-            )}
-          </tr>
-          <tr>
-            {chartData[0]?.countTurretDestroy >
-            chartData[1]?.countTurretDestroy ? (
+            {chartData[0]?.killsPerMin > chartData[1]?.killsPerMin ? (
               <LeftTeamTd style={winColor}>
-                {chartData[0]?.countTurretDestroy}
+                {chartData[0]?.killsPerMin}
               </LeftTeamTd>
             ) : (
               <LeftTeamTd style={defeatColor}>
-                {chartData[0]?.countTurretDestroy}
+                {chartData[0]?.killsPerMin}
               </LeftTeamTd>
             )}
-            <CenterTd>포탑 파괴</CenterTd>
-            {chartData[0]?.countTurretDestroy <
-            chartData[1]?.countTurretDestroy ? (
+            <CenterTd>분당 킬</CenterTd>
+            {chartData[0]?.killsPerMin < chartData[1]?.killsPerMin ? (
               <RightTeamTd style={winColor}>
-                {chartData[1]?.countTurretDestroy}
+                {chartData[1]?.killsPerMin}
               </RightTeamTd>
             ) : (
               <RightTeamTd style={defeatColor}>
-                {chartData[1]?.countTurretDestroy}
+                {chartData[1]?.killsPerMins}
               </RightTeamTd>
             )}
           </tr>
           <tr>
-            {chartData[0]?.golds > chartData[1]?.golds ? (
-              <LeftTeamTd style={winColor}>{chartData[0]?.golds}</LeftTeamTd>
-            ) : (
-              <LeftTeamTd style={defeatColor}>{chartData[0]?.golds}</LeftTeamTd>
-            )}
-            <CenterTd>획득 골드</CenterTd>
-            {chartData[0]?.golds < chartData[1]?.golds ? (
-              <RightTeamTd style={winColor}>{chartData[1]?.golds}</RightTeamTd>
-            ) : (
-              <RightTeamTd style={defeatColor}>
-                {chartData[1]?.golds}
-              </RightTeamTd>
-            )}
-          </tr>
-          <tr>
-            {chartData[0]?.visionScore > chartData[1]?.visionScore ? (
+            {chartData[0]?.deathsPerMin < chartData[1]?.deathsPerMin ? (
               <LeftTeamTd style={winColor}>
-                {chartData[0]?.visionScore}
+                {chartData[0]?.deathsPerMin}
               </LeftTeamTd>
             ) : (
               <LeftTeamTd style={defeatColor}>
-                {chartData[0]?.visionScore}
+                {chartData[0]?.deathsPerMin}
               </LeftTeamTd>
             )}
-            <CenterTd>시야 점수 합계</CenterTd>
-            {chartData[0]?.visionScore < chartData[1]?.visionScore ? (
+            <CenterTd>분당 데스</CenterTd>
+            {chartData[0]?.deathsPerMin > chartData[1]?.deathsPerMin ? (
               <RightTeamTd style={winColor}>
-                {chartData[1]?.visionScore}
+                {chartData[1]?.deathsPerMin}
               </RightTeamTd>
             ) : (
               <RightTeamTd style={defeatColor}>
-                {chartData[1]?.visionScore}
+                {chartData[1]?.deathsPerMin}
+              </RightTeamTd>
+            )}
+          </tr>
+          <tr>
+            {chartData[0]?.countTurretDestroyPerMin >
+            chartData[1]?.countTurretDestroyPerMin ? (
+              <LeftTeamTd style={winColor}>
+                {chartData[0]?.countTurretDestroyPerMin}
+              </LeftTeamTd>
+            ) : (
+              <LeftTeamTd style={defeatColor}>
+                {chartData[0]?.countTurretDestroyPerMin}
+              </LeftTeamTd>
+            )}
+            <CenterTd>분당 포탑 파괴</CenterTd>
+            {chartData[0]?.countTurretDestroyPerMin <
+            chartData[1]?.countTurretDestroyPerMin ? (
+              <RightTeamTd style={winColor}>
+                {chartData[1]?.countTurretDestroyPerMin}
+              </RightTeamTd>
+            ) : (
+              <RightTeamTd style={defeatColor}>
+                {chartData[1]?.countTurretDestroyPerMin}
+              </RightTeamTd>
+            )}
+          </tr>
+          <tr>
+            {chartData[0]?.goldsPerMin > chartData[1]?.goldsPerMin ? (
+              <LeftTeamTd style={winColor}>
+                {chartData[0]?.goldsPerMin}
+              </LeftTeamTd>
+            ) : (
+              <LeftTeamTd style={defeatColor}>
+                {chartData[0]?.goldsPerMin}
+              </LeftTeamTd>
+            )}
+            <CenterTd>분당 획득 골드</CenterTd>
+            {chartData[0]?.goldsPerMin < chartData[1]?.goldsPerMin ? (
+              <RightTeamTd style={winColor}>
+                {chartData[1]?.goldsPerMin}
+              </RightTeamTd>
+            ) : (
+              <RightTeamTd style={defeatColor}>
+                {chartData[1]?.goldsPerMin}
+              </RightTeamTd>
+            )}
+          </tr>
+          <tr>
+            {chartData[0]?.visionScorePerMin >
+            chartData[1]?.visionScorePerMin ? (
+              <LeftTeamTd style={winColor}>
+                {chartData[0]?.visionScorePerMin}
+              </LeftTeamTd>
+            ) : (
+              <LeftTeamTd style={defeatColor}>
+                {chartData[0]?.visionScorePerMin}
+              </LeftTeamTd>
+            )}
+            <CenterTd>분당 시야 점수</CenterTd>
+            {chartData[0]?.visionScorePerMin <
+            chartData[1]?.visionScorePerMin ? (
+              <RightTeamTd style={winColor}>
+                {chartData[1]?.visionScorePerMin}
+              </RightTeamTd>
+            ) : (
+              <RightTeamTd style={defeatColor}>
+                {chartData[1]?.visionScorePerMin}
               </RightTeamTd>
             )}
           </tr>
@@ -175,7 +193,7 @@ const ChartIndicators = ({ chartData }) => {
                 {chartData[0]?.countHerald}
               </LeftTeamTd>
             )}
-            <CenterTd>협곡의 정령 획득</CenterTd>
+            <CenterTd>협곡의 전령 획득</CenterTd>
             {chartData[0]?.countHerald < chartData[1]?.countHerald ? (
               <RightTeamTd style={winColor}>
                 {chartData[1]?.countHerald}
