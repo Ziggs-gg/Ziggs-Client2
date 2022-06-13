@@ -15,19 +15,15 @@ const ChartContainer = ({ selectedTeams }) => {
   const [chartData, setChartData] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  let chartUrl = '';
-  if (selectedTeams.length == 0) {
-    chartUrl = `${API.TEAM_CHART}ptID=`;
-  } else if (selectedTeams.length == 1) {
-    chartUrl = `${API.TEAM_CHART}ptID=${selectedTeams[0]}`;
-  } else if (selectedTeams.length == 2) {
-    chartUrl = `${API.TEAM_CHART}ptID=${selectedTeams[0]}&ptID=${selectedTeams[1]}`;
-  }
-
   useEffect(() => {
+    let chartQuery = [];
+    if (selectedTeams !== 0) {
+      selectedTeams.forEach(el => chartQuery.push(`ptID=${el}`));
+    }
+
     setLoading(true);
     axios
-      .get(chartUrl)
+      .get(`${API.TEAM_CHART}${chartQuery.join('&')}`)
       .then(Response => {
         setChartData(Response.data);
         setLoading(false);
@@ -35,7 +31,7 @@ const ChartContainer = ({ selectedTeams }) => {
       .catch(Error => {
         console.error(Error);
       });
-  }, [chartUrl]);
+  }, [selectedTeams]);
 
   return (
     <ChartsLayout>

@@ -7,13 +7,12 @@ import Chartheatmap from '../../../../components/charts/player/Chartheatmap';
 const HeatMapContainer = ({ selectedPlayers }) => {
   const [heatMapData, setHeatMapData] = useState([]);
 
-  let selectedPlayersQuery = [];
-
-  if (selectedPlayers !== 0) {
-    selectedPlayers.forEach(el => selectedPlayersQuery.push(`phRole=${el}`));
-  }
-
   useEffect(() => {
+    let selectedPlayersQuery = [];
+    if (selectedPlayers !== 0) {
+      selectedPlayers.forEach(el => selectedPlayersQuery.push(`phRole=${el}`));
+    }
+
     axios
       .get(`${API.HEATMAP_PLAYER}${selectedPlayersQuery.join('&')}`)
       .then(Response => {
@@ -22,7 +21,7 @@ const HeatMapContainer = ({ selectedPlayers }) => {
       .catch(Error => {
         console.error(Error);
       });
-  }, [selectedPlayersQuery]);
+  }, [selectedPlayers]);
 
   return (
     <HeatMapLayout>
