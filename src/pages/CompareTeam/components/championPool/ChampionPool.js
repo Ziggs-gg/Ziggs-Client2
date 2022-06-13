@@ -26,8 +26,7 @@ const ChampionPoolLayout = styled.div`
   height: 688px;
   margin: 0 auto;
   margin-bottom: 16px;
-  border-top: 3px solid ${props => props.theme.black.black85};
-  border-bottom: 3px solid ${props => props.theme.black.black85};
+  border-bottom: 1px solid ${props => props.theme.black.black85};
 `;
 
 const Divider = styled.div`
