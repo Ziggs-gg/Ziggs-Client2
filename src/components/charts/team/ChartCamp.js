@@ -87,7 +87,7 @@ const ChartCamp = ({ chartData }) => {
             return title;
           },
           label: ctx => {
-            return `${ctx.dataset.label}: ${Math.abs(ctx.raw)}`;
+            return `${ctx.dataset.label}: ${Math.abs(ctx.raw)}%`;
           },
         },
       },
@@ -108,12 +108,16 @@ const ChartCamp = ({ chartData }) => {
           color: theme.white.white80,
           // 좌측 평면 xAxis 음수 -> 양수로 변경
           callback: function (value, index, values) {
-            return Math.abs(value);
+            if (value === 0) {
+              return value;
+            } else {
+              return `${Math.abs(value)}%`;
+            }
           },
           // x 값 범위 -100~100으로 설정
           min: -100,
           max: 100,
-          stepSize: 20,
+          stepSize: 25,
         },
       },
       // 진영 축 표시

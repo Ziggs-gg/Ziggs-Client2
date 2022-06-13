@@ -60,6 +60,15 @@ const TeamPercentageDataChart = ({ chartData }) => {
           lineHeight: '16px',
         },
       },
+      tooltip: {
+        callbacks: {
+          label: ctx => {
+            return ctx.raw
+              ? `${ctx.dataset.label}: ${ctx.raw}%`
+              : `${ctx.dataset.label}: -`;
+          },
+        },
+      },
     },
     maintainAspectRatio: false,
     scales: {
