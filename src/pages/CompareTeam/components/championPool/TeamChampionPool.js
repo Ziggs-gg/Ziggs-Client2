@@ -7,7 +7,7 @@ const TeamChampionPool = ({ ptID }) => {
   const [championPoolData, setChampionPoolData] = useState();
   const TeamName = ptID.split('-')[3];
   const TeamRegion = ptID.split('-')[1];
-  console.log(championPoolData);
+
   let championPool = {
     TOP: [],
     JUNGLE: [],

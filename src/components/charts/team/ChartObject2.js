@@ -23,7 +23,6 @@ const ChartObject2 = ({ chartData }) => {
       ],
       backgroundColor: bgc[i],
     });
-    console.log('i: ', i, 'data: ', data);
   }
 
   // const data = {
