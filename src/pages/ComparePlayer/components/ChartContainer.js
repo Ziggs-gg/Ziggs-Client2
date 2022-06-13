@@ -85,6 +85,7 @@ const ChartContainer = ({ selectedPlayers }) => {
 export default ChartContainer;
 
 const ChartsLayout = styled.div`
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   width: 1360px;
@@ -96,6 +97,8 @@ const ChartsLayout = styled.div`
 
 const LoadingComponents = styled.div`
   position: absolute;
+  top: 0;
+  left: 0;
   width: 1360px;
   height: 944px;
 
