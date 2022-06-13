@@ -7,29 +7,21 @@ import Chartheatmap from '../../../../components/charts/player/Chartheatmap';
 const HeatMapContainer = ({ selectedPlayers }) => {
   const [heatMapData, setHeatMapData] = useState([]);
 
-  let heatMapUrl;
-  if (selectedPlayers.length == 0) {
-    heatMapUrl = `${API.HEATMAP_PLAYER}phRole=`;
-  } else if (selectedPlayers.length == 1) {
-    heatMapUrl = `${API.HEATMAP_PLAYER}phRole=${selectedPlayers[0]}`;
-  } else if (selectedPlayers.length == 2) {
-    heatMapUrl = `${API.HEATMAP_PLAYER}phRole=${selectedPlayers[0]}&phRole=${selectedPlayers[1]}`;
-  } else if (selectedPlayers.length == 3) {
-    heatMapUrl = `${API.HEATMAP_PLAYER}phRole=${selectedPlayers[0]}&phRole=${selectedPlayers[1]}&phRole=${selectedPlayers[2]}`;
-  } else if (selectedPlayers.length == 4) {
-    heatMapUrl = `${API.HEATMAP_PLAYER}phRole=${selectedPlayers[0]}&phRole=${selectedPlayers[1]}&phRole=${selectedPlayers[2]}&phRole=${selectedPlayers[3]}`;
-  }
-
   useEffect(() => {
+    let selectedPlayersQuery = [];
+    if (selectedPlayers !== 0) {
+      selectedPlayers.forEach(el => selectedPlayersQuery.push(`phRole=${el}`));
+    }
+
     axios
-      .get(heatMapUrl)
+      .get(`${API.HEATMAP_PLAYER}${selectedPlayersQuery.join('&')}`)
       .then(Response => {
         setHeatMapData(Response.data);
       })
       .catch(Error => {
         console.error(Error);
       });
-  }, [heatMapUrl]);
+  }, [selectedPlayers]);
 
   return (
     <HeatMapLayout>

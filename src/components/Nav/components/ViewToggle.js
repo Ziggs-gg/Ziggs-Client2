@@ -54,6 +54,10 @@ const ToggleWrapper = styled.div`
   height: 40px;
   left: 281px;
   cursor: pointer;
+
+  @media screen and (max-width: 1360px) {
+    left: 93px;
+  }
 `;
 
 const ToggleTrack = styled.div`

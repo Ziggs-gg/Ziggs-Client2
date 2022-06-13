@@ -10,7 +10,6 @@ import ChartPolar from '../../../components/charts/player/ChartPolar';
 import RoleDifferPercentageDataChart from '../../../components/charts/player/RoleDifferPercentageDataChart';
 import EGPMChart from '../../../components/charts/player/EGPMChart';
 import CSPMChart from '../../../components/charts/player/CSPMChart';
-import Chart from 'chart.js/auto';
 import axios from 'axios';
 import { API } from '../../../config';
 import { Loading } from 'react-loading-dot';
@@ -19,23 +18,15 @@ const ChartContainer = ({ selectedPlayers }) => {
   const [chartData, setChartData] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  let chartUrl;
-  if (selectedPlayers.length == 0) {
-    chartUrl = `${API.PLAYER_CHART}phRole=`;
-  } else if (selectedPlayers.length == 1) {
-    chartUrl = `${API.PLAYER_CHART}phRole=${selectedPlayers[0]}`;
-  } else if (selectedPlayers.length == 2) {
-    chartUrl = `${API.PLAYER_CHART}phRole=${selectedPlayers[0]}&phRole=${selectedPlayers[1]}`;
-  } else if (selectedPlayers.length == 3) {
-    chartUrl = `${API.PLAYER_CHART}phRole=${selectedPlayers[0]}&phRole=${selectedPlayers[1]}&phRole=${selectedPlayers[2]}`;
-  } else if (selectedPlayers.length == 4) {
-    chartUrl = `${API.PLAYER_CHART}phRole=${selectedPlayers[0]}&phRole=${selectedPlayers[1]}&phRole=${selectedPlayers[2]}&phRole=${selectedPlayers[3]}`;
-  }
-
   useEffect(() => {
+    let chartQuery = [];
+    if (selectedPlayers !== 0) {
+      selectedPlayers.forEach(el => chartQuery.push(`phRole=${el}`));
+    }
+
     setLoading(true);
     axios
-      .get(chartUrl)
+      .get(`${API.PLAYER_CHART}${chartQuery.join('&')}`)
       .then(Response => {
         setChartData(Response.data);
         setLoading(false);
@@ -43,7 +34,7 @@ const ChartContainer = ({ selectedPlayers }) => {
       .catch(Error => {
         console.error(Error);
       });
-  }, [chartUrl]);
+  }, [selectedPlayers]);
 
   return (
     <ChartsLayout>
