@@ -423,9 +423,8 @@ const PlayerData = styled.div`
 const StatesText = styled.span`
   height: 16px;
   margin-top: 4px;
-  letter-spacing: -0.1rem;
   font-weight: 500;
-  font-size: 12px;
+  font-size: 14px;
   color: #f3f3f3;
 `;
 
