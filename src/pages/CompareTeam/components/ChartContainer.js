@@ -7,6 +7,7 @@ import ChartObject from '../../../components/charts/team/ChartObject';
 import ChartObject2 from '../../../components/charts/team/ChartObject2';
 import ChartHeatmap from '../../../components/charts/team/ChartHeatMap';
 import Chartimportance from '../../../components/charts/team/Chartimportance';
+import Chart from 'chart.js/auto';
 import axios from 'axios';
 import { API } from '../../../config';
 import { Loading } from 'react-loading-dot';
