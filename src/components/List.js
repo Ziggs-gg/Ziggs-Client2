@@ -157,7 +157,6 @@ const NotFoundLayout = styled.div`
 `;
 
 const NotFound = styled.div`
-  width: 175px;
   height: 124px;
   text-align: center;
 `;

@@ -89,7 +89,7 @@ const PageImages = styled.img`
 
 const MainContentsDesc = styled.div`
   margin-bottom: 100px;
-  width: 607px;
+  width: 617px;
   height: 240px;
 `;
 

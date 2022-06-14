@@ -19,8 +19,9 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body{
-    font-family: 'NotoSansKR', sans-serif; 
+    font-family: 'NotoSansKR', sans-serif !important; 
     background-color: #131310;
+    letter-spacing:-0.02em;
     cursor: default;
   }
 `;
