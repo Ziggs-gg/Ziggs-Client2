@@ -19,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body{
-    font-family: 'NotoSansKR', sans-serif; 
+    font-family: 'Noto Sans Korean', sans-serif; 
     background-color: #131310;
     cursor: default;
   }
