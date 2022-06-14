@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
-// import '../font/font.css';
+import '../font/font.css';
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -19,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body{
-    font-family: 'Noto Sans Korean', sans-serif !important; 
+    font-family: 'NotoSansKR', sans-serif; 
     background-color: #131310;
     cursor: default;
   }

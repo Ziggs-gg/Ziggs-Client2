@@ -1,9 +1,10 @@
 @font-face {
-  font-family: 'Noto Sans Korean';
+  font-family: 'NotoSansKR';
   font-display: fallback;
 
-  src: url('./NotoSansKR-Regular.woff') format('woff');
-  src: url('./NotoSansKR-Regular.otf') format('otf');
+  src: url('./NotoSansKR-Regular.otf') format('otf'),
+    url('./NotoSansKR-Regular.ttf') format('otf'),
+    url('./NotoSansKR-Regular.woff') format('woff');
 
   font-weight: 400;
   font-style: normal;
