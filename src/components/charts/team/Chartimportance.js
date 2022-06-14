@@ -88,6 +88,9 @@ const Chartimportance = ({ chartData }) => {
       legend: {
         fullSize: true,
         labels: {
+          font: {
+            size: 11,
+          },
           boxWidth: 10,
           boxHeight: 10,
           color: theme.white.white100,
