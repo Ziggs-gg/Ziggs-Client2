@@ -49,14 +49,16 @@ const Landing = () => {
           </DescContainer>
         </HowToUse>
         <ListGifContents>
-          <BrowserMockUp width="1016" height="488">
+          {/* <BrowserMockUp width="1016" height="488">
             <ListGif src="/images/landingGif/Select.gif" />
-          </BrowserMockUp>
-
+          </BrowserMockUp> */}
           <GifDescText>
             여러 선수 혹은 구단을 선택하실 수 있습니다.{'\n'}쉽게 프로들의
             스탯을 비교해보세요.
           </GifDescText>
+          <BrowserMockUp width="1016" height="488">
+            <ListGif src="/images/landingGif/Select.gif" />
+          </BrowserMockUp>
         </ListGifContents>
       </ContentsLayout>
     </>
@@ -181,6 +183,7 @@ const ListGifContents = styled.div`
   align-items: center;
   flex-direction: column;
   margin: 0 auto;
+  padding-top: 32px;
   width: 1360px;
   height: 670px;
 `;
@@ -194,7 +197,7 @@ const ListGif = styled.img`
 const BrowserMockUp = styled.div`
   height: ${props => props.height}px;
   width: ${props => props.width}px;
-  margin-bottom: 26px;
+  margin-top: 32px;
   background-image: url('/images/landing/Browser.png');
   background-size: cover;
   background-repeat: no-repeat;
