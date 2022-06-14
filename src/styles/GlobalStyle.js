@@ -12,7 +12,6 @@ const GlobalStyle = createGlobalStyle`
 
   *{
         box-sizing: border-box;
-        font-family: 'NotoSansKR', sans-serif !important; 
   }
 
   ul,dl,dt,dd,li{
@@ -20,6 +19,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body{
+    font-family: 'NotoSansKR', sans-serif; 
     background-color: #131310;
     cursor: default;
   }
