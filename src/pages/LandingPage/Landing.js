@@ -77,15 +77,16 @@ const MainContents = styled.div`
   align-items: center;
   margin: 0 auto;
   width: 1360px;
-  height: 670px;
+  height: 800px;
 `;
 
 const PageImages = styled.img`
-  width: 822px;
-  height: 648px;
+  width: 700px;
+  filter: drop-shadow(0px 16px 40px rgba(41, 41, 39, 0.6));
 `;
 
 const MainContentsDesc = styled.div`
+  margin-bottom: 100px;
   width: 607px;
   height: 240px;
 `;
@@ -198,5 +199,6 @@ const BrowserMockUp = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 4px;
-  filter: drop-shadow(0px 16px 15px rgba(41, 41, 39, 0.45));
+  filter: drop-shadow(0px 16px 40px rgba(41, 41, 39, 0.6));
+  /* filter: drop-shadow(0px 16px 15px rgba(41, 41, 39, 0.45)); */
 `;
