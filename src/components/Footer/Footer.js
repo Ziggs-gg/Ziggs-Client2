@@ -7,7 +7,8 @@ const Footer = () => {
       <ContentWrapper>
         <Logo src="https://user-images.githubusercontent.com/73605822/167236060-68ec1465-1c77-475b-8190-7d70ac32ec13.png" />
         <FooterDesc>
-          <Contact href="mailto:versusprostats@gmail.com">Contact Us</Contact>
+          <Contact href="mailto:versusprostats@gmail.com">Contact Us </Contact>
+          (versusprostats@gmail.com)
           <br />
           <br />
           {`VERSUS.PS는 e-Sports 데이터의 정보 공유를 위한 웹사이트입니다. 구단 및 선수 정보 등 콘텐츠의 저작권 및 모든 권리는 라이선스 소유권자에게 있습니다. 
