@@ -1,10 +1,11 @@
 @font-face {
   font-family: 'NotoSansKR';
-  font-display: fallback;
 
-  src: url('./NotoSansKR-Regular.woff') format('woff');
-  src: url('./NotoSansKR-Regular.otf') format('otf');
+  src: url('./NotoSansKR-Regular.otf') format('otf'),
+    url('./NotoSansKR-Regular.woff2') format('woff2'),
+    url('./NotoSansKR-Regular.woff') format('woff');
 
   font-weight: 400;
   font-style: normal;
+  letter-spacing: -0.1rem;
 }

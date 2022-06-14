@@ -31,6 +31,7 @@ const Chartimportance = ({ chartData }) => {
   };
   // data.datasets에 데이터 삽입
   for (let i = 0; i < chartData?.length; i++) {
+    let ptIDsplit = chartData[i].ptID.split('-');
     data.datasets.push({
       label: `${chartData[i].teamABBR} ${chartData[i]?.role}`,
       data: [
@@ -41,7 +42,9 @@ const Chartimportance = ({ chartData }) => {
         chartData[i]?.visionScore,
       ],
       backgroundColor: chartColor[i],
-      stack: chartData[i]?.teamABBR,
+      stack: `${ptIDsplit[0]} ${ptIDsplit[2]} ${
+        ptIDsplit[ptIDsplit.length - 1]
+      }`,
     });
   }
 

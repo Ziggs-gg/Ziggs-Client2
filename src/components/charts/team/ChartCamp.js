@@ -16,20 +16,29 @@ const ChartCamp = ({ chartData }) => {
     // 블루 진영 값 음수로 변환 작업
     const dataNegative = n => n * -1;
     let blueData = JSON.parse('[' + chartData[i].WR_Blue + ']');
+    let ptIDsplit = chartData[i].ptID.split('-');
     // 블루진영 데이터 푸쉬
     data.datasets.push({
       label: `${chartData[i].teamABBR} 블루`,
       data: blueData.map(dataNegative),
       backgroundColor: theme.blue.blueB70,
       borderWidth: 1,
-      stack: chartData[i].teamABBR,
+      stack: `${ptIDsplit[0]} ${ptIDsplit[2]} ${
+        ptIDsplit[ptIDsplit.length - 1]
+      }`,
       borderRadius: 4,
       datalabels: {
         display: true,
         anchor: 'end',
         color: theme.white.white100,
+        font: {
+          size: 12,
+          weight: 600,
+        },
         formatter: function (value, ctx) {
-          return chartData[i].teamABBR;
+          return `${ptIDsplit[0]} ${ptIDsplit[2]} ${
+            ptIDsplit[ptIDsplit.length - 1]
+          }`;
         },
       },
     });
@@ -39,7 +48,7 @@ const ChartCamp = ({ chartData }) => {
       data: JSON.parse('[' + chartData[i].WR_Red + ']'),
       backgroundColor: theme.red.redB70,
       borderWidth: 1,
-      stack: chartData[i].teamABBR,
+      stack: `${ptIDsplit[0]} ${ptIDsplit[2]} ${ptIDsplit[3]}`,
       borderRadius: 4,
     });
   }
@@ -87,7 +96,7 @@ const ChartCamp = ({ chartData }) => {
             return title;
           },
           label: ctx => {
-            return `${ctx.dataset.label}: ${Math.abs(ctx.raw)}`;
+            return `${ctx.dataset.label}: ${Math.abs(ctx.raw)}%`;
           },
         },
       },
@@ -108,12 +117,16 @@ const ChartCamp = ({ chartData }) => {
           color: theme.white.white80,
           // 좌측 평면 xAxis 음수 -> 양수로 변경
           callback: function (value, index, values) {
-            return Math.abs(value);
+            if (value === 0) {
+              return value;
+            } else {
+              return `${Math.abs(value)}%`;
+            }
           },
           // x 값 범위 -100~100으로 설정
           min: -100,
           max: 100,
-          stepSize: 20,
+          stepSize: 25,
         },
       },
       // 진영 축 표시

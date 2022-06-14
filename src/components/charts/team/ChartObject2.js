@@ -104,7 +104,11 @@ const ChartObject2 = ({ chartData }) => {
                 return t;
               }
             };
-            return `${ctx.dataset.label}: ${timeType(min)}:${timeType(sec)}`;
+            if (`${timeType(min)}:${timeType(sec)}` !== '00:00') {
+              return `${ctx.dataset.label}: ${timeType(min)}:${timeType(sec)}`;
+            } else {
+              return `${ctx.dataset.label}: -`;
+            }
           },
         },
       },

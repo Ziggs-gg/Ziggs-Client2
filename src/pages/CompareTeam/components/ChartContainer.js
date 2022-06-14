@@ -7,6 +7,7 @@ import ChartObject from '../../../components/charts/team/ChartObject';
 import ChartObject2 from '../../../components/charts/team/ChartObject2';
 import ChartHeatmap from '../../../components/charts/team/ChartHeatMap';
 import Chartimportance from '../../../components/charts/team/Chartimportance';
+import Chart from 'chart.js/auto';
 import axios from 'axios';
 import { API } from '../../../config';
 import { Loading } from 'react-loading-dot';
@@ -15,19 +16,26 @@ const ChartContainer = ({ selectedTeams }) => {
   const [chartData, setChartData] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  let chartUrl = '';
-  if (selectedTeams.length == 0) {
-    chartUrl = `${API.TEAM_CHART}ptID=`;
-  } else if (selectedTeams.length == 1) {
-    chartUrl = `${API.TEAM_CHART}ptID=${selectedTeams[0]}`;
-  } else if (selectedTeams.length == 2) {
-    chartUrl = `${API.TEAM_CHART}ptID=${selectedTeams[0]}&ptID=${selectedTeams[1]}`;
-  }
+  // let chartUrl = '';
+  // if (selectedTeams.length == 0) {
+  //   chartUrl = `${API.TEAM_CHART}ptID=`;
+  // } else if (selectedTeams.length == 1) {
+  //   chartUrl = `${API.TEAM_CHART}ptID=${selectedTeams[0]}`;
+  // } else if (selectedTeams.length == 2) {
+  //   chartUrl = `${API.TEAM_CHART}ptID=${selectedTeams[0]}&ptID=${selectedTeams[1]}`;
+  // }
 
   useEffect(() => {
+    const querys = [];
+    selectedTeams.forEach(phRole => {
+      querys.push(`ptID=${phRole}`);
+    });
+    const queryString = selectedTeams.length === 0 ? 'ptID=' : querys.join('&');
+
     setLoading(true);
+
     axios
-      .get(chartUrl)
+      .get(`${API.TEAM_CHART}${queryString}`)
       .then(Response => {
         setChartData(Response.data);
         setLoading(false);
@@ -35,7 +43,7 @@ const ChartContainer = ({ selectedTeams }) => {
       .catch(Error => {
         console.error(Error);
       });
-  }, [chartUrl]);
+  }, [selectedTeams]);
 
   return (
     <ChartsLayout>

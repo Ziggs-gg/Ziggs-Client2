@@ -24,26 +24,42 @@ const Landing = () => {
           </MainContentsDesc>
         </MainContents>
         <HowToUse>
-          <GifDesc>
-            <GifImg src="/images/teamToggle.gif" />
-            <GifDescText>
-              왼쪽 상단 토글을 통해 선수와 구단을{'\n'}넘나드며 확인해보세요!
-            </GifDescText>
-          </GifDesc>
-          <GifDesc>
-            <GifImg src="/images/Filter.gif" />
-            <GifDescText>
-              오른쪽 상단 필터를 이용해보세요.{'\n'}지난 기록도 확인하실 수
-              있습니다!
-            </GifDescText>
-          </GifDesc>
-          <GifDesc>
-            <GifImg src="/images/Select.gif" />
-            <GifDescText>
-              여러 선수 혹은 구단을 선택하여{'\n'}쉽게 정보를 확인하세요!
-            </GifDescText>
-          </GifDesc>
+          <DescContainer>
+            <GifContents>
+              <BrowserMockUp width="712" height="343">
+                <GifImg src="/images/landingGif/toggle.gif" />
+              </BrowserMockUp>
+
+              <GifDescText align="left">
+                <SwitchToggle src="/images/landing/SwitchToggle.png" />
+                좌측 상단 토글로{'\n'}선수 비교와 구단 비교를{'\n'}
+                넘나들어보세요.
+              </GifDescText>
+            </GifContents>
+            <GifContents>
+              <GifDescText align="right">
+                <FilterImage src="/images/landing/filterImg.png" />
+                우측 상단 필터를 확인해보세요.{'\n'}지난 시즌의 기록도 확인하실
+                수 있습니다!
+              </GifDescText>
+              <BrowserMockUp width="712" height="343">
+                <GifImg src="/images/landingGif/Filter.gif" />
+              </BrowserMockUp>
+            </GifContents>
+          </DescContainer>
         </HowToUse>
+        <ListGifContents>
+          {/* <BrowserMockUp width="1016" height="488">
+            <ListGif src="/images/landingGif/Select.gif" />
+          </BrowserMockUp> */}
+          <GifDescText>
+            여러 선수 혹은 구단을 선택하실 수 있습니다.{'\n'}쉽게 프로들의
+            스탯을 비교해보세요.
+          </GifDescText>
+          <BrowserMockUp width="1016" height="488">
+            <ListGif src="/images/landingGif/Select.gif" />
+          </BrowserMockUp>
+        </ListGifContents>
       </ContentsLayout>
     </>
   );
@@ -52,9 +68,8 @@ const Landing = () => {
 export default Landing;
 
 const ContentsLayout = styled.div`
-  width: 1360px;
+  width: 100%;
   height: auto;
-  margin: 0 auto;
   margin-top: 16px;
 `;
 
@@ -62,17 +77,20 @@ const MainContents = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 512px;
+  margin: 0 auto;
+  width: 1360px;
+  height: 800px;
 `;
 
 const PageImages = styled.img`
-  width: 548px;
-  height: 432px;
+  width: 700px;
+  filter: drop-shadow(0px 16px 40px rgba(41, 41, 39, 0.6));
 `;
 
 const MainContentsDesc = styled.div`
-  width: 780px;
-  height: 432px;
+  margin-bottom: 100px;
+  width: 617px;
+  height: 240px;
 `;
 
 const MainLargeDesc = styled.p`
@@ -101,31 +119,89 @@ const MainSmallDesc = styled.p`
 `;
 
 const HowToUse = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 64px;
-  margin-bottom: 144px;
+  left: 0;
+  width: 100vw;
+  height: 1264px;
+  background-color: #171715;
+  /* background-color: white; */
 `;
 
-const GifDesc = styled.div`
-  width: 432px;
-  height: 244px;
-  text-align: center;
+const DescContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 144px;
+  width: 1360px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 248px 0;
+`;
+
+const SwitchToggle = styled.img`
+  width: 100px;
+  height: 48px;
+  margin-bottom: 16px;
+`;
+
+const FilterImage = styled.img`
+  margin-left: 300px;
+  height: 44px;
+  margin-bottom: 16px;
+`;
+
+const GifContents = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  width: 100%;
+  height: 304px;
+  display: flex;
 `;
 
 const GifImg = styled.img`
-  width: 250px;
-  height: 250px;
-  margin-bottom: 16px;
-  background: #d9d9d9;
+  width: 712px;
+  height: 304px;
+  margin-top: 39px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
 `;
 
 const GifDescText = styled.p`
+  display: flex;
+  flex-direction: column;
   text-align: center;
   white-space: pre-wrap;
   font-weight: 900;
-  font-size: 18px;
-  line-height: 26px;
+  font-size: 32px;
+  text-align: ${props => props.align};
   color: ${props => props.theme.white.white100};
+  line-height: 50px;
+`;
+
+const ListGifContents = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+  padding-top: 32px;
+  width: 1360px;
+  height: 670px;
+`;
+
+const ListGif = styled.img`
+  width: 100%;
+  height: 432px;
+  margin-top: 56px;
+`;
+
+const BrowserMockUp = styled.div`
+  height: ${props => props.height}px;
+  width: ${props => props.width}px;
+  margin-top: 32px;
+  background-image: url('/images/landing/Browser.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 4px;
+  filter: drop-shadow(0px 16px 40px rgba(41, 41, 39, 0.6));
+  /* filter: drop-shadow(0px 16px 15px rgba(41, 41, 39, 0.45)); */
 `;
