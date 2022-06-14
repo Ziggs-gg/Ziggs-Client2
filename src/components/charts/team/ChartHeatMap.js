@@ -142,7 +142,7 @@ const FirstTeamTd = styled.td`
   width: 56px;
   height: 56px;
   border-radius: 10px;
-  background: ${theme.green.greenMain};
+  background: ${theme.black.black90};
   text-align: center;
   margin: 0 2px 2px 0;
 `;
@@ -155,7 +155,7 @@ const SecondTeamTd = styled.td`
   width: 56px;
   height: 56px;
   border-radius: 10px;
-  background: ${theme.orange.orangeMain};
+  background: ${theme.black.black90};
   text-align: center;
   margin: 0 2px 2px 0;
 `;
