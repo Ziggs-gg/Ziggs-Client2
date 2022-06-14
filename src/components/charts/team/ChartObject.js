@@ -51,7 +51,9 @@ const ChartObject = ({ chartData }) => {
       tooltip: {
         callbacks: {
           label: ctx => {
-            return `${ctx.dataset.label}: ${ctx.raw}%`;
+            return ctx.raw
+              ? `${ctx.dataset.label}: ${ctx.raw}%`
+              : `${ctx.dataset.label}: -`;
           },
         },
       },

@@ -88,6 +88,16 @@ const ChartPolar = ({ chartData }) => {
           lineHeight: '16px',
         },
       },
+      tooltip: {
+        callbacks: {
+          title: ctx => {
+            return ctx[0].label;
+          },
+          label: ctx => {
+            return ctx.raw ? `${ctx.raw}%` : '-';
+          },
+        },
+      },
     },
     scales: {
       r: {
