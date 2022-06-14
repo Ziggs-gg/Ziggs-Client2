@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 import { API } from '../../../../config';
 import Chartheatmap from '../../../../components/charts/player/Chartheatmap';
+import EmptyChartheatmap from '../../../../components/charts/player/EmptyChartheatmap';
 
 const HeatMapContainer = ({ selectedPlayers }) => {
   const [heatMapData, setHeatMapData] = useState([]);
@@ -21,12 +22,14 @@ const HeatMapContainer = ({ selectedPlayers }) => {
       .catch(Error => {
         console.error(Error);
       });
+    console.log(heatMapData);
   }, [selectedPlayers]);
 
   return (
     <HeatMapLayout>
-      {heatMapData.Heatmap && (
-        <Chartheatmap heatMapData={heatMapData.Heatmap} />
+      {selectedPlayers.length === 0 && <EmptyChartheatmap />}
+      {selectedPlayers.length > 0 && (
+        <Chartheatmap heatMapData={heatMapData?.Heatmap} />
       )}
     </HeatMapLayout>
   );
