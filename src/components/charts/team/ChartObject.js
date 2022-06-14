@@ -6,6 +6,7 @@ import theme from '../../../styles/theme.js';
 const ChartObject = ({ chartData }) => {
   const labels = ['선취점', '포탑 선취', '첫 전령', '첫 드래곤', '첫 바론'];
   const backgroundColor = [theme.green.greenB70, theme.orange.orangeB70];
+  let winRateDataArr = [];
   let data = {
     labels: labels,
     datasets: [],
@@ -16,7 +17,7 @@ const ChartObject = ({ chartData }) => {
       data: [
         chartData[i].FKpct,
         chartData[i].FTpct,
-        chartData[i].FNpct,
+        chartData[i].FHpct,
         chartData[i].FDpct,
         chartData[i].FNpct,
       ],
@@ -25,6 +26,15 @@ const ChartObject = ({ chartData }) => {
       barPercentage: 0.8,
       categoryPercentage: 0.4,
     });
+
+    // Insert Win Rate Data
+    winRateDataArr.push([
+      chartData[i].FKwinPCT,
+      chartData[i].FTwinPCT,
+      chartData[i].FHwinPCT,
+      chartData[i].FDwinPCT,
+      chartData[i].FNwinPCT,
+    ]);
   }
 
   let options = {
@@ -51,8 +61,15 @@ const ChartObject = ({ chartData }) => {
       tooltip: {
         callbacks: {
           label: ctx => {
+            console.log(winRateDataArr);
             return ctx.raw
-              ? `${ctx.dataset.label}: ${ctx.raw}%`
+              ? [
+                  ctx.dataset.label,
+                  `획득률: ${ctx.raw}%`,
+                  `획득 시 승률 : ${
+                    winRateDataArr[ctx.datasetIndex][ctx.dataIndex]
+                  }%`,
+                ]
               : `${ctx.dataset.label}: -`;
           },
         },
