@@ -10,6 +10,7 @@ import ChartPolar from '../../../components/charts/player/ChartPolar';
 import RoleDifferPercentageDataChart from '../../../components/charts/player/RoleDifferPercentageDataChart';
 import EGPMChart from '../../../components/charts/player/EGPMChart';
 import CSPMChart from '../../../components/charts/player/CSPMChart';
+import Chart from 'chart.js/auto';
 import axios from 'axios';
 import { API } from '../../../config';
 import { Loading } from 'react-loading-dot';
