@@ -29,7 +29,7 @@ const HeatMapContainer = ({ selectedPlayers }) => {
     <HeatMapLayout>
       {selectedPlayers.length === 0 && <EmptyChartheatmap />}
       {selectedPlayers.length > 0 && (
-        <Chartheatmap heatMapData={heatMapData.Heatmap} />
+        <Chartheatmap heatMapData={heatMapData?.Heatmap} />
       )}
     </HeatMapLayout>
   );
