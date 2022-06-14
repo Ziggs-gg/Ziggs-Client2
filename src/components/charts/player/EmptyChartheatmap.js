@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import theme from '../../../styles/theme.js';
 import ReactTooltip from 'react-tooltip';
 
-const Chartheatmap = ({ heatMapData }) => {
+const EmptyChartheatmap = () => {
   return (
     <table>
       <HeatTr>
@@ -150,63 +150,84 @@ const Chartheatmap = ({ heatMapData }) => {
           getContent={dataTip => '15분 획득 경험치 격차'}
         />
       </HeatTr>
-      {heatMapData?.map((player, idx) => {
-        return (
-          <HeatTr key={idx}>
-            <ColumnLabel>
-              <YearAndSeasonLabel>
-                {player.yy}-{player.splitSeason}
-              </YearAndSeasonLabel>
-              {player.phID.includes('-')
-                ? player.phID.split('-')[4]
-                : player.phID}
-              <RoleLabel>{player.role}</RoleLabel>
-            </ColumnLabel>
-            {/* <DataTd>{player}</DataTd> */}
-            <DataTd>{player.gameCount}</DataTd>
-            <DataTd>{player.AVG_kills}</DataTd>
-            <DataTd>{player.AVG_deaths}</DataTd>
-            <DataTd>{player.AVG_assists}</DataTd>
-            <DataTd>{player.AVG_KDA}</DataTd>
-            <DataTd>{player.AVG_KPPCT}</DataTd>
-            <DataTd>{player.AVG_DTHPCT}</DataTd>
-            <DataTd>{player.AVG_CSM}</DataTd>
-            <DataTd>{player.AVG_GPM}</DataTd>
-            <DataTd>{player.AVG_goldPCT}</DataTd>
-            <DataTd>{player.AVG_VSPM ?? '-'}</DataTd>
-            <DataTd>{player.AVG_WPM ?? '-'}</DataTd>
-            <DataTd>{player.AVG_WCPM ?? '-'}</DataTd>
-            <DataTd>{player.AVG_VSPCT ?? '-'}</DataTd>
-            <DataTd>{player.AVG_DPM}</DataTd>
-            <DataTd>{player.AVG_DMGPCT}</DataTd>
-            <DataTd>{player.AVG_DPG}</DataTd>
-            <DataTd>{player.AVG_DTPM}</DataTd>
-            <DataTd>{player.AVG_DTPCT}</DataTd>
-            <DataTd>{player.AVG_GDat15 ?? '-'}</DataTd>
-            <DataTd>{player.AVG_CSDat15 ?? '-'}</DataTd>
-            <DataTd>{player.AVG_XPDat15 ?? '-'}</DataTd>
-          </HeatTr>
-        );
-      })}
+      <HeatTr>
+        <ColumnLabel></ColumnLabel>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+      </HeatTr>
+      <HeatTr>
+        <ColumnLabel></ColumnLabel>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+      </HeatTr>
+      <HeatTr>
+        <ColumnLabel></ColumnLabel>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+        <DataTd>-</DataTd>
+      </HeatTr>
     </table>
   );
 };
-
-const YearAndSeasonLabel = styled.p`
-  font-size: 10px;
-  font-weight: 300;
-  color: ${theme.white.white50};
-  letter-spacing: -0.05em;
-  margin-bottom: 3px;
-`;
-
-const RoleLabel = styled.p`
-  color: ${theme.white.white50};
-  font-weight: 300;
-  font-size: 12px;
-  letter-spacing: -0.03em;
-  margin-top: 3px;
-`;
 
 const LabelTd = styled.td`
   color: ${theme.white.white100};
@@ -217,16 +238,6 @@ const LabelTd = styled.td`
   font-weight: 500;
   font-size: 14px;
   letter-spacing: -0.03em;
-`;
-
-const SpaceTd = styled.td`
-  width: 71px;
-  height: 24px;
-  margin-right: 6px;
-`;
-
-const HeatTr = styled.tr`
-  display: flex;
 `;
 
 const ColumnLabel = styled.td`
@@ -244,6 +255,16 @@ const ColumnLabel = styled.td`
   letter-spacing: -0.03em;
 `;
 
+const SpaceTd = styled.td`
+  width: 71px;
+  height: 24px;
+  margin-right: 6px;
+`;
+
+const HeatTr = styled.tr`
+  display: flex;
+`;
+
 const DataTd = styled.td`
   display: flex;
   justify-content: center;
@@ -257,4 +278,5 @@ const DataTd = styled.td`
   margin: 0 2px 2px 0;
   font-size: 14px;
 `;
-export default Chartheatmap;
+
+export default EmptyChartheatmap;
