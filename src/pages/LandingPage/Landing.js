@@ -38,6 +38,7 @@ const Landing = () => {
             </GifContents>
             <GifContents>
               <GifDescText align="right">
+                <FilterImage src="/images/landing/filterImg.png" />
                 우측 상단 필터를 확인해보세요.{'\n'}지난 시즌의 기록도 확인하실
                 수 있습니다!
               </GifDescText>
@@ -138,6 +139,12 @@ const SwitchToggle = styled.img`
   margin-bottom: 16px;
 `;
 
+const FilterImage = styled.img`
+  margin-left: 300px;
+  height: 44px;
+  margin-bottom: 16px;
+`;
+
 const GifContents = styled.div`
   display: flex;
   align-items: center;
@@ -164,6 +171,7 @@ const GifDescText = styled.p`
   font-size: 32px;
   text-align: ${props => props.align};
   color: ${props => props.theme.white.white100};
+  line-height: 50px;
 `;
 
 const ListGifContents = styled.div`
