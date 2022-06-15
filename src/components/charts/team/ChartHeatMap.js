@@ -176,19 +176,19 @@ const ChartHeatmap = ({ chartData }) => {
           <HeatTr>
             <ColumnLabel>시야장악력</ColumnLabel>
             <SecondTeamTd>
-              {chartData[5]?.AVG_VC.split('/')[0] ?? '-'}
+              {chartData[5]?.AVG_VC?.split('/')[0] ?? '-'}
             </SecondTeamTd>
             <SecondTeamTd>
-              {chartData[6]?.AVG_VC.split('/')[0] ?? '-'}
+              {chartData[6]?.AVG_VC?.split('/')[0] ?? '-'}
             </SecondTeamTd>
             <SecondTeamTd>
-              {chartData[7]?.AVG_VC.split('/')[0] ?? '-'}
+              {chartData[7]?.AVG_VC?.split('/')[0] ?? '-'}
             </SecondTeamTd>
             <SecondTeamTd>
-              {chartData[8]?.AVG_VC.split('/')[0] ?? '-'}
+              {chartData[8]?.AVG_VC?.split('/')[0] ?? '-'}
             </SecondTeamTd>
             <SecondTeamTd>
-              {chartData[9]?.AVG_VC.split('/')[0] ?? '-'}
+              {chartData[9]?.AVG_VC?.split('/')[0] ?? '-'}
             </SecondTeamTd>
           </HeatTr>
         </table>
