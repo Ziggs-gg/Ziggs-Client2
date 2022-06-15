@@ -163,28 +163,28 @@ const Chartheatmap = ({ heatMapData }) => {
               <RoleLabel>{player.role}</RoleLabel>
             </ColumnLabel>
             {/* <DataTd>{player}</DataTd> */}
-            <DataTd>{player.gameCount.split('/')[0]}</DataTd>
-            <DataTd>{player.AVG_kills.split('/')[0]}</DataTd>
-            <DataTd>{player.AVG_deaths.split('/')[0]}</DataTd>
-            <DataTd>{player.AVG_assists.split('/')[0]}</DataTd>
-            <DataTd>{player.AVG_KDA.split('/')[0]}</DataTd>
-            <DataTd>{player.AVG_KPPCT.split('/')[0]}</DataTd>
-            <DataTd>{player.AVG_DTHPCT.split('/')[0]}</DataTd>
-            <DataTd>{player.AVG_CSM.split('/')[0]}</DataTd>
-            <DataTd>{player.AVG_GPM.split('/')[0]}</DataTd>
-            <DataTd>{player.AVG_goldPCT.split('/')[0]}</DataTd>
-            <DataTd>{player.AVG_VSPM.split('/')[0] ?? '-'}</DataTd>
-            <DataTd>{player.AVG_WPM.split('/')[0] ?? '-'}</DataTd>
-            <DataTd>{player.AVG_WCPM.split('/')[0] ?? '-'}</DataTd>
-            <DataTd>{player.AVG_VSPCT.split('/')[0] ?? '-'}</DataTd>
-            <DataTd>{player.AVG_DPM.split('/')[0]}</DataTd>
-            <DataTd>{player.AVG_DMGPCT.split('/')[0]}</DataTd>
-            <DataTd>{player.AVG_DPG.split('/')[0]}</DataTd>
-            <DataTd>{player.AVG_DTPM.split('/')[0]}</DataTd>
-            <DataTd>{player.AVG_DTPCT.split('/')[0]}</DataTd>
-            <DataTd>{player.AVG_GDat15.split('/')[0] ?? '-'}</DataTd>
-            <DataTd>{player.AVG_CSDat15.split('/')[0] ?? '-'}</DataTd>
-            <DataTd>{player.AVG_XPDat15.split('/')[0] ?? '-'}</DataTd>
+            <DataTd>{player.gameCount?.split('/')[0]}</DataTd>
+            <DataTd>{player.AVG_kills?.split('/')[0]}</DataTd>
+            <DataTd>{player.AVG_deaths?.split('/')[0]}</DataTd>
+            <DataTd>{player.AVG_assists?.split('/')[0]}</DataTd>
+            <DataTd>{player.AVG_KDA?.split('/')[0]}</DataTd>
+            <DataTd>{player.AVG_KPPCT?.split('/')[0]}</DataTd>
+            <DataTd>{player.AVG_DTHPCT?.split('/')[0]}</DataTd>
+            <DataTd>{player.AVG_CSM?.split('/')[0]}</DataTd>
+            <DataTd>{player.AVG_GPM?.split('/')[0]}</DataTd>
+            <DataTd>{player.AVG_goldPCT?.split('/')[0]}</DataTd>
+            <DataTd>{player.AVG_VSPM?.split('/')[0] ?? '-'}</DataTd>
+            <DataTd>{player.AVG_WPM?.split('/')[0] ?? '-'}</DataTd>
+            <DataTd>{player.AVG_WCPM?.split('/')[0] ?? '-'}</DataTd>
+            <DataTd>{player.AVG_VSPCT?.split('/')[0] ?? '-'}</DataTd>
+            <DataTd>{player.AVG_DPM?.split('/')[0]}</DataTd>
+            <DataTd>{player.AVG_DMGPCT?.split('/')[0]}</DataTd>
+            <DataTd>{player.AVG_DPG?.split('/')[0]}</DataTd>
+            <DataTd>{player.AVG_DTPM?.split('/')[0]}</DataTd>
+            <DataTd>{player.AVG_DTPCT?.split('/')[0]}</DataTd>
+            <DataTd>{player.AVG_GDat15?.split('/')[0] ?? '-'}</DataTd>
+            <DataTd>{player.AVG_CSDat15?.split('/')[0] ?? '-'}</DataTd>
+            <DataTd>{player.AVG_XPDat15?.split('/')[0] ?? '-'}</DataTd>
           </HeatTr>
         );
       })}

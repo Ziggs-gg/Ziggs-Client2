@@ -82,19 +82,19 @@ const ChartHeatmap = ({ chartData }) => {
           </HeatTr>
           <HeatTr>
             <FirstTeamTd>
-              {chartData[0]?.AVG_VC.split('/')[0] ?? '-'}
+              {chartData[0]?.AVG_VC?.split('/')[0] ?? '-'}
             </FirstTeamTd>
             <FirstTeamTd>
-              {chartData[1]?.AVG_VC.split('/')[0] ?? '-'}
+              {chartData[1]?.AVG_VC?.split('/')[0] ?? '-'}
             </FirstTeamTd>
             <FirstTeamTd>
-              {chartData[2]?.AVG_VC.split('/')[0] ?? '-'}
+              {chartData[2]?.AVG_VC?.split('/')[0] ?? '-'}
             </FirstTeamTd>
             <FirstTeamTd>
-              {chartData[3]?.AVG_VC.split('/')[0] ?? '-'}
+              {chartData[3]?.AVG_VC?.split('/')[0] ?? '-'}
             </FirstTeamTd>
             <FirstTeamTd>
-              {chartData[4]?.AVG_VC.split('/')[0] ?? '-'}
+              {chartData[4]?.AVG_VC?.split('/')[0] ?? '-'}
             </FirstTeamTd>
           </HeatTr>
         </table>
