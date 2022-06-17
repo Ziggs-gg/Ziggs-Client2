@@ -87,7 +87,7 @@ const PageImages = styled.img`
   filter: drop-shadow(0px 16px 40px rgba(41, 41, 39, 0.6));
 `;
 
-const MainContentsDesc = styled.div`
+const MainContentsDesc = styled.header`
   margin-bottom: 100px;
   width: 617px;
   height: 240px;
