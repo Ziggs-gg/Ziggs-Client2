@@ -10,32 +10,32 @@ const SelectedTeam = ({ team, selectedTeams, deleteSelectedTeam }) => {
   let teamStats = [];
 
   const orderNumber = selectedTeams.findIndex(ptID => ptID === team);
-
+  console.log(teamData);
   if (teamData) {
     teamStats = [
       {
         name: '리그 순위',
-        data: teamData[0].leagueRank,
+        data: teamData[0]?.leagueRank ?? '-',
       },
       {
         name: '매치 승리',
-        data: teamData[0].matchWinCount,
+        data: teamData[0]?.matchWinCount ?? '-',
       },
       {
         name: '매치 패배',
-        data: teamData[0].matchDefeatCount,
+        data: teamData[0]?.matchDefeatCount ?? '-',
       },
       {
         name: '매치 승률',
-        data: teamData[0].matchWinRate,
+        data: teamData[0]?.matchWinRate ?? '-',
       },
       {
         name: '세트 승리',
-        data: teamData[0].gameWinCount,
+        data: teamData[0]?.gameWinCount ?? '-',
       },
       {
         name: '세트 패배',
-        data: teamData[0].gameDefeatCount,
+        data: teamData[0]?.gameDefeatCount ?? '-',
       },
     ];
   }
@@ -71,19 +71,23 @@ const SelectedTeam = ({ team, selectedTeams, deleteSelectedTeam }) => {
         {loading ? (
           <TeamLogoLoading />
         ) : (
-          <TeamLogo src={`${teamData && teamData[0].imgPath}`} />
+          <TeamLogo src={`${teamData && teamData[0]?.imgPath}`} />
         )}
 
         <TeamDesc>
           {loading ? (
             <TeamInfoLoading />
           ) : (
-            <TeamInfo>{`${teamData && teamData[0].leagueID}`}</TeamInfo>
+            <TeamInfo>{`${
+              teamData && (teamData[0]?.leagueID ?? '-')
+            }`}</TeamInfo>
           )}
           {loading ? (
             <TeamNameLoading />
           ) : (
-            <TeamName>{`${teamData && teamData[0].teamFullName}`}</TeamName>
+            <TeamName>
+              {`${teamData && (teamData[0]?.teamFullName ?? '-')}`}
+            </TeamName>
           )}
         </TeamDesc>
         <TeamDataContainer>
