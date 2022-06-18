@@ -20,27 +20,27 @@ const SelectedPlayer = ({ player, selectedPlayers, deleteSelectedPlayer }) => {
     playerStats = [
       {
         name: '게임',
-        data: playerData.games,
+        data: playerData.games ?? '-',
       },
       {
         name: '승리',
-        data: playerData.winCount,
+        data: playerData.winCount ?? '-',
       },
       {
         name: '패배',
-        data: playerData.defeatCount,
+        data: playerData.defeatCount ?? '-',
       },
       {
         name: '총 킬',
-        data: playerData.totalKills,
+        data: playerData.totalKills ?? '-',
       },
       {
         name: '총 데스',
-        data: playerData.totalDeaths,
+        data: playerData.totalDeaths ?? '-',
       },
       {
         name: '총 어시',
-        data: playerData.totalAssists,
+        data: playerData.totalAssists ?? '-',
       },
     ];
   }
