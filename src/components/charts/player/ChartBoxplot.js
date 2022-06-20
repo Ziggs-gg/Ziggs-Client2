@@ -11,27 +11,32 @@ const ChartBoxplot = ({ chartData }) => {
     theme.green.greenOPA40,
     theme.orange.orangeOPA40,
   ];
+
   const dataBorder = [
     theme.red.redB70,
     theme.blue.blueB70,
     theme.green.greenB70,
     theme.orange.orangeB70,
   ];
+
   const itemBackgroundColor = [
     theme.red.redOPA20,
     theme.blue.blueOPA20,
     theme.green.greenOPA20,
     theme.orange.orangeOPA20,
   ];
+
   let boxplotData = {
     labels: ['분당 가한 피해량', '분당 받은 피해량', '분당 획득 골드'],
     datasets: [],
   };
+
   for (let i = 0; i < chartData.length; i++) {
-    let playerName = chartData[i]?.phRole.split('-');
-    let DPM = JSON.parse('[' + chartData[i].DPM + ']');
-    let DTPM = JSON.parse('[' + chartData[i].DTPM + ']');
-    let GPM = JSON.parse('[' + chartData[i].GPM + ']');
+    const playerName = chartData[i]?.phRole.split('-');
+    const DPM = JSON.parse('[' + chartData[i].DPM + ']');
+    const DTPM = JSON.parse('[' + chartData[i].DTPM + ']');
+    const GPM = JSON.parse('[' + chartData[i].GPM + ']');
+
     boxplotData.datasets.push({
       label: playerName[3] + ' ' + playerName[4],
       data: [DPM, DTPM, GPM],
@@ -46,6 +51,7 @@ const ChartBoxplot = ({ chartData }) => {
       categoryPercentage: 0.4,
     });
   }
+
   const boxplotOptions = {
     plugins: {
       tooltip: {
@@ -136,9 +142,10 @@ const ChartBoxplot = ({ chartData }) => {
   }
 };
 
+export default ChartBoxplot;
+
 const BoxplotLayout = styled.div`
   width: 548px;
   height: 304px;
   margin: 0 32px 0 32px;
 `;
-export default ChartBoxplot;

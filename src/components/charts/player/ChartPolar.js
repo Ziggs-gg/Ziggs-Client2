@@ -127,9 +127,11 @@ const ChartPolar = ({ chartData }) => {
       },
     },
   };
+
   const fontFamily = {
     weight: 400,
   };
+
   return (
     <PolarLayout>
       <PolarArea data={data} options={options} font={fontFamily} />
@@ -137,9 +139,9 @@ const ChartPolar = ({ chartData }) => {
   );
 };
 
+export default ChartPolar;
+
 const PolarLayout = styled.div`
   width: 316px;
   height: 304px;
 `;
-
-export default ChartPolar;

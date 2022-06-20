@@ -4,19 +4,21 @@ import styled from 'styled-components';
 import theme from '../../../styles/theme.js';
 
 const RoleDifferPercentageDataChart = ({ chartData }) => {
-  let bgc = [
+  const bgc = [
     theme.red.redB70,
     theme.blue.blueB70,
     theme.green.greenB70,
     theme.orange.orangeB70,
   ];
-  let data2 = {
+
+  let data = {
     labels: ['가한 피해량', '받은 피해량', '획득골드', '시야 점수'],
     datasets: [],
   };
+
   for (let i = 0; i < chartData.length; i++) {
-    let playerName = chartData[i]?.phRole.split('-');
-    data2.datasets.push({
+    const playerName = chartData[i]?.phRole.split('-');
+    data.datasets.push({
       label: playerName[3] + ' ' + playerName[4],
       data: [
         chartData[i]?.DR,
@@ -30,7 +32,8 @@ const RoleDifferPercentageDataChart = ({ chartData }) => {
       categoryPercentage: 0.4,
     });
   }
-  const options2 = {
+
+  const options = {
     interaction: {
       mode: 'index',
     },
@@ -83,7 +86,7 @@ const RoleDifferPercentageDataChart = ({ chartData }) => {
         },
         ticks: {
           color: theme.white.white80,
-          callback: function (value, index, values) {
+          callback: function (value) {
             if (value === 0) {
               return value;
             } else {
@@ -94,20 +97,22 @@ const RoleDifferPercentageDataChart = ({ chartData }) => {
       },
     },
   };
+
   const fontFamily = {
     weight: 400,
   };
+
   return (
     <BarLayout>
-      <Bar data={data2} options={options2} font={fontFamily} />
+      <Bar data={data} options={options} font={fontFamily} />
     </BarLayout>
   );
 };
+
+export default RoleDifferPercentageDataChart;
 
 const BarLayout = styled.div`
   width: 548px;
   height: 304px;
   margin: 0 32px 0 32px;
 `;
-
-export default RoleDifferPercentageDataChart;
