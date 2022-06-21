@@ -11,7 +11,7 @@ const Nav = () => {
   const navigate = useNavigate();
 
   const [year, setYear] = useState(2022);
-  const [season, setSeason] = useState('Spring');
+  const [season, setSeason] = useState('Summer');
   const [league, setLeague] = useState([]);
   const [role, setRole] = useState([]);
 
