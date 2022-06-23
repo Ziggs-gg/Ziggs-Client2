@@ -6,6 +6,7 @@ const PlayerCard = ({
   handleSelectPlayer,
   selectedPlayers,
 }) => {
+  const seasonInfo = phID.split('-')[0] + phID.split('-')[2];
   const [isSelected, setSelected] = useState(false);
   const orderNumber = selectedPlayers.findIndex(
     playerData => playerData === phRole
@@ -25,7 +26,11 @@ const PlayerCard = ({
     >
       <TeamLogo src={`/images/teams/${region}/${phID.split('-')[3]}.png`} />
       <RoleLogo src={`/images/role/role_${role}_W.png`} />
-      <GradientMask imgPath={imgPath} />
+      <PlayerImg
+        imgPath={
+          seasonInfo === '22SUM' ? '/images/Players_fill_B70.png' : imgPath
+        }
+      />
       <PlayerName>{phID.split('-')[4]}</PlayerName>
     </CardLayout>
   );
@@ -78,7 +83,7 @@ const CardLayout = styled.div`
     `}
 `;
 
-const GradientMask = styled.div`
+const PlayerImg = styled.div`
   position: absolute;
   bottom: 0;
   width: 84px;
