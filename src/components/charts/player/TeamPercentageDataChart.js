@@ -4,12 +4,13 @@ import styled from 'styled-components';
 import theme from '../../../styles/theme.js';
 
 const TeamPercentageDataChart = ({ chartData }) => {
-  let bgc = [
+  const bgc = [
     theme.red.redB70,
     theme.blue.blueB70,
     theme.green.greenB70,
     theme.orange.orangeB70,
   ];
+
   let data1 = {
     labels: [
       '가한 피해량 비중',
@@ -19,6 +20,7 @@ const TeamPercentageDataChart = ({ chartData }) => {
     ],
     datasets: [],
   };
+
   for (let i = 0; i < chartData.length; i++) {
     let playerName = chartData[i]?.phRole.split('-');
     data1.datasets.push({

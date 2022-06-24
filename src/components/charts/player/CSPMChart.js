@@ -21,13 +21,14 @@ const CSPMChart = ({ chartData }) => {
       },
     ],
   };
+
   for (let i = 0; i < chartData.length; i++) {
     let playerName = chartData[i]?.phRole.split('-');
     data.labels.push(playerName[3] + ' ' + playerName[4]);
     data.datasets[0].data.push(chartData[i]?.CSM);
   }
 
-  const options4 = {
+  const options = {
     interaction: {
       mode: 'index',
     },
@@ -76,20 +77,21 @@ const CSPMChart = ({ chartData }) => {
       },
     },
   };
+
   const fontFamily = {
     weight: 400,
   };
 
   return (
     <BarLayout>
-      <Bar data={data} options={options4} font={fontFamily} />
+      <Bar data={data} options={options} font={fontFamily} />
     </BarLayout>
   );
 };
+
+export default CSPMChart;
 
 const BarLayout = styled.div`
   width: 200px;
   height: 304px;
 `;
-
-export default CSPMChart;
