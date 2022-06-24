@@ -3,7 +3,6 @@ import styled, { css } from 'styled-components';
 import List from '../../components/List';
 
 const Landing = () => {
-  console.log('test');
   return (
     <>
       <List />
