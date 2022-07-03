@@ -10,8 +10,6 @@ const SelectedPlayer = ({ player, selectedPlayers, deleteSelectedPlayer }) => {
   const [loading, setLoading] = useState(false);
   const playerInfoArr = playerData?.phRole?.split('-');
 
-  const seasonInfo = player.split('-')[0] + player.split('-')[2];
-
   let playerStats = [];
 
   const orderNumber = selectedPlayers.findIndex(
@@ -92,8 +90,6 @@ const SelectedPlayer = ({ player, selectedPlayers, deleteSelectedPlayer }) => {
           <PlayerImg
             src={
               loading
-                ? '/images/Players_fill_B70.png'
-                : seasonInfo === '22SUM'
                 ? '/images/Players_fill_B70.png'
                 : `${playerData?.imgPath}`
             }
