@@ -10,26 +10,34 @@ const ChartBubble = ({ chartData }) => {
     theme.green.greenOPA40,
     theme.orange.orangeOPA40,
   ];
+
   const dataBorder = [
     theme.red.redB70,
     theme.blue.blueB70,
     theme.green.greenB70,
     theme.orange.orangeB70,
   ];
+
   let data = {
     datasets: [],
   };
+
   let matchesArr = [];
+
   for (let i = 0; i < chartData.length; i++) {
     let playerName = chartData[i]?.phRole.split('-');
     matchesArr.push(chartData[i]?.matches.split(','));
+
     let DPM = JSON.parse('[' + chartData[i].DPM + ']');
     let GPM = JSON.parse('[' + chartData[i].GPM + ']');
     let DPG = JSON.parse('[' + chartData[i].DPG + ']');
+
     let dataArr = [];
+
     for (let el = 0; el < DPM.length; el++) {
       dataArr.push({ x: GPM[el], y: DPM[el], r: DPG[el] * 8 }); // radius scale
     }
+
     data.datasets.push({
       label: playerName[3] + ' ' + playerName[4],
       data: dataArr,
@@ -37,6 +45,7 @@ const ChartBubble = ({ chartData }) => {
       borderColor: dataBorder[i],
     });
   }
+
   const options = {
     interaction: {
       mode: 'point',
@@ -51,11 +60,13 @@ const ChartBubble = ({ chartData }) => {
         ticks: {
           color: theme.white.white80,
         },
+
         grid: {
           color: theme.black.black90,
           borderColor: theme.black.black90,
           tickColor: theme.black.black90,
         },
+
         title: {
           display: 'true',
           text: '분당 획득 골드',
@@ -63,15 +74,18 @@ const ChartBubble = ({ chartData }) => {
           color: theme.white.white50,
         },
       },
+
       y: {
         ticks: {
           color: theme.white.white80,
         },
+
         grid: {
           color: theme.black.black90,
           borderColor: theme.black.black90,
           tickColor: theme.black.black90,
         },
+
         title: {
           display: 'true',
           text: '분당 가한 피해량',
@@ -80,6 +94,7 @@ const ChartBubble = ({ chartData }) => {
         },
       },
     },
+
     plugins: {
       legend: {
         display: false,
@@ -103,7 +118,6 @@ const ChartBubble = ({ chartData }) => {
         callbacks: {
           label: function (context) {
             let value = [context.dataset.label];
-            // let value2 = context.dataset.label || ' ';
 
             // 소수점 2번째 자리에서 반올림하는 함수
             function roundToTwo(num) {
@@ -121,9 +135,11 @@ const ChartBubble = ({ chartData }) => {
       },
     },
   };
+
   const fontFamily = {
     weight: 400,
   };
+
   return (
     <BubbleLayout>
       <Bubble type="bubble" data={data} options={options} font={fontFamily} />
@@ -131,9 +147,9 @@ const ChartBubble = ({ chartData }) => {
   );
 };
 
+export default ChartBubble;
+
 const BubbleLayout = styled.div`
   width: 432px;
   height: 304px;
 `;
-
-export default ChartBubble;

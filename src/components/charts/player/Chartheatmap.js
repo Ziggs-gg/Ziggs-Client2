@@ -192,6 +192,8 @@ const Chartheatmap = ({ heatMapData }) => {
   );
 };
 
+export default Chartheatmap;
+
 const YearAndSeasonLabel = styled.p`
   font-size: 10px;
   font-weight: 300;
@@ -257,4 +259,3 @@ const DataTd = styled.td`
   margin: 0 2px 2px 0;
   font-size: 14px;
 `;
-export default Chartheatmap;

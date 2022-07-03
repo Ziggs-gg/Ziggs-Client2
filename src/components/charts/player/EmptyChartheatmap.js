@@ -229,6 +229,8 @@ const EmptyChartheatmap = () => {
   );
 };
 
+export default EmptyChartheatmap;
+
 const LabelTd = styled.td`
   color: ${theme.white.white100};
   width: 56px;
@@ -278,5 +280,3 @@ const DataTd = styled.td`
   margin: 0 2px 2px 0;
   font-size: 14px;
 `;
-
-export default EmptyChartheatmap;

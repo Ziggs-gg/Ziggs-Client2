@@ -26,7 +26,7 @@ const EGPMChart = ({ chartData }) => {
     data4.labels.push(playerName[3] + ' ' + playerName[4]);
     data4.datasets[0].data.push(chartData[i]?.EGPM);
   }
-  const options4 = {
+  const options = {
     suggestedMin: 0,
     suggestedMax: 100,
     interaction: {
@@ -82,7 +82,7 @@ const EGPMChart = ({ chartData }) => {
   };
   return (
     <BarLayout>
-      <Bar data={data4} options={options4} font={fontFamily} />
+      <Bar data={data4} options={options} font={fontFamily} />
     </BarLayout>
   );
 };

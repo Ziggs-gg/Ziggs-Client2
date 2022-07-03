@@ -27,18 +27,12 @@ const ChartDoughnut = ({ chartData }) => {
     ],
   };
 
-  // const valuetext1 = 'KDA: ' + chartData[0]?.KDA;
-
   const options1 = {
     responsive: false,
     interaction: {
       mode: 'dataset',
     },
-    // centerText: {
-    //   color: theme.white.white100,
-    //   value: valuetext1,
-    //   fontSizeAdjust: 0.2, // increase font size 20% based on default font size
-    // },
+
     plugins: {
       legend: {
         display: false,
@@ -66,11 +60,13 @@ const ChartDoughnut = ({ chartData }) => {
           chartData[1]?.AVGdeaths,
           chartData[1]?.AVGassists,
         ],
+
         backgroundColor: [
           theme.blue.blueMain,
           theme.blue.blueB50,
           theme.blue.blueW80,
         ],
+
         weight: 10,
         hoverOffset: 4,
         cutout: '90%',
@@ -182,18 +178,11 @@ const ChartDoughnut = ({ chartData }) => {
     ],
   };
 
-  // const valuetext4 = 'KDA: ' + chartData[3]?.KDA;
-
   const options4 = {
     responsive: false,
     interaction: {
       mode: 'dataset',
     },
-    // centerText: {
-    //   color: theme.white.white100,
-    //   value: valuetext4,
-    //   fontSizeAdjust: 0.1, // increase font size 20% based on default font size
-    // },
     plugins: {
       legend: {
         display: false,
@@ -251,7 +240,7 @@ const ChartDoughnut = ({ chartData }) => {
           <Doughnut
             width="150"
             height="150"
-            type={'doughnut'}
+            type="doughnut"
             data={data1}
             options={options1}
             style={{ position: 'absolute' }}
@@ -260,7 +249,7 @@ const ChartDoughnut = ({ chartData }) => {
           <Doughnut
             width="150"
             height="150"
-            type={'doughnut'}
+            type="doughnut"
             data={noneData}
             options={noneOption}
           />
@@ -290,7 +279,7 @@ const ChartDoughnut = ({ chartData }) => {
           <Doughnut
             width="150"
             height="150"
-            type={'doughnut'}
+            type="doughnut"
             data={noneData}
             options={noneOption}
             font={fontFamily}
@@ -311,7 +300,7 @@ const ChartDoughnut = ({ chartData }) => {
           <Doughnut
             width="150"
             height="150"
-            type={'doughnut'}
+            type="doughnut"
             data={data3}
             options={options3}
             style={{ position: 'absolute' }}
@@ -321,7 +310,7 @@ const ChartDoughnut = ({ chartData }) => {
           <Doughnut
             width="150"
             height="150"
-            type={'doughnut'}
+            type="doughnut"
             data={noneData}
             options={noneOption}
             font={fontFamily}
@@ -342,7 +331,7 @@ const ChartDoughnut = ({ chartData }) => {
           <Doughnut
             width="150"
             height="150"
-            type={'doughnut'}
+            type="doughnut"
             data={data4}
             options={options4}
             style={{ position: 'absolute' }}
@@ -352,7 +341,7 @@ const ChartDoughnut = ({ chartData }) => {
           <Doughnut
             width="150"
             height="150"
-            type={'doughnut'}
+            type="doughnut"
             data={noneData}
             options={noneOption}
             font={fontFamily}
@@ -371,6 +360,8 @@ const ChartDoughnut = ({ chartData }) => {
     </DoughnutLayout>
   );
 };
+
+export default ChartDoughnut;
 
 const DoughnutLayout = styled.div`
   display: flex;
@@ -445,4 +436,3 @@ const GameText = styled.p`
   font-weight: 500;
   font-size: 10px;
 `;
-export default ChartDoughnut;
