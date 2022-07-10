@@ -368,7 +368,9 @@ const ChartHeatmap = ({ chartData }) => {
             <SecondTeamTd
               style={{
                 background:
-                  backgroundColorOrange[chartData[5]?.AVG_VC.split('/')[1] - 1],
+                  backgroundColorOrange[
+                    chartData[5]?.AVG_VC?.split('/')[1] - 1
+                  ],
               }}
             >
               {chartData[5]?.AVG_VC?.split('/')[0] ?? '-'}
@@ -376,7 +378,9 @@ const ChartHeatmap = ({ chartData }) => {
             <SecondTeamTd
               style={{
                 background:
-                  backgroundColorOrange[chartData[6]?.AVG_VC.split('/')[1] - 1],
+                  backgroundColorOrange[
+                    chartData[6]?.AVG_VC?.split('/')[1] - 1
+                  ],
               }}
             >
               {chartData[6]?.AVG_VC?.split('/')[0] ?? '-'}
@@ -384,7 +388,9 @@ const ChartHeatmap = ({ chartData }) => {
             <SecondTeamTd
               style={{
                 background:
-                  backgroundColorOrange[chartData[7]?.AVG_VC.split('/')[1] - 1],
+                  backgroundColorOrange[
+                    chartData[7]?.AVG_VC?.split('/')[1] - 1
+                  ],
               }}
             >
               {chartData[7]?.AVG_VC?.split('/')[0] ?? '-'}
@@ -392,7 +398,9 @@ const ChartHeatmap = ({ chartData }) => {
             <SecondTeamTd
               style={{
                 background:
-                  backgroundColorOrange[chartData[8]?.AVG_VC.split('/')[1] - 1],
+                  backgroundColorOrange[
+                    chartData[8]?.AVG_VC?.split('/')[1] - 1
+                  ],
               }}
             >
               {chartData[8]?.AVG_VC?.split('/')[0] ?? '-'}
@@ -400,7 +408,9 @@ const ChartHeatmap = ({ chartData }) => {
             <SecondTeamTd
               style={{
                 background:
-                  backgroundColorOrange[chartData[9]?.AVG_VC.split('/')[1] - 1],
+                  backgroundColorOrange[
+                    chartData[9]?.AVG_VC?.split('/')[1] - 1
+                  ],
               }}
             >
               {chartData[9]?.AVG_VC?.split('/')[0] ?? '-'}
