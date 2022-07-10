@@ -269,7 +269,7 @@ const ChartDoughnut = ({ chartData }) => {
           <Doughnut
             width="150"
             height="150"
-            type={'doughnut'}
+            type="doughnut"
             data={data2}
             options={options2}
             style={{ position: 'absolute' }}
