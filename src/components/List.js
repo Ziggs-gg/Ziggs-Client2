@@ -82,8 +82,8 @@ const List = ({
               selectedPlayers={selectedPlayers}
               onClick={() =>
                 ReactGA.event({
-                  category: 'Player Select',
-                  action: 'click',
+                  category: 'Player List',
+                  action: 'Player Select',
                 })
               }
             />
