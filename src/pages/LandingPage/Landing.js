@@ -1,10 +1,14 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import { Helmet } from 'react-helmet-async';
 import List from '../../components/List';
 
 const Landing = () => {
   return (
     <>
+      <Helmet>
+        <title>VERSUS Pro Stats</title>
+      </Helmet>
       <List />
       <ContentsLayout>
         <MainContents>

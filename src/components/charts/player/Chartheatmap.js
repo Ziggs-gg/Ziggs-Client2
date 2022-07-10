@@ -4,6 +4,12 @@ import theme from '../../../styles/theme.js';
 import ReactTooltip from 'react-tooltip';
 
 const Chartheatmap = ({ heatMapData }) => {
+  const backgroundColor = [
+    theme.red.redMain,
+    theme.red.redB80,
+    theme.red.redB60,
+    theme.red.redB40,
+  ];
   return (
     <table>
       <HeatTr>
@@ -151,6 +157,94 @@ const Chartheatmap = ({ heatMapData }) => {
         />
       </HeatTr>
       {heatMapData?.map((player, idx) => {
+        const count = {
+          background: backgroundColor[player.gameCount?.split('/')[1] - 1],
+        };
+
+        const kills = {
+          background: backgroundColor[player.AVG_kills?.split('/')[1] - 1],
+        };
+
+        const deaths = {
+          background: backgroundColor[player.AVG_deaths?.split('/')[1] - 1],
+        };
+
+        const assists = {
+          background: backgroundColor[player.AVG_assists?.split('/')[1] - 1],
+        };
+
+        const kda = {
+          background: backgroundColor[player.AVG_KDA?.split('/')[1] - 1],
+        };
+
+        const kppct = {
+          background: backgroundColor[player.AVG_KPPCT?.split('/')[1] - 1],
+        };
+
+        const dthpct = {
+          background: backgroundColor[player.AVG_DTHPCT?.split('/')[1] - 1],
+        };
+
+        const csm = {
+          background: backgroundColor[player.AVG_CSM?.split('/')[1] - 1],
+        };
+
+        const gpm = {
+          background: backgroundColor[player.AVG_GPM?.split('/')[1] - 1],
+        };
+
+        const goldpct = {
+          background: backgroundColor[player.AVG_goldPCT?.split('/')[1] - 1],
+        };
+
+        const vspm = {
+          background: backgroundColor[player.AVG_VSPM?.split('/')[1] - 1],
+        };
+
+        const wpm = {
+          background: backgroundColor[player.AVG_WPM?.split('/')[1] - 1],
+        };
+
+        const wcpm = {
+          background: backgroundColor[player.AVG_WCPM?.split('/')[1] - 1],
+        };
+
+        const vspct = {
+          background: backgroundColor[player.AVG_VSPCT?.split('/')[1] - 1],
+        };
+
+        const dpm = {
+          background: backgroundColor[player.AVG_DPM?.split('/')[1] - 1],
+        };
+
+        const dmgpct = {
+          background: backgroundColor[player.AVG_DMGPCT?.split('/')[1] - 1],
+        };
+
+        const dpg = {
+          background: backgroundColor[player.AVG_DPG?.split('/')[1] - 1],
+        };
+
+        const dtpm = {
+          background: backgroundColor[player.AVG_DTPM?.split('/')[1] - 1],
+        };
+
+        const dtpct = {
+          background: backgroundColor[player.AVG_DTPCT?.split('/')[1] - 1],
+        };
+
+        const gdat15 = {
+          background: backgroundColor[player.AVG_GDat15?.split('/')[1] - 1],
+        };
+
+        const csdat15 = {
+          background: backgroundColor[player.AVG_CSDat15?.split('/')[1] - 1],
+        };
+
+        const xpdat15 = {
+          background: backgroundColor[player.AVG_XPDat15?.split('/')[1] - 1],
+        };
+
         return (
           <HeatTr key={idx}>
             <ColumnLabel>
@@ -163,28 +257,40 @@ const Chartheatmap = ({ heatMapData }) => {
               <RoleLabel>{player.role}</RoleLabel>
             </ColumnLabel>
             {/* <DataTd>{player}</DataTd> */}
-            <DataTd>{player.gameCount?.split('/')[0]}</DataTd>
-            <DataTd>{player.AVG_kills?.split('/')[0]}</DataTd>
-            <DataTd>{player.AVG_deaths?.split('/')[0]}</DataTd>
-            <DataTd>{player.AVG_assists?.split('/')[0]}</DataTd>
-            <DataTd>{player.AVG_KDA?.split('/')[0]}</DataTd>
-            <DataTd>{player.AVG_KPPCT?.split('/')[0]}</DataTd>
-            <DataTd>{player.AVG_DTHPCT?.split('/')[0]}</DataTd>
-            <DataTd>{player.AVG_CSM?.split('/')[0]}</DataTd>
-            <DataTd>{player.AVG_GPM?.split('/')[0]}</DataTd>
-            <DataTd>{player.AVG_goldPCT?.split('/')[0]}</DataTd>
-            <DataTd>{player.AVG_VSPM?.split('/')[0] ?? '-'}</DataTd>
-            <DataTd>{player.AVG_WPM?.split('/')[0] ?? '-'}</DataTd>
-            <DataTd>{player.AVG_WCPM?.split('/')[0] ?? '-'}</DataTd>
-            <DataTd>{player.AVG_VSPCT?.split('/')[0] ?? '-'}</DataTd>
-            <DataTd>{player.AVG_DPM?.split('/')[0]}</DataTd>
-            <DataTd>{player.AVG_DMGPCT?.split('/')[0]}</DataTd>
-            <DataTd>{player.AVG_DPG?.split('/')[0]}</DataTd>
-            <DataTd>{player.AVG_DTPM?.split('/')[0]}</DataTd>
-            <DataTd>{player.AVG_DTPCT?.split('/')[0]}</DataTd>
-            <DataTd>{player.AVG_GDat15?.split('/')[0] ?? '-'}</DataTd>
-            <DataTd>{player.AVG_CSDat15?.split('/')[0] ?? '-'}</DataTd>
-            <DataTd>{player.AVG_XPDat15?.split('/')[0] ?? '-'}</DataTd>
+            <DataTd style={count}>{player.gameCount?.split('/')[0]}</DataTd>
+            <DataTd style={kills}>{player.AVG_kills?.split('/')[0]}</DataTd>
+            <DataTd style={deaths}>{player.AVG_deaths?.split('/')[0]}</DataTd>
+            <DataTd style={assists}>{player.AVG_assists?.split('/')[0]}</DataTd>
+            <DataTd style={kda}>{player.AVG_KDA?.split('/')[0]}</DataTd>
+            <DataTd style={kppct}>{player.AVG_KPPCT?.split('/')[0]}</DataTd>
+            <DataTd style={dthpct}>{player.AVG_DTHPCT?.split('/')[0]}</DataTd>
+            <DataTd style={csm}>{player.AVG_CSM?.split('/')[0]}</DataTd>
+            <DataTd style={gpm}>{player.AVG_GPM?.split('/')[0]}</DataTd>
+            <DataTd style={goldpct}>{player.AVG_goldPCT?.split('/')[0]}</DataTd>
+            <DataTd style={vspm}>
+              {player.AVG_VSPM?.split('/')[0] ?? '-'}
+            </DataTd>
+            <DataTd style={wpm}>{player.AVG_WPM?.split('/')[0] ?? '-'}</DataTd>
+            <DataTd style={wcpm}>
+              {player.AVG_WCPM?.split('/')[0] ?? '-'}
+            </DataTd>
+            <DataTd style={vspct}>
+              {player.AVG_VSPCT?.split('/')[0] ?? '-'}
+            </DataTd>
+            <DataTd style={dpm}>{player.AVG_DPM?.split('/')[0]}</DataTd>
+            <DataTd style={dmgpct}>{player.AVG_DMGPCT?.split('/')[0]}</DataTd>
+            <DataTd style={dpg}>{player.AVG_DPG?.split('/')[0]}</DataTd>
+            <DataTd style={dtpm}>{player.AVG_DTPM?.split('/')[0]}</DataTd>
+            <DataTd style={dtpct}>{player.AVG_DTPCT?.split('/')[0]}</DataTd>
+            <DataTd style={gdat15}>
+              {player.AVG_GDat15?.split('/')[0] ?? '-'}
+            </DataTd>
+            <DataTd style={csdat15}>
+              {player.AVG_CSDat15?.split('/')[0] ?? '-'}
+            </DataTd>
+            <DataTd style={xpdat15}>
+              {player.AVG_XPDat15?.split('/')[0] ?? '-'}
+            </DataTd>
           </HeatTr>
         );
       })}
