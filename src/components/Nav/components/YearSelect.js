@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
-import { css } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const YEAR_DATA = [
   {
@@ -35,7 +34,11 @@ const YearSelect = ({ year, handleYearChange }) => {
       </DropDownHeader>
       {toggle && (
         <DropDownListContainer>
-          <DropDownList onClick={e => handleYearChange(e)}>
+          <DropDownList
+            onClick={e => {
+              handleYearChange(e);
+            }}
+          >
             {YEAR_DATA.map((data, idx) => {
               return (
                 <ListItem value={data.year} key={idx} year={year}>

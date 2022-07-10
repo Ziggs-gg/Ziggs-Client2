@@ -1,6 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
-import { css } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const LeagueSelect = ({ handleLeagueSelect, league, setLeague }) => {
   return (

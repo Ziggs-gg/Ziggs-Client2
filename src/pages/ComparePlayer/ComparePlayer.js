@@ -4,7 +4,7 @@ import SelectedCards from './components/selectedPlayer/SelectedCards';
 import ChartContainer from './components/ChartContainer';
 import HeatMapContainer from './components/heatMap/HeatMapContainer';
 import ChampionPool from './components/championPool/ChampionPool';
-
+import { Helmet } from 'react-helmet-async';
 const ComparePlayer = () => {
   const [selectedPlayers, setSelectedPlayers] = useState([]);
 
@@ -15,6 +15,9 @@ const ComparePlayer = () => {
 
   return (
     <>
+      <Helmet>
+        <title>VERSUS Pro Stats | 선수 비교</title>
+      </Helmet>
       <List
         setSelectedPlayers={setSelectedPlayers}
         selectedPlayers={selectedPlayers}

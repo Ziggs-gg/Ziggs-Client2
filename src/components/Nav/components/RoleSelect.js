@@ -1,6 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
-import { css } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const RoleSelect = ({ handleRoleSelect, role, setRole }) => {
   return (
@@ -20,7 +19,9 @@ const RoleSelect = ({ handleRoleSelect, role, setRole }) => {
           return (
             <ListItem
               key={idx}
-              onClick={() => handleRoleSelect(data.name, isSelected)}
+              onClick={() => {
+                handleRoleSelect(data.name, isSelected);
+              }}
               isSelected={isSelected}
             >
               <RoleLogo src={data.image} />

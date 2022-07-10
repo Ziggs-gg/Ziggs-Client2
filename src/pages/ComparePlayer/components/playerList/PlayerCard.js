@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
+import ReactGA from 'react-ga4';
 
 const PlayerCard = ({
   player: { phID, phRole, role, region, imgPath },
   handleSelectPlayer,
   selectedPlayers,
 }) => {
-  const seasonInfo = phID.split('-')[0] + phID.split('-')[2];
   const [isSelected, setSelected] = useState(false);
   const orderNumber = selectedPlayers.findIndex(
     playerData => playerData === phRole
@@ -20,17 +20,18 @@ const PlayerCard = ({
     <CardLayout
       onClick={() => {
         handleSelectPlayer(phRole);
+        !isSelected &&
+          ReactGA.event({
+            category: 'Click event',
+            action: 'Player Select',
+          });
       }}
       isSelected={isSelected}
       orderNumber={orderNumber}
     >
       <TeamLogo src={`/images/teams/${region}/${phID.split('-')[3]}.png`} />
       <RoleLogo src={`/images/role/role_${role}_W.png`} />
-      <PlayerImg
-        imgPath={
-          seasonInfo === '22SUM' ? '/images/Players_fill_B70.png' : imgPath
-        }
-      />
+      <PlayerImg imgPath={imgPath} />
       <PlayerName>{phID.split('-')[4]}</PlayerName>
     </CardLayout>
   );
