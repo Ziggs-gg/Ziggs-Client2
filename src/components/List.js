@@ -5,6 +5,7 @@ import PlayerCard from '../pages/ComparePlayer/components/playerList/PlayerCard'
 import TeamCard from '../pages/CompareTeam/components/teamList/TeamCard';
 import { useLocation } from 'react-router-dom';
 import { API } from '../config';
+import ReactGA from 'react-ga';
 
 const List = ({
   setSelectedPlayers,
@@ -79,6 +80,12 @@ const List = ({
               player={player}
               handleSelectPlayer={handleSelectPlayer}
               selectedPlayers={selectedPlayers}
+              onClick={() =>
+                ReactGA.event({
+                  category: 'Player Select',
+                  action: 'click',
+                })
+              }
             />
           );
         })}
