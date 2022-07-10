@@ -5,8 +5,8 @@ import GlobalStyle from './styles/GlobalStyle';
 import { ThemeProvider } from 'styled-components';
 import theme from './styles/theme';
 import { HelmetProvider } from 'react-helmet-async';
-import ReactGA from 'react-ga';
-ReactGA.initialize('UA-12341234-1');
+import ReactGA from 'react-ga4';
+ReactGA.initialize('G-HBKS6ZYRZF');
 
 ReactDOM.render(
   <>

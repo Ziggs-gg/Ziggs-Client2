@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
+import ReactGA from 'react-ga4';
 
 const TeamCard = ({
   team: { imgPath, ptID, region, splitSeason, teamFullName },
@@ -20,6 +21,11 @@ const TeamCard = ({
     <CardLayout
       onClick={() => {
         handleSelectTeam(ptID);
+        !isSelected &&
+          ReactGA.event({
+            category: 'Click event',
+            action: 'Team Select',
+          });
       }}
       isSelected={isSelected}
       orderNumber={orderNumber}

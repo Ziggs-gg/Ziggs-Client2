@@ -5,7 +5,7 @@ import PlayerCard from '../pages/ComparePlayer/components/playerList/PlayerCard'
 import TeamCard from '../pages/CompareTeam/components/teamList/TeamCard';
 import { useLocation } from 'react-router-dom';
 import { API } from '../config';
-import ReactGA from 'react-ga';
+import ReactGA from 'react-ga4';
 
 const List = ({
   setSelectedPlayers,
@@ -49,6 +49,10 @@ const List = ({
         .catch(Error => {
           console.error('err:', Error);
         });
+      ReactGA.event({
+        category: 'page view',
+        action: 'Player Page',
+      });
     };
 
     const fetchTeamData = () => {
@@ -60,6 +64,10 @@ const List = ({
         .catch(Error => {
           console.error('err:', Error);
         });
+      ReactGA.event({
+        category: 'page view',
+        action: 'Team Page',
+      });
     };
 
     location.pathname === '/compare/player' && fetchPlayerData();
@@ -80,12 +88,6 @@ const List = ({
               player={player}
               handleSelectPlayer={handleSelectPlayer}
               selectedPlayers={selectedPlayers}
-              onClick={() =>
-                ReactGA.event({
-                  category: 'Player List',
-                  action: 'Player Select',
-                })
-              }
             />
           );
         })}
