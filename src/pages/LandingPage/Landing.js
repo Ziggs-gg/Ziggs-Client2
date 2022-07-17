@@ -22,7 +22,10 @@ const Landing = () => {
           property="og:description"
           content="여기를 눌러 링크를 확인하세요."
         />
-        <meta property="og:image" content="/images/VERSUSPS_Symbol.png" />
+        <meta
+          property="og:image"
+          content="https://user-images.githubusercontent.com/73605822/167045509-e0e7571a-bb6a-4411-9ad3-811a940cff4f.png"
+        />
         <meta property="og:url" content="versus.ps/" />
         <meta property="og:site_name" content="VERSUS.PS" />
       </Helmet>
