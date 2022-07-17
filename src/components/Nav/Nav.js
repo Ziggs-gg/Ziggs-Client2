@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+import ReactGA from 'react-ga4';
 import ViewToggle from './components/ViewToggle';
 import YearSelect from './components/YearSelect';
 import SeasonSelect from './components/SeasonSelect';
 import LeagueSelect from './components/LeagueSelect';
 import RoleSelect from './components/RoleSelect';
-import { useNavigate } from 'react-router-dom';
 
 const Nav = () => {
   const navigate = useNavigate();
@@ -32,6 +33,35 @@ const Nav = () => {
   useEffect(() => {
     navigate(queryString);
   }, [navigate, viewToggle, queryString]);
+
+  useEffect(() => {
+    if (viewToggle === false) {
+      if (role.length && league.length !== 0) {
+        for (let i = 0; i < league.length; i++) {
+          ReactGA.event({
+            category: 'filter',
+            action: `select ${league[i]}`,
+          });
+        }
+
+        for (let i = 0; i < role.length; i++) {
+          ReactGA.event({
+            category: 'filter',
+            action: `select ${role[i]}`,
+          });
+        }
+      }
+    } else {
+      if (league.length !== 0) {
+        for (let i = 0; i < league.length; i++) {
+          ReactGA.event({
+            category: 'filter',
+            action: `select ${league[i]}`,
+          });
+        }
+      }
+    }
+  }, [league, role, viewToggle]);
 
   const handleYearChange = event => {
     const { value } = event.target;

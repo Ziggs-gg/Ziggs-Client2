@@ -3,6 +3,21 @@ import styled from 'styled-components';
 import theme from '../../../styles/theme.js';
 
 const ChartHeatmap = ({ chartData }) => {
+  const backgroundColorGreen = [
+    theme.green.greenMain,
+    theme.green.greenB80,
+    theme.green.greenB60,
+    theme.green.greenB40,
+    theme.green.greenOPA20,
+  ];
+
+  const backgroundColorOrange = [
+    theme.orange.orangeMain,
+    theme.orange.orangeB80,
+    theme.orange.orangeB60,
+    theme.orange.orangeB40,
+    theme.orange.orangeOPA20,
+  ];
   let firstName = chartData[0]?.ptID.split('-');
   let secondName = chartData[5]?.ptID.split('-');
 
@@ -30,70 +45,170 @@ const ChartHeatmap = ({ chartData }) => {
             </HeatTr>
           )}
           <HeatTr>
-            <FirstTeamTd>
+            <FirstTeamTd
+              style={{
+                background:
+                  backgroundColorGreen[chartData[0]?.AVG_CP.split('/')[1] - 1],
+              }}
+            >
               {chartData[0]?.AVG_CP.split('/')[0] ?? '-'}
             </FirstTeamTd>
-            <FirstTeamTd>
+            <FirstTeamTd
+              style={{
+                background:
+                  backgroundColorGreen[chartData[1]?.AVG_CP.split('/')[1] - 1],
+              }}
+            >
               {chartData[1]?.AVG_CP.split('/')[0] ?? '-'}
             </FirstTeamTd>
-            <FirstTeamTd>
+            <FirstTeamTd
+              style={{
+                background:
+                  backgroundColorGreen[chartData[2]?.AVG_CP.split('/')[1] - 1],
+              }}
+            >
               {chartData[2]?.AVG_CP.split('/')[0] ?? '-'}
             </FirstTeamTd>
-            <FirstTeamTd>
+            <FirstTeamTd
+              style={{
+                background:
+                  backgroundColorGreen[chartData[3]?.AVG_CP.split('/')[1] - 1],
+              }}
+            >
               {chartData[3]?.AVG_CP.split('/')[0] ?? '-'}
             </FirstTeamTd>
-            <FirstTeamTd>
+            <FirstTeamTd
+              style={{
+                background:
+                  backgroundColorGreen[chartData[4]?.AVG_CP.split('/')[1] - 1],
+              }}
+            >
               {chartData[4]?.AVG_CP.split('/')[0] ?? '-'}
             </FirstTeamTd>
           </HeatTr>
           <HeatTr>
-            <FirstTeamTd>
+            <FirstTeamTd
+              style={{
+                background:
+                  backgroundColorGreen[chartData[0]?.AVG_SA.split('/')[1] - 1],
+              }}
+            >
               {chartData[0]?.AVG_SA.split('/')[0] ?? '-'}
             </FirstTeamTd>
-            <FirstTeamTd>
+            <FirstTeamTd
+              style={{
+                background:
+                  backgroundColorGreen[chartData[1]?.AVG_SA.split('/')[1] - 1],
+              }}
+            >
               {chartData[1]?.AVG_SA.split('/')[0] ?? '-'}
             </FirstTeamTd>
-            <FirstTeamTd>
+            <FirstTeamTd
+              style={{
+                background:
+                  backgroundColorGreen[chartData[2]?.AVG_SA.split('/')[1] - 1],
+              }}
+            >
               {chartData[2]?.AVG_SA.split('/')[0] ?? '-'}
             </FirstTeamTd>
-            <FirstTeamTd>
+            <FirstTeamTd
+              style={{
+                background:
+                  backgroundColorGreen[chartData[3]?.AVG_SA.split('/')[1] - 1],
+              }}
+            >
               {chartData[3]?.AVG_SA.split('/')[0] ?? '-'}
             </FirstTeamTd>
-            <FirstTeamTd>
+            <FirstTeamTd
+              style={{
+                background:
+                  backgroundColorGreen[chartData[4]?.AVG_SA.split('/')[1] - 1],
+              }}
+            >
               {chartData[4]?.AVG_SA.split('/')[0] ?? '-'}
             </FirstTeamTd>
           </HeatTr>
           <HeatTr>
-            <FirstTeamTd>
+            <FirstTeamTd
+              style={{
+                background:
+                  backgroundColorGreen[chartData[0]?.AVG_EP.split('/')[1] - 1],
+              }}
+            >
               {chartData[0]?.AVG_EP.split('/')[0] ?? '-'}
             </FirstTeamTd>
-            <FirstTeamTd>
+            <FirstTeamTd
+              style={{
+                background:
+                  backgroundColorGreen[chartData[1]?.AVG_EP.split('/')[1] - 1],
+              }}
+            >
               {chartData[1]?.AVG_EP.split('/')[0] ?? '-'}
             </FirstTeamTd>
-            <FirstTeamTd>
+            <FirstTeamTd
+              style={{
+                background:
+                  backgroundColorGreen[chartData[2]?.AVG_EP.split('/')[1] - 1],
+              }}
+            >
               {chartData[2]?.AVG_EP.split('/')[0] ?? '-'}
             </FirstTeamTd>
-            <FirstTeamTd>
+            <FirstTeamTd
+              style={{
+                background:
+                  backgroundColorGreen[chartData[3]?.AVG_EP.split('/')[1] - 1],
+              }}
+            >
               {chartData[3]?.AVG_EP.split('/')[0] ?? '-'}
             </FirstTeamTd>
-            <FirstTeamTd>
+            <FirstTeamTd
+              style={{
+                background:
+                  backgroundColorGreen[chartData[4]?.AVG_EP.split('/')[1] - 1],
+              }}
+            >
               {chartData[4]?.AVG_EP.split('/')[0] ?? '-'}
             </FirstTeamTd>
           </HeatTr>
           <HeatTr>
-            <FirstTeamTd>
+            <FirstTeamTd
+              style={{
+                background:
+                  backgroundColorGreen[chartData[0]?.AVG_VC.split('/')[1] - 1],
+              }}
+            >
               {chartData[0]?.AVG_VC?.split('/')[0] ?? '-'}
             </FirstTeamTd>
-            <FirstTeamTd>
+            <FirstTeamTd
+              style={{
+                background:
+                  backgroundColorGreen[chartData[1]?.AVG_VC.split('/')[1] - 1],
+              }}
+            >
               {chartData[1]?.AVG_VC?.split('/')[0] ?? '-'}
             </FirstTeamTd>
-            <FirstTeamTd>
+            <FirstTeamTd
+              style={{
+                background:
+                  backgroundColorGreen[chartData[2]?.AVG_VC.split('/')[1] - 1],
+              }}
+            >
               {chartData[2]?.AVG_VC?.split('/')[0] ?? '-'}
             </FirstTeamTd>
-            <FirstTeamTd>
+            <FirstTeamTd
+              style={{
+                background:
+                  backgroundColorGreen[chartData[3]?.AVG_VC.split('/')[1] - 1],
+              }}
+            >
               {chartData[3]?.AVG_VC?.split('/')[0] ?? '-'}
             </FirstTeamTd>
-            <FirstTeamTd>
+            <FirstTeamTd
+              style={{
+                background:
+                  backgroundColorGreen[chartData[4]?.AVG_VC.split('/')[1] - 1],
+              }}
+            >
               {chartData[4]?.AVG_VC?.split('/')[0] ?? '-'}
             </FirstTeamTd>
           </HeatTr>
@@ -121,73 +236,183 @@ const ChartHeatmap = ({ chartData }) => {
           )}
           <HeatTr>
             <ColumnLabel>전투력</ColumnLabel>
-            <SecondTeamTd>
+            <SecondTeamTd
+              style={{
+                background:
+                  backgroundColorOrange[chartData[5]?.AVG_CP.split('/')[1] - 1],
+              }}
+            >
               {chartData[5]?.AVG_CP.split('/')[0] ?? '-'}
             </SecondTeamTd>
-            <SecondTeamTd>
+            <SecondTeamTd
+              style={{
+                background:
+                  backgroundColorOrange[chartData[6]?.AVG_CP.split('/')[1] - 1],
+              }}
+            >
               {chartData[6]?.AVG_CP.split('/')[0] ?? '-'}
             </SecondTeamTd>
-            <SecondTeamTd>
+            <SecondTeamTd
+              style={{
+                background:
+                  backgroundColorOrange[chartData[7]?.AVG_CP.split('/')[1] - 1],
+              }}
+            >
               {chartData[7]?.AVG_CP.split('/')[0] ?? '-'}
             </SecondTeamTd>
-            <SecondTeamTd>
+            <SecondTeamTd
+              style={{
+                background:
+                  backgroundColorOrange[chartData[8]?.AVG_CP.split('/')[1] - 1],
+              }}
+            >
               {chartData[8]?.AVG_CP.split('/')[0] ?? '-'}
             </SecondTeamTd>
-            <SecondTeamTd>
+            <SecondTeamTd
+              style={{
+                background:
+                  backgroundColorOrange[chartData[9]?.AVG_CP.split('/')[1] - 1],
+              }}
+            >
               {chartData[9]?.AVG_CP.split('/')[0] ?? '-'}
             </SecondTeamTd>
           </HeatTr>
           <HeatTr>
             <ColumnLabel>생존력</ColumnLabel>
-            <SecondTeamTd>
+            <SecondTeamTd
+              style={{
+                background:
+                  backgroundColorOrange[chartData[5]?.AVG_SA.split('/')[1] - 1],
+              }}
+            >
               {chartData[5]?.AVG_SA.split('/')[0] ?? '-'}
             </SecondTeamTd>
-            <SecondTeamTd>
+            <SecondTeamTd
+              style={{
+                background:
+                  backgroundColorOrange[chartData[6]?.AVG_SA.split('/')[1] - 1],
+              }}
+            >
               {chartData[6]?.AVG_SA.split('/')[0] ?? '-'}
             </SecondTeamTd>
-            <SecondTeamTd>
+            <SecondTeamTd
+              style={{
+                background:
+                  backgroundColorOrange[chartData[7]?.AVG_SA.split('/')[1] - 1],
+              }}
+            >
               {chartData[7]?.AVG_SA.split('/')[0] ?? '-'}
             </SecondTeamTd>
-            <SecondTeamTd>
+            <SecondTeamTd
+              style={{
+                background:
+                  backgroundColorOrange[chartData[8]?.AVG_SA.split('/')[1] - 1],
+              }}
+            >
               {chartData[8]?.AVG_SA.split('/')[0] ?? '-'}
             </SecondTeamTd>
-            <SecondTeamTd>
+            <SecondTeamTd
+              style={{
+                background:
+                  backgroundColorOrange[chartData[9]?.AVG_SA.split('/')[1] - 1],
+              }}
+            >
               {chartData[9]?.AVG_SA.split('/')[0] ?? '-'}
             </SecondTeamTd>
           </HeatTr>
           <HeatTr>
             <ColumnLabel>골드수급력</ColumnLabel>
-            <SecondTeamTd>
+            <SecondTeamTd
+              style={{
+                background:
+                  backgroundColorOrange[chartData[5]?.AVG_EP.split('/')[1] - 1],
+              }}
+            >
               {chartData[5]?.AVG_EP.split('/')[0] ?? '-'}
             </SecondTeamTd>
-            <SecondTeamTd>
+            <SecondTeamTd
+              style={{
+                background:
+                  backgroundColorOrange[chartData[6]?.AVG_EP.split('/')[1] - 1],
+              }}
+            >
               {chartData[6]?.AVG_EP.split('/')[0] ?? '-'}
             </SecondTeamTd>
-            <SecondTeamTd>
+            <SecondTeamTd
+              style={{
+                background:
+                  backgroundColorOrange[chartData[7]?.AVG_EP.split('/')[1] - 1],
+              }}
+            >
               {chartData[7]?.AVG_EP.split('/')[0] ?? '-'}
             </SecondTeamTd>
-            <SecondTeamTd>
+            <SecondTeamTd
+              style={{
+                background:
+                  backgroundColorOrange[chartData[8]?.AVG_EP.split('/')[1] - 1],
+              }}
+            >
               {chartData[8]?.AVG_EP.split('/')[0] ?? '-'}
             </SecondTeamTd>
-            <SecondTeamTd>
+            <SecondTeamTd
+              style={{
+                background:
+                  backgroundColorOrange[chartData[9]?.AVG_EP.split('/')[1] - 1],
+              }}
+            >
               {chartData[9]?.AVG_EP.split('/')[0] ?? '-'}
             </SecondTeamTd>
           </HeatTr>
           <HeatTr>
             <ColumnLabel>시야장악력</ColumnLabel>
-            <SecondTeamTd>
+            <SecondTeamTd
+              style={{
+                background:
+                  backgroundColorOrange[
+                    chartData[5]?.AVG_VC?.split('/')[1] - 1
+                  ],
+              }}
+            >
               {chartData[5]?.AVG_VC?.split('/')[0] ?? '-'}
             </SecondTeamTd>
-            <SecondTeamTd>
+            <SecondTeamTd
+              style={{
+                background:
+                  backgroundColorOrange[
+                    chartData[6]?.AVG_VC?.split('/')[1] - 1
+                  ],
+              }}
+            >
               {chartData[6]?.AVG_VC?.split('/')[0] ?? '-'}
             </SecondTeamTd>
-            <SecondTeamTd>
+            <SecondTeamTd
+              style={{
+                background:
+                  backgroundColorOrange[
+                    chartData[7]?.AVG_VC?.split('/')[1] - 1
+                  ],
+              }}
+            >
               {chartData[7]?.AVG_VC?.split('/')[0] ?? '-'}
             </SecondTeamTd>
-            <SecondTeamTd>
+            <SecondTeamTd
+              style={{
+                background:
+                  backgroundColorOrange[
+                    chartData[8]?.AVG_VC?.split('/')[1] - 1
+                  ],
+              }}
+            >
               {chartData[8]?.AVG_VC?.split('/')[0] ?? '-'}
             </SecondTeamTd>
-            <SecondTeamTd>
+            <SecondTeamTd
+              style={{
+                background:
+                  backgroundColorOrange[
+                    chartData[9]?.AVG_VC?.split('/')[1] - 1
+                  ],
+              }}
+            >
               {chartData[9]?.AVG_VC?.split('/')[0] ?? '-'}
             </SecondTeamTd>
           </HeatTr>

@@ -1,10 +1,31 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import { Helmet } from 'react-helmet-async';
 import List from '../../components/List';
 
 const Landing = () => {
   return (
     <>
+      <Helmet>
+        <title>VERSUS Pro Stats</title>
+        <meta
+          name="description"
+          content="VERSUS.PS는 리그오브레전드 데이터를 시각화한 차트를 제공하고 있습니다. 응원하는 선수 혹은 구단의 데이터를 한 눈에 살펴보세요.라이벌 선수 혹은 구단의 지표를 함께 비교해보실 수 있습니다."
+        />
+        <meta
+          name="keywords"
+          content="롤 지표사이트, LCK, LPL, LEC, pro stats, league of legend"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="VERSUS.PS" />
+        <meta
+          property="og:description"
+          content="여기를 눌러 링크를 확인하세요."
+        />
+        <meta property="og:image" content="/images/VERSUSPS_Symbol.png" />
+        <meta property="og:url" content="versus.ps/" />
+        <meta property="og:site_name" content="VERSUS.PS" />
+      </Helmet>
       <List />
       <ContentsLayout>
         <MainContents>
