@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import ReactTooltip from 'react-tooltip';
 
 const LeagueSelect = ({ handleLeagueSelect, league, setLeague }) => {
   return (
@@ -18,15 +19,19 @@ const LeagueSelect = ({ handleLeagueSelect, league, setLeague }) => {
           const isSelected = league.includes(data.league);
 
           return (
-            <ListItem
-              key={idx}
-              onClick={() => {
-                handleLeagueSelect(data.league, isSelected);
-              }}
-              isSelected={isSelected}
-            >
-              <LeagueLogo src={data.image} />
-            </ListItem>
+            <>
+              <ReactTooltip type="dark" />
+              <ListItem
+                key={idx}
+                onClick={() => {
+                  handleLeagueSelect(data.league, isSelected);
+                }}
+                isSelected={isSelected}
+                data-tip={data.league}
+              >
+                <LeagueLogo src={data.image} />
+              </ListItem>
+            </>
           );
         })}
       </LeagueList>
@@ -65,6 +70,11 @@ const SelectAll = styled.span`
 
 const LeagueList = styled.ul`
   display: flex;
+  opacity: 1 !important;
+
+  .__react_component_tooltip.show {
+    opacity: 1;
+  }
 `;
 
 const ListItem = styled.li`
