@@ -174,7 +174,7 @@ const ChartHeatmap = ({ chartData }) => {
             <FirstTeamTd
               style={{
                 background:
-                  backgroundColorGreen[chartData[0]?.AVG_VC.split('/')[1] - 1],
+                  backgroundColorGreen[chartData[0]?.AVG_VC?.split('/')[1] - 1],
               }}
             >
               {chartData[0]?.AVG_VC?.split('/')[0] ?? '-'}
@@ -182,7 +182,7 @@ const ChartHeatmap = ({ chartData }) => {
             <FirstTeamTd
               style={{
                 background:
-                  backgroundColorGreen[chartData[1]?.AVG_VC.split('/')[1] - 1],
+                  backgroundColorGreen[chartData[1]?.AVG_VC?.split('/')[1] - 1],
               }}
             >
               {chartData[1]?.AVG_VC?.split('/')[0] ?? '-'}
@@ -190,7 +190,7 @@ const ChartHeatmap = ({ chartData }) => {
             <FirstTeamTd
               style={{
                 background:
-                  backgroundColorGreen[chartData[2]?.AVG_VC.split('/')[1] - 1],
+                  backgroundColorGreen[chartData[2]?.AVG_VC?.split('/')[1] - 1],
               }}
             >
               {chartData[2]?.AVG_VC?.split('/')[0] ?? '-'}
@@ -198,7 +198,7 @@ const ChartHeatmap = ({ chartData }) => {
             <FirstTeamTd
               style={{
                 background:
-                  backgroundColorGreen[chartData[3]?.AVG_VC.split('/')[1] - 1],
+                  backgroundColorGreen[chartData[3]?.AVG_VC?.split('/')[1] - 1],
               }}
             >
               {chartData[3]?.AVG_VC?.split('/')[0] ?? '-'}
@@ -206,7 +206,7 @@ const ChartHeatmap = ({ chartData }) => {
             <FirstTeamTd
               style={{
                 background:
-                  backgroundColorGreen[chartData[4]?.AVG_VC.split('/')[1] - 1],
+                  backgroundColorGreen[chartData[4]?.AVG_VC?.split('/')[1] - 1],
               }}
             >
               {chartData[4]?.AVG_VC?.split('/')[0] ?? '-'}
