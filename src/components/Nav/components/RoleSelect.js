@@ -17,10 +17,9 @@ const RoleSelect = ({ handleRoleSelect, role, setRole }) => {
         {ROLE_DATA.map((data, idx) => {
           const isSelected = role.includes(data.name);
           return (
-            <>
+            <ListItemWrapper key={idx}>
               <ReactTooltip />
               <ListItem
-                key={idx}
                 onClick={() => {
                   handleRoleSelect(data.name, isSelected);
                 }}
@@ -29,7 +28,7 @@ const RoleSelect = ({ handleRoleSelect, role, setRole }) => {
               >
                 <RoleLogo src={data.image} />
               </ListItem>
-            </>
+            </ListItemWrapper>
           );
         })}
       </RoleList>
@@ -78,6 +77,8 @@ const ListItem = styled.li`
       opacity: 1;
     `}
 `;
+
+const ListItemWrapper = styled.div``;
 
 const RoleLogo = styled.img`
   width: 24px;

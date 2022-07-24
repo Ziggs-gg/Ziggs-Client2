@@ -22,7 +22,6 @@ const HeatMapContainer = ({ selectedPlayers }) => {
       .catch(Error => {
         console.error(Error);
       });
-    console.log(heatMapData);
   }, [selectedPlayers]);
 
   return (

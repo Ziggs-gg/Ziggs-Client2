@@ -16,15 +16,6 @@ const ChartContainer = ({ selectedTeams }) => {
   const [chartData, setChartData] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  // let chartUrl = '';
-  // if (selectedTeams.length == 0) {
-  //   chartUrl = `${API.TEAM_CHART}ptID=`;
-  // } else if (selectedTeams.length == 1) {
-  //   chartUrl = `${API.TEAM_CHART}ptID=${selectedTeams[0]}`;
-  // } else if (selectedTeams.length == 2) {
-  //   chartUrl = `${API.TEAM_CHART}ptID=${selectedTeams[0]}&ptID=${selectedTeams[1]}`;
-  // }
-
   useEffect(() => {
     const querys = [];
     selectedTeams.forEach(phRole => {

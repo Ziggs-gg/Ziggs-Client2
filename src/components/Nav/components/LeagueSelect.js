@@ -17,12 +17,10 @@ const LeagueSelect = ({ handleLeagueSelect, league, setLeague }) => {
       <LeagueList>
         {LOGO_DATA.map((data, idx) => {
           const isSelected = league.includes(data.league);
-
           return (
-            <>
+            <ListItemWrapper key={idx}>
               <ReactTooltip type="dark" />
               <ListItem
-                key={idx}
                 onClick={() => {
                   handleLeagueSelect(data.league, isSelected);
                 }}
@@ -31,7 +29,7 @@ const LeagueSelect = ({ handleLeagueSelect, league, setLeague }) => {
               >
                 <LeagueLogo src={data.image} />
               </ListItem>
-            </>
+            </ListItemWrapper>
           );
         })}
       </LeagueList>
@@ -86,6 +84,8 @@ const ListItem = styled.li`
       opacity: 1;
     `}
 `;
+
+const ListItemWrapper = styled.div``;
 
 const LeagueLogo = styled.img`
   width: 24px;
