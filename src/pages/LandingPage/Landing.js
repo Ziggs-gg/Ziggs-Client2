@@ -4,7 +4,6 @@ import { Helmet } from 'react-helmet-async';
 import List from '../../components/List';
 
 const Landing = () => {
-  const screenWidth = window.innerWidth;
   return (
     <>
       <Helmet>
