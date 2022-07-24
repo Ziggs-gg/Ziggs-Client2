@@ -153,7 +153,6 @@ const NavLayout = styled.nav`
   align-items: center;
   background-color: ${props => props.theme.black.black93};
   height: 60px;
-  width: 100%;
 `;
 
 const Title = styled.div`

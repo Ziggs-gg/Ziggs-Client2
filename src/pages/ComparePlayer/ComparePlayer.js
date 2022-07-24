@@ -19,8 +19,6 @@ const ComparePlayer = () => {
       <SEOMetaTag
         mainTitle={HELMET_CONTENT.mainTitle}
         pageTitle={HELMET_CONTENT.pageTitle}
-        description={HELMET_CONTENT.description}
-        keywords={HELMET_CONTENT.keywords}
       />
       <List
         setSelectedPlayers={setSelectedPlayers}

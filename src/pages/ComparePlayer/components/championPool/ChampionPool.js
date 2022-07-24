@@ -30,16 +30,14 @@ const ChampionPoolLayout = styled.div`
   justify-content: flex-start;
   align-content: flex-start;
   flex-wrap: wrap;
-  width: 1360px;
   height: 496px;
-  margin: 0 auto;
 `;
 
 const ChampionPoolEmpty = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 1360px;
+  width: 100%;
   height: 496px;
   margin: 0 auto;
   color: ${props => props.theme.white.white80};

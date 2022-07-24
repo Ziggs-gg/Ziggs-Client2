@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import ChartCamp from '../../../components/charts/team/ChartCamp';
 import ChartLine from '../../../components/charts/team/ChartLine';
 import ChartIndicators from '../../../components/charts/team/ChartIndicators';
@@ -10,7 +10,7 @@ import Chartimportance from '../../../components/charts/team/Chartimportance';
 import Chart from 'chart.js/auto';
 import axios from 'axios';
 import { API } from '../../../config';
-import { Loading } from 'react-loading-dot';
+import LoadingDots from '../../../components/charts/LoadingDots';
 
 const ChartContainer = ({ selectedTeams }) => {
   const [chartData, setChartData] = useState([]);
@@ -38,11 +38,7 @@ const ChartContainer = ({ selectedTeams }) => {
 
   return (
     <ChartsLayout>
-      {loading && (
-        <LoadingComponents loading={loading.toString()}>
-          <Loading size="1rem" />
-        </LoadingComponents>
-      )}
+      {loading && <LoadingDots />}
       {chartData.WinRatebySide && (
         <ChartCamp chartData={chartData?.WinRatebySide} />
       )}
@@ -71,25 +67,10 @@ const ChartContainer = ({ selectedTeams }) => {
 export default ChartContainer;
 
 const ChartsLayout = styled.div`
+  position: relative;
   display: flex;
   flex-wrap: wrap;
-  width: 1360px;
   height: 944px;
-  margin: 0 auto;
   margin-top: 16px;
   margin-bottom: 16px;
-`;
-
-const LoadingComponents = styled.div`
-  position: absolute;
-  width: 1360px;
-  height: 944px;
-
-  ${props =>
-    props.loading &&
-    css`
-      backdrop-filter: blur(10px);
-    `}
-
-  z-index:10000;
 `;

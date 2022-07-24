@@ -29,9 +29,7 @@ const SelectedCards = ({ selectedTeams, deleteSelectedTeam }) => {
 export default SelectedCards;
 
 const SelectedCardsLayout = styled.div`
-  width: 1360px;
   height: 304px;
-  margin: 0 auto;
   margin-top: 16px;
   display: flex;
   justify-content: space-between;
@@ -45,7 +43,7 @@ const EmptyCards = styled.div`
   justify-content: flex-start;
   align-content: flex-start;
   flex-wrap: wrap;
-  width: 1360px;
+  width: 100%;
   height: 304px;
   z-index: -1;
 `;

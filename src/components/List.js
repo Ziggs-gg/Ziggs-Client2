@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import PlayerCard from '../pages/ComparePlayer/components/playerList/PlayerCard';
@@ -39,7 +39,7 @@ const List = ({
     }
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const fetchPlayerData = () => {
       axios
         .get(`${API.PLAYER_LIST}${location.search}`)
@@ -137,9 +137,7 @@ const ListLayout = styled.div`
   justify-content: flex-start;
   align-content: flex-start;
   flex-wrap: wrap;
-  width: 1360px;
   height: 432px;
-  margin: 0 auto;
   margin-top: 20px;
   padding: 16px 78px;
   padding-bottom: 0px;
