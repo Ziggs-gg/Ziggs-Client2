@@ -43,7 +43,6 @@ const EmptyCards = styled.div`
   justify-content: flex-start;
   align-content: flex-start;
   flex-wrap: wrap;
-  width: 100%;
   height: 304px;
   z-index: -1;
 `;

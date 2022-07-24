@@ -4,30 +4,11 @@ import { Helmet } from 'react-helmet-async';
 import List from '../../components/List';
 
 const Landing = () => {
+  const screenWidth = window.innerWidth;
   return (
     <>
       <Helmet>
         <title>VERSUS Pro Stats</title>
-        <meta
-          name="description"
-          content="VERSUS.PS는 리그오브레전드 데이터를 시각화한 차트를 제공하고 있습니다. 응원하는 선수 혹은 구단의 데이터를 한 눈에 살펴보세요.라이벌 선수 혹은 구단의 지표를 함께 비교해보실 수 있습니다."
-        />
-        <meta
-          name="keywords"
-          content="롤 지표사이트, LCK, LPL, LEC, pro stats, league of legend"
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="VERSUS.PS" />
-        <meta
-          property="og:description"
-          content="여기를 눌러 링크를 확인하세요."
-        />
-        <meta
-          property="og:image"
-          content="https://user-images.githubusercontent.com/73605822/167045509-e0e7571a-bb6a-4411-9ad3-811a940cff4f.png"
-        />
-        <meta property="og:url" content="versus.ps/" />
-        <meta property="og:site_name" content="VERSUS.PS" />
       </Helmet>
       <List />
 
@@ -73,9 +54,6 @@ const Landing = () => {
         </DescContainer>
       </HowToUse>
       <ListGifContents>
-        {/* <BrowserMockUp width="1016" height="488">
-            <ListGif src="/images/landingGif/Select.gif" />
-          </BrowserMockUp> */}
         <GifDescText>
           여러 선수 혹은 구단을 선택하실 수 있습니다.{'\n'}쉽게 프로들의 스탯을
           비교해보세요.
@@ -94,6 +72,7 @@ const MainContents = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
   height: 800px;
 `;
 
@@ -134,21 +113,14 @@ const MainSmallDesc = styled.p`
 `;
 
 const HowToUse = styled.div`
-  left: 0;
-  width: 100vw;
-  height: 1264px;
-  background-color: #171715;
-  /* background-color: white; */
+  /* background-color: #171715; */
+  padding: 148px 0;
 `;
 
 const DescContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 144px;
-  width: 1360px;
-  height: 100%;
-  margin: 0 auto;
-  padding: 248px 0;
 `;
 
 const SwitchToggle = styled.img`
@@ -198,9 +170,8 @@ const ListGifContents = styled.div`
   align-items: center;
   flex-direction: column;
   margin: 0 auto;
-  padding-top: 32px;
-  width: 1360px;
-  height: 670px;
+  padding: 80px 0;
+  width: 100%;
 `;
 
 const ListGif = styled.img`

@@ -71,6 +71,5 @@ const ChartsLayout = styled.div`
   display: flex;
   flex-wrap: wrap;
   height: 944px;
-  margin-top: 16px;
   margin-bottom: 16px;
 `;

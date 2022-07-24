@@ -6,6 +6,7 @@ import { API } from '../../../../config';
 
 const SelectedPlayer = ({ player, selectedPlayers, deleteSelectedPlayer }) => {
   const [playerData, setPlayerData] = useState();
+
   const [buttonVisible, setButtonVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const playerInfoArr = playerData?.phRole?.split('-');
@@ -44,13 +45,13 @@ const SelectedPlayer = ({ player, selectedPlayers, deleteSelectedPlayer }) => {
       },
     ];
   }
-
+  console.log(playerData);
   useEffect(() => {
     setLoading(true);
     axios
       .get(`${API.SELECTED_PLAYER}phRole=${player}`)
       .then(Response => {
-        setPlayerData(Response.data);
+        setPlayerData(Response.data[0]);
         setLoading(false);
       })
       .catch(Error => {

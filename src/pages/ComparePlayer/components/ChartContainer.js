@@ -81,5 +81,4 @@ const ChartsLayout = styled.div`
   flex-wrap: wrap;
   height: 944px;
   margin-bottom: 16px;
-  background-color: #131310;
 `;

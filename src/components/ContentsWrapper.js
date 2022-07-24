@@ -8,5 +8,5 @@ const ContentsWrapper = ({ children }) => {
 export default ContentsWrapper;
 
 const ContentsWrapperLayout = styled.div`
-  width: 100%;
+  max-width: 100%;
 `;
