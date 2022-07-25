@@ -45,7 +45,7 @@ const SelectedPlayer = ({ player, selectedPlayers, deleteSelectedPlayer }) => {
       },
     ];
   }
-  console.log(playerData);
+
   useEffect(() => {
     setLoading(true);
     axios
