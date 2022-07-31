@@ -127,4 +127,9 @@ export default ChartPolar;
 const PolarLayout = styled.div`
   width: 316px;
   height: 304px;
+
+  @media screen and (max-width: 428px) {
+    width: 256px;
+    height: 286px;
+  }
 `;

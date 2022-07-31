@@ -31,6 +31,13 @@ const ChampionPoolLayout = styled.div`
   align-content: flex-start;
   flex-wrap: wrap;
   height: 496px;
+  margin: 0 auto;
+
+  @media screen and (max-width: 428px) {
+    width: 304px;
+    height: 960px;
+    margin: 0 auto;
+  }
 `;
 
 const ChampionPoolEmpty = styled.div`
@@ -43,4 +50,16 @@ const ChampionPoolEmpty = styled.div`
   color: ${props => props.theme.white.white80};
   font-size: 22px;
   font-weight: 900;
+
+  @media screen and (max-width: 428px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 304px;
+    height: 960px;
+    margin: 0 auto;
+    color: ${props => props.theme.white.white80};
+    font-size: 22px;
+    font-weight: 900;
+  }
 `;

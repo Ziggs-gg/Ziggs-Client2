@@ -6,8 +6,17 @@ import Landing from './pages/LandingPage/Landing';
 import CompareTeam from './pages/CompareTeam/CompareTeam';
 import ComparePlayer from './pages/ComparePlayer/ComparePlayer';
 import Footer from './components/Footer/Footer';
+import MobileFooter from './components/Footer/mobile/MobileFooter';
+import { useMediaQuery } from 'react-responsive';
 
 function Router() {
+  const isPc = useMediaQuery({
+    query: '(min-width:429px)',
+  });
+
+  const isMobile = useMediaQuery({
+    query: '(max-width:428px)',
+  });
   return (
     <BrowserRouter>
       <ContentsWrapper>
@@ -19,7 +28,8 @@ function Router() {
             <Route path="/compare/team" element={<CompareTeam />} />
           </Routes>
         </MainContents>
-        <Footer />
+        {isPc && <Footer />}
+        {isMobile && <MobileFooter />}
       </ContentsWrapper>
     </BrowserRouter>
   );

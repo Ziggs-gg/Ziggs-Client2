@@ -152,4 +152,9 @@ export default ChartBubble;
 const BubbleLayout = styled.div`
   width: 432px;
   height: 304px;
+
+  @media screen and (max-width: 428px) {
+    width: 256px;
+    height: 286px;
+  }
 `;

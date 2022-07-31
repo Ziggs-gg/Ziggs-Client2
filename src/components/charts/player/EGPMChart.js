@@ -91,6 +91,11 @@ const BarLayout = styled.div`
   width: 200px;
   height: 304px;
   margin: 0 32px 0 0;
+
+  @media screen and (max-width: 428px) {
+    width: 256px;
+    height: 286px;
+  }
 `;
 
 export default EGPMChart;
