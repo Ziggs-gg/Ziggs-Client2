@@ -1,6 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
-import { css } from 'styled-components';
+import styled, { css } from 'styled-components';
+import ReactTooltip from 'react-tooltip';
 
 const LeagueSelect = ({ handleLeagueSelect, league, setLeague }) => {
   return (
@@ -17,17 +17,19 @@ const LeagueSelect = ({ handleLeagueSelect, league, setLeague }) => {
       <LeagueList>
         {LOGO_DATA.map((data, idx) => {
           const isSelected = league.includes(data.league);
-
           return (
-            <ListItem
-              key={idx}
-              onClick={() => {
-                handleLeagueSelect(data.league, isSelected);
-              }}
-              isSelected={isSelected}
-            >
-              <LeagueLogo src={data.image} />
-            </ListItem>
+            <ListItemWrapper key={idx}>
+              <ReactTooltip type="dark" />
+              <ListItem
+                onClick={() => {
+                  handleLeagueSelect(data.league, isSelected);
+                }}
+                isSelected={isSelected}
+                data-tip={data.league}
+              >
+                <LeagueLogo src={data.image} />
+              </ListItem>
+            </ListItemWrapper>
           );
         })}
       </LeagueList>
@@ -66,6 +68,11 @@ const SelectAll = styled.span`
 
 const LeagueList = styled.ul`
   display: flex;
+  opacity: 1 !important;
+
+  .__react_component_tooltip.show {
+    opacity: 1;
+  }
 `;
 
 const ListItem = styled.li`
@@ -77,6 +84,8 @@ const ListItem = styled.li`
       opacity: 1;
     `}
 `;
+
+const ListItemWrapper = styled.div``;
 
 const LeagueLogo = styled.img`
   width: 24px;

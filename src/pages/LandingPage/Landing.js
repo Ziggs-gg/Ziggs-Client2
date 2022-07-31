@@ -1,85 +1,77 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import { Helmet } from 'react-helmet-async';
 import List from '../../components/List';
 
 const Landing = () => {
-  console.log('test');
   return (
     <>
+      <Helmet>
+        <title>VERSUS Pro Stats</title>
+      </Helmet>
       <List />
-      <ContentsLayout>
-        <MainContents>
-          <PageImages src="/images/landing/landing.png" />
-          <MainContentsDesc>
-            <MainLargeDesc textColor="white">
-              리그오브레전드 이스포츠
-            </MainLargeDesc>
-            <MainLargeDesc textColor="white">데이터를 한눈에</MainLargeDesc>
-            <MainLargeDesc textColor="red">&nbsp;비교하세요!</MainLargeDesc>
-            <MainSmallDesc>
-              VERSUS.PS는 리그오브레전드 데이터를 시각화한 차트를 제공하고
-              있습니다.{'\n'}응원하는 선수 혹은 구단의 데이터를 한 눈에
-              살펴보세요.{'\n'}라이벌 선수 혹은 구단의 지표를 함께 비교해보실 수
-              있습니다.
-            </MainSmallDesc>
-          </MainContentsDesc>
-        </MainContents>
-        <HowToUse>
-          <DescContainer>
-            <GifContents>
-              <BrowserMockUp width="712" height="343">
-                <GifImg src="/images/landingGif/toggle.gif" />
-              </BrowserMockUp>
 
-              <GifDescText align="left">
-                <SwitchToggle src="/images/landing/SwitchToggle.png" />
-                좌측 상단 토글로{'\n'}선수 비교와 구단 비교를{'\n'}
-                넘나들어보세요.
-              </GifDescText>
-            </GifContents>
-            <GifContents>
-              <GifDescText align="right">
-                <FilterImage src="/images/landing/filterImg.png" />
-                우측 상단 필터를 확인해보세요.{'\n'}지난 시즌의 기록도 확인하실
-                수 있습니다!
-              </GifDescText>
-              <BrowserMockUp width="712" height="343">
-                <GifImg src="/images/landingGif/Filter.gif" />
-              </BrowserMockUp>
-            </GifContents>
-          </DescContainer>
-        </HowToUse>
-        <ListGifContents>
-          {/* <BrowserMockUp width="1016" height="488">
-            <ListGif src="/images/landingGif/Select.gif" />
-          </BrowserMockUp> */}
-          <GifDescText>
-            여러 선수 혹은 구단을 선택하실 수 있습니다.{'\n'}쉽게 프로들의
-            스탯을 비교해보세요.
-          </GifDescText>
-          <BrowserMockUp width="1016" height="488">
-            <ListGif src="/images/landingGif/Select.gif" />
-          </BrowserMockUp>
-        </ListGifContents>
-      </ContentsLayout>
+      <MainContents>
+        <PageImages src="/images/landing/landing.png" />
+        <MainContentsDesc>
+          <MainLargeDesc textColor="white">
+            리그오브레전드 이스포츠
+          </MainLargeDesc>
+          <MainLargeDesc textColor="white">데이터를 한눈에</MainLargeDesc>
+          <MainLargeDesc textColor="red">&nbsp;비교하세요!</MainLargeDesc>
+          <MainSmallDesc>
+            VERSUS.PS는 리그오브레전드 데이터를 시각화한 차트를 제공하고
+            있습니다.{'\n'}응원하는 선수 혹은 구단의 데이터를 한 눈에
+            살펴보세요.{'\n'}라이벌 선수 혹은 구단의 지표를 함께 비교해보실 수
+            있습니다.
+          </MainSmallDesc>
+        </MainContentsDesc>
+      </MainContents>
+      <HowToUse>
+        <DescContainer>
+          <GifContents>
+            <BrowserMockUp width="712" height="343">
+              <GifImg src="/images/landingGif/toggle.gif" />
+            </BrowserMockUp>
+
+            <GifDescText align="left">
+              <SwitchToggle src="/images/landing/SwitchToggle.png" />
+              좌측 상단 토글로{'\n'}선수 비교와 구단 비교를{'\n'}
+              넘나들어보세요.
+            </GifDescText>
+          </GifContents>
+          <GifContents>
+            <GifDescText align="right">
+              <FilterImage src="/images/landing/filterImg.png" />
+              우측 상단 필터를 확인해보세요.{'\n'}지난 시즌의 기록도 확인하실 수
+              있습니다!
+            </GifDescText>
+            <BrowserMockUp width="712" height="343">
+              <GifImg src="/images/landingGif/Filter.gif" />
+            </BrowserMockUp>
+          </GifContents>
+        </DescContainer>
+      </HowToUse>
+      <ListGifContents>
+        <GifDescText>
+          여러 선수 혹은 구단을 선택하실 수 있습니다.{'\n'}쉽게 프로들의 스탯을
+          비교해보세요.
+        </GifDescText>
+        <BrowserMockUp width="1016" height="488">
+          <ListGif src="/images/landingGif/Select.gif" />
+        </BrowserMockUp>
+      </ListGifContents>
     </>
   );
 };
 
 export default Landing;
 
-const ContentsLayout = styled.div`
-  width: 100%;
-  height: auto;
-  margin-top: 16px;
-`;
-
 const MainContents = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 auto;
-  width: 1360px;
+  width: 100%;
   height: 800px;
 `;
 
@@ -120,21 +112,14 @@ const MainSmallDesc = styled.p`
 `;
 
 const HowToUse = styled.div`
-  left: 0;
-  width: 100vw;
-  height: 1264px;
-  background-color: #171715;
-  /* background-color: white; */
+  /* background-color: #171715; */
+  padding: 148px 0;
 `;
 
 const DescContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 144px;
-  width: 1360px;
-  height: 100%;
-  margin: 0 auto;
-  padding: 248px 0;
 `;
 
 const SwitchToggle = styled.img`
@@ -184,9 +169,8 @@ const ListGifContents = styled.div`
   align-items: center;
   flex-direction: column;
   margin: 0 auto;
-  padding-top: 32px;
-  width: 1360px;
-  height: 670px;
+  padding: 80px 0;
+  width: 100%;
 `;
 
 const ListGif = styled.img`

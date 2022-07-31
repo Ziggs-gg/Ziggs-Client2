@@ -20,8 +20,6 @@ const MobileSelectedPlayer = ({
     playerData => playerData === player
   );
 
-  console.log(player);
-
   if (playerData) {
     playerStats = [
       {
@@ -56,7 +54,7 @@ const MobileSelectedPlayer = ({
     axios
       .get(`${API.SELECTED_PLAYER}phRole=${player}`)
       .then(Response => {
-        setPlayerData(Response.data);
+        setPlayerData(Response.data[0]);
         setLoading(false);
       })
       .catch(Error => {

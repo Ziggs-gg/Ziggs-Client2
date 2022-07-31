@@ -54,9 +54,8 @@ const CardsContainer = styled.div`
   justify-content: flex-start;
   align-content: flex-start;
   flex-wrap: wrap;
-  width: 1360px;
   height: 240px;
-  margin: 16px auto;
+  margin: 16px 0;
 
   @media screen and (max-width: 428px) {
     display: flex;
@@ -75,7 +74,6 @@ const EmptyCards = styled.div`
   justify-content: flex-start;
   align-content: flex-start;
   flex-wrap: wrap;
-  width: 1360px;
   height: 240px;
   z-index: -1;
 

@@ -1,7 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
-import { css } from 'styled-components';
-
+import styled, { css } from 'styled-components';
+import ReactTooltip from 'react-tooltip';
 const RoleSelect = ({ handleRoleSelect, role, setRole }) => {
   return (
     <RoleSelectBox>
@@ -18,13 +17,18 @@ const RoleSelect = ({ handleRoleSelect, role, setRole }) => {
         {ROLE_DATA.map((data, idx) => {
           const isSelected = role.includes(data.name);
           return (
-            <ListItem
-              key={idx}
-              onClick={() => handleRoleSelect(data.name, isSelected)}
-              isSelected={isSelected}
-            >
-              <RoleLogo src={data.image} />
-            </ListItem>
+            <ListItemWrapper key={idx}>
+              <ReactTooltip />
+              <ListItem
+                onClick={() => {
+                  handleRoleSelect(data.name, isSelected);
+                }}
+                isSelected={isSelected}
+                data-tip={data.name}
+              >
+                <RoleLogo src={data.image} />
+              </ListItem>
+            </ListItemWrapper>
           );
         })}
       </RoleList>
@@ -73,6 +77,8 @@ const ListItem = styled.li`
       opacity: 1;
     `}
 `;
+
+const ListItemWrapper = styled.div``;
 
 const RoleLogo = styled.img`
   width: 24px;

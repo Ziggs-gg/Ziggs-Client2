@@ -22,9 +22,7 @@ const ChampionPoolLayout = styled.div`
   position: relative;
   display: flex;
   justify-content: space-between;
-  width: 1360px;
   height: 688px;
-  margin: 0 auto;
   margin-bottom: 16px;
   border-top: 3px solid ${props => props.theme.black.black85};
   border-bottom: 3px solid ${props => props.theme.black.black85};
@@ -36,7 +34,6 @@ const Divider = styled.div`
   width: 1px;
   left: 679.5px;
   top: 16px;
-
   background: #353532;
 `;
 
@@ -44,7 +41,7 @@ const ChampionPoolEmpty = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 1360px;
+  width: 100%;
   height: 688px;
   margin: 0 auto;
   margin-bottom: 16px;

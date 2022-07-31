@@ -4,6 +4,7 @@ import SelectedCards from './components/selectedPlayer/SelectedCards';
 import ChartContainer from './components/ChartContainer';
 import HeatMapContainer from './components/heatMap/HeatMapContainer';
 import ChampionPool from './components/championPool/ChampionPool';
+import SEOMetaTag from '../../components/SEOMetaTag';
 
 const ComparePlayer = () => {
   const [selectedPlayers, setSelectedPlayers] = useState([]);
@@ -15,6 +16,10 @@ const ComparePlayer = () => {
 
   return (
     <>
+      <SEOMetaTag
+        mainTitle={HELMET_CONTENT.mainTitle}
+        pageTitle={HELMET_CONTENT.pageTitle}
+      />
       <List
         setSelectedPlayers={setSelectedPlayers}
         selectedPlayers={selectedPlayers}
@@ -32,3 +37,8 @@ const ComparePlayer = () => {
 };
 
 export default ComparePlayer;
+
+const HELMET_CONTENT = {
+  mainTitle: 'VERSUS Pro Stats',
+  pageTitle: '선수 비교',
+};

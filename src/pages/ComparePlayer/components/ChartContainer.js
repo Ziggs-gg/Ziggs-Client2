@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import RadarChart from '../../../components/charts/player/RadarChart';
 import ChartBoxplot from '../../../components/charts/player/ChartBoxplot';
 import WardDataChart from '../../../components/charts/player/WardDataChart';
@@ -22,6 +22,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css/scrollbar';
+import LoadingDots from '../../../components/charts/LoadingDots';
 
 const ChartContainer = ({ selectedPlayers }) => {
   const [chartData, setChartData] = useState([]);
@@ -34,20 +35,6 @@ const ChartContainer = ({ selectedPlayers }) => {
   const isMobile = useMediaQuery({
     query: '(max-width:428px)',
   });
-
-  // let chartUrl;
-
-  // if (selectedPlayers.length == 0) {
-  //   chartUrl = `${API.PLAYER_CHART}phRole=`;
-  // } else if (selectedPlayers.length == 1) {
-  //   chartUrl = `${API.PLAYER_CHART}phRole=${selectedPlayers[0]}`;
-  // } else if (selectedPlayers.length == 2) {
-  //   chartUrl = `${API.PLAYER_CHART}phRole=${selectedPlayers[0]}&phRole=${selectedPlayers[1]}`;
-  // } else if (selectedPlayers.length == 3) {
-  //   chartUrl = `${API.PLAYER_CHART}phRole=${selectedPlayers[0]}&phRole=${selectedPlayers[1]}&phRole=${selectedPlayers[2]}`;
-  // } else if (selectedPlayers.length == 4) {
-  //   chartUrl = `${API.PLAYER_CHART}phRole=${selectedPlayers[0]}&phRole=${selectedPlayers[1]}&phRole=${selectedPlayers[2]}&phRole=${selectedPlayers[3]}`;
-  // }
 
   useEffect(() => {
     const querys = [];
@@ -74,11 +61,7 @@ const ChartContainer = ({ selectedPlayers }) => {
     <>
       {isPc && (
         <ChartsLayout>
-          {loading && (
-            <LoadingComponents loading={loading.toString()}>
-              <Loading size="1rem" />
-            </LoadingComponents>
-          )}
+          {loading && <LoadingDots />}
           {chartData.IndexRadarChart && (
             <RadarChart chartData={chartData?.IndexRadarChart} />
           )}
@@ -123,11 +106,7 @@ const ChartContainer = ({ selectedPlayers }) => {
             pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}
           >
-            {loading && (
-              <LoadingComponents loading={loading.toString()}>
-                <Loading size="1rem" />
-              </LoadingComponents>
-            )}
+            {loading && <LoadingDots />}
             <SwiperSlide>
               {chartData.IndexRadarChart && (
                 <RadarChart chartData={chartData?.IndexRadarChart} />
@@ -195,27 +174,8 @@ const ChartsLayout = styled.div`
   position: relative;
   display: flex;
   flex-wrap: wrap;
-  width: 1360px;
   height: 944px;
-  margin: 0 auto;
   margin-bottom: 16px;
-  background-color: #131310;
-`;
-
-const LoadingComponents = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 1360px;
-  height: 944px;
-
-  ${props =>
-    props.loading &&
-    css`
-      backdrop-filter: blur(10px);
-    `}
-
-  z-index:10000;
 `;
 
 const SwiperLayout = styled.div`

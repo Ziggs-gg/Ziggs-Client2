@@ -104,6 +104,7 @@ const ChartDoughnut = ({ chartData }) => {
       },
     },
   };
+
   const data3 = {
     labels: ['킬', '데스', '어시스트'],
     datasets: [
@@ -214,6 +215,7 @@ const ChartDoughnut = ({ chartData }) => {
       },
     ],
   };
+
   const noneOption = {
     responsive: false,
     plugins: {
@@ -225,14 +227,17 @@ const ChartDoughnut = ({ chartData }) => {
       },
     },
   };
+
   let playerName = [];
   for (let i = 0; i < chartData.length; i++) {
     let name = chartData[i]?.phRole.split('-');
     playerName.push(name[3] + ' ' + name[4]);
   }
+
   const fontFamily = {
     weight: 400,
   };
+
   return (
     <DoughnutLayout>
       <div>

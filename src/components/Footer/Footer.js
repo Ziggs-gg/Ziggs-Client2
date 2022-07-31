@@ -27,8 +27,6 @@ export default Footer;
 
 const FooterLayout = styled.footer`
   position: relative;
-
-  width: 100%;
   height: 176px;
   margin-top: 50px;
   background: linear-gradient(

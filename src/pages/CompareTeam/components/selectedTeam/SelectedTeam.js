@@ -10,7 +10,7 @@ const SelectedTeam = ({ team, selectedTeams, deleteSelectedTeam }) => {
   let teamStats = [];
 
   const orderNumber = selectedTeams.findIndex(ptID => ptID === team);
-  console.log(teamData);
+
   if (teamData) {
     teamStats = [
       {

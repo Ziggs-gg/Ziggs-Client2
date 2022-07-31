@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import PlayerCard from '../pages/ComparePlayer/components/playerList/PlayerCard';
 import TeamCard from '../pages/CompareTeam/components/teamList/TeamCard';
 import { useLocation } from 'react-router-dom';
 import { API } from '../config';
+import ReactGA from 'react-ga4';
 
 const List = ({
   setSelectedPlayers,
@@ -38,7 +39,7 @@ const List = ({
     }
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const fetchPlayerData = () => {
       axios
         .get(`${API.PLAYER_LIST}${location.search}`)
@@ -48,6 +49,10 @@ const List = ({
         .catch(Error => {
           console.error('err:', Error);
         });
+      ReactGA.event({
+        category: 'page view',
+        action: 'Player Page',
+      });
     };
 
     const fetchTeamData = () => {
@@ -59,6 +64,10 @@ const List = ({
         .catch(Error => {
           console.error('err:', Error);
         });
+      ReactGA.event({
+        category: 'page view',
+        action: 'Team Page',
+      });
     };
 
     location.pathname === '/compare/player' && fetchPlayerData();
@@ -128,9 +137,7 @@ const ListLayout = styled.div`
   justify-content: flex-start;
   align-content: flex-start;
   flex-wrap: wrap;
-  width: 1360px;
   height: 432px;
-  margin: 0 auto;
   margin-top: 20px;
   padding: 16px 78px;
   padding-bottom: 0px;

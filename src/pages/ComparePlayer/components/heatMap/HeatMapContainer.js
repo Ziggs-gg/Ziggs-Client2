@@ -41,7 +41,6 @@ const HeatMapContainer = ({ selectedPlayers }) => {
       .catch(Error => {
         console.error(Error);
       });
-    console.log(heatMapData);
   }, [selectedPlayers]);
 
   return (
@@ -84,7 +83,7 @@ export default HeatMapContainer;
 const HeatMapLayout = styled.div`
   width: 1360px;
   height: 670px;
-  margin: 16px auto;
+  margin: 16px 0;
   padding: 16px 0;
   border-top: 3px solid ${props => props.theme.black.black85};
   border-bottom: 3px solid ${props => props.theme.black.black85};
