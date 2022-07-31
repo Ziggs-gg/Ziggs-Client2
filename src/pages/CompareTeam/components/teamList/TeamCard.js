@@ -71,6 +71,40 @@ const CardLayout = styled.div`
     css`
       border: 1px solid ${props => props.theme.orange.orangeMain};
     `}
+
+    @media screen and (max-width: 428px) {
+    position: relative;
+    width: 22%;
+    height: 86px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    border: 1px solid ${props => props.theme.black.black85};
+    border-radius: 10px;
+
+    &:nth-child(4n) {
+      margin-right: 0;
+    }
+    &:nth-child(10n) {
+      margin-right: 8px;
+    }
+
+    cursor: pointer;
+    z-index: 1;
+
+    ${props =>
+      props.isSelected &&
+      props.orderNumber === 0 &&
+      css`
+        border: 1px solid ${props => props.theme.green.greenMain};
+      `}
+
+    ${props =>
+      props.isSelected &&
+      props.orderNumber === 1 &&
+      css`
+        border: 1px solid ${props => props.theme.orange.orangeMain};
+      `}
+  }
 `;
 
 const TeamLogo = styled.img`

@@ -287,6 +287,7 @@ const CardLegends = styled.div`
   top: -1px;
   border-radius: 10px;
   z-index: 1000;
+
   ${props =>
     props.orderNumber === 0 &&
     css`

@@ -44,7 +44,6 @@ const FooterLayout = styled.footer`
 const ContentWrapper = styled.div`
   width: 99%;
   height: 100%;
-  margin: 7px;
 `;
 
 const Logo = styled.img`
