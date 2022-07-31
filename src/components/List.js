@@ -146,6 +146,31 @@ const ListLayout = styled.div`
     border-radius: 2px;
     background: ${props => props.theme.white.white80};
   }
+
+  @media screen and (max-width: 428px) {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    width: 95%;
+    height: 368px;
+    margin: 20px 8px 16px 8px;
+    padding: 16px 0px 16px 16px;
+
+    overflow-y: scroll;
+    border-top: 1px solid ${props => props.theme.black.black85};
+    border-bottom: 3px solid ${props => props.theme.black.black85};
+
+    &::-webkit-scrollbar {
+      width: 3px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 2px;
+      background: ${props => props.theme.white.white80};
+    }
+  }
 `;
 
 const NotFoundLayout = styled.div`

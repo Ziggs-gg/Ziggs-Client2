@@ -94,4 +94,10 @@ export default CSPMChart;
 const BarLayout = styled.div`
   width: 200px;
   height: 304px;
+
+  @media screen and (max-width: 428px) {
+    width: 256px;
+    height: 286px;
+    margin: 0 32px 0 32px;
+  }
 `;

@@ -6,6 +6,7 @@ import { Navigation, Scrollbar } from 'swiper';
 import { API } from '../../../../config';
 import { css } from 'styled-components';
 import ChampionPoolCard from './ChampionPoolCard';
+import { useMediaQuery } from 'react-responsive';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -18,6 +19,14 @@ const ChampionPoolSwiperContainer = ({ phRole, selectedPlayers }) => {
   const orderNumber = selectedPlayers.findIndex(
     playerData => playerData === phRole
   );
+
+  const isPc = useMediaQuery({
+    query: '(min-width:429px)',
+  });
+
+  const isMobile = useMediaQuery({
+    query: '(max-width:428px)',
+  });
 
   useEffect(() => {
     axios
@@ -36,22 +45,40 @@ const ChampionPoolSwiperContainer = ({ phRole, selectedPlayers }) => {
         <CardLegend orderNumber={orderNumber} />
         <PlayerName>{`${playerInfo[4]} 시즌 챔피언풀`}</PlayerName>
       </PlayerTitle>
-
-      <Swiper
-        modules={[Navigation, Scrollbar]}
-        spaceBetween={24}
-        slidesPerView={5.3}
-        navigation
-        scrollbar={{ draggable: true }}
-      >
-        {playerData.map((championData, idx) => {
-          return (
-            <SwiperSlide key={idx}>
-              <ChampionPoolCard championData={championData} />
-            </SwiperSlide>
-          );
-        })}
-      </Swiper>
+      {isPc && (
+        <Swiper
+          modules={[Navigation, Scrollbar]}
+          spaceBetween={24}
+          slidesPerView={5.3}
+          navigation
+          scrollbar={{ draggable: true }}
+        >
+          {playerData.map((championData, idx) => {
+            return (
+              <SwiperSlide key={idx}>
+                <ChampionPoolCard championData={championData} />
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+      )}
+      {isMobile && (
+        <Swiper
+          modules={[Navigation, Scrollbar]}
+          spaceBetween={24}
+          slidesPerView={2.5}
+          navigation
+          scrollbar={{ draggable: true }}
+        >
+          {playerData.map((championData, idx) => {
+            return (
+              <SwiperSlide key={idx}>
+                <ChampionPoolCard championData={championData} />
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+      )}
     </SwiperLayout>
   );
 };
@@ -87,6 +114,65 @@ const SwiperLayout = styled.div`
       }
     }
     &:hover {
+      .swiper-button-prev,
+      .swiper-button-next {
+        width: 28px;
+        height: 28px;
+        background: rgba(53, 53, 50, 0.6);
+        border: 1px;
+        border: 1px solid #f3f3f3;
+        box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+      }
+
+      .swiper-button-prev {
+        position: absolute;
+        left: 0;
+        background-image: url('/images/arrows/Left_W.png');
+        background-repeat: no-repeat;
+        background-size: 50% auto;
+        background-position: center;
+      }
+
+      .swiper-button-next {
+        position: absolute;
+        right: 0;
+        background-image: url('/images/arrows/Right_W.png');
+        background-repeat: no-repeat;
+        background-size: 50% auto;
+        background-position: center;
+      }
+    }
+  }
+
+  @media screen and (max-width: 428px) {
+    width: 304px;
+    height: 240px;
+    margin-right: 32px;
+
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
+    .swiper {
+      .swiper-wrapper {
+        height: 180px;
+      }
+
+      .swiper-button-prev::after,
+      .swiper-button-next::after {
+        display: none;
+      }
+
+      .swiper-scrollbar {
+        height: 3px;
+        left: 4px;
+
+        bottom: 0;
+        .swiper-scrollbar-drag {
+          background: ${props => props.theme.white.white80};
+          border-radius: 0;
+        }
+      }
       .swiper-button-prev,
       .swiper-button-next {
         width: 28px;

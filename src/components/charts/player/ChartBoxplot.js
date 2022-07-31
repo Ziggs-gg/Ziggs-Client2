@@ -148,4 +148,10 @@ const BoxplotLayout = styled.div`
   width: 548px;
   height: 304px;
   margin: 0 32px 0 32px;
+
+  @media screen and (max-width: 428px) {
+    width: 256px;
+    height: 286px;
+    margin: 0 32px 0 32px;
+  }
 `;

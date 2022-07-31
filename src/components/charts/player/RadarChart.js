@@ -118,4 +118,9 @@ const RadarLayout = styled.div`
   width: 316px;
   height: 304px;
   padding: 12px 2px 12px 2px;
+
+  @media screen and (max-width: 428px) {
+    width: 256px;
+    height: 286px;
+  }
 `;
