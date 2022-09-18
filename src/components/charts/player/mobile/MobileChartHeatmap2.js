@@ -13,7 +13,6 @@ const MobileChartHeatmap2 = ({ heatMapData }) => {
   return (
     <table>
       <HeatTr>
-        <SpaceTd />
         <LabelTd>KDA</LabelTd>
         <LabelTd data-for="KP" data-tip>
           KP%
@@ -59,16 +58,6 @@ const MobileChartHeatmap2 = ({ heatMapData }) => {
 
         return (
           <HeatTr key={idx}>
-            <ColumnLabel>
-              <YearAndSeasonLabel>
-                {player.yy}-{player.splitSeason}
-              </YearAndSeasonLabel>
-              {player.phID.includes('-')
-                ? player.phID.split('-')[4]
-                : player.phID}
-              <RoleLabel>{player.role}</RoleLabel>
-            </ColumnLabel>
-            {/* <DataTd>{player}</DataTd> */}
             <DataTd style={kda}>{player.AVG_KDA?.split('/')[0]}</DataTd>
             <DataTd style={kppct}>{player.AVG_KPPCT?.split('/')[0]}</DataTd>
             <DataTd style={dthpct}>{player.AVG_DTHPCT?.split('/')[0]}</DataTd>
@@ -81,22 +70,6 @@ const MobileChartHeatmap2 = ({ heatMapData }) => {
 };
 
 export default MobileChartHeatmap2;
-
-const YearAndSeasonLabel = styled.p`
-  font-size: 10px;
-  font-weight: 300;
-  color: ${theme.white.white50};
-  letter-spacing: -0.05em;
-  margin-bottom: 3px;
-`;
-
-const RoleLabel = styled.p`
-  color: ${theme.white.white50};
-  font-weight: 300;
-  font-size: 12px;
-  letter-spacing: -0.03em;
-  margin-top: 3px;
-`;
 
 const LabelTd = styled.td`
   color: ${theme.white.white100};
@@ -117,21 +90,6 @@ const SpaceTd = styled.td`
 
 const HeatTr = styled.tr`
   display: flex;
-`;
-
-const ColumnLabel = styled.td`
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  flex-direction: column;
-  color: ${theme.white.white100};
-  width: 73px;
-  height: 47px;
-  margin-right: 2px;
-  padding-right: 2px;
-  font-weight: 500;
-  font-size: 12px;
-  letter-spacing: -0.03em;
 `;
 
 const DataTd = styled.td`

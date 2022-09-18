@@ -16,7 +16,7 @@ import { API } from '../../../config';
 import { Loading } from 'react-loading-dot';
 import { useMediaQuery } from 'react-responsive';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Scrollbar } from 'swiper';
+import { Navigation, Pagination } from 'swiper';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -99,12 +99,11 @@ const ChartContainer = ({ selectedPlayers }) => {
       {isMobile && (
         <SwiperLayout>
           <Swiper
-            modules={[Navigation, Scrollbar]}
+            modules={[Navigation, Pagination]}
             spaceBetween={24}
             slidesPerView={1}
             navigation
             pagination={{ clickable: true }}
-            scrollbar={{ draggable: true }}
           >
             {loading && <LoadingDots />}
             <SwiperSlide>
@@ -181,6 +180,7 @@ const ChartsLayout = styled.div`
 const SwiperLayout = styled.div`
   width: 100%;
   height: 304px;
+  margin-bottom: 32px;
 
   &:nth-child(2n) {
     margin-right: 0;
@@ -195,21 +195,26 @@ const SwiperLayout = styled.div`
       height: 304px;
     }
 
+    .swiper-pagination {
+      position: static;
+
+      .swiper-pagination-bullet {
+        width: 12px;
+        height: 4px;
+        background: #f3f3f3;
+        border-radius: 0;
+      }
+      .swiper-pagination-bullet-active {
+        width: 22px;
+        height: 4px;
+      }
+    }
+
     .swiper-button-prev::after,
     .swiper-button-next::after {
       display: none;
     }
 
-    .swiper-scrollbar {
-      height: 3px;
-      left: 4px;
-
-      bottom: 0;
-      .swiper-scrollbar-drag {
-        background: ${props => props.theme.white.white80};
-        border-radius: 0;
-      }
-    }
     .swiper-button-prev,
     .swiper-button-next {
       width: 28px;
