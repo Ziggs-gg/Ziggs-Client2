@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import theme from '../../../../styles/theme.js';
+import ReactTooltip from 'react-tooltip';
 
-const MobileChartHeatmap1 = ({ heatMapData }) => {
+const MobileChartheatmap6 = ({ heatMapData }) => {
   const backgroundColor = [
     theme.red.redMain,
     theme.red.redB80,
@@ -12,34 +13,40 @@ const MobileChartHeatmap1 = ({ heatMapData }) => {
   return (
     <table>
       <HeatTr>
-        <LabelTd>게임</LabelTd>
-        <LabelTd>킬</LabelTd>
-        <LabelTd>데스</LabelTd>
-        <LabelTd>어시스트</LabelTd>
+        <LabelTd data-for="CSD" data-tip>
+          CSD@15
+        </LabelTd>
+        <ReactTooltip
+          id="CSD"
+          effect="solid"
+          getContent={dataTip => '15분 CS 격차'}
+        />
+        <LabelTd data-for="XPD" data-tip>
+          XPD@15
+        </LabelTd>
+        <ReactTooltip
+          id="XPD"
+          effect="solid"
+          getContent={dataTip => '15분 획득 경험치 격차'}
+        />
       </HeatTr>
       {heatMapData?.map((player, idx) => {
-        const count = {
-          background: backgroundColor[player.gameCount?.split('/')[1] - 1],
+        const csdat15 = {
+          background: backgroundColor[player.AVG_CSDat15?.split('/')[1] - 1],
         };
 
-        const kills = {
-          background: backgroundColor[player.AVG_kills?.split('/')[1] - 1],
-        };
-
-        const deaths = {
-          background: backgroundColor[player.AVG_deaths?.split('/')[1] - 1],
-        };
-
-        const assists = {
-          background: backgroundColor[player.AVG_assists?.split('/')[1] - 1],
+        const xpdat15 = {
+          background: backgroundColor[player.AVG_XPDat15?.split('/')[1] - 1],
         };
 
         return (
           <HeatTr key={idx}>
-            <DataTd style={count}>{player.gameCount?.split('/')[0]}</DataTd>
-            <DataTd style={kills}>{player.AVG_kills?.split('/')[0]}</DataTd>
-            <DataTd style={deaths}>{player.AVG_deaths?.split('/')[0]}</DataTd>
-            <DataTd style={assists}>{player.AVG_assists?.split('/')[0]}</DataTd>
+            <DataTd style={csdat15}>
+              {player.AVG_CSDat15?.split('/')[0] ?? '-'}
+            </DataTd>
+            <DataTd style={xpdat15}>
+              {player.AVG_XPDat15?.split('/')[0] ?? '-'}
+            </DataTd>
           </HeatTr>
         );
       })}
@@ -47,7 +54,7 @@ const MobileChartHeatmap1 = ({ heatMapData }) => {
   );
 };
 
-export default MobileChartHeatmap1;
+export default MobileChartheatmap6;
 
 const LabelTd = styled.td`
   color: ${theme.white.white100};

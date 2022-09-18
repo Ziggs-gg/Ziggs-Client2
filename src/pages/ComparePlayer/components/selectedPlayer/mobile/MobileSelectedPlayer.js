@@ -212,6 +212,7 @@ export default MobileSelectedPlayer;
 const DescAndMost = styled.div`
   display: flex;
   margin-bottom: 8px;
+  margin-left: 3%;
 `;
 
 const All = styled.div`
@@ -326,7 +327,7 @@ const ContentsWrapper = styled.div`
 
 const PlayerInfo = styled.div`
   position: relative;
-  width: 52px;
+  width: 110px;
   height: 100px;
   margin-right: 8px;
   margin-left: 5px;
@@ -373,7 +374,7 @@ const RoleLogoLoading = styled.span`
 
 const PlayerImg = styled.img`
   position: absolute;
-  width: 52px;
+  width: 75px;
   height: 78px;
   bottom: 0;
   color: white;
@@ -442,7 +443,6 @@ const PlayerData = styled.div`
   align-items: center;
   width: 100%;
   padding: 0 4px;
-  margin-right: 12px;
 `;
 
 const StatesText = styled.span`
@@ -455,7 +455,7 @@ const StatesText = styled.span`
 
 const StatesTextLoading = styled.div`
   height: 16px;
-  width: 30px;
+  width: 20px;
   margin-top: 4px;
   background-color: ${props => props.theme.black.black70};
   border-radius: 3px;
@@ -495,8 +495,8 @@ const DeleteButton = styled.button`
   display: none;
   justify-content: center;
   align-items: center;
-  top: 24px;
-  right: 180px;
+  top: 30px;
+  right: 155px;
   width: 40px;
   height: 40px;
   background: none;

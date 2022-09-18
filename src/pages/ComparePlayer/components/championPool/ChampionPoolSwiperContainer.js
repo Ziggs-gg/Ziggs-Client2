@@ -173,33 +173,35 @@ const SwiperLayout = styled.div`
           border-radius: 0;
         }
       }
-      .swiper-button-prev,
-      .swiper-button-next {
-        width: 28px;
-        height: 28px;
-        background: rgba(53, 53, 50, 0.6);
-        border: 1px;
-        border: 1px solid #f3f3f3;
-        box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.5);
-        border-radius: 10px;
-      }
+      &:hover {
+        .swiper-button-prev,
+        .swiper-button-next {
+          width: 28px;
+          height: 28px;
+          background: rgba(53, 53, 50, 0.6);
+          border: 1px;
+          border: 1px solid #f3f3f3;
+          box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.5);
+          border-radius: 10px;
+        }
 
-      .swiper-button-prev {
-        position: absolute;
-        left: 0;
-        background-image: url('/images/arrows/Left_W.png');
-        background-repeat: no-repeat;
-        background-size: 50% auto;
-        background-position: center;
-      }
+        .swiper-button-prev {
+          position: absolute;
+          left: 0;
+          background-image: url('/images/arrows/Left_W.png');
+          background-repeat: no-repeat;
+          background-size: 50% auto;
+          background-position: center;
+        }
 
-      .swiper-button-next {
-        position: absolute;
-        right: 0;
-        background-image: url('/images/arrows/Right_W.png');
-        background-repeat: no-repeat;
-        background-size: 50% auto;
-        background-position: center;
+        .swiper-button-next {
+          position: absolute;
+          right: 0;
+          background-image: url('/images/arrows/Right_W.png');
+          background-repeat: no-repeat;
+          background-size: 50% auto;
+          background-position: center;
+        }
       }
     }
   }
