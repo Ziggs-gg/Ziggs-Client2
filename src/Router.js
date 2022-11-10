@@ -12,10 +12,6 @@ import { useMediaQuery } from 'react-responsive';
 import MobileLanding from './pages/LandingPage/MobileLanding';
 
 function Router() {
-  const isPc = useMediaQuery({
-    query: '(min-width:429px)',
-  });
-
   const isMobile = useMediaQuery({
     query: '(max-width:428px)',
   });
@@ -31,8 +27,7 @@ function Router() {
             <Route path="/compare/team" element={<CompareTeam />} />
           </Routes>
         </MainContents>
-        {isPc && <Footer />}
-        {isMobile && <MobileFooter />}
+        {isMobile ? <MobileFooter /> : <Footer />}
       </ContentsWrapper>
     </BrowserRouter>
   );
